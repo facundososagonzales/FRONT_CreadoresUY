@@ -1,6 +1,11 @@
 .mat-raised-button{
+    filter: opacity(80%) !important;
     border-radius: 50px !important;
     max-height: 35px !important;
+    background-color: #27798f;
+    text-align: center;
+    color: #ffffff;
+  
 }
 
 .input-group-prepend span{

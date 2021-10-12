@@ -1,6 +1,6 @@
 <main>
   <section class="section section-shaped section-lg">
-    <div class="shape shape-style-1 bg-gradient-default">
+    <div class="shape shape-style-1 shape-primary">
       <span></span>
       <span></span>
       <span></span>
@@ -16,7 +16,7 @@
           <div class="card bg-secondary shadow border-0">
             <div class="card-header bg-white pb-5">
               <div class="text-muted text-center mb-3">
-                <small>Sign up with</small>
+                <small>Regístrate con...</small>
               </div>
               <div class="text-center">
                 <a href="javascript:void(0)" class="btn btn-neutral btn-icon">
@@ -41,7 +41,7 @@
             </div>
             <div class="card-body px-lg-5 py-lg-5">
               <div class="text-center text-muted mb-4">
-                <small>Or sign up with credentials</small>
+                <small>o con Credenciales de CreadoresUY</small>
               </div>
               <form role="form">
                 <div class="form-group" [ngClass]="{'focused':focus===true}">
@@ -68,25 +68,21 @@
                     <input class="form-control" placeholder="Password" type="password" (focus)="focus2=true" (blur)="focus2=false">
                   </div>
                 </div>
-                <div class="text-muted font-italic">
-                  <small>password strength:
-                    <span class="text-success font-weight-700">strong</span>
-                  </small>
-                </div>
+             
                 <div class="row my-4">
                   <div class="col-12">
                     <div class="custom-control custom-control-alternative custom-checkbox">
                       <input class="custom-control-input" id="customCheckRegister" type="checkbox">
                       <label class="custom-control-label" for="customCheckRegister">
-                        <span>I agree with the
-                          <a href="javascript:void(0)">Privacy Policy</a>
+                        <span>Acepto los términos y condiciones
+                          <a href="javascript:void(0)">Potiticas de Privacidad</a>
                         </span>
                       </label>
                     </div>
                   </div>
                 </div>
                 <div class="text-center">
-                  <button type="button" class="btn btn-primary mt-4">Create account</button>
+                  <button type="button" class="btn btn-primary mt-4" style= "background-color: #27798f">Crear Cuenta</button>
                 </div>
               </form>
             </div>
