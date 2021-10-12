@@ -6,7 +6,6 @@ import { NouisliderModule } from 'ng2-nouislider';
 import { JwBootstrapSwitchNg2Module } from 'jw-bootstrap-switch-ng2';
 import { RouterModule } from '@angular/router';
 
-import { SectionsComponent } from './sections.component';
 import { ButtonsSectionComponent } from './buttons-section/buttons-section.component';
 import { InputsSectionComponent } from './inputs-section/inputs-section.component';
 import { CrsSectionComponent } from './crs-section/crs-section.component';
@@ -19,6 +18,7 @@ import { NucleoSectionComponent } from './nucleo-section/nucleo-section.componen
 import { VersionsSectionComponent } from './versions-section/versions-section.component';
 import { NgbdModalComponent } from './modal/modal.component';
 import { NgbdModalContent } from './modal/modal.component';
+import { SectionsComponent } from './sections.component';
 
 @NgModule({
   declarations: [

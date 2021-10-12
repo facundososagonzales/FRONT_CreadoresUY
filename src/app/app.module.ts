@@ -6,10 +6,6 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
 
 import { AppComponent } from './app.component';
-import { SignupComponent } from './signup/signup.component';
-import { ProfileComponent } from './profile/profile.component';
-import { NavbarComponent } from './shared/navbar/navbar.component';
-import { FooterComponent } from './shared/footer/footer.component';
 import {ClipboardModule} from '@angular/cdk/clipboard';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {PortalModule} from '@angular/cdk/portal';
@@ -53,9 +49,13 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 
-import { HomeModule } from './home/home.module';
-import { LoginComponent } from './login/login.component';
+import { HomeModule } from './components/home/home.module';
+import { LoginComponent } from './components/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FooterComponent } from './components/shared/footer/footer.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { NavbarComponent } from './components/shared/navbar/navbar.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 @NgModule({
   declarations: [
