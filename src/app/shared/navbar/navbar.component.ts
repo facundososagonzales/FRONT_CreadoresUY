@@ -8,6 +8,8 @@ import { Location, PopStateEvent } from '@angular/common';
     styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+    focus;
+    focus1;
     public isCollapsed = true;
     private lastPoppedUrl: string;
     private yScrollStack: number[] = [];

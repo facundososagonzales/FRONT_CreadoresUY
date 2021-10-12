@@ -1,4 +1,16 @@
-.form-control{
+.mat-raised-button{
     border-radius: 50px !important;
-    
+    max-height: 35px !important;
+}
+
+.input-group-prepend span{
+    border-radius: 50px 0px 0px 50px !important;
+    max-height: 35px;
+}
+
+.input-group input{
+    max-height: 35px !important;
+    max-width: 200px !important;
+    border-radius: 0px 50px 50px 0px !important;
+    margin-left: -4px;
 }

@@ -39,11 +39,20 @@
       </ul>
       <ul class="navbar-nav align-items-lg-center ml-lg-auto">
         <li class="nav-item d-none d-lg-block ml-lg-1">
-            <input type="text" class="form-control form-control-muted" placeholder="Buscar...">
+          <div [ngClass]="{'focused':focus===true}">
+            <div class="input-group input-group-alternative">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <mat-icon aria-hidden="false" aria-label="Example home icon">search</mat-icon>
+                </span>
+              </div>
+              <input class="form-control" placeholder="Buscar..." type="search" (focus)="focus=true" (blur)="focus=false">
+            </div>
+          </div>
         </li>
         <li class="nav-item d-none d-lg-block ml-lg-1">
           <a [routerLink]="['/login']">
-            <button class="btn btn-primary">
+            <button mat-raised-button color="primary">
               <i class="fa fa-cloud-download mr-2"></i>
               <span class="nav-link-inner--text">Iniciar Sesion</span>
             </button> 
