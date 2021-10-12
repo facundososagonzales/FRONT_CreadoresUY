@@ -2,7 +2,6 @@
 .headroom {
     will-change: transform;
     background-color: inherit;
-    @include transition($transition-base);
 }
 .headroom--pinned {
 	@extend .position-fixed;
@@ -16,6 +15,5 @@
 .headroom--not-top {
 	padding-top: .5rem;
 	padding-bottom: .5rem;
-    background-color: theme-color("default") !important;
     box-shadow: 0 1px 10px rgba(130, 130, 134, 0.1);
 }
