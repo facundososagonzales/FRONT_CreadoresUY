@@ -20,9 +20,8 @@
     margin-left: -4px;
 }
 
-nav.headroom--not-top  { 
-    color: rgb(190, 187, 187); 
- }
-nav.headroom--top  { 
-    color: transparent !important;
+.navbar{
+    max-height: 65px;
+    background-color: transparentize($color: #000000, $amount: 0.85);
+    opacity: 3;
 }
