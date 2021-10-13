@@ -3,5 +3,30 @@
 }
 
 .cont{
-    margin-top: -240px;
+    margin-bottom: 240px;
+    margin-top: -140px;
+    display: flex;
+    justify-content: center;
+}
+
+.mat-stroked-button{
+    background-color: #48977c;
+    color: #fff;
+    border-radius: 50px;
+    margin: 0 9px;
+    z-index: 50;
+}
+
+.card-img-top{
+    max-width: 100%;
+    max-height: 400px;
+}
+
+.card{
+    min-width: 80vw !important;
+    border: none;
+}
+
+.perfile-title{
+    text-align: center;
 }
