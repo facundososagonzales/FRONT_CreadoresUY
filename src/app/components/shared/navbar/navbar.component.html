@@ -1,6 +1,6 @@
 <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom headroom--top headroom--pinned">
   <div class="container">
-    <a class="navbar-brand mr-lg-5" [routerLink]="['/home']">
+    <a class="navbar-brand mr-3" [routerLink]="['/home']">
       <img src="./assets/img/brand/argon-white.png">
     </a>
     <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed"
@@ -28,12 +28,13 @@
         <li class="nav-item dropdown">
           <a class="nav-link no-caret" data-toggle="dropdown" role="button">
             <i class="ni ni-collection d-lg-none"></i>
-            <span class="nav-link-inner--text">Examples</span>
+            <span class="nav-link-inner--text">Funcionalidades</span>
           </a>
           <div class="dropdown-menu">
             <a [routerLink]="['/user-profile']" class="dropdown-item">Profile</a>
             <a [routerLink]="['/login']" class="dropdown-item">Login</a>
             <a [routerLink]="['/register']" class="dropdown-item">Register</a>
+            <a [routerLink]="['/creador-Register']" class="dropdown-item">Volverse Creador</a>
           </div>
         </li>
       </ul>

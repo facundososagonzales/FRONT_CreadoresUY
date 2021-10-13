@@ -48,14 +48,15 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HomeModule } from './components/home/home.module';
 import { LoginComponent } from './components/login/login.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { SignupCreadorComponent } from './components/signup-creador/signup-creador.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { SignupComponent } from './components/signup/signup.component';
     ProfileComponent,
     NavbarComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
+    SignupCreadorComponent
   ],
   imports: [
     BrowserModule,
