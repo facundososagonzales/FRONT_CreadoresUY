@@ -13,7 +13,7 @@
     background-color: #48977c;
     color: #fff;
     border-radius: 50px;
-    margin: 0 9px;
+    margin: 0 4px;
     z-index: 50;
 }
 
@@ -23,10 +23,15 @@
 }
 
 .card{
-    min-width: 80vw !important;
+    min-width: 70vw !important;
+    max-width: 70vw !important;
     border: none;
 }
 
 .perfile-title{
     text-align: center;
+}
+
+.but-cont{
+    display: flex;
 }
