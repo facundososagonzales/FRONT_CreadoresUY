@@ -57,6 +57,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { SignupCreadorComponent } from './components/signup-creador/signup-creador.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,7 @@ import { SignupCreadorComponent } from './components/signup-creador/signup-cread
     NavbarComponent,
     FooterComponent,
     LoginComponent,
-    SignupCreadorComponent
+    SignupCreadorComponent,
   ],
   imports: [
     BrowserModule,
@@ -119,6 +120,7 @@ import { SignupCreadorComponent } from './components/signup-creador/signup-cread
     OverlayModule,
     PortalModule,
     ScrollingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

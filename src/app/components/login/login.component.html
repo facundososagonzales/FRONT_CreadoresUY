@@ -39,7 +39,7 @@
                 </a>
               </div>
             </div>
-            <div class="card-body px-lg-5 py-lg-5">
+            <div class="card-body px-lg-5 py-lg-4">
               <div class="text-center text-muted mb-4">
                 <small>o con sus credenciales en CreadoresUY</small>
               </div>
@@ -60,11 +60,20 @@
                     <input class="form-control" placeholder="Password" type="password" (focus)="focus1=true" (blur)="focus1=false">
                   </div>
                 </div>
-                <div class="custom-control custom-control-alternative custom-checkbox">
-                  <input class="custom-control-input" id=" customCheckLogin" type="checkbox">
-                  <label class="custom-control-label" for=" customCheckLogin">
-                    <span>Recuérdame</span>
-                  </label>
+                <div class="row mt-2">
+                  <div class="col-6">
+                    <div class="custom-control custom-control-alternative custom-checkbox">
+                      <input class="custom-control-input" id=" customCheckLogin" type="checkbox">
+                      <label class="custom-control-label" for=" customCheckLogin">
+                        <span>Recuérdame</span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-6 text-right">
+                    <a href="javascript:void(0)" class="text-light">
+                      <small>Olvidó su contraseña?</small>
+                    </a>
+                  </div>
                 </div>
                 <div class="text-center">
                   <button type="button" class="btn btn-primary my-4" style= "background-color: #27798f;">Iniciar Sesión</button>
@@ -72,17 +81,10 @@
               </form>
             </div>
           </div>
-          <div class="row mt-3">
-            <div class="col-6">
-              <a href="javascript:void(0)" class="text-light">
-                <small>Olvidó su contraseña?</small>
-              </a>
-            </div>
-            <div class="col-6 text-right">
-              <a href="javascript:void(0)" class="text-light">
-                <small>Registrarse</small>
-              </a>
-            </div>
+          <div class="d-flex flex-row pl-4 pt-2">
+            <span>¿No tiene cuenta aún?
+              <a [routerLink]="['/register']" class="text-link ml-2">Registrarse ahora</a>
+            </span>
           </div>
         </div>
       </div>

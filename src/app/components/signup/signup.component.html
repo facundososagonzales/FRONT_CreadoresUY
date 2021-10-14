@@ -49,7 +49,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Name" type="text" (focus)="focus=true" (blur)="focus=false">
+                    <input #name class="form-control" placeholder="Name" type="text" (focus)="focus=true" (blur)="focus=false">
                   </div>
                 </div>
                 <div class="form-group" [ngClass]="{'focused':focus1===true}">
@@ -57,7 +57,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Email" type="email" (focus)="focus1=true" (blur)="focus1=false">
+                    <input #email class="form-control" placeholder="Email" type="email" (focus)="focus1=true" (blur)="focus1=false">
                   </div>
                 </div>
                 <div class="form-group" [ngClass]="{'focused':focus2===true}">
@@ -65,14 +65,16 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Password" type="password" (focus)="focus2=true" (blur)="focus2=false">
+                    <input #password class="form-control" placeholder="Password" type="password"
+                     (focus)="focus2=true" (blur)="focus2=false">
                   </div>
                 </div>
              
                 <div class="row my-4">
                   <div class="col-12">
                     <div class="custom-control custom-control-alternative custom-checkbox">
-                      <input class="custom-control-input" id="customCheckRegister" type="checkbox">
+                      <input #politic class="custom-control-input" id="customCheckRegister"
+                       type="checkbox" [checked]="isChecked" (change)="isChecked=!isChecked">
                       <label class="custom-control-label" for="customCheckRegister">
                         <span>Acepto los términos y condiciones
                           <a href="javascript:void(0)">Potiticas de Privacidad</a>
@@ -82,7 +84,8 @@
                   </div>
                 </div>
                 <div class="text-center">
-                  <button type="button" class="btn btn-primary mt-4" style= "background-color: #27798f">Crear Cuenta</button>
+                  <button type="button" class="btn btn-primary mt-4" (click)="crearUsuario(name.value,email.value,password.value)"
+                   style= "background-color: #27798f">Crear Cuenta</button>
                 </div>
               </form>
             </div>
