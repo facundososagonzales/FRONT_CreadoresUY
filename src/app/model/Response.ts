@@ -1,9 +1,6 @@
-export interface Response {
-    succes: boolean;
-    items:  Item[];
-}
-
-export interface Item {
-    codStatus:   number;
-    resVariable: string;
-}
+export class Response<T> {
+    obj: T;
+    success: boolean;
+    codStatus: number;
+    message:   string[];
+  }

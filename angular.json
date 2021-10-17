@@ -56,12 +56,13 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "proxyConfig": "proxy.conf.json",
-            "browserTarget": "argon-design-system-angular:build"
+            "browserTarget": "argon-design-system-angular:build",
+            "proxyConfig": "src/proxy.conf.json"
           },
           "configurations": {
             "production": {
-              "browserTarget": "argon-design-system-angular:build:production"
+              "browserTarget": "argon-design-system-angular:build:production",
+              "proxyConfig": "src/proxy.conf.json"
             }
           }
         },
