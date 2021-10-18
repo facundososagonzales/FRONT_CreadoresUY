@@ -17,6 +17,9 @@ export class SignupServiceService {
   constructor(private http:HttpClient) {}
 
   UserCreate(name:string, email:string, password:string){
-    return this.http.post<Response<CreateUserDto>>(this.Url,{name, email, password});
+    console.log(name);
+    var user = new CreateUserDto();
+    user.name=name; user.email=email; user.password=password;
+    return this.http.post<Response<String>>(this.Url,user); 
   }
 }

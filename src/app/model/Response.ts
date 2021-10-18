@@ -1,6 +1,6 @@
 export class Response<T> {
-    obj: T;
-    success: boolean;
-    codStatus: number;
-    message:   string[];
+    Obj: T;
+    Success: boolean;
+    CodStatus: number;
+    Message:   string[];
   }
