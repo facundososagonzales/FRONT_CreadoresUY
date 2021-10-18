@@ -1,2 +1,77 @@
+<main>
+    <section class="section section-shaped section-lg">
+      <div class="shape shape-style-1 shape-primary">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="container cont pt-lg-md">
+        <div class="row justify-content-center">
+          <div class="col-lg-12">
+            <div class="card bg-secondary shadow border-0">
+              <div class="card-header bg-white pb-5">
+                  <mat-horizontal-stepper linear [labelPosition]= "'buttom'">
+                      <mat-step label= "1. Categorias" [editable]= "true" [completed]="true">
+                          <div>
+                              <h1>¿Cómo categorizarías tu contenido?</h1>
+                              <button mat-button matStepperNext>Siguiente</button>
+                          </div>
+                      </mat-step>
+                      <mat-step label= "2. Datos personales" [editable]= "true" [completed]="true">
+                        <div>
+                            <h1>Ingresa tus datos personales</h1>
+                            <mat-form-field class="example-full-width" appearance="fill" required>
+                                <mat-label>Nickname</mat-label>
+                                <input matInput placeholder="Ej.  pepe_20">
+                            </mat-form-field>
+                            <br>
+                            <mat-form-field class="example-full-width" appearance="fill" required>
+                                <mat-label>Nombre</mat-label>
+                                <input matInput placeholder="Ej.  Pepe Gonzalez">
+                            </mat-form-field>
+                            <br>
+                            <mat-form-field class="example-full-width" appearance="fill" required>
+                                    <mat-label>¿Cómo describirías tu contenido?</mat-label>
+                                    <textarea matInput placeholder="Subo contenido sobre de .net, java, etc"></textarea>
+                             </mat-form-field>
+                             <br>
+                            <button mat-button matStepperPrevious>Atrás</button>
+                            <button mat-button matStepperNext style="margin-left: 10px">Siguiente</button>
+                        </div>
+                    </mat-step>
+                      <mat-step label= "3. Medio de pago" [editable]= "true" [completed]="true">
+                          <div>
+                            <h1>¿Cómo recibirás tus bonificaciones?</h1>
+                            <button mat-button matStepperPrevious>Atrás</button>
+                            <button mat-button matStepperNext style="margin-left: 10px">Siguiente</button>
+                          </div>
+                      </mat-step>
+                      <mat-step label= "4. Plan de Suscripción" [editable]= "true" [completed]="true">
+                        <div>
+                          <h1>Elije tus planes de suscripción</h1>
+                          <button mat-button matStepperPrevious>Atrás</button>
+                            <button mat-button matStepperNext style="margin-left: 10px">Siguiente</button>
+                        </div>
+                    </mat-step>
+                    <mat-step label= "5. Confirmación" [editable]= "false">
+                        <div>
+                          <h1>¡Ya eres Creador/a!</h1>
+                        </div>
+                    </mat-step>
+                      
+                    
 
-<p>Componente funcionando</p>
+                  </mat-horizontal-stepper>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  

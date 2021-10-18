@@ -1,0 +1,21 @@
+.section-shaped .shape {
+    background: linear-gradient(45deg, #27798f 1%, #ffe3b3 90%);
+}
+
+.cont{
+    margin-top: 20px;
+}
+
+.mat-button{
+    background-color: #27798f;
+    color: #ffffff;
+}
+
+.mat-step{
+    background-color: #27798f;
+    color: #ffffff;
+}
+
+.mat-horizontal-stepper {
+    margin-top: 16px;
+  }
