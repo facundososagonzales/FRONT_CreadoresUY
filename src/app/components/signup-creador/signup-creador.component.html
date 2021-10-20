@@ -18,43 +18,63 @@
                   <mat-horizontal-stepper linear [labelPosition]= "'buttom'">
                       <mat-step label= "1. Categorias" [editable]= "true" [completed]="true">
                           <div>
-                              <h1>¿Cómo categorizarías tu contenido?</h1>
+                            <br>
+                              <h1>¿Cómo categorizarías tu contenido?</h1><br>
+                              <mat-radio-group aria-label="Select an option">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                               <img src="./assets/img/theme/art.png" style="width: 100px;" class="img-fluid">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <img src="./assets/img/theme/food.png" style="width: 100px;" class="img-fluid">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <img src="./assets/img/theme/trading.png" style="width: 100px;" class="img-fluid">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <img src="./assets/img/theme/music.png" style="width: 100px;" class="img-fluid">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <br><br>
+                              &nbsp;&nbsp;&nbsp;&nbsp;
+                                <mat-radio-button value="1">Arte</mat-radio-button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <mat-radio-button value="2">Comida</mat-radio-button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <mat-radio-button value="3">Trading</mat-radio-button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                    
+                                <mat-radio-button value="3">Música</mat-radio-button>
+                              </mat-radio-group>   
+                              <br><br><br>                             
                               <button mat-button matStepperNext>Siguiente</button>
                           </div>
                       </mat-step>
                       <mat-step label= "2. Datos personales" [editable]= "true" [completed]="true">
                         <div>
+                            <br>
                             <h1>Ingresa tus datos personales</h1>
-                            <div class="col-5">
-                                <input #name class="form-control" placeholder="Nombre" type="text" (focus)="focus=true" (blur)="focus=false">
-                              </div>
-                              <br>
-                            <div class="col-5">
-                                <input #nickname class="form-control" placeholder="Nickname" type="text" (focus)="focus=true" (blur)="focus=false">
-                            </div>
-                            <br>
-                            <div class="col-5">
-                                <input #description class="form-control input-lg" placeholder="Descripción de tu perfil" type="text lg" (focus)="focus=true" (blur)="focus=false">
+                            <form class="form">
+                                <div class="col-5">
+                                    <input #name class="form-control" placeholder="Nombre" type="text" (focus)="focus=true" (blur)="focus=false">
+                                </div>
+                                <br>
+                                <div class="col-5">
+                                    <input #nickname class="form-control" placeholder="Nickname" type="text" (focus)="focus=true" (blur)="focus=false">
+                                </div>
+                                <br>
+                                <div class="col-5">
+                                    <input #description class="form-control input-lg" placeholder="Descripción de tu perfil" type="text lg" (focus)="focus=true" (blur)="focus=false">
 
-                            </div>
-                            <br>
-                            <div class="col-5">
-                                <input #link class="form-control" placeholder="Link YOUTUBE" type="url" (focus)="focus=true" (blur)="focus=false">
-                            </div>
-                             <br>
-                             <div class="col-5">
-                                <font color="27798f" size="2" face="Open Sans"><i>Importar imagen perfil</i></font>
-                                <input #file class="" placeholder="perfil-imagen" type="file" (focus)="focus=true" (blur)="focus=false">
-                            </div>
-                            <br>
-                             <div class="col-5">
-                            <button mat-button matStepperPrevious>Atrás</button>
-                            <button mat-button matStepperNext style="margin-left: 10px">Siguiente</button>
-                            </div>
+                                </div>
+                                <br>
+                                <div class="col-5">
+                                    <input #link class="form-control" placeholder="Link YOUTUBE" type="url" (focus)="focus=true" (blur)="focus=false">
+                                </div>
+                                <br>
+                                <div class="col-5">
+                                    <font color="27798f" size="2" face="Open Sans"><i>Importar imagen perfil</i></font>
+                                    <input #file class="" placeholder="perfil-imagen" type="file" (focus)="focus=true" (blur)="focus=false">
+                                </div>
+                                <br>
+                                <div class="col-5">
+                                <button mat-button matStepperPrevious>Atrás</button>
+                                <button mat-button matStepperNext style="margin-left: 10px">Siguiente</button>
+                                </div>
+                            </form>
                         </div>
+                
                     </mat-step>
                       <mat-step label= "3. Medio de pago" [editable]= "true" [completed]="true">
                           <div>
+                            <br>
                             <h1>¿Cómo recibirás tus bonificaciones?</h1>
                             <button mat-button matStepperPrevious>Atrás</button>
                             <button mat-button matStepperNext style="margin-left: 10px">Siguiente</button>
@@ -62,6 +82,7 @@
                       </mat-step>
                       <mat-step label= "4. Plan de Suscripción" [editable]= "true" [completed]="true">
                         <div>
+                            <br>
                           <h1>Elije tus planes de suscripción</h1>
                           <button mat-button matStepperPrevious>Atrás</button>
                             <button mat-button matStepperNext style="margin-left: 10px">Siguiente</button>
@@ -69,6 +90,7 @@
                     </mat-step>
                     <mat-step label= "5. Confirmación" [editable]= "false">
                         <div>
+                            <br>
                           <h1>¡Ya eres Creador/a!</h1>
                         </div>
                     </mat-step>
