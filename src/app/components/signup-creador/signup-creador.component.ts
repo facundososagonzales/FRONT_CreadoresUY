@@ -8,7 +8,7 @@ import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
   styleUrls: ['./signup-creador.component.css']
 })
 export class SignupCreadorComponent implements OnInit {
-
+  focus;
   constructor() { }
 
   ngOnInit(): void {
