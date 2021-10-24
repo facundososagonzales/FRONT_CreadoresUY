@@ -10,6 +10,8 @@
 .mat-button{
     background-color: #27798f;
     color: #ffffff;
+    text-align: right;
+
 }
 
 .mat-step{
@@ -18,16 +20,33 @@
     text-align: center;
 }
 
+.img-fluid {
+    width: 12%;
+    height: auto;
+    display: flexbox;
+}
+
+.card-img-top{
+    width: 20%;
+    height: auto;
+    display: flex !important;
+    align-items: center !important;
+    align-content: center !important;
+    object-fit: cover;
+   
+}
+
+
 .mat-horizontal-stepper {
     margin-top: 16px;
     text-align: center;
   }
   
 .form{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    display: flex !important;
+    flex-direction:column; 
     align-items: center;
+    margin-top: 10px;
 }
 ::ng-deep .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
     background-color: #fff !important;

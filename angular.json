@@ -31,7 +31,7 @@
               "src/styles.css",
               "src/assets/scss/argon.scss"
             ],
-            "scripts": []
+            "scripts": ["src/assets/js/v0.js"]
           },
           "configurations": {
             "production": {
