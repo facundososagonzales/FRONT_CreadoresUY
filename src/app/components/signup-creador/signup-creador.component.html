@@ -1,4 +1,5 @@
 <main>
+
     <section class="section section-shaped section-lg">
       <div class="shape shape-style-1 shape-primary">
         <span></span>
@@ -16,28 +17,30 @@
             <div class="card bg-secondary shadow border-0">
               <div class="card-header bg-white pb-5">
                   <mat-horizontal-stepper linear [labelPosition]= "'buttom'">
-                      <mat-step label= "1. Categorias" [editable]= "true" [completed]="true">
+                      <mat-step label= "Categorias" [editable]= "true" [completed]="true">
                           <div>
                             <br>
                               <h1>¿Cómo categorizarías tu contenido?</h1><br>
                               <mat-radio-group aria-label="Select an option">
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-                               <img src="./assets/img/theme/art.png" style="width: 100px;" class="img-fluid">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <img src="./assets/img/theme/food.png" style="width: 100px;" class="img-fluid">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <img src="./assets/img/theme/trading.png" style="width: 100px;" class="img-fluid">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <img src="./assets/img/theme/music.png" style="width: 100px;" class="img-fluid">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                               <img src="./assets/img/theme/art.png" style="float: center;margin-left: -30px;" class="img-fluid">
+                                <img src="./assets/img/theme/food.png" style=" float: center;margin-left: 30px;" class="img-fluid">
+                                <img src="./assets/img/theme/trading.png" style="  float: center;margin-left:30px;" class="img-fluid">
+                                <img src="./assets/img/theme/music.png" style=" float: center; margin-left: 30px;" class="img-fluid">
                                 <br><br>
-                              &nbsp;&nbsp;&nbsp;&nbsp;
-                                <mat-radio-button value="1">Arte</mat-radio-button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <mat-radio-button value="2">Comida</mat-radio-button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <mat-radio-button value="3">Trading</mat-radio-button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                    
-                                <mat-radio-button value="3">Música</mat-radio-button>
+                                <fieldset>
+                                  <mat-radio-button style="float: center;margin-right: 70px;" value="1">Arte</mat-radio-button>
+                                  <mat-radio-button style="float: center;margin-right: 20px;" value="2">Comida</mat-radio-button>
+                                  <mat-radio-button style="float: center;margin-left: 50px;" value="3">Trading</mat-radio-button>
+                                  <mat-radio-button style="float: center;margin-left: 50px;" value="3">Música</mat-radio-button>
+                                </fieldset>
+                                
                               </mat-radio-group>   
-                              <br><br><br>                             
+                              <br><br>                             
                               <button mat-button matStepperNext>Siguiente</button>
                           </div>
                       </mat-step>
-                      <mat-step label= "2. Datos personales" [editable]= "true" [completed]="true">
+                      <mat-step label= "Datos personales" [editable]= "true" [completed]="true" style="background-color: #569e86;">
                         <div>
                             <br>
                             <h1>Ingresa tus datos personales</h1>
@@ -65,14 +68,15 @@
                                 </div>
                                 <br>
                                 <div class="col-5">
-                                <button mat-button matStepperPrevious>Atrás</button>
+                                <button mat-button matStepperPrevious >Atrás</button>
                                 <button mat-button matStepperNext style="margin-left: 10px">Siguiente</button>
+                               
                                 </div>
                             </form>
                         </div>
                 
                     </mat-step>
-                      <mat-step label= "3. Medio de pago" [editable]= "true" [completed]="true">
+                      <mat-step label= " Medio de pago" [editable]= "true" [completed]="true">
                           <div>
                             <br>
                             <h1>¿Cómo recibirás tus bonificaciones?</h1>
@@ -80,23 +84,72 @@
                             <button mat-button matStepperNext style="margin-left: 10px">Siguiente</button>
                           </div>
                       </mat-step>
-                      <mat-step label= "4. Plan de Suscripción" [editable]= "true" [completed]="true">
+                      <mat-step label= "Plan de Suscripción" [editable]= "true" [completed]="true">
                         <div>
                             <br>
-                          <h1>Elije tus planes de suscripción</h1>
-                          <button mat-button matStepperPrevious>Atrás</button>
-                            <button mat-button matStepperNext style="margin-left: 10px">Siguiente</button>
+                          <h1>Configura tus planes de suscripción</h1><br>
+                          <div class="row justify-content-center">
+                          <div class="col-md-6 col-lg-4">
+                          <div class="card">
+                           <img class="card-img-top" style="float: center;margin-left: 40%;" src="./assets/img/theme/free.png">            
+                            <div class="card-body">
+                              <h4 class="card-title">Gratis</h4>
+                              <p class="card-text">El suscriptor podrá acceder a tu contenido seleccionado de forma gratuita.</p>
+                              <font color="#27798f" size="4" face="Open Sans"><br><br><i><b>$0</b></i></font><font color="#27798f" size="2" face="Open Sans"> /mes</font>
+                            </div>
+                          </div> 
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                          <div class="card">
+                            <img class="card-img-top" style="float: center;margin-left: 40%;" src="./assets/img/theme/normal.png">            
+                            <div class="card-body">
+                              <h4 class="card-title">Normal</h4>
+                              <p class="card-text">El suscriptor podrá acceder a tu contenido seleccionado suscribiendose a una membresía mensual.</p>
+                              <font color="#27798f" size="4" face="Open Sans"><br><i><b>$399</b></i></font><font color="#27798f" size="2" face="Open Sans"> /mes</font>
+                            </div>
+                          </div>
+                        </div> 
+                        <div class="col-md-6 col-lg-4">
+                          <div class="card">
+                            <img class="card-img-top" style="float: center;margin-left: 40%;" src="./assets/img/theme/vip.png">            
+                            <div class="card-body">
+                              <h4 class="card-title">VIP</h4>
+                              <p class="card-text">El suscriptor podrá acceder a todo su contenido + mensajería mediante una suscripción mensual.</p>
+                              <font color="#27798f" size="4" face="Open Sans"><br><i><b>$999</b></i></font><font color="#27798f" size="2" face="Open Sans"> /mes</font>
+                            </div>
+                            </div>
+                          </div>     
+                        </div>
+    
+                    <br><img src="./assets/img/theme/creaplan.png" style="float: center;margin-left: 25px; width: 60%;" class="img-fluid"><br>
+                        <div class id="div_contenido" hidden>Completa los siguientes datos
+                          <form class="form">
+                            <div class="col-5">
+                                <input #name class="form-control" placeholder="Nombre" type="text" (focus)="focus=true" (blur)="focus=false">
+                            </div>
+                            <br>
+                            <div class="col-5">
+                                <input #precio class="form-control" placeholder="Precio/mes" type="number" (focus)="focus=true" (blur)="focus=false">
+                            </div>
+                            <br>
+                            <div class="col-5">
+                                <input #description class="form-control input-lg" placeholder="¿Cómo describirías tu plan de suscripción?" type="text lg" (focus)="focus=true" (blur)="focus=false">
+                            </div>
+                        </form>
+                        </div><br>
+  
+                        <button mat-button id="btn_ver" class="button" on="tap:div_contenido.show" style="background-color: #569e86;">CREAR PLAN DE SUSCRIPCIÓN</button><br><br><br><br>
+                            <button mat-button matStepperPrevious>Atrás</button>
+                            <button mat-button matStepperNext style="margin-left: 10px">ENVIAR TODO Y TERMINAR</button>
                         </div>
                     </mat-step>
-                    <mat-step label= "5. Confirmación" [editable]= "false">
+                    <mat-step label= "Confirmación" [editable]= "false">
                         <div>
                             <br>
-                          <h1>¡Ya eres Creador/a!</h1>
+                          <h1>Felicidades, ¡Ya eres Creador/a!</h1><br>
+                          <img src="./assets/img/theme/done.png" style="float: center;" class="img-fluid">
                         </div>
                     </mat-step>
-                      
-                    
-
                   </mat-horizontal-stepper>
               </div>
             </div>
