@@ -49,6 +49,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { HomeModule } from './components/home/home.module';
 import { LoginComponent } from './components/login/login.component';
@@ -70,6 +71,7 @@ import { HttpClientModule } from '@angular/common/http';
     SignupCreadorComponent,
   ],
   imports: [
+    ReactiveFormsModule,
     BrowserModule,
     NgbModule,
     FormsModule,
