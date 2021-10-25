@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Script } from 'vm';
 
 import { SignupCreadorComponent } from './signup-creador.component';
 
@@ -23,5 +24,4 @@ describe('SignupCreadorComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  
 });
