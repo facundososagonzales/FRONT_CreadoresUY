@@ -6,6 +6,13 @@
     margin-top: 20px;
 }
 
+.cont-success{
+    background-color: black !important;
+    z-index: 1000 !important;
+    display: flex;
+    max-width: 30%;
+}
+
 .password-ad{
     color: #aaa;
     margin-left: 8px;
@@ -22,4 +29,20 @@
 .inputError{
     filter: drop-shadow(0px 0px 0.08rem #ff2b0e);
     box-shadow: none !important;
+}
+
+.alert{
+    height: 34px !important;
+}
+
+::ng-deep .mat-progress-bar-fill::after {
+    background-color: #27798f;
+}
+
+::ng-deep .mat-progress-bar-buffer {
+    background: #E4E8EB;
+}
+
+::ng-deep .mat-progress-bar {
+    border-radius: 5px;
 }

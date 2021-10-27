@@ -14,18 +14,6 @@
       <div class="row justify-content-center">
         <div class="col-lg-7">
           <div class="card bg-secondary shadow border-0">
-            <div *ngIf="!Success && subbmited" class="alert alert-danger d-flex align-items-center mb-0" role="alert">
-              <i class="bi bi-exclamation-triangle-fill mr-2" width="24" height="24"></i>
-              <div>
-                El email ingresado ya pertenece a un usuario
-              </div>
-            </div>
-            <div *ngIf="Success && subbmited" class="alert alert-success d-flex align-items-center mb-0" role="alert">
-              <i class="bi bi-check-lg mr-2" width="24" height="24"></i>
-              <div>
-                Usuario registrado con exito
-              </div>
-            </div>
             <div class="card-header bg-white pb-5">
               <div class="text-muted text-center mb-3">
                 <small>Regístrate con...</small>
@@ -51,11 +39,17 @@
                 </a>
               </div>
             </div>
-            <div class="card-body px-lg-5 py-lg-5">
+            <div class="card-body px-lg-5 py-lg-4">
               <div class="text-center text-muted mb-4">
                 <small>o con Credenciales de CreadoresUY</small>
               </div>
               <form role="form" [formGroup]="userForm">
+                <div *ngIf="!Success && subbmited" class="alert alert-danger d-flex align-items-center mb-4" role="alert">
+                  <i class="bi bi-exclamation-triangle-fill mr-2" width="24" height="24"></i>
+                  <div>
+                    El email ingresado ya pertenece a un usuario
+                  </div>
+                </div>
                 <div class="form-group" [ngClass]="{'focused':focus===true}">
                   <div class="input-group input-group-alternative" [ngClass]="{inputError:!noRequiredName}">
                     <div class="input-group-prepend">
@@ -100,12 +94,19 @@
                     </div>
                   </div>
                 </div>
+                <div *ngIf="Success && subbmited" class="alert alert-success d-flex align-items-center mb-0" role="alert">
+                  <i class="bi bi-check-lg mr-2" width="24" height="24"></i>
+                  <div>
+                    Usuario registrado con exito
+                  </div>
+                </div>
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary mt-4" [disabled]="!isChecked" (click)="crearUsuario(name.value,email.value,password.value)"
                    style= "background-color: #27798f">Crear Cuenta</button>
                 </div>
               </form>
             </div>
+            <mat-progress-bar *ngIf="Success && subbmited" mode="indeterminate"></mat-progress-bar>
           </div>
         </div>
       </div>

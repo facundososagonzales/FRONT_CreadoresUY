@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CreateUserDto } from 'src/app/model/CreateUserDto';
 import { Response } from 'src/app/model/Response';
-import { SignupServiceService } from 'src/app/services/signupSerice/signup-service.service';
+import { userServices } from 'src/app/services/UserServices/userServices';
 
 @Component({
     selector: 'app-signup',
@@ -27,7 +27,7 @@ export class SignupComponent implements OnInit {
         password: new FormControl('', [Validators.required,Validators.minLength(8)])
     });
     
-    constructor(private signupService:SignupServiceService) {
+    constructor(private signupService:userServices) {
     }
 
     crearUsuario(name:string, email:string, password:string){
