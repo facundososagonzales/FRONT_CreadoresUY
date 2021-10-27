@@ -1,3 +1,31 @@
 .section-shaped .shape {
     background: linear-gradient(45deg, #26798E 15%, #63CAA7 90%);
 }
+
+@media screen and (max-width: 998px){
+    .video{
+        display: none;
+        position: absolute !important;
+        top: 0;
+        left: 0;
+        z-index: 2;
+    
+    }
+
+    .marcovideo{
+        z-index: 1;
+        display: none;
+        position: absolute !important;
+      
+    }
+
+    .responsive{
+        display: none;
+       
+    }
+}
+@media all and (min-width: 998px){
+    .no-responsive{
+       display:none;
+    }
+}
