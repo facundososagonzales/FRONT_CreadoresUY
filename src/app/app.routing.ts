@@ -8,6 +8,8 @@ import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SignupCreadorComponent } from './components/signup-creador/signup-creador.component';
+import { LogoutComponent } from './components/logout/logout.component';
+import { FeedComponent } from './components/feed/feed.component';
 
 const routes: Routes =[
     { path: 'home',             component: HomeComponent },
@@ -15,7 +17,9 @@ const routes: Routes =[
     { path: 'register',           component: SignupComponent },
     { path: 'login',          component: LoginComponent },
     { path: 'creador-Register',          component: SignupCreadorComponent },
-    { path: '', redirectTo: 'home', pathMatch: 'full' }
+    { path: 'logout',          component: LogoutComponent },
+    { path: 'feed',          component: FeedComponent },
+    { path: '', redirectTo: 'home', pathMatch: 'full'}
 ];
 
 @NgModule({

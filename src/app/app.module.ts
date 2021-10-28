@@ -59,6 +59,8 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { SignupCreadorComponent } from './components/signup-creador/signup-creador.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LogoutComponent } from './components/logout/logout.component';
+import { FeedComponent } from './components/feed/feed.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +71,8 @@ import { HttpClientModule } from '@angular/common/http';
     FooterComponent,
     LoginComponent,
     SignupCreadorComponent,
+    LogoutComponent,
+    FeedComponent,
   ],
   imports: [
     ReactiveFormsModule,

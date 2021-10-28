@@ -57,5 +57,6 @@ export class LoginComponent implements OnInit {
     console.log(sessionStorage.getItem('name'));
     console.log(sessionStorage.getItem('userId'));
     console.log(sessionStorage.getItem('email'));
+    console.log(sessionStorage.getItem('userType'));
   }
 }
