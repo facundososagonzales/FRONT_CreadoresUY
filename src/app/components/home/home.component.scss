@@ -2,30 +2,20 @@
     background: linear-gradient(45deg, #26798E 15%, #63CAA7 90%);
 }
 
-@media screen and (max-width: 998px){
-    .video{
-        display: none;
-        position: absolute !important;
-        top: 0;
-        left: 0;
-        z-index: 2;
-    
-    }
-
-    .marcovideo{
-        z-index: 1;
-        display: none;
-        position: absolute !important;
-      
-    }
-
-    .responsive{
-        display: none;
-       
-    }
+.border-vid{
+    border: blanchedalmond solid 1px;
+    border-radius: 10px 10px 10px 10px;
 }
-@media all and (min-width: 998px){
-    .no-responsive{
-       display:none;
+
+.video-margin{
+    padding: 10px 10px;
+}
+
+@media screen and (max-width: 998px){
+    .embed-responsive{
+        margin-top: 100px;
+        margin-right: auto;
+        margin-left: auto;
+        width: 85%;
     }
 }

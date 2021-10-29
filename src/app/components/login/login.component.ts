@@ -24,6 +24,10 @@ export class LoginComponent implements OnInit {
   constructor(private http:userServices, private router:Router) {}
 
   ngOnInit() {
+    const token = sessionStorage.getItem('token');
+    if(token!=null){
+      this.router.navigate(['/home']);
+    }
   }
 
   Login(email:string,password:string){
@@ -40,23 +44,24 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem('name', res["obj"]["name"])
           sessionStorage.setItem('userId', (res["obj"]["userId"]).toString())
           sessionStorage.setItem('email', res["obj"]["email"])
-
           if(res["obj"]["creatorId"] != 0){
             sessionStorage.setItem('userType', "creador");
             sessionStorage.setItem('creatorId', res["Obj"].creatorId.toString())
+            this.router.navigate(['/user-profile']);
 
           }else if(res["obj"]["isAdmin"]){
             sessionStorage.setItem('userType', "admin")
+            this.router.navigate(['/backOffice']);
           }else{
             sessionStorage.setItem('userType', "user")
+            this.router.navigate(['/feed']);
           }
         }
       }
     });
-    console.log(sessionStorage.getItem('token'));
-    console.log(sessionStorage.getItem('name'));
-    console.log(sessionStorage.getItem('userId'));
-    console.log(sessionStorage.getItem('email'));
-    console.log(sessionStorage.getItem('userType'));
+  }
+
+  getToken(){
+    return sessionStorage.getItem('token');
   }
 }

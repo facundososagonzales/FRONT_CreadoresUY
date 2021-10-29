@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CreateUserDto } from 'src/app/model/CreateUserDto';
 import { Response } from 'src/app/model/Response';
 import { userServices } from 'src/app/services/UserServices/userServices';
@@ -27,7 +28,15 @@ export class SignupComponent implements OnInit {
         password: new FormControl('', [Validators.required,Validators.minLength(8)])
     });
     
-    constructor(private signupService:userServices) {
+    constructor(private signupService:userServices,private router:Router) {
+    }
+
+    ngOnInit() {
+        this.isChecked=false;
+        const token = sessionStorage.getItem('token');
+        if(token!=null){
+          this.router.navigate(['/home']);
+        }
     }
 
     crearUsuario(name:string, email:string, password:string){
@@ -47,6 +56,7 @@ export class SignupComponent implements OnInit {
                 }
                 this.subbmited=true;
             });
+            this.router.navigate(['/login']);
         }else{
             if(this.userForm.get('name').errors!=null){
                 this.noRequiredName=false;
@@ -62,9 +72,5 @@ export class SignupComponent implements OnInit {
                 this.MinLenght=false;
             }
         }
-    }
-
-    ngOnInit() {
-        this.isChecked=false;
     }
 }

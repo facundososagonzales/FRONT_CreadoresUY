@@ -55,4 +55,8 @@ export class NavbarComponent implements OnInit {
             return false;
         }
     }
+
+    getToken(){
+        return sessionStorage.getItem('token');
+    }
 }
