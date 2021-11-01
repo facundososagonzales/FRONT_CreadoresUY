@@ -61,6 +61,7 @@ import { SignupCreadorComponent } from './components/signup-creador/signup-cread
 import { HttpClientModule } from '@angular/common/http';
 import { LogoutComponent } from './components/logout/logout.component';
 import { FeedComponent } from './components/feed/feed.component';
+import { FilterPipe } from './components/pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { FeedComponent } from './components/feed/feed.component';
     SignupCreadorComponent,
     LogoutComponent,
     FeedComponent,
+    FilterPipe,
   ],
   imports: [
     ReactiveFormsModule,

@@ -1,0 +1,163 @@
+.section-shaped .shape {
+    background: linear-gradient(45deg, #27798f 1%, #ffe3b3 90%);
+}
+.card-img-top{
+    width: 100%;
+    height: 20vw;
+    transition: all 0.4s ease;
+    object-fit: cover;
+}
+
+.card-img-top:hover{
+    -webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
+    filter: grayscale(100%);
+}
+
+@media screen and (max-width: 950px){
+    .card-img-top{
+        width: 100%;
+        height: 30vw;
+        transition: all 0.4s ease;
+        object-fit: cover;
+    }
+    
+    .card-img-top:hover{
+        -webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
+        filter: grayscale(100%);
+    }
+}
+
+.mat-button{
+    background-color: #27798f;
+    color: #ffffff;
+    text-align: right;
+
+}
+
+
+.card-title{
+    font-size: medium;
+    
+}
+
+.card-text{
+    font-style: oblique;
+    font-size: small;
+}
+
+.profile-text{
+    font-style: oblique;
+    font-size: small;
+    margin-left: 10px;
+}
+
+.text-muted-publicadopor{
+    float: right !important;
+    font-style: oblique;
+    font-size: smaller;
+
+}
+
+.rounded-circle{ 
+    width: 100px;
+    display: block;
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+.card-deck{
+    margin-bottom: 15px;
+    display: grid;
+    max-width: 900px;
+    margin-left: -50px;  
+}
+
+.todo{
+    display:flex;
+}
+
+
+.input-group-prepend span{
+    border-radius: 50px 0px 0px 50px !important;
+    max-height: 30px;
+    text-align: center !important;
+    align-items: center !important;
+    
+}
+
+
+
+.card-search{
+    height: 70px;
+    margin-bottom: 14px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.search-body{
+    display: flex;
+    flex-direction: column;
+   
+}
+
+
+
+@media screen and (max-width: 826px){
+    .todo{
+        display:flex;
+        flex-direction: column;
+    }
+
+    .rounded-circle{ 
+        width: 100px;
+       display: block;
+       margin-left: auto; 
+       margin-right: auto;
+    }
+
+    .card-profile{
+        margin-left: 17px;
+        max-width: 41rem;
+        max-height: 100vh;
+        margin-top: 0;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .card-deck{
+        margin-bottom: 15px;
+        display: flex;
+        max-width: 30rem;
+        margin-left: -50px;
+       
+    }
+    .input-group input{
+        max-height: 30px !important;
+        max-width: 350px;
+        border-radius: 0px 50px 50px 0px !important;
+        margin-left: 1px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+}
+
+@media screen and (min-width: 826px){
+    
+.card-profile{
+    justify-content:start;
+    width: 290px;
+    max-height: 700px;
+    margin-top: 0;
+}
+
+.input-group input{
+    max-height: 30px !important;
+    width: 350px;
+    border-radius: 0px 50px 50px 0px !important;
+    margin-left: 1px;
+    display: flex;
+    flex-direction: column;
+}
+}
