@@ -12,14 +12,9 @@ import { userServices } from 'src/app/services/UserServices/userServices';
 export class LoginComponent implements OnInit {
   focus;
   focus1;
-  public email:string;
-  public password:string;
   public checked:boolean;
-
-  userForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required,Validators.minLength(8)])
-});
+  public subbmited:boolean=false
+  public Success:boolean;
 
   constructor(private http:userServices, private router:Router) {}
 
@@ -31,21 +26,22 @@ export class LoginComponent implements OnInit {
   }
 
   Login(email:string,password:string){
+    this.subbmited=false;
     var user = new User();
-    user.email=email;
-    user.password=password;
-
+    user.email = email;
+    user.password = password;
     this.http.UserLogin(user).subscribe(res =>{
       console.log(res);
       if(res["success"]){
-      const token = res["obj"]["token"];
+        this.Success=true;
+        const token = res["obj"]["token"];
         if(token != null){
           sessionStorage.setItem('token', token);
           sessionStorage.setItem('name', res["obj"]["name"])
           sessionStorage.setItem('userId', (res["obj"]["userId"]).toString())
           sessionStorage.setItem('email', res["obj"]["email"])
           if(res["obj"]["creatorId"] != 0){
-            sessionStorage.setItem('userType', "creador");
+            sessionStorage.setItem('userType', "creator");
             sessionStorage.setItem('creatorId', res["Obj"].creatorId.toString())
             this.router.navigate(['/user-profile']);
 
@@ -57,7 +53,10 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['/feed']);
           }
         }
+      }else{
+        this.Success=false;
       }
+      this.subbmited=true;
     });
   }
 

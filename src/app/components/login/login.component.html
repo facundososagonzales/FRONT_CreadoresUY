@@ -43,7 +43,13 @@
               <div class="text-center text-muted mb-4">
                 <small>o con sus credenciales en CreadoresUY</small>
               </div>
-              <form [formGroup]="userForm" role="form">
+              <form role="form">
+                <div *ngIf="!Success && subbmited" class="alert alert-danger d-flex align-items-center mb-4" role="alert">
+                  <i class="bi bi-exclamation-triangle-fill mr-2" width="24" height="24"></i>
+                  <div>
+                    Email o contraseña incorrecta
+                  </div>
+                </div>
                 <div class="form-group mb-3" [ngClass]="{'focused':focus===true}">
                   <div class="input-group input-group-alternative">
                     <div class="input-group-prepend">

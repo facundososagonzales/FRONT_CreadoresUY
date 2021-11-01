@@ -59,4 +59,12 @@ export class NavbarComponent implements OnInit {
     getToken(){
         return sessionStorage.getItem('token');
     }
+
+    getUserType(){
+        return sessionStorage.getItem('userType');
+    }
+
+    getName(){
+        return sessionStorage.getItem('name');
+    }
 }

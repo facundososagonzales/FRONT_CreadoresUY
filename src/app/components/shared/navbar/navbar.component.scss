@@ -29,3 +29,38 @@
 .nav-link{
     font-size: 16px;
 }
+
+.profile-header-container{
+    margin-left: 2px;
+    margin-right: auto;
+    display: flex;
+}
+
+.profile-header-img {
+    padding: 4px;
+    padding-left: 8px;
+}
+
+.profile-header-img img.img-circle {
+    width: 36px;
+    height: 36px;
+    border: solid 0.5px #27798f;
+    margin:auto;
+}
+
+.profile-header-img:hover{
+    animation-name: profile-animation;
+    animation-duration: 0.4s;
+    filter: drop-shadow(0 0 5px #27798f);
+}
+
+@keyframes profile-animation {
+    from {filter: drop-shadow(0 0 0 #fff);}
+    to {filter: drop-shadow(0 0 4px #27798f);}
+}
+
+small {
+    font-size: 16px !important;
+    color: #fff;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}

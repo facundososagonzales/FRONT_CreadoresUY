@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CreateUserDto } from 'src/app/model/CreateUserDto';
-import { Response } from 'src/app/model/Response';
 import { userServices } from 'src/app/services/UserServices/userServices';
 
 @Component({
@@ -49,14 +48,15 @@ export class SignupComponent implements OnInit {
         if(this.isChecked && this.userForm.valid){
             var user = new CreateUserDto(); user.name=name; user.email=email; user.password=password;
             this.signupService.UserCreate(user).subscribe(data =>{
+                console.log(data);
                 if(data["success"]){
                     this.Success=true;
+                    this.router.navigate(['/login']);
                 }else{
                     this.Success=false;
                 }
                 this.subbmited=true;
             });
-            this.router.navigate(['/login']);
         }else{
             if(this.userForm.get('name').errors!=null){
                 this.noRequiredName=false;
