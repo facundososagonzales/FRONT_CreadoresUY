@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem('email', res["obj"]["email"])
           if(res["obj"]["creatorId"] != 0){
             sessionStorage.setItem('userType', "creator");
-            sessionStorage.setItem('creatorId', res["Obj"].creatorId.toString())
+            sessionStorage.setItem('creatorId', res["obj"].creatorId.toString())
             this.router.navigate(['/user-profile']);
 
           }else if(res["obj"]["isAdmin"]){

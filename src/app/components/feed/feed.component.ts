@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SubscriptionService } from 'src/app/services/SubsServices/subsServices';
 import { Subscription } from 'src/app/model/Subscription';
-import { userServices } from 'src/app/services/UserServices/userServices';
 import { Router } from '@angular/router';
 import { Pipe, PipeTransform } from '@angular/core';
 
@@ -35,17 +33,9 @@ export class FeedComponent implements OnInit {
     this.show += 2; 
   }
 
-  constructor(private subsService:SubscriptionService, private router:Router) { }
-
-  
-
-
-  getSubscriptions(){
-    this.subsService.getSubscriptions().subscribe(subscriptions => this.subscriptions = this.subscriptions.concat(subscriptions));
-  }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
-    this.getSubscriptions();
     const token = sessionStorage.getItem('token');
      if(token==null){ 
         this.router.navigate(['/home']);
@@ -53,7 +43,6 @@ export class FeedComponent implements OnInit {
       else {
         this.nickname= sessionStorage.getItem('name');
       }
-
   }
 
 

@@ -50,22 +50,24 @@
             <div [matMenuTriggerFor]="beforeMenu">
               <div class="profile-header-img">
                 <img class="img-fluid img-circle rounded-circle" src="./assets/img/theme/team-4-800x800.png"/>
+                <small style="margin-left: 12px;">{{getName()}}</small>
               </div>
             </div>
             <mat-menu #beforeMenu="matMenu" xPosition="before">
-              <a [routerLink]="['/creador-Register']" class="dropdown-item">Volverse Creador</a>
-              <a [routerLink]="['/feed']" class="dropdown-item">Feed</a>
-              <a [routerLink]="['/home']" class="dropdown-item">Home</a>              
-              <a [routerLink]="['/user-profile']" class="dropdown-item">Perfil</a>
-              <a [routerLink]="['/logout']" class="dropdown-item">Cerrar sesión</a>
+              <a mat-menu-item [routerLink]="['/creador-Register']">Volverse Creador</a>
+              <a mat-menu-item [routerLink]="['/feed']">Feed</a>
+              <a mat-menu-item [routerLink]="['/home']">Home</a>              
+              <a mat-menu-item [routerLink]="['/user-profile']">Perfil</a>
+              <a mat-menu-item [routerLink]="['/logout']">Cerrar sesión</a>
             </mat-menu>
           </div>
         </li>
-        <li *ngIf="getToken()!=null && getUserType()==='crator'" class="nav-item d-none d-lg-block ml-lg-1">
+        <li *ngIf="getToken()!=null && getUserType()==='creator'" class="nav-item d-none d-lg-block ml-lg-1">
           <div class="profile-header-container">
             <div [matMenuTriggerFor]="beforeMenu">
               <div class="profile-header-img">
                 <img class="img-fluid img-circle rounded-circle" src="./assets/img/theme/team-4-800x800.png"/>
+                <small style="margin-left: 12px;">{{getName()}}</small>
               </div>
             </div>
             <mat-menu #beforeMenu="matMenu" xPosition="before">

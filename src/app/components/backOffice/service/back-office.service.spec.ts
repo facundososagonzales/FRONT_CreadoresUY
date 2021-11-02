@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SubscriptionService } from './subsServices';
+import { BackOfficeService } from './back-office.service';
 
-describe('SubscriptionService', () => {
-  let service: SubscriptionService;
+describe('BackOfficeService', () => {
+  let service: BackOfficeService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(SubscriptionService);
+    service = TestBed.inject(BackOfficeService);
   });
 
   it('should be created', () => {

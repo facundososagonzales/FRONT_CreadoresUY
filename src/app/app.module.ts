@@ -62,6 +62,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LogoutComponent } from './components/logout/logout.component';
 import { FeedComponent } from './components/feed/feed.component';
 import { FilterPipe } from './components/pipes/filter.pipe';
+import { BackOfficeComponent } from './components/backOffice/back-office/back-office.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { FilterPipe } from './components/pipes/filter.pipe';
     LogoutComponent,
     FeedComponent,
     FilterPipe,
+    BackOfficeComponent,
   ],
   imports: [
     ReactiveFormsModule,
