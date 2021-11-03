@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { AngularEditorModule } from '@kolkov/angular-editor';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 
 @Component({
   selector: 'app-signup-creador',
@@ -10,34 +12,30 @@ import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 })
 export class SignupCreadorComponent implements OnInit {
   focus;
+  htmlContent = '';
+
+
+  config: AngularEditorConfig = {
+    editable: true,
+  
+    height: '15rem',
+    minHeight: '5rem',
+    placeholder: 'Descripción de mi perfil',
+    translate: 'no',
+    defaultParagraphSeparator: 'p',
+    defaultFontName: 'Arial',
+    
+  };
+
   ngOnInit(): void {
   }
 
   closeModal: string;
   
-  constructor(private modalService: NgbModal) {}
-    
-  triggerModal(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((res) => {
-      this.closeModal = `Closed with: ${res}`;
-    }, (res) => {
-      this.closeModal = `Dismissed ${this.getDismissReason(res)}`;
-    });
-  }
-  
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return  `with: ${reason}`;
-    }
-  }
-
+  constructor() {}
   maxNo = false;
   amt = 0;
-
+ 
   onChange(isChecked: boolean) {
     if (isChecked)
       this.amt++
@@ -45,13 +43,14 @@ export class SignupCreadorComponent implements OnInit {
       this.amt--
     this.amt === 2 ? this.maxNo = true : this.maxNo = false;
   }
-  checkBox = [
-    { name: 'Arte', checked: false },
-    { name: 'Comida', checked: false },
-    { name: 'Trading', checked: false },
-    { name: 'Música', checked: false },
-    ];
+  
+    checkBox = [
+      { name: 'Arte', checked: false, image: './assets/img/theme/art.png' },
+      { name: 'Comida', checked: false, image: './assets/img/theme/food.png' },
+      { name: 'Trading', checked: false, image: './assets/img/theme/trading.png' },
+      { name: 'Música', checked: false, image: './assets/img/theme/music.png' },
+      ];
 
-
+      
 
 }

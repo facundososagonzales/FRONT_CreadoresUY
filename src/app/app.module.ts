@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
-
+import { AngularEditorModule } from '@kolkov/angular-editor';
 import { AppComponent } from './app.component';
 import {ClipboardModule} from '@angular/cdk/clipboard';
 import {DragDropModule} from '@angular/cdk/drag-drop';
@@ -131,6 +131,8 @@ import { BackOfficeComponent } from './components/backOffice/back-office/back-of
     PortalModule,
     ScrollingModule,
     HttpClientModule,
+    HttpClientModule, 
+    AngularEditorModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

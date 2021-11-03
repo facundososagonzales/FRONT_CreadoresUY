@@ -13,82 +13,71 @@
       </div>
       <div class="container cont pt-lg-md">
         <div class="row justify-content-center">
-          <div class="col-lg-12">
+          <div class="col-lg-8">
             <div class="card bg-secondary shadow border-0">
               <div class="card-header bg-white pb-5">
                   <mat-horizontal-stepper linear [labelPosition]= "'buttom'">
-                      <mat-step label= "Categorias" [editable]= "true" [completed]="true">
-                          <div>
-                            <br>
-                              <h1>¿Cómo categorizarías tu contenido?</h1>
-                              <p><i><small>Elije un máximo de 2 Categorías:</small></i></p>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-                               <img src="./assets/img/theme/art.png" style="float: center;margin-left: -30px;" class="img-fluid">
-                                <img src="./assets/img/theme/food.png" style=" float: center;margin-left: 30px;" class="img-fluid">
-                                <img src="./assets/img/theme/trading.png" style="  float: center;margin-left:30px;" class="img-fluid">
-                                <img src="./assets/img/theme/music.png" style=" float: center; margin-left: 30px;" class="img-fluid">
-                                <br><br>
-                                <div class= "check-margin">
-                                  <div *ngFor="let chk of checkBox; let i = index">
-                                    <input [(ngModel)]="chk.checked" type="checkbox" [disabled]="!chk.checked && maxNo" (change)="onChange($event.target.checked)">{{chk.name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                </div>
+                    <mat-step label= "Categorias" [editable]= "true" [completed]="true">
+                      <div>
+                        <br>
+                          <h1>¿Cómo categorizarías tu contenido?</h1>
+                          <p><i><small>Elije un máximo de 2 Categorías:</small></i></p>
+                           <br><br>
+                          
+                            <div class= "check-margin">
+                                <div *ngFor="let chk of checkBox; let i = index">
+                                  <input [(ngModel)]="chk.checked" type="checkbox" [disabled]="!chk.checked && maxNo" (change)="onChange($event.target.checked)">{{chk.name}}<label for="myCheckbox"><img [src]="chk.image"></label>
                               </div>
-                              <br><br>                             
-                              <div class="button button-footer-card">
-                                <button mat-button matStepperNext style="margin-left: 10px">Siguiente</button>
-                              </div>
+                            </div>
+                        
+                         </div>
+                      
+                          
+                          <br><br>                             
+                          <div class="button button-footer-card">
+                            <button mat-button matStepperNext style="margin-left: 10px">Siguiente</button>
                           </div>
-                      </mat-step>
+                    
+                  </mat-step>
                       <mat-step label= "Datos personales" [editable]= "true" [completed]="true" style="background-color: #569e86;">
                         <div>
                             <br>
                             <h1>Ingresa tus datos personales</h1>
                             <form div="form" style="margin-left: 90px;">
-                                <div class="col-10">
+                                
                                   <div class="input-group input-group-alternative">
                                     <div class="input-group-prepend">
                                       <span class="input-group-text"><i class="bi bi-person"></i></span>
                                     </div>
                                       <input #name class="form-control" placeholder="Nombre" type="text" (focus)="focus=true" (blur)="focus=false">
                                   </div>
-                              </div>
                                 <br>
-                                <div class="col-10">
-                                  <div class="input-group input-group-alternative">
+                               <div class="input-group input-group-alternative">
                                     <div class="input-group-prepend">
                                       <span class="input-group-text"><i class="bi bi-person-square"></i></span>
                                     </div>
                                     <input #nickname class="form-control" placeholder="Nickname" type="text" (focus)="focus=true" (blur)="focus=false">
                                 </div>
-                              </div>
-                                <br>
-                                <div class="col-10">
-                                  <div class="input-group input-group-alternative">
-                                    <div class="input-group-prepend">
-                                      <span class="input-group-text"><i class="bi bi-pencil-square"></i></span>
-                                    </div>
-                                    <input #description class="form-control input-lg" placeholder="Descripción de tu perfil" type="text lg" (focus)="focus=true" (blur)="focus=false">
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="col-10">
-                                  <div class="input-group input-group-alternative">
+                              <br>
+                               <div class="input-group input-group-alternative">
                                     <div class="input-group-prepend">
                                       <span class="input-group-text"><i class="bi bi-youtube"></i></span>
                                     </div>
                                     <input #link class="form-control" placeholder="Link YOUTUBE" type="url" (focus)="focus=true" (blur)="focus=false">
                                   </div>
-                                  </div>
+                                  <br>
+                              <div class="input-group input-group-alternative">
+                                    <angular-editor [(ngModel)]="htmlContent" [config]="config" placeholder= "Descripción de mi perfil"></angular-editor>
+                              </div>
+                               <br>
+                              
+                                 
                                 <br>
-                                <div class="col-3">
-                                  <font color="27798f" size="2" face="Open Sans" align="left"><i>Importar imagen perfil</i></font>
-                                </div>
-                                
-                                <div class="col-10">
-                                  <div class="input-group input-group-alternative">
+                                <font color="27798f" size="2" face="Open Sans"><i>Importar imagen perfil</i></font>
+                              <div class="input-group input-group-alternative">
                                     <input #file class="file" placeholder="perfil-imagen" type="file" (focus)="focus=true" (blur)="focus=false" name="myImage" accept="image/*">
                                 </div>
-                              </div>
+                          
                   
                             </form>
                           </div>
@@ -111,86 +100,7 @@
                             </div>
                       
                       </mat-step>
-                      <mat-step label= "Plan de Suscripción" [editable]= "true" [completed]="true">
-                        <div>
-                            <br>
-                          <h1>Configura tus planes de suscripción</h1><br>
-                          <div class="row justify-content-center">
-                          <div class="col-md-6 col-lg-4">
-                          <div class="card cards-ps">
-                           <img class="card-img-top" style="float: center;margin-left: 40%;" src="./assets/img/theme/free.png">            
-                            <div class="card-body">
-                              <h4 class="card-title">Gratis</h4>
-                              <p class="card-text">El suscriptor podrá acceder a tu contenido seleccionado de forma gratuita.</p>
-                              <font color="#27798f" size="4" face="Open Sans"><br><br><i><b>$0</b></i></font><font color="#27798f" size="2" face="Open Sans"> /mes</font>
-                            </div>
-                          </div> 
-                        </div>
-                        <div class="col-md-6 col-lg-4">
-                          <div class="card cards-ps">
-                            <img class="card-img-top" style="float: center;margin-left: 40%;" src="./assets/img/theme/normal.png">            
-                            <div class="card-body">
-                              <h4 class="card-title">Normal</h4>
-                              <p class="card-text">El suscriptor podrá acceder a tu contenido seleccionado suscribiendose a una membresía mensual.</p>
-                              <font color="#27798f" size="4" face="Open Sans"><br><i><b>$399</b></i></font><font color="#27798f" size="2" face="Open Sans"> /mes</font>
-                            </div>
-                          </div>
-                        </div> 
-                        <div class="col-md-6 col-lg-4">
-                          <div class="card cards-ps">
-                            <img class="card-img-top" style="float: center;margin-left: 40%;" src="./assets/img/theme/vip.png">            
-                            <div class="card-body">
-                              <h4 class="card-title">VIP</h4>
-                              <p class="card-text">El suscriptor podrá acceder a todo su contenido + mensajería mediante una suscripción mensual.</p>
-                              <font color="#27798f" size="4" face="Open Sans"><br><i><b>$999</b></i></font><font color="#27798f" size="2" face="Open Sans"> /mes</font>
-                            </div>
-                            </div>
-                          </div>     
-                        </div>
-                        <br><br><button type="button" class="mat-button" (click)="triggerModal(modalData)" style="background-color: #569e86;">CREAR PLAN DE SUSCRIPCIÓN</button><br><br><br><br>
-                      <ng-template #modalData let-modal>
-                        <div class="modal-header">
-                          <img src="./assets/img/theme/creaplan.png" style="float: right; width: 80%;" class="img-fluid"><br>
-                          <button type="button" class="close" style="margin-top: -10px;" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                            <span aria-hidden="true">×</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                          
-                          <p>Completa los siguientes datos:</p>
-                          <form class="form ">
-                            <div class="col-12">
-                                <input #name class="form-control" placeholder="Nombre" type="text" (focus)="focus=true" (blur)="focus=false">
-                            </div>
-                            <br>
-                            <div class="col-12">
-                                <input #precio class="form-control" placeholder="Precio/mes" type="number" (focus)="focus=true" (blur)="focus=false">
-                            </div>
-                            <br>
-                            <div class="col-12">
-                                <input #description class="form-control input-lg" placeholder="¿Cómo describirías tu plan de suscripción?" type="text lg" (focus)="focus=true" (blur)="focus=false">
-                            </div>
-                        </form>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="mat-button" style="background-color: #ffe3b3;" (click)="modal.close('Save click')">CERRAR</button>
-                          <button type="button" class="mat-button" style="background-color: #569e86;" (click)="modal.close('Save click')">GUARDAR</button>
-                          
-                        </div>
-                      </ng-template>
-                        <div class="button button-footer-card">
-                          <button mat-button matStepperPrevious>Atrás</button>
-                          <button mat-button matStepperNext style="margin-left: 10px">Enviar todo y terminar</button>
-                        </div>      
-                        </div>
-                    </mat-step>
-                    <mat-step label= "Confirmación" [editable]= "false">
-                        <div>
-                            <br>
-                          <h1>Felicidades, ¡Ya eres Creador/a!</h1><br>
-                          <img src="./assets/img/theme/done.png" style="float: center;" class="img-fluid">
-                        </div>
-                    </mat-step>
+                     
                   </mat-horizontal-stepper>
               </div>
             </div>
