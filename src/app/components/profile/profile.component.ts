@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-profile',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class ProfileComponent implements OnInit {
+    nickname= '';
 
-    constructor() { }
+    constructor(private router:Router) { }
 
-    ngOnInit() {}
+    ngOnInit(): void {
+        const token = sessionStorage.getItem('token');
+         if(token==null){ 
+            this.router.navigate(['/home']);
+          }
+          else {
+            this.nickname= sessionStorage.getItem('name');
+          }
+      }
 
 }
