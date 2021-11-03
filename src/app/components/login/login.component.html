@@ -43,7 +43,7 @@
               <div class="text-center text-muted mb-4">
                 <small>o con sus credenciales en CreadoresUY</small>
               </div>
-              <form role="form">
+              <form [formGroup]="loginForm" role="form">
                 <div *ngIf="!Success && subbmited" class="alert alert-danger d-flex align-items-center mb-4" role="alert">
                   <i class="bi bi-exclamation-triangle-fill mr-2" width="24" height="24"></i>
                   <div>
@@ -51,20 +51,23 @@
                   </div>
                 </div>
                 <div class="form-group mb-3" [ngClass]="{'focused':focus===true}">
-                  <div class="input-group input-group-alternative">
+                  <div class="input-group input-group-alternative" [ngClass]="{inputError:!noRequiredEmail || !validEmail}">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
-                    <input #email class="form-control" placeholder="Email" type="email" (focus)="focus=true" (blur)="focus=false">
+                    <input formControlName="email" #email class="form-control" placeholder="Email" type="email" (focus)="focus=true" (blur)="focus=false">
                   </div>
+                  <div class="inputAlert" *ngIf="!noRequiredEmail">El email es requerido</div>
+                  <div class="inputAlert" *ngIf="!validEmail">El email no es correcto</div>
                 </div>
                 <div class="form-group" [ngClass]="{'focused':focus1===true}">
-                  <div class="input-group input-group-alternative">
+                  <div class="input-group input-group-alternative" [ngClass]="{inputError:!noRequiredPassword}">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                     </div>
-                    <input #password class="form-control" placeholder="Password" type="password" (focus)="focus1=true" (blur)="focus1=false">
+                    <input formControlName="password" #password class="form-control" placeholder="Password" type="password" (focus)="focus1=true" (blur)="focus1=false">
                   </div>
+                  <div class="inputAlert" *ngIf="!noRequiredPassword">La contraseña es requerida</div>
                 </div>
                 <div class="row mt-2">
                   <div class="col-6">
