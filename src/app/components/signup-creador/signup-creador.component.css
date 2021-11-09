@@ -8,9 +8,25 @@
 }
 
 .mat-button{
-    background-color: #9fb3b8;
+    background-color: #27798f;
     color: #ffffff;
     text-align: right;
+
+}
+
+.form-control{
+    max-width:100%;
+    position: relative;
+    
+}
+
+.editortext{
+  display: block;
+  text-align: center;
+  align-items: center;
+  max-width: 480px;
+  min-width: 120px;
+  margin-left: -40px;
 
 }
 
@@ -63,7 +79,9 @@
 
 .form-control{
     filter: drop-shadow(0px 0px 0.08rem #e7eff0);
+   
 }
+
   
 .form{
     display: flex !important;
@@ -72,21 +90,18 @@
     margin-top: 10px;
 }
 
-.check-margin{
-    display: flex;
-
-}
-
 ul {
     list-style-type: none;
-  }
+    margin-left: -25px;
+}
   
   li {
     display: inline-block;
     text-align: center;
   }
   
-  input[type="checkbox"][id^="myCheckbox"] {
+  
+  input[type="checkbox"] {
     display: none;
   }
   
@@ -101,8 +116,9 @@ ul {
     padding: 10px;
     display: block;
     position: relative;
-    margin: 10px;
+    margin: 6px;
     cursor: pointer;
+    
   }
   
   label:before {
@@ -128,6 +144,7 @@ ul {
     width: 100px;
     transition-duration: 0.2s;
     transform-origin: 50% 50%;
+   
   }
   
   :checked + label {
@@ -151,9 +168,72 @@ ul {
 
   .input-group{
       text-align: left;
-    display: flex;
+     display: flex;
       overflow: auto;
-      align-items: center;
       margin: auto;
       margin-left: -40px;
+      max-width: 480px;
+  }
+
+
+
+
+.content-select{
+	max-width: 100%;
+	position: relative;
+    margin-left: -40px;
+    display: flex;
+    overflow: auto;
+}
+ 
+.content-select select{
+	display: inline-block;
+	width: 100%;
+	cursor: pointer;
+  	padding: 7px 10px;
+  	height: 42px;
+  	outline: 0; 
+  	border: 0;
+	border-radius: 0;
+	background: #fff;
+	color: #7b7b7b;
+	font-size: 1em;
+	color: #aeb6be;
+
+	border:2px solid rgba(0,0,0,0.2);
+    border-radius: 5px;
+    position: relative;
+    transition: all 0.25s ease;
+    border-color: #e7e7ec;
+}
+ 
+.content-select select:hover{
+	background: #fff;
+}
+ 
+
+ 
+.content-select:hover i{
+	margin-top: 3px;
+}
+  
+  
+  .example-radio-button {
+    margin: 10px;
+  }
+  
+  .example-selected-value {
+    margin: 15px 0;
+  }
+
+  ::ng-deep .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+    background-color: #27798f!important;
+  }
+  
+  ::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle {
+    background-color:#27798f!important;   /*inner circle color change*/
+  }
+  
+  ::ng-deep.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+   border-color:#ffe3b3!important; /*outer ring color change*/
   }

@@ -22,16 +22,31 @@
                         <br>
                           <h1>¿Cómo categorizarías tu contenido?</h1>
                           <p><i><small>Elije un máximo de 2 Categorías:</small></i></p>
-                           <br><br>
                           
-                            <div class= "check-margin">
-                                <div *ngFor="let chk of checkBox; let i = index">
-                                  <input [(ngModel)]="chk.checked" type="checkbox" [disabled]="!chk.checked && maxNo" (change)="onChange($event.target.checked)">{{chk.name}}<label for="myCheckbox"><img [src]="chk.image"></label>
-                              </div>
-                            </div>
+                          </div>
+                         <ul>
+                        <li>
+                            
+                            <input type="checkbox" id="myCheckbox1"  />
+                            <label for="myCheckbox1"><img src="./assets/img/theme/art.png" /></label>
+                          </li>
+                          <li>
                         
-                         </div>
-                      
+                            <input type="checkbox" id="myCheckbox2" />
+                            <label for="myCheckbox2"><img src="./assets/img/theme/food.png" /></label>
+                          </li>
+                          <li>
+                        
+                            <input type="checkbox" id="myCheckbox3" />
+                            <label for="myCheckbox3"><img src="./assets/img/theme/trading.png" /></label>
+                          </li>
+
+                          <li>
+                        
+                            <input type="checkbox" id="myCheckbox4" />
+                            <label for="myCheckbox4"><img src="./assets/img/theme/music.png" /></label>
+                          </li>
+                        </ul>
                           
                           <br><br>                             
                           <div class="button button-footer-card">
@@ -43,7 +58,7 @@
                         <div>
                             <br>
                             <h1>Ingresa tus datos personales</h1>
-                            <form div="form" style="margin-left: 90px;">
+                            <form div="form" style="margin-left: 90px; max-width: 100%;">
                                 
                                   <div class="input-group input-group-alternative">
                                     <div class="input-group-prepend">
@@ -66,18 +81,27 @@
                                     <input #link class="form-control" placeholder="Link YOUTUBE" type="url" (focus)="focus=true" (blur)="focus=false">
                                   </div>
                                   <br>
-                              <div class="input-group input-group-alternative">
-                                    <angular-editor [(ngModel)]="htmlContent" [config]="config" placeholder= "Descripción de mi perfil"></angular-editor>
-                              </div>
-                               <br>
-                              
+                                  <ckeditor [editor]="editor" class="editortext" ></ckeditor>
+                                  <br>
+                                  <div class="input-group input-group-alternative">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text"><i class="bi bi-image-fill"></i></span>
+                                    </div>
+                                    <input #profile class="form-control form-control-md" id="formFileLg" type="file" style="display:none; " multiple (change)="detectFiles($event)" />
+                                    <label for="formFileLg" style="color: #aeb6be; margin-left: -10px;">Elegir Imagen de Perfil</label>
+                                  </div>
+                                  <div>
+                                    <img *ngFor="let url of urls" [src]="url" class="rounded mb-3" width="180" style="margin-left: -100px;">
+                                  </div><br>
+                                  <div class="input-group input-group-alternative">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text"><i class="bi bi-card-image"></i></span>
+                                    </div>
+                                    <input #cover class="form-control form-control-md" id="formFileLg" type="file" style="display:none; " multiple (change)="detectFiles($event)" />
+                                    <label for="formFileLg" style="color: #aeb6be; margin-left: -10px;">Elegir Imagen de Portada</label>
+                                  </div>
                                  
-                                <br>
-                                <font color="27798f" size="2" face="Open Sans"><i>Importar imagen perfil</i></font>
-                              <div class="input-group input-group-alternative">
-                                    <input #file class="file" placeholder="perfil-imagen" type="file" (focus)="focus=true" (blur)="focus=false" name="myImage" accept="image/*">
-                                </div>
-                          
+                                  
                   
                             </form>
                           </div>
@@ -91,12 +115,15 @@
                       <mat-step label= " Medio de pago" [editable]= "true" [completed]="true">
                           <div>
                             <br>
-                            <h1>¿Cómo recibirás tus bonificaciones?</h1>
+                            <h1>¿Cómo recibirás tus bonificaciones?</h1><br>
                           </div>
-                        
+
+                          <ngx-paypal  [config]="payPalConfig"></ngx-paypal><br><br>
+            
+                              <br>
                             <div class="button button-footer-card">
                               <button mat-button matStepperPrevious >Atrás</button>
-                              <button mat-button matStepperNext style="margin-left: 10px">Siguiente</button>
+                              <button mat-button matStepperNext style="margin-left: 10px">ENVIAR TODO Y TERMINAR</button>
                             </div>
                       
                       </mat-step>

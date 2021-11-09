@@ -58,12 +58,16 @@
 
                 <ul> 
                 <div *ngFor="let sub of subscriptions | filter: filterpost | slice:0:show; let i=index;" [sub]="sub" >
+               
                     <div class="card-deck" >
                             <div class="card">
                                 <img class="card-img-top" src="{{sub.image}}" alt="Card image cap">
                                 <div class="card-body">
                                     <h5 class="card-title">{{sub.title}}</h5>
-                                    <p class="card-text">{{sub.description}}</p>
+                                    <div class="description" [class.show]="sub.visible">
+                                        <p class="card-text">{{sub.description}}</p>
+                                     </div><br>
+                                     <button mat-raised-button (click)="sub.visible = !sub.visible" style="float: right;">{{ sub.visible ? 'Mostrar menos': 'Mostrar más' }}</button>
                                 </div>
                                
                             <div class="card-footer">
@@ -74,12 +78,13 @@
                             </a>
                         </div>
                         </div>
-                  </div>
+                      </div>
+                    
                  
                 </div>
                 
                   
-                <button mat-raised-button (click)="increaseShow()" >Mostrar más</button>
+                <button mat-raised-button (click)="increaseShow()" >Cargar más publicaciones</button>
             </ul>
            
             </div>

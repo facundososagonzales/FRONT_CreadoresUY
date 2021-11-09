@@ -91,7 +91,17 @@
     
 }
 
+.description {
+    font-size: 16px;
+    line-height: 16px;
+    height: 27px;
+    overflow: hidden;
+  }
 
+.show {
+    overflow: visible;
+    height: auto;
+  }
 
 .card-search{
     height: 70px;
