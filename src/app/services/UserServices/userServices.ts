@@ -26,4 +26,10 @@ export class userServices {
   UserLogin(user:User){
     return this.http.post<Response<AuthenticateResponseClass>>(`${this.Url}` + "/api/User/Authenticate"​,{User:user}); 
   }
+
+  /*userContent(userId:number, page:number, contentPerPage:number){
+    let url = `${this.Url}` + "/api/Content/Feed"​ + userId.toString +"/"+ page.toString + "/" +contentPerPage.toString;
+    return this.http.get<Response<?>(url);
+  }*/
+
 }
