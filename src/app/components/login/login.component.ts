@@ -52,6 +52,7 @@ export class LoginComponent implements OnInit {
             sessionStorage.setItem('name', res["obj"]["name"])
             sessionStorage.setItem('userId', (res["obj"]["userId"]).toString())
             sessionStorage.setItem('email', res["obj"]["email"])
+            sessionStorage.setItem('imgProfile',res["obj"]["imgProfile"]);
             if(res["obj"]["creatorId"] != 0){
               sessionStorage.setItem('userType', "creator");
               sessionStorage.setItem('creatorId', res["obj"].creatorId.toString())

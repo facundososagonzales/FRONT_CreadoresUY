@@ -11,26 +11,26 @@
       <span></span>
     </div>
     
-    <div class="container todo justify-content-center">
+    <div class="todo justify-content-center">
       <div class= "pt-lg-md">
-          <div class="card card-profile card-border">
-              <img class="rounded-circle" style="text-align:center; margin-top: 10px;" src="./assets/img/theme/team-4-800x800.png" alt="Card image cap" >
-              
-              <div class="card-body px-lg-5 py-lg-4">
-                <h5 class="card-title" style="text-align: center;">¡Hola {{nickname}}!</h5>
-                  </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">APOYANDO A</li>
-                <p class="card-text profile-text" style="margin-left: 10px;">Aún no apoyas a ningún creador</p>
-              
-          
-              </ul>
-              <div class="card-body">
-                  <button mat-button style="text-align: center;" >Buscar Creadores</button>
-              </div>
+        <div class="card card-profile card-border">
+            <img *ngIf="getUserImage()==''" class="img-fluid img-circle img-profile shadow" style="text-align:center; margin-top: 10px;" src="./assets/img/theme/kanna-kamui-cute.jpg" alt="Card image cap">
+            <img *ngIf="getUserImage()!=''"class="img-fluid img-circle img-profile shadow" style="text-align:center; margin-top: 10px;" src="{{getUserImage()}}" alt="Card image cap">
+            <div class="card-body px-lg-5 py-lg-4">
+              <h5 class="card-title" style="text-align: center;">¡Hola {{getUserNickname()}}!</h5>
+                </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">APOYANDO A</li>
+              <p class="card-text profile-text" style="margin-left: 10px;">Aún no apoyas a ningún creador</p>
+            
+        
+            </ul>
+            <div class="card-body">
+                <button mat-button style="text-align: center;" >Buscar Creadores</button>
             </div>
+          </div>
       </div>
-      <div class="contaier pt-lg-md">
+      <div class="pt-lg-md">
         <div class="row justify-content-center">
           <div class="col-lg-12">
             <div class="card card-border">
@@ -42,25 +42,25 @@
                                 <span class="input-group-text">
                                     <mat-icon  aria-label="Example home icon">search</mat-icon>
                                 </span>
-                                <input type="text" class="form-control" placeholder="Buscar Contenido..." [(ngModel)]="filterpost" name="filterpost" aria-label="SearchContenido" aria-describedby="basic-addon1">
+                                <input type="text" class="form-control" placeholder="Buscar Contenido..." aria-label="SearchContenido" aria-describedby="basic-addon1">
                             </div>
                         </div>
                     </div>
                 </div>
-                <div *ngFor="let sub of subscriptions | filter: filterpost | slice:0:show; let i=index;" [sub]="sub" >
+                <div #target *ngFor="let element of contentViwer">
                   <div class="card-deck shadow">
                     <div class="card card-m">
-                      <img *ngIf="sub.image!=''" class="card-img-top" src="{{sub.image}}" alt="Card image cap">
+                      <img *ngIf="element['content']['img']!=''" class="card-img-top" src="{{element['content']['img']}}" alt="Card image cap">
                       <div class="card-body">
-                          <h5 class="card-title">{{sub.title}}</h5>
-                          <div class="description" [class.show]="sub.visible">
-                            <p class="card-text">{{sub.description}}</p>
+                          <h5 class="card-title">{{element['content']['title']}}</h5>
+                          <div class="description" [ngClass]="{show: element['visible']}">
+                            <p class="card-text">{{element['content']['description']}}</p>
                           </div><br>
-                          <button mat-raised-button (click)="sub.visible = !sub.visible" style="float: right;">{{ sub.visible ? 'Mostrar menos': 'Mostrar más' }}</button>
+                          <button mat-raised-button (click)="element['visible'] = !element['visible']" style="float: right;">{{ element['visible'] ? 'Mostrar menos': 'Mostrar más' }}</button>
                       </div>  
                       <div class="card-footer">
-                        <small class="text-muted">Publicado hace 10 minutos</small>
-                        <a href="/user-profile" class="text-muted-publicadopor">Por JuanCarlo
+                        <small class="text-muted">Fecha de publicacion: {{element['content']['addedDate'] | date:'short':'UTC'}}</small>
+                        <a href="/user-profile" class="text-muted-publicadopor">{{element['content']['nickName']}}
                           <img src="./assets/img/theme/team-4-800x800.png" class="rounded-circle"
                           style="width: 20px; margin-left: 5px; float: right;">
                         </a>
@@ -68,7 +68,7 @@
                     </div>
                   </div>
                 </div>  
-                <button mat-raised-button (click)="increaseShow()" >Cargar más publicaciones</button>
+                <button mat-raised-button (click)="increaseShow()">Cargar más publicaciones</button>
               </div>
             </div>
           </div>

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthenticateResponseClass } from 'src/app/model/AuthenticateResponse';
 import { CreateUserDto } from 'src/app/model/CreateUserDto';
+import { CreatorContent } from 'src/app/model/CreatorContent';
 import { Response } from 'src/app/model/Response';
 import { User } from 'src/app/model/user';
 
@@ -27,9 +28,10 @@ export class userServices {
     return this.http.post<Response<AuthenticateResponseClass>>(`${this.Url}` + "/api/User/Authenticate"​,{User:user}); 
   }
 
-  /*userContent(userId:number, page:number, contentPerPage:number){
-    let url = `${this.Url}` + "/api/Content/Feed"​ + userId.toString +"/"+ page.toString + "/" +contentPerPage.toString;
-    return this.http.get<Response<?>(url);
-  }*/
+  userContent(userId:string, page:string, contentPerPage:string){
+    let url = `${this.Url}` + "/api/Content/Feed?"​ + "IdUser=" + userId + "&" + 
+    "Page=" + page + "&" + "ContentPerPage=" + contentPerPage;
+    return this.http.get<Response<CreatorContent>>(url, {headers: {'Authorization': ` Bearer ${sessionStorage.getItem('token')}`}});
+  }
 
 }
