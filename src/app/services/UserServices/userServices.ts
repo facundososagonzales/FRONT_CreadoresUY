@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { AuthenticateResponseClass } from 'src/app/model/AuthenticateResponse';
 import { CreateUserDto } from 'src/app/model/CreateUserDto';
 import { CreatorContent } from 'src/app/model/CreatorContent';
@@ -33,5 +33,10 @@ export class userServices {
     "Page=" + page + "&" + "ContentPerPage=" + contentPerPage;
     return this.http.get<Response<CreatorContent>>(url, {headers: {'Authorization': ` Bearer ${sessionStorage.getItem('token')}`}});
   }
+
+  getUsers(): Observable<AuthenticateResponseClass[]> {
+    return this.http.get<AuthenticateResponseClass[]>(`${this.Url}` + "/api/User");
+  }
+
 
 }

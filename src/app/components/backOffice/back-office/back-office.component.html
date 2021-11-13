@@ -1,1 +1,100 @@
-<p>back-office works!</p>
+<main>
+
+    <section class="section section-shaped section-lg">
+      <div class="shape shape-style-1 shape-primary">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <div class="container cont pt-lg-md">
+        <div class="row justify-content-center">
+          <div class="col-lg-12">
+            <div class="card bg-secondary shadow border-0">
+              <div class="card-header bg-white pb-5">
+                <br><h5 class="card-title">Bienvenido/a, estas son tus estadísticas:</h5><br>
+                <div class="card graficas justify-content-center">
+                      <div class="card graficasindv">
+                            <div class="card-body">
+                              <h5 class="card-title">Visitas en la Web</h5>
+                              <canvas baseChart width="400" height="400"
+                              [datasets]="lineChartData"
+                              [labels]="lineChartLabels"
+                              [options]="lineChartOptions"
+                              [colors]="lineChartColors"
+                              [legend]="lineChartLegend"
+                              [chartType]="lineChartType"
+                              [plugins]="lineChartPlugins">
+                            </canvas>
+                            </div>
+                          </div>
+                          <div class="card graficasindv" style="margin-left: 0px;" >
+                            <div class="card-body">
+                              <h5 class="card-title">Cantidad de Creadores/Usuarios</h5>
+                              <div class="chart">
+                                <canvas baseChart width="400" height="400"
+                                  [data]="pieChartData"
+                                  [labels]="pieChartLabels"
+                                  [chartType]="pieChartType"
+                                  [options]="pieChartOptions"
+                                  [plugins]="pieChartPlugins"
+                                  [legend]="pieChartLegend">
+                                </canvas>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+              
+           
+               <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Lista de Usuarios/Creadores registrados</h5>
+                    <table class="table">
+                      <thead > 
+                        <tr>
+                          <th scope="col">Nombre</th>
+                          <th scope="col">Email</th>
+                          <th scope="col">ID Creador</th>
+                         
+                        </tr>
+                      </thead>
+                      <tbody  *ngFor="let user of listusers  | paginate: {itemsPerPage: 8, currentPage: page} ">
+                        <tr>
+                          <td>{{ user.name }}</td>
+                          <td>{{ user.email }}</td>
+                          <td>{{ user.creatorId }}</td>
+                       
+                       
+
+                        </tr> 
+                      </tbody>
+                    </table>
+                    <pagination-controls 
+                    (pageChange)="page = $event"
+                    (pageBoundsCorrection)="page = $event"
+                    directionLinks="true"
+                    previousLabel="Anterior"
+                    nextLabel="Siguiente"
+                    screenReaderPaginationLabel="Pagination"
+                    screenReaderPageLabel="page"
+                    screenReaderCurrentLabel="You're on page">
+                    
+                    </pagination-controls>
+                  </div>
+                </div> 
+                
+                
+            </div>
+        </div>
+      </div>
+      
+  
+</div>
+  </div>
+</section>
+</main>
