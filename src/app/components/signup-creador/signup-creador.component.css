@@ -226,6 +226,17 @@ ul {
     margin: 15px 0;
   }
 
+  .img-profile{
+    display: flex;
+    margin-top: 20px;
+    margin-left: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 150px;
+    border: solid 0.5px #777;
+    object-fit: cover;
+}
+
   ::ng-deep .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
     background-color: #27798f!important;
   }
