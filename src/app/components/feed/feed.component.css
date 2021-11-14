@@ -145,6 +145,15 @@
     height: auto;
   }
 
+  .input-group{
+    text-align: left;
+   display: flex;
+    overflow: auto;
+    margin: auto;
+    margin-left: -40px;
+    max-width: 480px;
+}
+
 .card-search{
     height: 70px;
     margin-bottom: 14px;
