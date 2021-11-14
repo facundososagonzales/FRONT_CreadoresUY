@@ -90,16 +90,16 @@
                                     <input #profile class="form-control form-control-md" id="formFileLg" type="file" style="display:none; " multiple (change)="detectFiles($event)" />
                                     <label for="formFileLg" style="color: #aeb6be; margin-left: -10px;">Elegir Imagen de Perfil</label>
                                   </div>
-                                  <div>
-                                    <img *ngFor="let url of urls" [src]="url" class="rounded mb-3" width="180" style="margin-left: -100px;">
-                                  </div><br>
                                   <div class="input-group input-group-alternative">
                                     <div class="input-group-prepend">
                                       <span class="input-group-text"><i class="bi bi-card-image"></i></span>
                                     </div>
-                                    <input #cover class="form-control form-control-md" id="formFileLg" type="file" style="display:none; " multiple (change)="detectFiles($event)" />
-                                    <label for="formFileLg" style="color: #aeb6be; margin-left: -10px;">Elegir Imagen de Portada</label>
+                                    <input #cover class="form-control form-control-md" id="formFileLg1" type="file" style="display:none; " multiple (change)="detectFiles($event)" />
+                                    <label for="formFileLg1" style="color: #aeb6be; margin-left: -10px;">Elegir Imagen de Portada</label>
                                   </div>
+                                  <div class="d-flex flex-row flex-wrap justify-content-start ml-4 mt-4">
+                                    <img *ngFor="let url of urls" [src]="url" class="img-fluid img-profile shadow">
+                                  </div><br>
                                  
                                   
                   

@@ -27,16 +27,23 @@ export class SignupCreadorComponent implements OnInit {
   amt = 0;
   
   urls = new Array<string>();
+
   detectFiles(event) {
-    this.urls = [];
     let files = event.target.files;
-    if (files) {
-      for (let file of files) {
-        let reader = new FileReader();
+    if (files.length > 1) {
+      alert("You can select only 1 images");
+    }else{
+      let reader = new FileReader();
+      if(event.target.id == "formFileLg"){
         reader.onload = (e: any) => {
-          this.urls.push(e.target.result);
+          this.urls[0]=(e.target.result);
         }
-        reader.readAsDataURL(file);
+        reader.readAsDataURL(files[0]);
+      }else{
+        reader.onload = (e: any) => {
+          this.urls[1]=(e.target.result);
+        } 
+        reader.readAsDataURL(files[0]);
       }
     }
   }
