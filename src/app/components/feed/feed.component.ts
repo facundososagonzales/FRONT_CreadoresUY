@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'src/app/model/Subscription';
 import { Router } from '@angular/router';
 import { Pipe, PipeTransform } from '@angular/core';
 import { userServices } from 'src/app/services/UserServices/userServices';
@@ -56,7 +55,6 @@ export class FeedComponent implements OnInit {
 
   increaseShow() {
     this.showContent();
-    window.scroll(0, 0);
   }
 
   getUserImage(){

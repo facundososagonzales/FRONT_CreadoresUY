@@ -36,6 +36,7 @@ export class SignupCreadorComponent implements OnInit {
       let reader = new FileReader();
       if(event.target.id == "formFileLg"){
         reader.onload = (e: any) => {
+          console.log(reader.result);
           this.urls[0]=(e.target.result);
         }
         reader.readAsDataURL(files[0]);

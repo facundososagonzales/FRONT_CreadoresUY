@@ -35,7 +35,7 @@
           <div class="col-lg-12">
             <div class="card card-border">
               <div class="card">
-                <div #target *ngFor="let element of contentViwer">
+                <div *ngFor="let element of contentViwer; let i = index" [attr.data-index]="i">
                   <div class="card-deck shadow">
                     <div class="card card-m">
                       <img *ngIf="element['content']['img']!=''" class="card-img-top" src="{{element['content']['img']}}" alt="Card image cap">
@@ -48,7 +48,7 @@
                       </div>  
                       <div class="card-footer">
                         <small class="text-muted">Fecha de publicacion: {{element['content']['addedDate'] | date:'short':'UTC'}}</small>
-                        <a href="/user-profile" class="text-muted-publicadopor">{{element['content']['nickName']}}
+                        <a class="text-muted-publicadopor" href="" (click)="navToCreatorProfile(element['content']['nickName'])">{{element['content']['nickName']}}
                           <img src="./assets/img/theme/team-4-800x800.png" class="rounded-circle"
                           style="width: 20px; margin-left: 5px; float: right;">
                         </a>
