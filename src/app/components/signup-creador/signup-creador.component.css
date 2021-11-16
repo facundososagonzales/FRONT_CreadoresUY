@@ -16,7 +16,6 @@
 
 .form-control{
     max-width:100%;
-    position: relative;
     
 }
 
@@ -24,10 +23,7 @@
   display: block;
   text-align: center;
   align-items: center;
-  max-width: 480px;
-  min-width: 120px;
-  margin-left: -40px;
-
+  max-width: 100%;
 }
 
 .mat-step{
@@ -167,33 +163,28 @@ ul {
   }
 
   .input-group{
-      text-align: left;
-     display: flex;
-      overflow: auto;
-      margin: auto;
-      margin-left: -40px;
-      max-width: 480px;
-  }
-
-
-
+    display: flex;
+    overflow: auto;
+    margin: auto;
+    
+}
 
 .content-select{
 	max-width: 100%;
 	position: relative;
-    margin-left: -40px;
-    display: flex;
-    overflow: auto;
+  margin-left: -40px;
+  display: flex;
+  overflow: auto;
 }
  
 .content-select select{
 	display: inline-block;
 	width: 100%;
 	cursor: pointer;
-  	padding: 7px 10px;
-  	height: 42px;
-  	outline: 0; 
-  	border: 0;
+  padding: 7px 10px;
+  height: 42px;
+  outline: 0; 
+  border: 0;
 	border-radius: 0;
 	background: #fff;
 	color: #7b7b7b;

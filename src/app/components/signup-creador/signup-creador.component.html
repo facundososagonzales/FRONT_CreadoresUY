@@ -57,8 +57,8 @@
                       <mat-step label= "Datos personales" [editable]= "true" [completed]="true" style="background-color: #569e86;">
                         <div>
                             <br>
-                            <h1>Ingresa tus datos personales</h1>
-                            <form div="form" style="margin-left: 90px; max-width: 100%;">
+                            <h1>Ingresa tus datos personales</h1> <br>
+                            <form div="form" style="max-width: 90%; text-align: center; margin:auto;">
                                 
                                   <div class="input-group input-group-alternative">
                                     <div class="input-group-prepend">
@@ -78,9 +78,10 @@
                                     <div class="input-group-prepend">
                                       <span class="input-group-text"><i class="bi bi-youtube"></i></span>
                                     </div>
-                                    <input #link class="form-control" placeholder="Link YOUTUBE" type="url" (focus)="focus=true" (blur)="focus=false">
+                                    <input #link class="form-control" placeholder="Link video YOUTUBE" type="url" (focus)="focus=true" (blur)="focus=false">
                                   </div>
                                   <br>
+                                  <p><i><small>¿Cómo te describirías?</small></i></p>
                                   <ckeditor [editor]="editor" class="editortext" ></ckeditor>
                                   <br>
                                   <div class="input-group input-group-alternative">
@@ -90,6 +91,7 @@
                                     <input #profile class="form-control form-control-md" id="formFileLg" type="file" style="display:none; " multiple (change)="detectFiles($event)" />
                                     <label for="formFileLg" style="color: #aeb6be; margin-left: -10px;">Elegir Imagen de Perfil</label>
                                   </div>
+                                  <br>
                                   <div class="input-group input-group-alternative">
                                     <div class="input-group-prepend">
                                       <span class="input-group-text"><i class="bi bi-card-image"></i></span>
@@ -115,9 +117,9 @@
                       <mat-step label= " Medio de pago" [editable]= "true" [completed]="true">
                           <div>
                             <br>
-                            <h1>¿Cómo recibirás tus bonificaciones?</h1><br>
+                            <h1>¿Cómo recibirás tus bonificaciones?</h1>
                           </div>
-
+                          <p><i><small>Elige un medio de pago:</small></i></p><br>
                           <ngx-paypal  [config]="payPalConfig"></ngx-paypal><br><br>
             
                               <br>
