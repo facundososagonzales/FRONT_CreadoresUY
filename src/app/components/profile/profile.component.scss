@@ -1,7 +1,7 @@
 
 .cont{
     margin-bottom: 240px;
-    margin-top: -230px;
+    margin-top: -130px;
     display: flex;
     justify-content: center;
 }
@@ -39,6 +39,10 @@
     font-style: oblique;
     font-size: small;
 }
+
+.card-text-style{
+    margin-top: 15px;
+}
 .card-deck{
     margin: 0 5px;
     margin-bottom: 35px;
@@ -66,7 +70,7 @@
 }
 
 .card{
-    margin: 10px 10px;
+    margin: 3px 3px;
     border: none;
 }
 
@@ -75,18 +79,6 @@
     justify-content: center;
     text-align: center;
 }
-
-
-.rounded-circle{ 
-    width: 200px;
-    display: block;
-    margin-left: auto; 
-    margin-right: auto;
-    border: solid 1px rgb(218, 218, 218);
-    object-fit: cover;
-}
-
-
 
 .perfile-title{
     text-align: center;
@@ -102,11 +94,32 @@
     margin-right: auto;
 }
 
+.img-profile{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    width: 150px;
+    height: 150px;
+    border: solid 0.5px #999;
+    border-radius: 100px !important;
+    object-fit: cover;
+}
+
+.img-profile:hover{
+    animation-name: profile-animation;
+    animation-duration: 0.1s;
+    filter: drop-shadow(0 0 5px #27798f);
+}
+
+@keyframes profile-animation {
+    from {filter: drop-shadow(0 0 0 #fff);}
+    to {filter: drop-shadow(0 0 4px #27798f);}
+}
+
 blockquote {
     background: #f4fdfc;
     border-left:6px solid rgb(105, 129, 124);
     font-family: Georgia, serif;
-    margin:1.5em 10px;
     padding:.5em 10px;
     quotes:"\201C""\201D""\2018""\2019";
     }
@@ -116,7 +129,6 @@ blockquote {
     font-family: cambria, Georgia;
     font-size:4em;
     line-height:.1em;
-    margin-right:.25em;
     vertical-align:-.4em;
     }
     blockquote p {
@@ -127,4 +139,29 @@ blockquote {
     font-size: 14px;
     display: block;
     margin-top: 10px;
-    } 
+} 
+
+.youtube-iframe{
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 568px) {
+    .container{
+        margin: 0px !important;
+        padding: 5px !important;
+    }
+
+    .col-12{
+        padding: 0px !important;
+    }
+
+    .card-profile{
+        box-shadow: none;
+        border: 0.5px solid #ccc;
+    }
+
+    .shadow{
+        box-shadow: none !important;
+        filter: none;
+    }
+}

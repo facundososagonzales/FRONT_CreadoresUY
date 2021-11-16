@@ -10,85 +10,61 @@
     </div>
   </section>
   <section class="section">
-    <div class="container cont pt-md ">
-      <div class="col-lg-10">
-      <div class="card card-profile shadow mt--300">
-        <div class="px-lg-4 px-2">
-          <div class="row justify-content-center">
-            <div class="col-lg-3 order-lg-2">
-              <div class="card-profile-image">
-                <a href="javascript:void(0)">
-                  <img src="./assets/img/theme/profile.png" class="rounded-circle" style="width: 150px;">
-                  </a>
+    <div class="container cont">
+      <div class="col-lg-10 col-12">
+        <div class="card card-profile shadow mt--300">
+          <div class="px-lg-4 px-2">
+            <div class="row justify-content-center">
+              <div class="col-lg-4">
+                <div class="card-profile-stats d-flex justify-content-center">
+                  <div>
+                    <span class="heading">22</span>
+                    <span class="description">Suscriptores</span>
+                  </div>
+                  <div>
+                    <span class="heading">10</span>
+                    <span class="description">Seguidores</span>
+                  </div>
                 </div>
-            </div>
-            <div class="order-lg-2 text-lg-right align-self-lg-center">
-              <div class="card-profile-actions py-4 mt-lg-0" style="margin-left: 30px;">
-                <button mat-stroked-button>Seguir</button>
-                <button mat-stroked-button>Enviar Mensaje</button>
+              </div>
+              <div class="col-lg-3 my-5 my-lg-0">
+                <div class="card-profile-image">
+                  <img src="./assets/img/theme/profile.png" class="img-fluid img-profile shadow">
+                </div>
+              </div>
+              <div class="text-lg-right align-self-lg-center">
+                <div class="card-profile-actions py-4 mt-lg-0 mt-5">
+                  <button mat-stroked-button>Seguir</button>
+                  <button mat-stroked-button>Enviar Mensaje</button>
+                </div>
               </div>
             </div>
-            <div class="col-lg-4 order-lg-1">
-              <div class="card-profile-stats d-flex justify-content-center">
-                <div>
-                  <span class="heading">22</span>
-                  <span class="description">Suscriptores</span>
-                </div>
-                <div>
-                  <span class="heading">10</span>
-                  <span class="description">Seguidores</span>
-                </div>
-               
-              </div>
-            </div>
-          </div>
-          <div class="text-center mt-3">
-           <div class="col-12  ml-lg-2 ml-0 mt-lg-0 mt-4 pt-lg-0 pt-5" ><h2 class="perfile-title" style="margin-left: -30px;">{{nickname}}</h2></div>
-            <div class="mt-2 pb-5 ml-lg-5 ml-3 mr-2">
-              <div class="row">
-                <div class="col-12" style="margin-left: -20px;">
+            <div class="text-center mt-3">
+            <div class="col-12" ><h2 class="perfile-title">{{nickname}}</h2></div>
+              <div class="d-flex flex-row justify-content-center">
+                <div class="col-11">
                   <blockquote> <p>Diseñador de videojuegos con más de 10 años de experiencia en desarrollo 
                     de juegos independientes tales como "Viva piñata" y "Who's your santa?!".
                     En caso de que mi trabajo sea te tu agrado puedes suscribirte para obtener
-                     beneficios y ayudar a que más de mis proyectos salga adelante"</p></blockquote>
-                 
+                      beneficios y ayudar a que más de mis proyectos salga adelante"</p>
+                  </blockquote>
                 </div>
               </div>
             </div>
-          </div>
+            <hr>
 
-          <h2 class="card-title" style="text-align: center; font-size:x-large;">¡Conoceme un poco más!</h2>
-            <div class="card-deck shadow">
+            <h2 class="card-title" style="text-align: center; font-size:x-large;">¡Conoceme un poco más!</h2>
+            <div class="card-deck shadow px-2 py-2">
               <div class="card biography">
-                <iframe width="100%" height="315" src="https://www.youtube.com/embed/a3WnvDtDD2M?rel=0&amp;autoplay=1&mute=1&controls=0"
+                <iframe class="youtube-iframe" width="100%" height="315" src="https://www.youtube.com/embed/a3WnvDtDD2M?rel=0&amp;autoplay=1&mute=1&controls=0"
                 frameborder="0" allowfullscreen  title="YouTube video player"></iframe><br>
-                <p class="card-text">András István Arató[1] (born 11 July 1945) is a retired Hungarian electrical engineer[2] and model. Best known for becoming an internet meme, András has been in and out of the stock photo and advertisement industry as a model since disclosing his identity. Arató's modeling for stock photography garnered attention as soon as 2011, coming to be known in meme culture as "Hide the Pain Harold" due to his overall facial expression and seemingly fake smile</p>
-              </div>
-          </div>
-
-          <h2 class="card-title" style="text-align: center; font-size:x-large;">Publicaciones de {{nickname}} </h2>
-          <div #target *ngFor="let element of contentViwer">
-            <div class="card-deck shadow">
-              <div class="card card-m">
-                <img *ngIf="element['content']['img']!=''" class="card-img-top" src="{{element['content']['img']}}" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">{{element['content']['title']}}</h5>
-                    <div class="description" [ngClass]="{show: element['visible']}">
-                      <p class="card-text">{{element['content']['description']}}</p>
-                    </div><br>
-                    <button mat-raised-button (click)="element['visible'] = !element['visible']" style="float: right;">{{ element['visible'] ? 'Mostrar menos': 'Mostrar más' }}</button>
-                </div>  
-                
+                <p class="card-text card-text-style">András István Arató[1] (born 11 July 1945) is a retired Hungarian electrical engineer[2] and model. Best known for becoming an internet meme, András has been in and out of the stock photo and advertisement industry as a model since disclosing his identity. Arató's modeling for stock photography garnered attention as soon as 2011, coming to be known in meme culture as "Hide the Pain Harold" due to his overall facial expression and seemingly fake smile</p>
               </div>
             </div>
-          </div> 
-          <div class="text-center mt-5">
-            <button mat-raised-button (click)="increaseShow()" style="text-align: center;  margin-bottom: 25px;">Cargar más publicaciones</button>
           </div>
-          
         </div>
+        <h2 class="card-title mt-5" style="text-align: center; font-size:x-large;">Publicaciones de {{nickname}} </h2>
       </div>
     </div>
-  </div>
   </section>
 </main>
