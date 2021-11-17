@@ -1,15 +1,15 @@
 .section-shaped .shape {
-    background: linear-gradient(45deg, #26798E 15%, #63CAA7 90%);
+    background: linear-gradient(45deg, #27798f 15%, #8fb7ad 90%);
 }
 
 .cont{
     margin-top: 20px;
     text-align: center;
-    display: flex;
   
 }
 table {
     width: 100%;
+
   }
 
 .graficas{
@@ -19,16 +19,19 @@ table {
     margin-bottom: 15px;
 }
 
+
 .graficasindv{
     margin-top: 10px;
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 10px;
+    font-family: "Open Sans";
 
 }
 
 .card-title{
     font-size: large;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "Open Sans";
+    font-weight: bold;
     
 }
