@@ -27,7 +27,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-3 my-5 my-lg-0 mx-2">
+              <div class="col-lg-3 my-5 my-lg-0 mx-sm-2 mx-0">
                 <div class="card-profile-image">
                   <img src="./assets/img/theme/profile.png" class="img-fluid img-profile shadow">
                 </div>
@@ -51,7 +51,7 @@
             <hr>
 
             <h2 class="card-title" style="text-align: center; font-size:x-large;">¡Conoceme un poco más!</h2>
-            <div class="card-deck shadow px-2 py-2">
+            <div class="card-deck shadow px-lg-2 py-lg-2 px-0 py-0">
               <div class="card biography">
                 <iframe class="youtube-iframe" width="100%" height="315" src="https://www.youtube.com/embed/a3WnvDtDD2M?rel=0&amp;autoplay=1&mute=1&controls=0"
                 frameborder="0" allowfullscreen  title="YouTube video player"></iframe><br>
@@ -60,7 +60,33 @@
             </div>
           </div>
         </div>
-        <h2 class="card-title mt-5" style="text-align: center; font-size:x-large;">Publicaciones de {{nickname}} </h2>
+        <div class="card card-border shadow mt-5">
+          <h2 class="card-title mt-2" style="text-align: center; font-size:x-large;">Publicaciones de {{nickname}} </h2>
+          <div *ngFor="let element of contentViwer; let i = index" [attr.data-index]="i">
+            <div class="card-deck shadow">
+              <div class="card card-m">
+                <img [ngClass]="{filt: !element['content']['authorized']}" 
+                *ngIf="element['content']['content']['img']!=''" class="card-img-top" 
+                src="{{element['content']['content']['img']}}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{element['content']['content']["title"]}}</h5>
+                    <div *ngIf="element['content']['authorized']" [ngClass]="{show: element['visible']}" class="description">
+                      <p class="card-text">{{element['content']['content']["description"]}}</p>
+                    </div><br>
+                    <button mat-raised-button *ngIf="element['content']['authorized']" (click)="element['visible'] = !element['visible']" style="float: right;">{{element['visible'] ? 'Mostrar menos': 'Mostrar más' }}</button>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">Fecha de publicacion: {{element['content']['content']['addedDate'] | date:'short':'UTC'}}</small>
+                  <a class="text-muted-publicadopor" href="" (click)="navToCreatorProfile(element['content']['content']['nickName'])">{{element['content']['content']['nickName']}}
+                    <img src="./assets/img/theme/team-4-800x800.png" class="rounded-circle"
+                    style="width: 20px; height: 20px; margin-left: 5px; float: right;">
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button mat-raised-button class="mat-m" *ngIf="contentViwer.length==contentByPage" (click)="increaseShow()">Cargar más publicaciones</button>
+        </div>
       </div>
     </div>
   </section>
