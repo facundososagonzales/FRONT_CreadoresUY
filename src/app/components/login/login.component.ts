@@ -49,20 +49,22 @@ export class LoginComponent implements OnInit {
           const token = res["obj"]["token"];
           if(token != null){
             sessionStorage.setItem('token', token);
-            sessionStorage.setItem('name', res["obj"]["name"])
-            sessionStorage.setItem('userId', (res["obj"]["userId"]).toString())
-            sessionStorage.setItem('email', res["obj"]["email"])
+            sessionStorage.setItem('name', res["obj"]["name"]);
+            sessionStorage.setItem('userId', (res["obj"]["userId"]).toString());
+            sessionStorage.setItem('email', res["obj"]["email"]);
             sessionStorage.setItem('imgProfile',res["obj"]["imgProfile"]);
             if(res["obj"]["creatorId"] != 0){
               sessionStorage.setItem('userType', "creator");
-              sessionStorage.setItem('creatorId', res["obj"].creatorId.toString())
-              this.router.navigate(['/user-profile']);
+              sessionStorage.setItem('nickname', res['obj']['nickname']);
+              sessionStorage.setItem('creatorId', res["obj"]['creatorId'].toString());
+              console.log(sessionStorage.getItem('nickname'));
+              this.router.navigate(['/creator-Profile', sessionStorage.getItem('creatorId')]);
 
             }else if(res["obj"]["isAdmin"]){
-              sessionStorage.setItem('userType', "admin")
+              sessionStorage.setItem('userType', "admin");
               this.router.navigate(['/backOffice']);
             }else{
-              sessionStorage.setItem('userType', "user")
+              sessionStorage.setItem('userType', "user");
               this.router.navigate(['/feed']);
             }
           }

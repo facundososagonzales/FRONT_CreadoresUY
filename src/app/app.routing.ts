@@ -14,7 +14,7 @@ import { BackOfficeComponent } from './components/backOffice/back-office/back-of
 
 const routes: Routes =[
     { path: 'home',             component: HomeComponent },
-    { path: 'user-profile',     component: ProfileComponent },
+    { path: 'creator-Profile/:nickname',     component: ProfileComponent },
     { path: 'register',           component: SignupComponent },
     { path: 'login',          component: LoginComponent },
     { path: 'creador-Register',          component: SignupCreadorComponent },

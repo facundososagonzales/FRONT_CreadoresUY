@@ -6,8 +6,6 @@ import { CreateUserDto } from 'src/app/model/CreateUserDto';
 import { CreatorContent } from 'src/app/model/CreatorContent';
 import { Response } from 'src/app/model/Response';
 import { User } from 'src/app/model/user';
-
-
 import * as dev from 'src/dev';
 
 @Injectable({

@@ -49,6 +49,7 @@
 }
 
 .profile-header-img:hover{
+    cursor: pointer;
     animation-name: profile-animation;
     animation-duration: 0.4s;
     filter: drop-shadow(0 0 5px #27798f);

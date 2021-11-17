@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd, NavigationStart } from '@angular/router';
+import { Router, NavigationEnd, NavigationStart, ActivatedRoute } from '@angular/router';
 import { Location, PopStateEvent } from '@angular/common';
 
 @Component({
@@ -13,6 +13,7 @@ export class NavbarComponent implements OnInit {
     public isCollapsed = true;
     private lastPoppedUrl: string;
     private yScrollStack: number[] = [];
+    nickname:string = sessionStorage.getItem('nickname');
 
     constructor(public location: Location, private router: Router) {
     }
@@ -66,5 +67,9 @@ export class NavbarComponent implements OnInit {
 
     getName(){
         return sessionStorage.getItem('name');
+    }
+
+    getNickname(){
+        return sessionStorage.getItem('nickname')
     }
 }

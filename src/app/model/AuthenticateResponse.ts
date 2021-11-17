@@ -7,6 +7,7 @@ export class AuthenticateResponseClass {
     lasLogin:    Date;
     imgProfile:  string;
     creatorId:   number;
+    nickname:    string;
     token:       string;
     isAdmin:     boolean;
 }
