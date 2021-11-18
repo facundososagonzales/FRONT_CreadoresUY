@@ -67,6 +67,7 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { FeedComponent } from './components/feed/feed.component';
 import { FilterPipe } from './components/pipes/filter.pipe';
 import { BackOfficeComponent } from './components/backOffice/back-office/back-office.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -81,6 +82,7 @@ import { BackOfficeComponent } from './components/backOffice/back-office/back-of
     FeedComponent,
     FilterPipe,
     BackOfficeComponent,
+    SearchComponent,
   ],
   imports: [
     ReactiveFormsModule,

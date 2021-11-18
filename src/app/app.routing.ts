@@ -11,6 +11,7 @@ import { SignupCreadorComponent } from './components/signup-creador/signup-cread
 import { LogoutComponent } from './components/logout/logout.component';
 import { FeedComponent } from './components/feed/feed.component';
 import { BackOfficeComponent } from './components/backOffice/back-office/back-office.component';
+import { SearchComponent } from './components/search/search.component';
 
 const routes: Routes =[
     { path: 'home',             component: HomeComponent },
@@ -21,6 +22,7 @@ const routes: Routes =[
     { path: 'logout',          component: LogoutComponent },
     { path: 'feed',          component: FeedComponent },
     { path: 'backOffice',          component: BackOfficeComponent},
+    { path: 'search',          component: SearchComponent},
     { path: '', redirectTo: 'home', pathMatch: 'full'}
 ];
 

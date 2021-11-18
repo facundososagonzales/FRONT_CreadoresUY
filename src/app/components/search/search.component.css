@@ -1,0 +1,134 @@
+.section-shaped .shape {
+    background: linear-gradient(45deg, #27798f 1%, #ffe3b3 90%);
+}
+
+.cont{
+    margin-top: 20px;
+    text-align: center;
+}
+
+.profiles{
+    max-width: 700px;
+    text-align: left;
+    border: none;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.input-group-prepend span{
+    border-radius: 50px 0px 0px 50px !important;
+    max-height: 35px;
+}
+
+.input-group input{
+    max-height: 35px !important;
+    max-width: 700px !important;
+    border-radius: 0px 50px 50px 0px !important;
+    margin-left: -4px;
+}
+
+
+
+
+.stats {
+    background: #f2f5f8 !important;
+    color: #000 !important
+}
+
+.publicaciones {
+    font-size: 10px;
+    color: #a1aab9
+}
+
+.rounded-circle{ 
+    max-width: 120px;
+    margin-left: auto; 
+    margin-right: auto;
+    display: flex;
+    
+}
+
+.img-profile{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    max-width:120px;
+    height: 120px;
+    border: solid 0.5px #999;
+    border-radius: 150px;
+    object-fit: cover;
+}
+
+.img-profile:hover{
+    animation-name: profile-animation;
+    animation-duration: 0.1s;
+    filter: drop-shadow(0 0 5px #27798f);
+}
+
+.number1 {
+    font-weight: 500;
+    text-align: center;
+}
+
+.seguidores {
+    font-size: 10px;
+    color: #a1aab9;
+}
+
+.number2 {
+    font-weight: 500;
+    text-align: center;
+}
+
+.suscriptores {
+    font-size: 10px;
+    color: #a1aab9;
+}
+
+.number3 {
+    font-weight: 500;
+    text-align: center;
+}
+
+.btn{
+    background-color: #48977c;
+    border-color: #fff;
+}
+
+.button{
+    color:ivory;
+}
+
+.contprofiles{
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+@media screen and (max-width: 354px){
+
+    .rounded-circle{ 
+        max-width: 50%;
+        margin-left: auto; 
+        margin-right: auto;
+        display: flex;
+        
+    }
+    
+    .img-profile{
+        display: flex;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 20px;
+        max-width:35%;
+        height: auto;
+        border: solid 0.5px #999;
+        border-radius: 150px;
+        object-fit: cover;
+    }
+
+
+}
