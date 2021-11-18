@@ -51,7 +51,7 @@
                         <div><br>
                             <h1>Ingresa tus datos personales</h1> <br>
                             <div class="row justify-content-center">
-                              <div class="col-md-6 col-lg-10">
+                              <div class="col-md-6 col-lg-12">
                                 <div class="card cards-ps">
                                   <img class="card-img-top" style="float: center;margin-left: 40%;" src="./assets/img/theme/community.png">            
                                     <div class="card-body">
@@ -104,10 +104,7 @@
                                                   <div class="d-flex flex-row flex-wrap justify-content-start ml-4 mt-4">
                                                     <img *ngFor="let url of urls" [src]="url" class="img-fluid img-profile img-thumbnail shadow">
                                                   </div><br>
-                                 
-                                  
-                  
-                                          </form>
+                                             </form>
                                         </form>
                                     </div>
                                   </div> 
@@ -119,7 +116,7 @@
                           <button mat-button matStepperNext style="margin-left: 10px">Siguiente</button>
                     
                         </div>
-                    </mat-step>
+                     </mat-step>
                       <mat-step label= " Medio de pago" [editable]= "true" [completed]="true">
                           <div>
                             <br>
@@ -127,54 +124,47 @@
                           </div>
 
                           <div class="row justify-content-center">
-                            <div class="col-md-6 col-lg-10">
+                            <div class="col-md-6 col-lg-12">
                             <div class="card cards-ps">
                              <img class="card-img-top" style="float: center;margin-left: 40%;" src="./assets/img/theme/bank.png">            
                               <div class="card-body">
                                 <h4 class="card-title">Completa los siguientes datos:</h4>
                                 <form div="form">
-                                    <div class="input-group input-group-alternative">
-                                      <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="bi bi-person"></i></span>
-                                     </div>
-                                      <input #name class="form-control" placeholder="Nombre del titular" type="text" (focus)="focus=true" (blur)="focus=false">
-                                   </div>
-                                <br>
-                               <div class="input-group input-group-alternative">
-                                    <div class="input-group-prepend">
-                                      <span class="input-group-text"><i class="bi bi-credit-card"></i></span>
-                                    </div>
-                                    <input #cuenta class="form-control" placeholder="Numero de cuenta" type="text" (focus)="focus=true" (blur)="focus=false">
-                                </div>
-                              <br>
-                              
-                              <div class="content-select">
-                                <select>
-                                  <option (focus)="focus=true" (blur)="focus=false" selected>Seleccione su banco</option>
-                                  <option>BROU</option>
-                                  <option>SANTANDER</option>
-                                  <option>SCOTIABANK</option>
-                                  <option>ITAU</option>
-                                  <option>BBVA</option>
-                                </select>
-                                <i></i>
+                                        <div class="input-group input-group-alternative">
+                                          <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="bi bi-person"></i></span>
+                                        </div>
+                                          <input #name class="form-control" placeholder="Nombre del titular" type="text" (focus)="focus=true" (blur)="focus=false">
+                                      </div> <br>
+                                      <div class="input-group input-group-alternative">
+                                          <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="bi bi-credit-card"></i></span>
+                                          </div>
+                                          <input #cuenta class="form-control" placeholder="Numero de cuenta" type="text" (focus)="focus=true" (blur)="focus=false">
+                                      </div><br>
+                                  
+                                      <div class="content-select">
+                                        <select>
+                                          <option (focus)="focus=true" (blur)="focus=false" selected>Seleccione su banco</option>
+                                          <option>BROU</option>
+                                          <option>SANTANDER</option>
+                                          <option>SCOTIABANK</option>
+                                          <option>ITAU</option>
+                                          <option>BBVA</option>
+                                        </select>
+                                        <i></i>
+                                      </div>
+                                  </form>
                               </div>
-                               </form>
-                              </div>
-                            </div> 
-                            </div>
-                            </div>
-                          
-            
-                              <br>
-                            <div class="button button-footer-card">
-                              <button mat-button matStepperPrevious >Atrás</button>
-                              <button mat-button matStepperNext style="margin-left: 10px">ENVIAR TODO Y TERMINAR</button>
-                            </div>
-                      
+                          </div> 
+                        </div>
+                      </div><br>
+                      <div class="button button-footer-card">
+                        <button mat-button matStepperPrevious >Atrás</button>
+                        <button mat-button matStepperNext style="margin-left: 10px">ENVIAR TODO Y TERMINAR</button>
+                      </div>
                       </mat-step>
-                     
-                  </mat-horizontal-stepper>
+                    </mat-horizontal-stepper>
               </div>
             </div>
           </div>
