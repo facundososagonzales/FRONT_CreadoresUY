@@ -172,7 +172,6 @@ ul {
 .content-select{
 	max-width: 100%;
 	position: relative;
-  margin-left: -40px;
   display: flex;
   overflow: auto;
 }
