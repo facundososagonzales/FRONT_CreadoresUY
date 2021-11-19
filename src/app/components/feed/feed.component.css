@@ -135,37 +135,27 @@
 
 .description {
     font-size: 16px;
-    line-height: 16px;
-    height: 27px;
-    overflow: hidden;
-  }
-
-.show {
-    overflow: visible;
     height: auto;
   }
 
   .input-group{
     text-align: left;
-   display: flex;
+    display: flex;
     overflow: auto;
     margin: auto;
     margin-left: -40px;
     max-width: 480px;
 }
 
-.card-search{
-    height: 70px;
-    margin-bottom: 14px;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
+.more{
+    margin-top: 10px;
+    font-size: 13px;
+    cursor: pointer;
+    color: #000;
 }
 
-.search-body{
-    display: flex;
-    flex-direction: column;
-   
+.more:hover{
+    color: rgb(8, 57, 204) !important;
 }
 
 @media screen and (max-width: 826px){
@@ -173,13 +163,6 @@
         display:flex;
         flex-direction: column;
         max-width: 95%;
-    }
-
-    .rounded-circle{ 
-        width: 100px;
-       display: block;
-       margin-left: auto; 
-       margin-right: auto;
     }
 
     .card-profile{
@@ -197,11 +180,6 @@
        
     }
 
-    .card-search{
-        margin-bottom: 15px;
-        max-width: 67vw;
-        margin: auto;
-    }
     .input-group input{
         max-height: 30px !important;
         max-width: 350px;

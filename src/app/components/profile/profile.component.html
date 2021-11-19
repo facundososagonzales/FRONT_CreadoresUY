@@ -60,32 +60,38 @@
             </div>
           </div>
         </div>
-        <div class="card card-border shadow mt-5">
-          <h2 class="card-title mt-2" style="text-align: center; font-size:x-large;">Publicaciones de {{nickname}} </h2>
-          <div *ngFor="let element of contentViwer; let i = index" [attr.data-index]="i">
-            <div class="card-deck shadow">
-              <div class="card card-m">
-                <img [ngClass]="{filt: !element['content']['authorized']}" 
-                *ngIf="element['content']['content']['img']!=''" class="card-img-top" 
-                src="{{element['content']['content']['img']}}" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">{{element['content']['content']["title"]}}</h5>
-                    <div *ngIf="element['content']['authorized']" [ngClass]="{show: element['visible']}" class="description">
-                      <p class="card-text">{{element['content']['content']["description"]}}</p>
-                    </div><br>
-                    <button mat-raised-button *ngIf="element['content']['authorized']" (click)="element['visible'] = !element['visible']" style="float: right;">{{element['visible'] ? 'Mostrar menos': 'Mostrar más' }}</button>
-                </div>
-                <div class="card-footer">
-                  <small class="text-muted">Fecha de publicacion: {{element['content']['content']['addedDate'] | date:'short':'UTC'}}</small>
-                  <a class="text-muted-publicadopor" href="" (click)="navToCreatorProfile(element['content']['content']['nickName'])">{{element['content']['content']['nickName']}}
-                    <img src="./assets/img/theme/team-4-800x800.png" class="rounded-circle"
-                    style="width: 20px; height: 20px; margin-left: 5px; float: right;">
-                  </a>
+        <div class="search-results" infinite-scroll
+        [infiniteScrollDistance]="2"
+        [infiniteScrollThrottle]="50"
+        (scrolled)="onScroll()"
+        >
+          <div class="card card-border shadow mt-5">
+            <h2 class="card-title mt-2" style="text-align: center; font-size:x-large;">Publicaciones de {{nickname}} </h2>
+            <div *ngFor="let element of contentViwer; let i = index" [attr.data-index]="i">
+              <div class="card-deck shadow">
+                <div class="card card-m">
+                  <img [ngClass]="{filt: !element['content']['authorized']}" 
+                  *ngIf="element['content']['content']['img']!=''" class="card-img-top" 
+                  src="{{element['content']['content']['img']}}" alt="Card image cap">
+                  <div class="card-body">
+                      <h5 class="card-title">{{element['content']['content']["title"]}}</h5>
+                      <div *ngIf="element['content']['authorized']" [ngClass]="{show: element['visible']}" class="description">
+                        <p *ngIf="!element['visible']" class="card-text">{{ (element['content']['content']['description'].length>240)? (element['content']['content']['description'] | slice:0:240)+'...':(element['content']['content']['description'])}}</p>
+                        <p *ngIf="element['visible']" class="card-text">{{element['content']['content']['description']}}</p>
+                      </div><br>
+                      <a *ngIf="element['content']['authorized']" (click)="scrollToStart($event)" class="text-muted-publicadopor more" (click)="element['visible'] = !element['visible']" style="float: right;">{{ element['visible'] ? 'Mostrar menos': 'Mostrar más' }}</a>
+                  </div>
+                  <div class="card-footer">
+                    <small class="text-muted">Fecha de publicacion: {{element['content']['content']['addedDate'] | date:'short':'UTC'}}</small>
+                    <a class="text-muted-publicadopor" href="" (click)="navToCreatorProfile(element['content']['content']['nickName'])">{{element['content']['content']['nickName']}}
+                      <img src="./assets/img/theme/team-4-800x800.png" class="rounded-circle"
+                      style="width: 20px; height: 20px; margin-left: 5px; float: right;">
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <button mat-raised-button class="mat-m" *ngIf="contentViwer.length==contentByPage" (click)="increaseShow()">Cargar más publicaciones</button>
         </div>
       </div>
     </div>

@@ -190,6 +190,17 @@ blockquote {
 
 }
 
+.more{
+    margin-top: 10px;
+    font-size: 13px;
+    cursor: pointer;
+    color: #000;
+}
+
+.more:hover{
+    color: rgb(8, 57, 204) !important;
+}
+
 @media screen and (max-width: 568px) {
     .container{
         margin: 0px !important;

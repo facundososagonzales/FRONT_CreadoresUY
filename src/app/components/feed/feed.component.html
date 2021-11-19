@@ -30,33 +30,39 @@
             </div>
           </div>
       </div>
-      <div class="pt-lg-md">
-        <div class="row justify-content-center">
-          <div class="col-lg-12">
-            <div class="card card-border">
-              <div class="card">
-                <div *ngFor="let element of contentViwer; let i = index" [attr.data-index]="i">
-                  <div class="card-deck shadow">
-                    <div class="card card-m">
-                      <img *ngIf="element['content']['img']!=''" class="card-img-top" src="{{element['content']['img']}}" alt="Card image cap">
-                      <div class="card-body">
-                          <h5 class="card-title">{{element['content']['title']}}</h5>
+      <div class="search-results" infinite-scroll
+      [infiniteScrollDistance]="2"
+      [infiniteScrollThrottle]="50"
+      (scrolled)="onScroll()"
+      >  
+        <div class="pt-lg-md">
+          <div class="row justify-content-center">
+            <div class="col-lg-12">
+              <div class="card card-border">
+                <div class="card">
+                  <div *ngFor="let element of contentViwer; let i = index" [attr.data-index]="i">
+                    <div class="card-deck shadow">
+                      <div id="card-feed" class="card card-m">
+                        <img *ngIf="element['content']['img']!=''" class="card-img-top" src="{{element['content']['img']}}" alt="Card image cap">
+                        <div class="card-body">
+                          <h5 class="card-title" >{{element['content']['title']}}</h5>
                           <div class="description" [ngClass]="{show: element['visible']}">
-                            <p class="card-text">{{element['content']['description']}}</p>
+                            <p *ngIf="!element['visible']" class="card-text">{{ (element['content']['description'].length>240)? (element['content']['description'] | slice:0:240)+'...':(element['content']['description'])}}</p>
+                            <p *ngIf="element['visible']" class="card-text">{{element['content']['description']}}</p>
                           </div><br>
-                          <button mat-raised-button (click)="element['visible'] = !element['visible']" style="float: right;">{{ element['visible'] ? 'Mostrar menos': 'Mostrar más' }}</button>
-                      </div>  
-                      <div class="card-footer">
-                        <small class="text-muted">Fecha de publicacion: {{element['content']['addedDate'] | date:'short':'UTC'}}</small>
-                        <a class="text-muted-publicadopor" href="" (click)="navToCreatorProfile(element['content']['nickName'])">{{element['content']['nickName']}}
-                          <img src="./assets/img/theme/team-4-800x800.png" class="rounded-circle"
-                          style="width: 20px; margin-left: 5px; float: right;">
-                        </a>
+                          <a (click)="scrollToStart($event)" class="text-muted-publicadopor more" (click)="element['visible'] = !element['visible']" style="float: right;">{{ element['visible'] ? 'Mostrar menos': 'Mostrar más' }}</a>
+                        </div>  
+                        <div class="card-footer">
+                          <small class="text-muted">Fecha de publicacion: {{element['content']['addedDate'] | date:'short':'UTC'}}</small>
+                          <a class="text-muted-publicadopor" [routerLink]="['/creator-Profile',element['content']['nickName']]">{{element['content']['nickName']}}
+                            <img src="./assets/img/theme/team-4-800x800.png" class="rounded-circle"
+                            style="width: 20px; margin-left: 5px; float: right;">
+                          </a>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>  
-                <button mat-raised-button (click)="increaseShow()">Cargar más publicaciones</button>
+                  </div>  
+                </div>
               </div>
             </div>
           </div>
