@@ -68,6 +68,7 @@ import { FeedComponent } from './components/feed/feed.component';
 import { FilterPipe } from './components/pipes/filter.pipe';
 import { BackOfficeComponent } from './components/backOffice/back-office/back-office.component';
 import { SearchComponent } from './components/search/search.component';
+import { CreatePostComponent } from './components/create-post/create-post.component';
 
 @NgModule({
   declarations: [
@@ -83,6 +84,7 @@ import { SearchComponent } from './components/search/search.component';
     FilterPipe,
     BackOfficeComponent,
     SearchComponent,
+    CreatePostComponent,
   ],
   imports: [
     ReactiveFormsModule,
