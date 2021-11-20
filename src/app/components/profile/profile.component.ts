@@ -27,20 +27,19 @@ export class ProfileComponent implements OnInit {
   public page:number = 1;
   public contentByPage:number=8;
   
-  constructor(private router:Router, private route:ActivatedRoute, private http:CreatorServiceService) {
-    this.nickname = this.route.snapshot.paramMap.get('nickname'); 
-    this.profileLoader();
-    this.onScroll();
-   }
+  constructor(private router:Router, private route:ActivatedRoute, private http:CreatorServiceService) {}
 
-  ngOnInit(){
+  async ngOnInit(){
     const token = sessionStorage.getItem('token');
     if(token==null){ 
       this.router.navigate(['/home']);
     }
+    this.nickname = this.route.snapshot.paramMap.get('nickname'); 
+    await this.profileLoader();
+    await this.onScroll();
   }
 
-  profileLoader(){
+  async profileLoader(){
     this.http.creatorProfileLoader(this.nickname).subscribe(res =>{
       if(res['success']){
         this.creatorName=res['obj']['creatorName'];
@@ -55,7 +54,7 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  onScroll(){
+  async onScroll(){
     if(!this.stopper){
       this.http.creatorProfileContentLoader
       (this.nickname,this.getUserId(),this.page.toString(),this.contentByPage.toString()).subscribe(res =>{
@@ -88,8 +87,8 @@ export class ProfileComponent implements OnInit {
     (e.target as Element).parentElement.parentElement.scrollIntoView({block: "start"});
   }
 
-  increaseShow(){
-    this.onScroll();
+  async increaseShow(){
+    await this.onScroll();
   }
 
   getUserId(){

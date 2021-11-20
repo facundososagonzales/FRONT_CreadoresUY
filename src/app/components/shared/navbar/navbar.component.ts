@@ -72,4 +72,8 @@ export class NavbarComponent implements OnInit {
     getNickname(){
         return sessionStorage.getItem('nickname')
     }
+
+    getPath(){
+        return this.router.url;
+    }
 }

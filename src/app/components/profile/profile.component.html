@@ -74,7 +74,7 @@
                   *ngIf="element['content']['content']['img']!=''" class="card-img-top" 
                   src="{{element['content']['content']['img']}}" alt="Card image cap">
                   <div class="card-body">
-                      <h5 class="card-title">{{element['content']['content']["title"]}}</h5>
+                      <h2 class="card-title">{{element['content']['content']["title"]}}</h2>
                       <div *ngIf="element['content']['authorized']" [ngClass]="{show: element['visible']}" class="description">
                         <p *ngIf="!element['visible']" class="card-text">{{ (element['content']['content']['description'].length>240)? (element['content']['content']['description'] | slice:0:240)+'...':(element['content']['content']['description'])}}</p>
                         <p *ngIf="element['visible']" class="card-text">{{element['content']['content']['description']}}</p>

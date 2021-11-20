@@ -12,28 +12,30 @@ import { ContentViwer } from 'src/app/model/ContentViwer';
 export class FeedComponent implements OnInit {
   focus; focus1;
 
-  public stopped:boolean = false;
+  public stopped:boolean;
   public nPage:string = "0";
   public contentNumer:string = "6";
-  public genericLoaded:boolean = false;
+  public genericLoaded:boolean;
   public genericContent = new CreatorContent("999999999","Patrones de diseño en C# Aplicados en ASP", "Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales.",9999,"",null,false,null,false,"","","./assets/img/brand/1.jpg",0,null,null);
-  public contentViwer:ContentViwer[] = [];
+  public contentViwer:ContentViwer[]=[];
   
-  constructor(private router:Router,private http:userServices) {
-    this.onScroll();
-   }
+  constructor(private router:Router,private http:userServices) {}
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     const token = sessionStorage.getItem('token');
      if(token==null){ 
         this.router.navigate(['/home']);
       }
+      this.stopped=false;
+      this.genericLoaded=false;
+      this.contentViwer = [];
+      await this.onScroll();
   }
 
-  onScroll(){
+  async onScroll() : Promise<void>{
     if(!this.stopped){
       this.http.userContent(sessionStorage.getItem("userId"),this.nPage,this.contentNumer).subscribe(res =>{
-        console.log(res);
+        console.log(this.genericLoaded);
         console.log(JSON.stringify(res["obj"]) === '{}');
         if(res["obj"].length>0){
           res["obj"].forEach(element => {
@@ -58,8 +60,8 @@ export class FeedComponent implements OnInit {
     this.nPage = (parseInt(this.nPage)+1).toString();
   }
 
-  increaseShow(e:Event) {
-    this.onScroll();
+  async increaseShow(e:Event) {
+    await this.onScroll();
   }
 
   scrollToStart(e) {

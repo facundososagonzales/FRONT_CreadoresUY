@@ -24,6 +24,17 @@
           </div>
         </div>
       </div>
+      <ul *ngIf="getPath().includes('backOffice')" class="navbar-nav navbar-nav-hover align-items-lg-center">
+        <li class="nav-item dropdown">
+          <a class="nav-link no-caret" data-toggle="dropdown" role="button">
+            <i class="ni ni-collection d-lg-none"></i>
+            <span class="nav-link-inner--text">Funcionalidades</span>
+          </a>
+          <div class="dropdown-menu">
+            <a [routerLink]="['/user-profile']" class="dropdown-item">Profile</a>
+          </div>
+        </li>
+      </ul>
       <ul class="navbar-nav align-items-lg-center ml-lg-auto">
         <li class="nav-item d-none d-lg-block ml-lg-1">
           <div [ngClass]="{'focused':focus===true}">
