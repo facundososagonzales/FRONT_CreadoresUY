@@ -12,6 +12,7 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { FeedComponent } from './components/feed/feed.component';
 import { BackOfficeComponent } from './components/backOffice/back-office/back-office.component';
 import { SearchComponent } from './components/search/search.component';
+import { CreatePostComponent } from './components/create-post/create-post.component';
 
 const routes: Routes =[
     { path: 'home',             component: HomeComponent },
@@ -23,6 +24,7 @@ const routes: Routes =[
     { path: 'feed',          component: FeedComponent },
     { path: 'backOffice',          component: BackOfficeComponent},
     { path: 'search',          component: SearchComponent},
+    { path: 'createPost',          component: CreatePostComponent},
     { path: '', redirectTo: 'home', pathMatch: 'full'}
 ];
 

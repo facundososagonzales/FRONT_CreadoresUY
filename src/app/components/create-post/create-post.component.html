@@ -1,0 +1,322 @@
+<main>
+
+    <section class="section section-shaped section-lg">
+      <div class="shape shape-style-1 shape-primary">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="container cont pt-lg-md">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="card bg-secondary shadow border-0">
+              <div class="card-header bg-white pb-5">
+                <h1>Elige el tipo de contenido a publicar:</h1><br>
+                
+                <mat-radio-group class="example-radio-group" color="accent" (change)="changeComboo($event)" [(ngModel)]="contSelec">
+                  <mat-radio-button color="accent" class="example-radio-button" *ngFor="let cont of contenidos" [value]="cont">
+                    {{cont}}
+                  </mat-radio-button>
+                  <div class="input-container">
+                    <div *ngIf="contSelec=='Texto'"><br>
+                        <div class="row justify-content-center">
+                          <div class="col-md-6 col-lg-10">
+                          <div class="card cards-ps">
+                           <img class="card-img-top" style="float: center;margin-left: 40%;" src="./assets/img/theme/texto.png">            
+                            <div class="card-body">
+                              <h4 class="card-title">Completa los siguientes datos:</h4>
+                              <form div="form">
+                                <form div="form" style="max-width: 100%; text-align: center; margin:auto;">
+                                      <div class="input-group input-group-alternative">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text"><i class="bi bi-fonts"></i></span>
+                                        </div>
+                                          <input #title class="form-control" placeholder="Titulo" type="text" (focus)="focus=true" (blur)="focus=false">
+                                      </div>
+                                      <br><h4 class="card-title">Añade una descripción:</h4>
+                                    <ckeditor [editor]="editor" class="editortext" ></ckeditor><br>
+                                 </form>
+                              </form>
+                            </div>
+                          </div> 
+                        </div>
+                          <div class="col-md-6 col-lg-10" style="margin-top: 20px;">
+                              <div class="card cards-ps">
+                                  <br><h4 class="card-title">¿Quienes verán tu publicación?</h4>
+                                  <mat-radio-group class="visualizan-group" color="accent" (change)="changeComboo($event)" [(ngModel)]="tipovisAsig">
+                                        <mat-radio-button class="visualizan" color="accent" *ngFor="let item of visualizan" [value]="item">{{item}} </mat-radio-button> 
+                                            <div class="input-container">
+                                                <div *ngIf="tipovisAsig=='Seleccionar Suscripción'"><br>
+                                                      <h4 class="card-title">Selecciona uno de tus planes de Suscripción disponibles:</h4>
+                                                      <mat-radio-group class="visualizan-group" color="accent" (change)="changeComboo($event)" [(ngModel)]="tipoSusAsig">
+                                                        <mat-radio-button class="visualizan" color="accent" *ngFor="let item of tipoSuscripcion" [value]="item">{{item}} </mat-radio-button>
+                                                      </mat-radio-group>
+                                                </div>
+                                            </div> 
+                                  </mat-radio-group><br>
+                                  <button mat-button style="text-align: center;" >Crear Publicación</button>  
+                              </div>
+                             </div>
+                         </div>
+                      </div>
+                    <div *ngIf="contSelec=='Imagen'">
+                      <div class="row justify-content-center">
+                        <div class="col-md-6 col-lg-10">
+                        <div class="card cards-ps">
+                         <img class="card-img-top" style="float: center;margin-left: 40%;" src="./assets/img/theme/imagen.png">            
+                          <div class="card-body">
+                            <h4 class="card-title">Completa los siguientes datos:</h4>
+                            <form div="form">
+                              <form div="form" style="max-width: 100%; text-align: center; margin:auto;">
+                                    <div class="input-group input-group-alternative">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="bi bi-fonts"></i></span>
+                                      </div>
+                                        <input #title class="form-control" placeholder="Titulo" type="text" (focus)="focus=true" (blur)="focus=false">
+                                    </div><br>
+                                    <div class="input-group input-group-alternative">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="bi bi-image-fill"></i></span>
+                                      </div>
+                                      <input #profile class="form-control form-control-md" id="formFileLg" type="file" style="display:none;" (change)="detectFiles($event)" />
+                                      <label for="formFileLg" style="color: #aeb6be; margin-left: -10px;">Adjuntar Imagen</label>
+                                    </div>
+                                    <br> <h4 class="card-title">Añade una descripción:</h4>
+                                 <ckeditor [editor]="editor" class="editortext" ></ckeditor><br>
+                               </form>
+                            </form>
+                          </div>
+                        </div> 
+                      </div>
+                        <div class="col-md-6 col-lg-10" style="margin-top: 20px;">
+                            <div class="card cards-ps">
+                                <br><h4 class="card-title">¿Quienes verán tu publicación?</h4>
+                                <mat-radio-group class="visualizan-group" color="accent" (change)="changeComboo($event)" [(ngModel)]="tipovisAsig">
+                                      <mat-radio-button class="visualizan" color="accent" *ngFor="let item of visualizan" [value]="item">{{item}} </mat-radio-button> 
+                                          <div class="input-container">
+                                              <div *ngIf="tipovisAsig=='Seleccionar Suscripción'"><br>
+                                                    <h4 class="card-title">Selecciona uno de tus planes de Suscripción disponibles:</h4>
+                                                    <mat-radio-group class="visualizan-group" color="accent" (change)="changeComboo($event)" [(ngModel)]="tipoSusAsig">
+                                                      <mat-radio-button class="visualizan" color="accent" *ngFor="let item of tipoSuscripcion" [value]="item">{{item}} </mat-radio-button>
+                                                    </mat-radio-group>
+                                              </div>
+                                          </div> 
+                                </mat-radio-group><br>
+                                <button mat-button style="text-align: center;" >Crear Publicación</button>  
+                            </div>
+                           </div>
+                       </div>
+                    </div>
+                    <div *ngIf="contSelec=='Video'"><br>
+                      <div class="row justify-content-center">
+                        <div class="col-md-6 col-lg-10">
+                        <div class="card cards-ps">
+                         <img class="card-img-top" style="float: center;margin-left: 40%;" src="./assets/img/theme/video.png">            
+                          <div class="card-body">
+                            <h4 class="card-title">Completa los siguientes datos:</h4>
+                            <form div="form">
+                              <form div="form" style="max-width: 100%; text-align: center; margin:auto;">
+                                    <div class="input-group input-group-alternative">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="bi bi-link-45deg"></i></span>
+                                      </div>
+                                        <input #title class="form-control" placeholder="Titulo" type="text" (focus)="focus=true" (blur)="focus=false">
+                                    </div><br>
+                                    <div class="input-group input-group-alternative">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="bi bi-fonts"></i></span>
+                                      </div>
+                                        <input #title class="form-control" placeholder="Link Del Vídeo" type="text" (focus)="focus=true" (blur)="focus=false">
+                                    </div>
+                                    <br><h4 class="card-title">Añade una descripción:</h4>
+                                 <ckeditor [editor]="editor" class="editortext" ></ckeditor><br>
+                               </form>
+                            </form>
+                          </div>
+                        </div> 
+                      </div>
+                        <div class="col-md-6 col-lg-10" style="margin-top: 20px;">
+                            <div class="card cards-ps">
+                                <br><h4 class="card-title">¿Quienes verán tu publicación?</h4>
+                                <mat-radio-group class="visualizan-group" color="accent" (change)="changeComboo($event)" [(ngModel)]="tipovisAsig">
+                                      <mat-radio-button class="visualizan" color="accent" *ngFor="let item of visualizan" [value]="item">{{item}} </mat-radio-button> 
+                                          <div class="input-container">
+                                              <div *ngIf="tipovisAsig=='Seleccionar Suscripción'"><br>
+                                                    <h4 class="card-title">Selecciona uno de tus planes de Suscripción disponibles:</h4>
+                                                    <mat-radio-group class="visualizan-group" color="accent" (change)="changeComboo($event)" [(ngModel)]="tipoSusAsig">
+                                                      <mat-radio-button class="visualizan" color="accent" *ngFor="let item of tipoSuscripcion" [value]="item">{{item}} </mat-radio-button>
+                                                    </mat-radio-group>
+                                              </div>
+                                          </div> 
+                                </mat-radio-group><br>
+                                <button mat-button style="text-align: center;" >Crear Publicación</button>  
+                            </div>
+                           </div>
+                       </div>
+                      </div>
+                  </div>
+                  <div *ngIf="contSelec=='Livestream'"><br>
+                    <div class="row justify-content-center">
+                      <div class="col-md-6 col-lg-10">
+                      <div class="card cards-ps">
+                       <img class="card-img-top" style="float: center;margin-left: 40%;" src="./assets/img/theme/live.png">            
+                        <div class="card-body">
+                          <h4 class="card-title">Completa los siguientes datos:</h4>
+                          <form div="form">
+                            <form div="form" style="max-width: 100%; text-align: center; margin:auto;">
+                                  <div class="input-group input-group-alternative">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text"><i class="bi bi-link-45deg"></i></span>
+                                    </div>
+                                      <input #title class="form-control" placeholder="Titulo" type="text" (focus)="focus=true" (blur)="focus=false">
+                                  </div><br>
+                                  <div class="input-group input-group-alternative">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text"><i class="bi bi-fonts"></i></span>
+                                    </div>
+                                      <input #title class="form-control" placeholder="Link Del Livestream" type="text" (focus)="focus=true" (blur)="focus=false">
+                                  </div>
+                                  <br><h4 class="card-title">Añade una descripción:</h4>
+                               <ckeditor [editor]="editor" class="editortext" ></ckeditor><br>
+                             </form>
+                          </form>
+                        </div>
+                      </div> 
+                    </div>
+                      <div class="col-md-6 col-lg-10" style="margin-top: 20px;">
+                          <div class="card cards-ps">
+                              <br><h4 class="card-title">¿Quienes verán tu publicación?</h4>
+                              <mat-radio-group class="visualizan-group" color="accent" (change)="changeComboo($event)" [(ngModel)]="tipovisAsig">
+                                    <mat-radio-button class="visualizan" color="accent" *ngFor="let item of visualizan" [value]="item">{{item}} </mat-radio-button> 
+                                        <div class="input-container">
+                                            <div *ngIf="tipovisAsig=='Seleccionar Suscripción'"><br>
+                                                  <h4 class="card-title">Selecciona uno de tus planes de Suscripción disponibles:</h4>
+                                                  <mat-radio-group class="visualizan-group" color="accent" (change)="changeComboo($event)" [(ngModel)]="tipoSusAsig">
+                                                    <mat-radio-button class="visualizan" color="accent" *ngFor="let item of tipoSuscripcion" [value]="item">{{item}} </mat-radio-button>
+                                                  </mat-radio-group>
+                                            </div>
+                                        </div> 
+                              </mat-radio-group><br>
+                              <button mat-button style="text-align: center;" >Crear Publicación</button>  
+                          </div>
+                         </div>
+                     </div>
+                    </div>
+                      <div *ngIf="contSelec=='Audio'"><br>
+                        <div class="row justify-content-center">
+                          <div class="col-md-6 col-lg-10">
+                          <div class="card cards-ps">
+                           <img class="card-img-top" style="float: center;margin-left: 40%;" src="./assets/img/theme/audio.png">            
+                            <div class="card-body">
+                              <h4 class="card-title">Completa los siguientes datos:</h4>
+                              <form div="form">
+                                <form div="form" style="max-width: 100%; text-align: center; margin:auto;">
+                                      <div class="input-group input-group-alternative">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text"><i class="bi bi-link-45deg"></i></span>
+                                        </div>
+                                          <input #title class="form-control" placeholder="Titulo" type="text" (focus)="focus=true" (blur)="focus=false">
+                                      </div><br>
+                                      <div class="input-group input-group-alternative">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text"><i class="bi bi-fonts"></i></span>
+                                        </div>
+                                          <input #title class="form-control" placeholder="Link Del Audio" type="text" (focus)="focus=true" (blur)="focus=false">
+                                      </div>
+                                      <br><h4 class="card-title">Añade una descripción:</h4>
+                                   <ckeditor [editor]="editor" class="editortext" ></ckeditor><br>
+                                 </form>
+                              </form>
+                            </div>
+                          </div> 
+                        </div>
+                          <div class="col-md-6 col-lg-10" style="margin-top: 20px;">
+                              <div class="card cards-ps">
+                                  <br><h4 class="card-title">¿Quienes verán tu publicación?</h4>
+                                  <mat-radio-group class="visualizan-group" color="accent" (change)="changeComboo($event)" [(ngModel)]="tipovisAsig">
+                                        <mat-radio-button class="visualizan" color="accent" *ngFor="let item of visualizan" [value]="item">{{item}} </mat-radio-button> 
+                                            <div class="input-container">
+                                                <div *ngIf="tipovisAsig=='Seleccionar Suscripción'"><br>
+                                                      <h4 class="card-title">Selecciona uno de tus planes de Suscripción disponibles:</h4>
+                                                      <mat-radio-group class="visualizan-group" color="accent" (change)="changeComboo($event)" [(ngModel)]="tipoSusAsig">
+                                                        <mat-radio-button class="visualizan" color="accent" *ngFor="let item of tipoSuscripcion" [value]="item">{{item}} </mat-radio-button>
+                                                      </mat-radio-group>
+                                                </div>
+                                            </div> 
+                                  </mat-radio-group><br>
+                                  <button mat-button style="text-align: center;" >Crear Publicación</button>  
+                              </div>
+                             </div>
+                         </div>
+                        </div>
+                        <div *ngIf="contSelec=='Link'"><br>
+                          <div class="row justify-content-center">
+                            <div class="col-md-6 col-lg-10">
+                            <div class="card cards-ps">
+                             <img class="card-img-top" style="float: center;margin-left: 40%;" src="./assets/img/theme/link.png">            
+                              <div class="card-body">
+                                <h4 class="card-title">Completa los siguientes datos:</h4>
+                                <form div="form">
+                                  <form div="form" style="max-width: 100%; text-align: center; margin:auto;">
+                                        <div class="input-group input-group-alternative">
+                                          <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="bi bi-link-45deg"></i></span>
+                                          </div>
+                                            <input #title class="form-control" placeholder="Titulo" type="text" (focus)="focus=true" (blur)="focus=false">
+                                        </div><br>
+                                        <div class="input-group input-group-alternative">
+                                          <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="bi bi-fonts"></i></span>
+                                          </div>
+                                            <input #title class="form-control" placeholder="Inserta tu link" type="text" (focus)="focus=true" (blur)="focus=false">
+                                        </div>
+                                        <br><h4 class="card-title">Añade una descripción:</h4>
+                                     <ckeditor [editor]="editor" class="editortext" ></ckeditor><br>
+                                   </form>
+                                </form>
+                              </div>
+                            </div> 
+                          </div>
+                            <div class="col-md-6 col-lg-10" style="margin-top: 20px;">
+                                <div class="card cards-ps">
+                                    <br><h4 class="card-title">¿Quienes verán tu publicación?</h4>
+                                    <mat-radio-group class="visualizan-group" color="accent" (change)="changeComboo($event)" [(ngModel)]="tipovisAsig">
+                                          <mat-radio-button class="visualizan" color="accent" *ngFor="let item of visualizan" [value]="item">{{item}} </mat-radio-button> 
+                                              <div class="input-container">
+                                                  <div *ngIf="tipovisAsig=='Seleccionar Suscripción'"><br>
+                                                        <h4 class="card-title">Selecciona uno de tus planes de Suscripción disponibles:</h4>
+                                                        <mat-radio-group class="visualizan-group" color="accent" (change)="changeComboo($event)" [(ngModel)]="tipoSusAsig">
+                                                          <mat-radio-button class="visualizan" color="accent" *ngFor="let item of tipoSuscripcion" [value]="item">{{item}} </mat-radio-button>
+                                                        </mat-radio-group>
+                                                  </div>
+                                              </div> 
+                                    </mat-radio-group><br>
+                                    <button mat-button style="text-align: center;" >Crear Publicación</button>  
+                                </div>
+                               </div>
+                           </div>
+                          </div>
+                </mat-radio-group><br>
+                <div class="row justify-content-center">
+                  <div class="col-md-6 col-lg-10">
+                    <div class="card cards-ps">
+                      <img class="card-img-top" style="width: 20%;margin-left: 40%;" src="./assets/img/theme/idea.png">            
+                        <div class="card-body">
+                          <h4 class="card-title">¡CREA Tips!</h4>
+                          <p><i><small>Los creadores que publican contenido exclusivo para suscriptores por lo menos dos veces al mes suelen retener a más usuarios.</small></i></p>
+                        </div>
+                    </div>
+                  </div>
+                </div> 
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
