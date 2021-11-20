@@ -70,6 +70,7 @@ import { BackOfficeComponent } from './components/backOffice/back-office/back-of
 import { SearchComponent } from './components/search/search.component';
 import { CreatePostComponent } from './components/create-post/create-post.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { UserEditComponent } from './components/backOffice/user-edit/user-edit.component';
 
 
 @NgModule({
@@ -87,6 +88,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     BackOfficeComponent,
     SearchComponent,
     CreatePostComponent,
+    UserEditComponent,
   ],
   imports: [
     ReactiveFormsModule,

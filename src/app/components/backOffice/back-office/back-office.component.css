@@ -1,37 +1,6 @@
-.section-shaped .shape {
-    background: linear-gradient(45deg, #27798f 15%, #8fb7ad 90%);
-}
-
 .cont{
-    margin-top: 20px;
-    text-align: center;
-  
-}
-table {
+    display: flex;
     width: 100%;
-
-  }
-
-.graficas{
-    max-width: 100%;
-    flex-direction:row;
-    justify-content: center;
-    margin-bottom: 15px;
-}
-
-
-.graficasindv{
-    margin-top: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    font-family: "Open Sans";
-
-}
-
-.card-title{
-    font-size: large;
-    font-family: "Open Sans";
-    font-weight: bold;
-    
+    margin-left: auto;
+    margin-right: auto;
 }
