@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Pipe, PipeTransform } from '@angular/core';
 import { userServices } from 'src/app/services/UserServices/userServices';
-import { Content } from '@angular/compiler/src/render3/r3_ast';
 import { CreatorContent } from 'src/app/model/CreatorContent';
 import { ContentViwer } from 'src/app/model/ContentViwer';
 
@@ -14,6 +12,7 @@ import { ContentViwer } from 'src/app/model/ContentViwer';
 export class FeedComponent implements OnInit {
   focus; focus1;
 
+  public stopped:boolean = false;
   public nPage:string = "0";
   public contentNumer:string = "6";
   public genericLoaded:boolean = false;
@@ -21,7 +20,7 @@ export class FeedComponent implements OnInit {
   public contentViwer:ContentViwer[] = [];
   
   constructor(private router:Router,private http:userServices) {
-    this.showContent();
+    this.onScroll();
    }
 
   ngOnInit(): void {
@@ -31,31 +30,40 @@ export class FeedComponent implements OnInit {
       }
   }
 
-  showContent(){
-    this.http.userContent(sessionStorage.getItem("userId"),this.nPage,this.contentNumer).subscribe(res =>{
-      console.log(res);
-      console.log(JSON.stringify(res["obj"]) === '{}');
-      if(res["obj"].length>0){
-        res["obj"].forEach(element => {
-          element['img']='./assets/img/brand/1.jpg';
-          this.contentViwer.push(new ContentViwer(false,element));
-        });
-      }
-      if((!this.genericLoaded) && (!(res["obj"].length>0))){
-        this.contentViwer.push(new ContentViwer(false,this.genericContent));
-        this.genericLoaded=true;
-      }else if(this.genericLoaded){
-        this.genericLoaded=false;
-        this.contentViwer.forEach((element, index)=>{
-          if(element.content.id==this.genericContent.id) delete this.contentViwer[index];
-        });
-      }
-    });
+  onScroll(){
+    if(!this.stopped){
+      this.http.userContent(sessionStorage.getItem("userId"),this.nPage,this.contentNumer).subscribe(res =>{
+        console.log(res);
+        console.log(JSON.stringify(res["obj"]) === '{}');
+        if(res["obj"].length>0){
+          res["obj"].forEach(element => {
+            element['img']='./assets/img/brand/1.jpg';
+            this.contentViwer.push(new ContentViwer(false,element));
+          });
+        }
+        if(res["obj"].length<this.contentNumer){
+          this.stopped=true;
+        }
+        if((!this.genericLoaded) && (!(res["obj"].length>0))){
+          this.contentViwer.push(new ContentViwer(false,this.genericContent));
+          this.genericLoaded=true;
+        }else if(this.genericLoaded){
+          this.genericLoaded=false;
+          this.contentViwer.forEach((element, index)=>{
+            if(element.content.id==this.genericContent.id) delete this.contentViwer[index];
+          });
+        }
+      });
+    }
     this.nPage = (parseInt(this.nPage)+1).toString();
   }
 
-  increaseShow() {
-    this.showContent();
+  increaseShow(e:Event) {
+    this.onScroll();
+  }
+
+  scrollToStart(e) {
+    (e.target as Element).parentElement.parentElement.scrollIntoView({block: "start"});
   }
 
   getUserImage(){

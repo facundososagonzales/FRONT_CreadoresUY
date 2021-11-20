@@ -69,6 +69,8 @@ import { FilterPipe } from './components/pipes/filter.pipe';
 import { BackOfficeComponent } from './components/backOffice/back-office/back-office.component';
 import { SearchComponent } from './components/search/search.component';
 import { CreatePostComponent } from './components/create-post/create-post.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+
 
 @NgModule({
   declarations: [
@@ -144,7 +146,8 @@ import { CreatePostComponent } from './components/create-post/create-post.compon
     CKEditorModule,
     NgxPayPalModule,
     ChartsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    InfiniteScrollModule
   ],
   providers: [],
   bootstrap: [AppComponent]
