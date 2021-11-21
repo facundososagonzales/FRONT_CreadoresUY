@@ -73,6 +73,10 @@ export class NavbarComponent implements OnInit {
         return sessionStorage.getItem('nickname')
     }
 
+    getimgProfile(){
+        return sessionStorage.getItem('imgProfile');
+    }
+
     getPath(){
         return this.router.url;
     }

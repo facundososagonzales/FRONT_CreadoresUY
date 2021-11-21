@@ -31,7 +31,7 @@
             <span class="nav-link-inner--text">Funcionalidades</span>
           </a>
           <div class="dropdown-menu">
-            <a [routerLink]="['/user-profile']" class="dropdown-item">Profile</a>
+            <a [routerLink]="['/backOffice']" class="dropdown-item">Back Office</a>
           </div>
         </li>
       </ul>
@@ -60,7 +60,8 @@
           <div class="profile-header-container">
             <div [matMenuTriggerFor]="beforeMenu">
               <div class="profile-header-img">
-                <img class="img-fluid img-circle rounded-circle" src="./assets/img/theme/team-4-800x800.png"/>
+                <img *ngIf="getimgProfile()===''" class="img-fluid img-circle rounded-circle" src="./assets/img/theme/team-4-800x800.png"/>
+                <img *ngIf="getimgProfile()!==''" class="img-fluid img-circle rounded-circle" src="{{getimgProfile()}}"/>
                 <small style="margin-left: 12px;">{{getName()}}</small>
               </div>
             </div>
@@ -76,7 +77,8 @@
           <div class="profile-header-container">
             <div [matMenuTriggerFor]="beforeMenu">
               <div class="profile-header-img">
-                <img class="img-fluid img-circle rounded-circle" src="./assets/img/theme/team-4-800x800.png"/>
+                <img *ngIf="getimgProfile()===''" class="img-fluid img-circle rounded-circle" src="./assets/img/theme/team-4-800x800.png"/>
+                <img *ngIf="getimgProfile()!==''" class="img-fluid img-circle rounded-circle" src="{{getimgProfile()}}"/>
                 <small style="margin-left: 12px;">{{getName()}}</small>
               </div>
             </div>
@@ -92,7 +94,8 @@
           <div class="profile-header-container">
             <div [matMenuTriggerFor]="beforeMenu">
               <div class="profile-header-img">
-                <img class="img-fluid img-circle rounded-circle" src="./assets/img/theme/team-4-800x800.png"/>
+                <img *ngIf="getimgProfile()===''" class="img-fluid img-circle rounded-circle" src="./assets/img/theme/team-4-800x800.png"/>
+                <img *ngIf="getimgProfile()!==''" class="img-fluid img-circle rounded-circle" src="{{getimgProfile()}}"/>
                 <small style="margin-left: 12px;">{{getName()}}</small>
               </div>
             </div>

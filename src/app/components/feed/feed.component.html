@@ -14,8 +14,8 @@
     <div class="todo justify-content-center">
       <div class= "pt-lg-md">
         <div class="card card-profile card-border">
-            <img *ngIf="getUserImage()==''" class="img-fluid img-circle img-profile shadow" style="text-align:center; margin-top: 10px;" src="./assets/img/theme/kanna-kamui-cute.jpg" alt="Card image cap">
-            <img *ngIf="getUserImage()!=''"class="img-fluid img-circle img-profile shadow" style="text-align:center; margin-top: 10px;" src="{{getUserImage()}}" alt="Card image cap">
+            <img *ngIf="getUserImage()==''" class="img-fluid img-circle img-profile shadow" style="text-align:center; margin-top: 10px;" src="./assets/img/theme/kanna-kamui-cute.jpg">
+            <img *ngIf="getUserImage()!=''"class="img-fluid img-circle img-profile shadow" style="text-align:center; margin-top: 10px;" src="{{getUserImage()}}">
             <div class="card-body px-lg-5 py-lg-4">
               <h5 class="card-title" style="text-align: center;">¡Hola {{getUserNickname()}}!</h5>
             </div>
