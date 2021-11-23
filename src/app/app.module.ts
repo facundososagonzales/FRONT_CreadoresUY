@@ -70,7 +70,11 @@ import { BackOfficeComponent } from './components/backOffice/back-office/back-of
 import { SearchComponent } from './components/search/search.component';
 import { CreatePostComponent } from './components/create-post/create-post.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { UserEditComponent } from './components/backOffice/user-edit/user-edit.component';
+import { UserEditComponent } from './components/backOffice/user-edit/user-edit.component'
+import { TextComponent } from './components/create-post/text/text.component';
+import { ImageComponent } from './components/create-post//image/image.component';
+import { VideoComponent } from './components/create-post//video/video.component';
+import { LinkComponent } from './components/create-post//link/link.component';
 
 
 @NgModule({
@@ -89,6 +93,10 @@ import { UserEditComponent } from './components/backOffice/user-edit/user-edit.c
     SearchComponent,
     CreatePostComponent,
     UserEditComponent,
+    TextComponent,
+    ImageComponent,
+    VideoComponent,
+    LinkComponent,
   ],
   imports: [
     ReactiveFormsModule,
