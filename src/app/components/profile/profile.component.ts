@@ -32,10 +32,6 @@ export class ProfileComponent implements OnInit {
   constructor(private router:Router, private route:ActivatedRoute, private http:CreatorServiceService) {}
 
   async ngOnInit(){
-    const token = sessionStorage.getItem('token');
-    if(token==null){ 
-      this.router.navigate(['/home']);
-    }
     this.nickname = this.route.snapshot.paramMap.get('nickname'); 
     await this.profileLoader();
     await this.onScroll();
