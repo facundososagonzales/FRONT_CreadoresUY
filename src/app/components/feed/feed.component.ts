@@ -35,8 +35,6 @@ export class FeedComponent implements OnInit {
   async onScroll() : Promise<void>{
     if(!this.stopped){
       this.http.userContent(sessionStorage.getItem("userId"),this.nPage,this.contentNumer).subscribe(res =>{
-        console.log(this.genericLoaded);
-        console.log(JSON.stringify(res["obj"]) === '{}');
         if(res["obj"].length>0){
           res["obj"].forEach(element => {
             element['img']='./assets/img/brand/1.jpg';
@@ -46,7 +44,7 @@ export class FeedComponent implements OnInit {
         if(res["obj"].length<this.contentNumer){
           this.stopped=true;
         }
-        if((!this.genericLoaded) && (!(res["obj"].length>0))){
+        if((!this.genericLoaded) && (JSON.stringify(res["obj"]) === '[]')){
           this.contentViwer.push(new ContentViwer(false,this.genericContent));
           this.genericLoaded=true;
         }else if(this.genericLoaded){

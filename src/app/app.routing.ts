@@ -24,7 +24,7 @@ const routes: Routes =[
     { path: 'logout',          component: LogoutComponent },
     { path: 'feed',          component: FeedComponent },
     { path: 'backOffice',          component: BackOfficeComponent},
-    { path: 'search',          component: SearchComponent},
+    { path: 'search/:querry',          component: SearchComponent},
     { path: 'createPost',          component: CreatePostComponent},
     { path: 'backOffice/user-edit/:idUser',          component: UserEditComponent},
     { path: '', redirectTo: 'home', pathMatch: 'full'}

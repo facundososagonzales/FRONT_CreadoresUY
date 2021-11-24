@@ -1,13 +1,11 @@
-import { CreatorContent } from "./CreatorContent";
-
-export class CreatorProfile {
+export interface searchProfile {
+    id: string;
     creatorName: string;
+    nickName: string;
     creatorImage: string;
     coverImage: string;
     cantSeguidores: number;
     cantSubscriptores: number;
     contentDescription: string;
-    biography: string;
-    youtubeLink: string;
-    plans: any[];
+    categorys: string[];
 }

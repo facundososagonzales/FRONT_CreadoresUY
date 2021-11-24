@@ -96,6 +96,10 @@ export class ProfileComponent implements OnInit {
   }
 
   getUserId(){
-    return sessionStorage.getItem('userId');
+    if(sessionStorage.getItem('userId')!=null){
+      return sessionStorage.getItem('userId');
+    }else{
+      return "0";
+    }
   }
 }

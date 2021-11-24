@@ -14,68 +14,42 @@
       <div class="cont">
         <div class="card shadow">
           <div class="col-12 card card-main bg-white">
-            <div class="search-container w-100">
+            <form class="search-container w-100">
               <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <button type="button" class="button-search"><mat-icon aria-hidden="false" aria-label="Example home icon">search</mat-icon></button>
-                  </span>
-                </div>
-                <input class="form-control" placeholder="Buscar..." type="search" (focus)="focus=true" (blur)="focus=false">
+                <button type="submit" (click)="getProrfileSearch()" class="button-search">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <mat-icon aria-hidden="false" aria-label="Example home icon">search</mat-icon>
+                    </span>
+                  </div>
+                </button>
+                <input (input)="inputText($event)" value="{{searchString}}" class="form-control" placeholder="Buscar..." type="search" (focus)="focus=true" (blur)="focus=false">
               </div>
-              <button mat-raised-button>Buscar</button> 
-            </div>
-            <div class="cont-profiles mt-2">
-              <div class="card-main">
-                <div class="profile-container">
-                  <img class="img-fluid img-circle img-profile" src="./assets/img/theme/profile.png"  alt="Card image cap">
-                  <div class="text-container">
-                    <h3 class="creator-name">Harold</h3>
-                    <p class="descripcion p-2 mt-2 bg-primary rounded text-white stats">Description resumida del creador creador creadorcreador creador creador poner aqui aquiaqui aquiaqui aqui aqui aqui aquiaquiaqui aqui aquiaqui</p>
-                    <p class="descripcion">Description resumida del creador poner aqui</p>
-                  </div>
-                  <div style="text-align: center;" class="namber-cont">
-                    <p class="suscriptores">Suscriptores</p> <span >8.9</span>
-                    <p class="suscriptores">Suscriptores</p> <span >8.9</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="hr-search"></div>
-            <div class="cont-profiles mt-2">
-              <div class="card-main">
-                <div class="profile-container">
-                  <img class="img-fluid img-circle img-profile" src="./assets/img/theme/profile.png"  alt="Card image cap">
-                  <div class="text-container">
-                    <h3 class="creator-name">Harold</h3>
-                    <p class="descripcion p-2 mt-2 bg-primary rounded text-white stats">Description resumida del creador creador creadorcreador creador creador poner aqui aquiaqui aquiaqui aqui aqui aqui aquiaquiaqui aqui aquiaqui</p>
-                    <p class="descripcion">Description resumida del creador poner aqui</p>
-                  </div>
-                  <div style="text-align: center;" class="namber-cont">
-                    <p class="suscriptores">Suscriptores</p> <span >8.9</span>
-                    <p class="suscriptores">Suscriptores</p> <span >8.9</span>
+              <button type="button" (click)="getProrfileSearch()" style="font-size: large;" mat-raised-button>Buscar</button> 
+            </form>
+            <div class="search-results" infinite-scroll
+            [infiniteScrollDistance]="2"
+            [infiniteScrollThrottle]="50"
+            (scrolled)="onScroll()"
+            >
+              <div *ngFor="let element of searchProfile" class="cont-profiles mt-2">
+                <div class="card-main">
+                  <div (click)="navToSearch(element['nickName'])" class="profile-container">
+                    <img class="img-fluid img-circle img-profile" src="{{element['creatorImage']}}"  alt="Card image cap">
+                    <div class="text-container">
+                      <h3 class="creator-name">{{element['creatorName']}}</h3>
+                      <p class="descripcion p-2 mt-2 bg-primary rounded text-white stats">{{element['contentDescription']}}</p>
+                      <p class="descripcion">Creando {{'categoria'}} y {{'categoria'}}</p>
+                    </div>
+                    <div style="text-align: center;" class="namber-cont">
+                      <p class="suscriptores">Suscriptores</p> <span >{{element['cantSubscriptores']}}</span>
+                      <p class="suscriptores">Seguidores</p> <span >{{element['cantSeguidores']}}</span>
+                    </div>
                   </div>
                 </div>
+                <div class="hr-search"></div>
               </div>
             </div>
-            <div class="hr-search"></div>
-            <div class="cont-profiles mt-2">
-              <div class="card-main">
-                <div class="profile-container">
-                  <img class="img-fluid img-circle img-profile" src="./assets/img/theme/profile.png"  alt="Card image cap">
-                  <div class="text-container">
-                    <h3 class="creator-name">Harold</h3>
-                    <p class="descripcion p-2 mt-2 bg-primary rounded text-white stats">Description resumida del creador creador creadorcreador creador creador poner aqui aquiaqui aquiaqui aqui aqui aqui aquiaquiaqui aqui aquiaqui</p>
-                    <p class="descripcion">Description resumida del creador poner aqui</p>
-                  </div>
-                  <div style="text-align: center;" class="namber-cont">
-                    <p class="suscriptores">Suscriptores</p> <span >8.9</span>
-                    <p class="suscriptores">Suscriptores</p> <span >8.9</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="hr-search"></div>
           </div>
         </div>
       </div>

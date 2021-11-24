@@ -38,14 +38,18 @@
       <ul class="navbar-nav align-items-lg-center ml-lg-auto">
         <li class="nav-item d-none d-lg-block ml-lg-1">
           <div [ngClass]="{'focused':focus===true}">
-            <div class="input-group ">
-              <div class="input-group-prepend">
-                <span class="input-group-text">
-                  <mat-icon aria-hidden="false" aria-label="Example home icon">search</mat-icon>
-                </span>
+            <form>
+              <div class="input-group">
+                <button (click)="navToSearch()" class="search-link">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <mat-icon aria-hidden="false" aria-label="Example home icon">search</mat-icon>
+                    </span>
+                  </div>
+                </button>
+                <input #search (input)="setValue($event)" class="form-control" placeholder="Buscar..." type="search" (focus)="focus=true" (blur)="focus=false">
               </div>
-              <input class="form-control" placeholder="Buscar..." type="search" (focus)="focus=true" (blur)="focus=false">
-            </div>
+            </form>
           </div>
         </li>
         <li *ngIf="getToken()==null" class="nav-item d-none d-lg-block ml-lg-1">

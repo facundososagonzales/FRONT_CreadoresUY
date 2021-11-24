@@ -14,6 +14,7 @@ export class NavbarComponent implements OnInit {
     private lastPoppedUrl: string;
     private yScrollStack: number[] = [];
     nickname:string = sessionStorage.getItem('nickname');
+    searchText:string = '';
 
     constructor(public location: Location, private router: Router) {
     }
@@ -55,6 +56,14 @@ export class NavbarComponent implements OnInit {
         else {
             return false;
         }
+    }
+
+    setValue(event:Event){
+        this.searchText =(<HTMLInputElement>event.target).value;
+    }
+
+    navToSearch(){
+        this.router.navigate([`/search/${this.searchText}`]);
     }
 
     getToken(){

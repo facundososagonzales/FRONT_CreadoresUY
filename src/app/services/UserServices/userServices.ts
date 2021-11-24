@@ -5,6 +5,7 @@ import { AuthenticateResponseClass } from 'src/app/model/AuthenticateResponse';
 import { CreateUserDto } from 'src/app/model/CreateUserDto';
 import { CreatorContent } from 'src/app/model/CreatorContent';
 import { Response } from 'src/app/model/Response';
+import { searchProfile } from 'src/app/model/SearchProfile';
 import { User } from 'src/app/model/user';
 import * as dev from 'src/dev';
 
@@ -34,6 +35,12 @@ export class userServices {
 
   getUsers(): Observable<AuthenticateResponseClass[]> {
     return this.http.get<AuthenticateResponseClass[]>(`${this.Url}` + "/api/User");
+  }
+
+  getCreatorByUserSearch(searchText:string, pageNumber:string, pageSize:string){
+    let url = `${this.Url}` + "/api/Creator/GetCreatorBySearch?"​ + "searchText=" + searchText + "&" + 
+    "pageNumber=" + pageNumber + "&" + "pageSize=" + pageSize;
+    return this.http.get<Response<searchProfile[]>>(url);
   }
 
 
