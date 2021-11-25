@@ -18,6 +18,7 @@ import { TextComponent } from './components/create-post/text/text.component';
 import { ImageComponent } from './components/create-post//image/image.component';
 import { VideoComponent } from './components/create-post//video/video.component';
 import { LinkComponent } from './components/create-post//link/link.component';
+import { SuscribeComponent } from './components/suscribe/suscribe.component';
 
 const routes: Routes =[
     { path: 'home',             component: HomeComponent },
@@ -35,6 +36,7 @@ const routes: Routes =[
     { path: 'createPost/image',          component: ImageComponent},
     { path: 'createPost/video',          component: VideoComponent},
     { path: 'createPost/link',          component: LinkComponent },
+    { path: 'suscribe',                 component: SuscribeComponent },
     { path: '', redirectTo: 'home', pathMatch: 'full'}
 ];
 

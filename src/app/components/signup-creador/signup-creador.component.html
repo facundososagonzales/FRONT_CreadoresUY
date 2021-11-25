@@ -17,37 +17,7 @@
             <div class="card bg-secondary shadow border-0">
               <div class="card-header bg-white pb-5">
                   <mat-horizontal-stepper linear [labelPosition]= "'buttom'">
-                    <mat-step label= "Categorias" [editable]= "true" [completed]="true">
-                      <div>
-                        <br>
-                          <h1>¿Cómo categorizarías tu contenido?</h1>
-                          <p><i><small>Elije un máximo de 2 Categorías:</small></i></p>
-                          
-                      </div>
-                      <ul>
-                        <li>
-                            <input type="checkbox" id="myCheckbox1"  />
-                            <label for="myCheckbox1"><img src="./assets/img/theme/art.png" /></label>
-                        </li>
-                        <li>
-                            <input type="checkbox" id="myCheckbox2" />
-                            <label for="myCheckbox2"><img src="./assets/img/theme/food.png" /></label>
-                        </li>
-                        <li>
-                            <input type="checkbox" id="myCheckbox3" />
-                            <label for="myCheckbox3"><img src="./assets/img/theme/trading.png" /></label>
-                        </li>
-                        <li>
-                            <input type="checkbox" id="myCheckbox4" />
-                            <label for="myCheckbox4"><img src="./assets/img/theme/music.png" /></label>
-                        </li>
-                      </ul>
-                      <br><br>                             
-                      <div class="button button-footer-card">
-                        <button mat-button matStepperNext style="margin-left: 10px">Siguiente</button>
-                      </div>
-                      </mat-step>
-                      <mat-step label= "Datos personales" [editable]= "true" [completed]="true" style="background-color: #569e86;">
+                      <mat-step label= "Datos" [editable]= "true" [completed]="true" style="background-color: #569e86;">
                         <div><br>
                             <h1>Ingresa tus datos personales</h1> <br>
                             <div class="row justify-content-center">
@@ -58,6 +28,13 @@
                                       <h4 class="card-title">Completa los siguientes datos:</h4>
                                         <form div="form">
                                             <form div="form" style="max-width: 100%; text-align: center; margin:auto;">
+                                               <ng-multiselect-dropdown class="multselect"
+                                                  [placeholder]="'Selecciona un max. de dos Categorías'"
+                                                  [settings]="dropdownSettings"
+                                                  [data]="dropdownList"
+                                                  (onSelect)="onItemSelect($event)"
+                                                  (onSelectAll)="onSelectAll($event)"
+                                              ></ng-multiselect-dropdown><br>
                                               <div class="input-group input-group-alternative">
                                                 <div class="input-group-prepend">
                                                   <span class="input-group-text"><i class="bi bi-person"></i></span>
@@ -104,6 +81,7 @@
                                                   <div class="d-flex flex-row flex-wrap justify-content-start ml-4 mt-4">
                                                     <img *ngFor="let url of urls" [src]="url" class="img-fluid img-profile img-thumbnail shadow">
                                                   </div><br>
+                                                  
                                              </form>
                                         </form>
                                     </div>

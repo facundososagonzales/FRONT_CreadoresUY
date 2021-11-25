@@ -4,6 +4,7 @@ import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { ICreateOrderRequest } from "ngx-paypal";
+import { IDropdownSettings } from 'ng-multiselect-dropdown';
 
 interface Banco{
   name: string;
@@ -19,8 +20,6 @@ export class SignupCreadorComponent implements OnInit {
   focus;
   htmlContent = '';
   public editor= ClassicEditor;
-  maxNo = false;
-  amt = 0;
   
   urls = new Array<string>();
 
@@ -46,8 +45,35 @@ export class SignupCreadorComponent implements OnInit {
   }
 
  
-  
-  ngOnInit(): void {
+  dropdownList = [];
+  selectedItems = [];
+  dropdownSettings = {};
+  limitSelection = false;
+
+  ngOnInit() {
+    this.dropdownList = [
+      { item_id: 1, item_text: 'Arte' },
+      { item_id: 2, item_text: 'Musica' },
+      { item_id: 3, item_text: 'Trading' },
+      { item_id: 4, item_text: 'Comida' }
+    ];
+   
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: 'item_id',
+      textField: 'item_text',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 2,
+      limitSelection: 2,
+      allowSearchFilter: true
+    };
+  }
+  onItemSelect(item: any) {
+    console.log(item);
+  }
+  onSelectAll(items: any) {
+    console.log(items);
   }
 
 
@@ -55,14 +81,7 @@ export class SignupCreadorComponent implements OnInit {
   
   constructor() {}
  
-  onChange(isChecked: boolean) {
-    if (isChecked)
-      this.amt++
-    else 
-      this.amt--
-    this.amt === 2 ? this.maxNo = true : this.maxNo = false;
-  }
-  
+
       
 
 }

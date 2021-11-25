@@ -96,15 +96,7 @@ ul {
     text-align: center;
   }
   
-  
-  input[type="checkbox"] {
-    display: none;
-  }
-  
-  input[type=checkbox][disabled][id^="myCheckbox"]{
-    -webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
-    filter: grayscale(100%);
-  }
+ 
 
   
   label {
@@ -143,24 +135,9 @@ ul {
    
   }
   
-  :checked + label {
-    border-color: #ddd;
-  }
-  
-  :checked + label:before {
-    content: "✓";
-    background-color: grey;
-    transform: scale(1);
-    
-    
-  }
-  
-  :checked + label img {
-    transform: scale(0.9);
-    /* box-shadow: 0 0 5px #333; */
-    z-index: -1;
-    
-  }
+ .multselect{
+  filter: drop-shadow(0px 0px 0.08rem #e7eff0);
+ }
 
   .input-group{
     display: flex;
@@ -189,7 +166,6 @@ ul {
 	color: #7b7b7b;
 	font-size: 1em;
 	color: #aeb6be;
-
 	border:2px solid rgba(0,0,0,0.2);
     border-radius: 5px;
     position: relative;

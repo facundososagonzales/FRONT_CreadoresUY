@@ -54,6 +54,8 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { NgxPayPalModule } from 'ngx-paypal';
 import { ChartsModule } from 'ng2-charts';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 import { HomeModule } from './components/home/home.module';
 import { LoginComponent } from './components/login/login.component';
@@ -75,6 +77,7 @@ import { TextComponent } from './components/create-post/text/text.component';
 import { ImageComponent } from './components/create-post//image/image.component';
 import { VideoComponent } from './components/create-post//video/video.component';
 import { LinkComponent } from './components/create-post//link/link.component';
+import { SuscribeComponent } from './components/suscribe/suscribe.component';
 
 
 @NgModule({
@@ -97,6 +100,7 @@ import { LinkComponent } from './components/create-post//link/link.component';
     ImageComponent,
     VideoComponent,
     LinkComponent,
+    SuscribeComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -157,8 +161,11 @@ import { LinkComponent } from './components/create-post//link/link.component';
     NgxPayPalModule,
     ChartsModule,
     NgxPaginationModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    NgMultiSelectDropDownModule.forRoot()
+    
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
   bootstrap: [AppComponent]
 })
