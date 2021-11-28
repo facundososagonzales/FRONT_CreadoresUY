@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Creator } from 'src/app/model/Creator';
 import { CreatorContentProfile } from 'src/app/model/CreatorContentProfile';
 import { CreatorProfile } from 'src/app/model/CreatorProfile';
 import { Response } from 'src/app/model/Response';
@@ -14,6 +15,10 @@ export class CreatorServiceService {
   Url=`${dev.apiurl}`;
 
   constructor(private http:HttpClient) { }
+
+  creatorCreate(creator:Creator){
+    return this.http.get<Response<String>>(`${this.Url}` + "/api/Creator", {headers: {'Authorization': ` Bearer ${sessionStorage.getItem('token')}`}})
+  }
 
   creatorProfileLoader(nickname:string){
     let url = `${this.Url}` + "/api/Creator/GetProfile?"​ + "nickname=" + nickname;
