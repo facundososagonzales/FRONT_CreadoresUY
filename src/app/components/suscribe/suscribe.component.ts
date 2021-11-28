@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ICreateOrderRequest } from "ngx-paypal";
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
+import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { SuscriptionPlans } from 'src/app/model/SuscriptionPlans';
 
 @Component({
   selector: 'app-suscribe',
@@ -11,11 +13,52 @@ import { HttpHeaders } from '@angular/common/http';
 
 export class SuscribeComponent implements OnInit {
   public payPalConfig: any;
- 
+  closeModal: string;
+  show = false;
+
+
+
+  plans = [
+    {
+      namePlan: "Gratis",
+      descriptionPlan: "El suscriptor podrá acceder a tu contenido seleccionado de forma gratuita.",
+      price: 0,
+      visible: false
+    },
+    {
+      namePlan: "Normal",
+      descriptionPlan: "El suscriptor podrá acceder a tu contenido seleccionado suscribiendose a una membresía mensual.",
+      price: 400,
+      visible: false
+    },
+    {
+      namePlan: "VIP",
+      descriptionPlan: "El suscriptor podrá acceder a todo su contenido + mensajería mediante una suscripción mensual.",
+      price: 900,
+      visible: false
+    }
+  ]
   
 
-  constructor() { }
+  constructor(private modalService: NgbModal) {}
+    
+  triggerModal(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((res) => {
+      this.closeModal = `Closed with: ${res}`;
+    }, (res) => {
+      this.closeModal = `Dismissed ${this.getDismissReason(res)}`;
+    });
+  }
 
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
   
   ngOnInit(): void {
     
