@@ -96,10 +96,7 @@ ul {
     display: inline-block;
     text-align: center;
   }
-  
- 
-
-  
+   
   label {
     border: 1px solid #fff;
     padding: 10px;
@@ -157,6 +154,8 @@ ul {
   display: flex;
   overflow: auto;
 }
+
+
  
 .content-select select{
 	display: inline-block;
@@ -218,4 +217,25 @@ ul {
   
   ::ng-deep.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
    border-color:#ffe3b3!important; /*outer ring color change*/
+  }
+
+  @media screen and (max-width: 430px) {
+    .cards-ps{
+        padding: 0px;
+        margin: none;
+        width: 100% !important;
+      }
+      .cont{
+        margin: 0px !important;
+        padding: 5px !important;
+    }
+    .card-header{
+      padding: 0px;
+      margin: none;
+    }
+    .button-footer-card{
+      text-align: center;
+  }
+  
+    
   }

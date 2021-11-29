@@ -17,11 +17,9 @@
             <div class="card bg-secondary shadow border-0">
               <div class="card-header bg-white pb-5">
                   <mat-horizontal-stepper linear [labelPosition]= "'buttom'">
-                      <mat-step label= "Datos" [editable]= "true" [completed]="true" style="background-color: #569e86;">
+                      <mat-step label= "Datos del Creador" [editable]= "true" [completed]="true" style="background-color: #569e86;">
                         <div><br>
                             <h1>Ingresa tus datos personales</h1> <br>
-                            <div class="row justify-content-center">
-                              <div class="col-md-6 col-lg-12">
                                 <div class="card cards-ps">
                                   <img class="card-img-top" style="float: center;margin-left: 40%;" src="./assets/img/theme/community.png">            
                                     <div class="card-body">
@@ -29,7 +27,7 @@
                                         <form div="form">
                                             <form div="form" style="max-width: 100%; text-align: center; margin:auto;">
                                                <ng-multiselect-dropdown
-                                                  [placeholder]="'Selecciona un max. de dos Categorías'"
+                                                  [placeholder]="'Selecciona hasta dos Categorías'"
                                                   [settings]="dropdownSettings"
                                                   [data]="dropdownList"
                                                   (onSelect)="onItemSelect($event)"
@@ -87,10 +85,9 @@
                                     </div>
                                   </div> 
                                </div>
-                            </div>
-                        </div>
+                           
+                     
                         <div class="button button-footer-card"><br><br>
-                          <button mat-button matStepperPrevious >Atrás</button>
                           <button mat-button matStepperNext style="margin-left: 10px">Siguiente</button>
                     
                         </div>
@@ -102,7 +99,7 @@
                           </div>
 
                           <div class="row justify-content-center">
-                            <div class="col-md-6 col-lg-12">
+                          
                             <div class="card cards-ps">
                              <img class="card-img-top" style="float: center;margin-left: 40%;" src="./assets/img/theme/bank.png">            
                               <div class="card-body">
@@ -136,10 +133,10 @@
                               </div>
                           </div> 
                         </div>
-                      </div><br>
+                     <br>
                       <div class="button button-footer-card">
                         <button mat-button matStepperPrevious >Atrás</button>
-                        <button mat-button matStepperNext style="margin-left: 10px">ENVIAR TODO Y TERMINAR</button>
+                        <button mat-button matStepperNext style="margin-left: 10px">Terminar</button>
                       </div>
                       </mat-step>
                     </mat-horizontal-stepper>
