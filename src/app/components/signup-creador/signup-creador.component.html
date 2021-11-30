@@ -24,15 +24,8 @@
                                   <img class="card-img-top" style="float: center;margin-left: 40%;" src="./assets/img/theme/community.png">            
                                     <div class="card-body">
                                       <h4 class="card-title">Completa los siguientes datos:</h4>
-                                        <form div="form">
-                                            <form div="form" style="max-width: 100%; text-align: center; margin:auto;">
-                                               <ng-multiselect-dropdown
-                                                  [placeholder]="'Selecciona hasta dos Categorías'"
-                                                  [settings]="dropdownSettings"
-                                                  [data]="dropdownList"
-                                                  (onSelect)="onItemSelect($event)"
-                                                  (onSelectAll)="onSelectAll($event)"
-                                              ></ng-multiselect-dropdown><br>
+                                        <form>
+                                            <div style="max-width: 100%; text-align: center; margin:auto;">
                                               <div class="input-group input-group-alternative">
                                                 <div class="input-group-prepend">
                                                   <span class="input-group-text"><i class="bi bi-person"></i></span>
@@ -49,7 +42,7 @@
                                                       <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="bi bi-youtube"></i></span>
                                                       </div>
-                                                      <input #link class="form-control" placeholder="Link video YOUTUBE" type="url" (focus)="focus=true" (blur)="focus=false">
+                                                      <input #link class="form-control" placeholder="(Link) video de bienvenida" type="url" (focus)="focus=true" (blur)="focus=false">
                                                   </div><br>
                                                   <div class="input-group input-group-alternative">
                                                     <div class="input-group-prepend">
@@ -58,29 +51,37 @@
                                                     <input #description class="form-control" placeholder="Descripción de tu contenido" type="text" (focus)="focus=true" (blur)="focus=false">
                                               </div><br>
 
-                                                  <p><i><small>Cuéntanos un poco más sobre tí...</small></i></p>
-                                                  <ckeditor [editor]="editor" class="editortext" ></ckeditor>
-                                                  <br>
+                                              <ng-multiselect-dropdown
+                                                [placeholder]="'Selecciona hasta dos Categorías'"
+                                                [settings]="dropdownSettings"
+                                                [data]="dropdownList"
+                                                (onSelect)="onItemSelect()"
+                                                [formControl]="toppings"
+                                              ></ng-multiselect-dropdown><br>
                                                   <div class="input-group input-group-alternative">
                                                     <div class="input-group-prepend">
                                                       <span class="input-group-text"><i class="bi bi-image-fill"></i></span>
                                                     </div>
-                                                    <input #profile class="form-control form-control-md" id="formFileLg" type="file" style="display:none; " multiple (change)="detectFiles($event)" />
+                                                    <input accept="image/png, image/jpeg" #profile class="form-control form-control-md" id="formFileLg" type="file" style="display:none; " (change)="detectFiles($event)" />
                                                     <label for="formFileLg" style="color: #aeb6be; margin-left: -10px;">Elegir Imagen de Perfil</label>
                                                   </div>
-                                                  <br>
+                                                  <div *ngIf="urls[0]!=''" class="d-flex flex-row flex-wrap justify-content-center">
+                                                    <img [src]="urls[0]" class="img-fluid img-profile img-thumbnail shadow">
+                                                  </div><br>
                                                   <div class="input-group input-group-alternative">
                                                     <div class="input-group-prepend">
                                                       <span class="input-group-text"><i class="bi bi-card-image"></i></span>
                                                     </div>
-                                                    <input #cover class="form-control form-control-md" id="formFileLg1" type="file" style="display:none; " multiple (change)="detectFiles($event)" />
+                                                    <input accept="image/png, image/jpeg" #cover class="form-control form-control-md" id="formFileLg1" type="file" style="display:none; " (change)="detectFiles($event)" />
                                                     <label for="formFileLg1" style="color: #aeb6be; margin-left: -10px;">Elegir Imagen de Portada</label>
                                                   </div>
-                                                  <div class="d-flex flex-row flex-wrap justify-content-start ml-4 mt-4">
-                                                    <img *ngFor="let url of urls" [src]="url" class="img-fluid img-profile img-thumbnail shadow">
+                                                  <div *ngIf="urls[1]!=''" class="d-flex flex-row flex-wrap justify-content-center">
+                                                    <img [src]="urls[1]" class="img-fluid img-board">
                                                   </div><br>
+                                                  <ckeditor #textarea [config]="{placeholder: 'Cuéntanos un poco más sobre tí...',toolbar: [ 'heading', '|', 'bold', 'italic','bulletedList', 'numberedList','undo', 'redo' ]}" [editor]="editor" class="editortext" (input)="gettext($event)" ></ckeditor>
                                                   
-                                             </form>
+                                                  
+                                                </div>
                                         </form>
                                     </div>
                                   </div> 
@@ -109,18 +110,18 @@
                                           <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="bi bi-person"></i></span>
                                         </div>
-                                          <input #name class="form-control" placeholder="Nombre del titular" type="text" (focus)="focus=true" (blur)="focus=false">
+                                          <input #namePayment class="form-control" placeholder="Nombre del titular" type="text" (focus)="focus=true" (blur)="focus=false">
                                       </div> <br>
                                       <div class="input-group input-group-alternative">
                                           <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="bi bi-credit-card"></i></span>
                                           </div>
-                                          <input #cuenta class="form-control" placeholder="Numero de cuenta" type="text" (focus)="focus=true" (blur)="focus=false">
+                                          <input #account class="form-control" placeholder="Numero de cuenta" type="text" (focus)="focus=true" (blur)="focus=false">
                                       </div><br>
                                   
                                       <div class="content-select">
-                                        <select>
-                                          <option (focus)="focus=true" (blur)="focus=false" selected>Seleccione su banco</option>
+                                        <select required (change)="selectOption($event)">
+                                          <option *ngIf="selected" selected>Seleccione su banco</option>
                                           <option>BROU</option>
                                           <option>SANTANDER</option>
                                           <option>SCOTIABANK</option>
@@ -136,7 +137,7 @@
                      <br>
                       <div class="button button-footer-card">
                         <button mat-button matStepperPrevious >Atrás</button>
-                        <button mat-button matStepperNext style="margin-left: 10px">Terminar</button>
+                        <button (click)="creatorMaker(name.value,nickname.value,link.value, description.value, namePayment.value, account.value)" mat-button matStepperNext style="margin-left: 10px">Terminar</button>
                       </div>
                       </mat-step>
                     </mat-horizontal-stepper>

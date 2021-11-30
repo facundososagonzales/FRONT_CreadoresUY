@@ -57,7 +57,6 @@ export class LoginComponent implements OnInit {
               sessionStorage.setItem('userType', "creator");
               sessionStorage.setItem('nickname', res['obj']['nickname']);
               sessionStorage.setItem('creatorId', res["obj"]['creatorId'].toString());
-              console.log(sessionStorage.getItem('nickname'));
               this.router.navigate(['/creator-Profile', sessionStorage.getItem('nickname')]);
 
             }else if(res["obj"]["isAdmin"]){

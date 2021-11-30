@@ -2,5 +2,6 @@ import { CreatorContentProfileAuthorized } from "./CreatorContentProfileAuthoriz
 
 export class CreatorContentProfile {
     results: number;
+    follow: boolean;
     contentsAndBool: CreatorContentProfileAuthorized[];
 }

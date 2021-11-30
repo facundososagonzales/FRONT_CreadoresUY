@@ -14,15 +14,18 @@ export class LogoutComponent implements OnInit {
     const token = sessionStorage.getItem('token');
     if(token != null){
       sessionStorage.removeItem('token');
-      sessionStorage.removeItem('name')
-      sessionStorage.removeItem('userId')
-      sessionStorage.removeItem('email')
+      sessionStorage.removeItem('name');
+      sessionStorage.removeItem('userId');
+      sessionStorage.removeItem('email');
+      sessionStorage.removeItem('imgProfile');
 
       if(sessionStorage.getItem('userType') === "creador"){
         sessionStorage.removeItem('userType');
-        sessionStorage.removeItem('creatorId')
+        sessionStorage.removeItem('creatorId');
+        sessionStorage.removeItem('nickname');
+        sessionStorage.removeItem('creatorId');
       }else{
-        sessionStorage.removeItem('userType')
+        sessionStorage.removeItem('userType');
       }
     }
     this.router.navigate(['home']);

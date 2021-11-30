@@ -1,6 +1,6 @@
-import { PaymentInfo } from "./PayMentInfo";
+import { infoPago } from "./infoPago";
 
-export interface Creator {
+export class CreatorDto {
     idUser: number;
     category1: string;
     category2: string;
@@ -11,5 +11,5 @@ export interface Creator {
     youtubeLink: string;
     creatorImage: string;
     coverImage: string;
-    paymentInfo: PaymentInfo;
+    infoPago: infoPago;
 }
