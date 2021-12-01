@@ -82,17 +82,18 @@ export class SignupCreadorComponent implements OnInit {
   }
 
   creatorMaker(name:string,nickname:string,link:string, description:string,namePayment:string, account:string){
+    this.textArea = '<p' + this.textArea.substring(this.textArea.indexOf('>'));
+    console.log(this.textArea)
     this.http.creatorCreate(name,nickname,link,description,namePayment,account,this.selectedItem, this.toppings.value,this.base64,this.textArea).subscribe(res =>{
+      console.log(res);
       if(res['success']){
-        this.userServices.getCreatorByUserSearch(nickname,'0','1').subscribe(creator =>{
           sessionStorage.setItem('userType', "creator");
           sessionStorage.setItem('nickname', nickname);
-          sessionStorage.setItem('creatorId', creator['obj'][0]['id']);
-          console.log(creator['obj'][0]['id']);
-        });
+          sessionStorage.setItem('creatorId', "532");
+          this.router.navigate(['/creator-Profile', sessionStorage.getItem('nickname')]);
       }
     });
-    this.router.navigate(['/creator-Profile', sessionStorage.getItem('nickname')]);
+    this.router.navigate(['/home']);
   }
 
   getCategories(){

@@ -29,13 +29,13 @@ export class FeedComponent implements OnInit {
       this.stopped=false;
       this.genericLoaded=false;
       this.contentViwer = [];
-      await this.onScroll();
+      this.onScroll();
   }
 
-  async onScroll() : Promise<void>{
+  onScroll(){
     if(!this.stopped){
       this.http.userContent(sessionStorage.getItem("userId"),this.nPage,this.contentNumer).subscribe(res =>{
-        if(res["obj"].length>0){
+        if(JSON.stringify(res["obj"]) !== '[]'){
           res["obj"].forEach(element => {
             element['img']='./assets/img/brand/1.jpg';
             this.contentViwer.push(new ContentViwer(false,element));

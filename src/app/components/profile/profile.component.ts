@@ -59,7 +59,7 @@ export class ProfileComponent implements OnInit {
       this.http.creatorProfileContentLoader
       (this.nickname,this.getUserId(),this.page.toString(),this.contentByPage.toString()).subscribe(res =>{
         if(res['success']){
-          if(res["obj"]["results"]>0){
+          if(JSON.stringify(res["obj"]["results"]) !== '[]'){
             res["obj"]["contentsAndBool"].forEach(element => {
               element['content']['img']="./assets/img/brand/1.jpg"; 
               this.contentViwer.push(new ContentViwer(false,element));
@@ -69,6 +69,7 @@ export class ProfileComponent implements OnInit {
             this.stopper = true;
           }
         }else if(!this.genericLoaded){
+          console.log(this.contentViwer[0]);
           this.contentViwer[0]= new ContentViwer(false, this.genericContent);
           this.genericLoaded=true;
         }else if(this.genericContent){
