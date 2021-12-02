@@ -43,5 +43,13 @@ export class userServices {
     return this.http.get<Response<searchProfile[]>>(url);
   }
 
+  followCreator(idUser:number, nickname:string){
+    return this.http.post<Response<String>>(`${this.Url}` + "/api/User/Follow",{idUser,nickname},{headers: {'Authorization': ` Bearer ${sessionStorage.getItem('token')}`}})
+  }
+
+  unfollowCreator(idUser:number, nickname:string){
+    return this.http.post<Response<String>>(`${this.Url}` + "/api/User/Unfollow",{idUser,nickname},{headers: {'Authorization': ` Bearer ${sessionStorage.getItem('token')}`}})
+  }
+
 
 }

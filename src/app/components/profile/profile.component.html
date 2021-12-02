@@ -1,7 +1,7 @@
 <main class="profile-page">
   <section class="section-profile-cover">
     <!-- Circles background -->
-    <img class="card-img-top" src="{{coverimg}}" alt="Card image cap">
+    <img class="card-img-top" src="{{coverimg}}">
     <!-- SVG separator -->
     <div class="separator separator-bottom separator-skew">
       <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -34,7 +34,10 @@
               </div>
               <div class="text-lg-right align-self-lg-center">
                 <div class="card-profile-actions py-4 mt-lg-0 mt-5">
-                  <button mat-stroked-button>Seguir</button>
+                  <button *ngIf="getNickname()==nickname" [ngClass]="{disabledButton: getNickname()==nickname}" disabled='true' mat-stroked-button>Seguir</button>
+                  <button *ngIf="getUserId()=='0'" routerLink="/login" mat-stroked-button>Seguir</button>
+                  <button *ngIf="getUserId()!='0' && !follow && getNickname()!=nickname" (click)='followCreator()' mat-stroked-button>Seguir</button>
+                  <button *ngIf="getUserId()!='0' &&  follow && getNickname()!=nickname" (click)='unfollowCreator()' mat-stroked-button>UnFollow</button>
                   <button mat-stroked-button>Enviar Mensaje</button>
                 </div>
               </div>

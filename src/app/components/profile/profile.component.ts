@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ContentViwer } from 'src/app/model/ContentViwer';
 import { CreatorContent } from 'src/app/model/CreatorContent';
 import { CreatorServiceService } from 'src/app/services/CreatorServices/creator-service.service';
+import { userServices } from 'src/app/services/UserServices/userServices';
 
 @Component({
     selector: 'app-profile',
@@ -21,6 +22,7 @@ export class ProfileComponent implements OnInit {
   cantFollowers:number;
   img:string;
   coverimg:string;
+  follow:boolean=false;
 
   public stopper:boolean = false;
   public genericContent = new CreatorContent("999999999","Soy un credor nuevo en creadoresUy!", "Acabo de comenzar en creadorUy, asegurese de revisar mi perfil en la brevedad para ver nuevas actualizaciones y suscribase si es de su agrado",9999,"",
@@ -31,12 +33,12 @@ export class ProfileComponent implements OnInit {
   public page:number = 1;
   public contentByPage:number=8;
   
-  constructor(private router:Router, private route:ActivatedRoute, private http:CreatorServiceService) {}
+  constructor(private router:Router, private route:ActivatedRoute, private http:CreatorServiceService, private userServices:userServices) {}
 
   async ngOnInit(){
     this.nickname = this.route.snapshot.paramMap.get('nickname'); 
-    await this.profileLoader();
-    await this.onScroll();
+    this.profileLoader();
+    this.onScroll();   
   }
 
   async profileLoader(){
@@ -56,12 +58,13 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  async onScroll(){
+  onScroll(){
     if(!this.stopper){
       this.http.creatorProfileContentLoader
       (this.nickname,this.getUserId(),this.page.toString(),this.contentByPage.toString()).subscribe(res =>{
         if(res['success']){
-          console.log(res);
+          this.follow = res['obj']['follower'];
+          console.log(res['obj']['follower'])
           if(res['obj']['results']!=this.contentByPage){
             this.stopper = true;
           }
@@ -93,8 +96,25 @@ export class ProfileComponent implements OnInit {
     (e.target as Element).parentElement.parentElement.scrollIntoView({block: "start"});
   }
 
-  async increaseShow(){
-    await this.onScroll();
+  increaseShow(){
+    this.onScroll();
+  }
+
+  followCreator(){
+    this.userServices.followCreator(parseInt(this.getUserId()),this.nickname).subscribe(res =>{
+      if(res['success']){
+        this.follow=true;
+      }
+    });
+  }
+
+  unfollowCreator(){
+    this.userServices.unfollowCreator(parseInt(this.getUserId()),this.nickname).subscribe(res =>{
+      if(res['success']){
+        console.log(res);
+        this.follow=false;
+      }
+    });
   }
 
   getUserId(){
@@ -103,5 +123,12 @@ export class ProfileComponent implements OnInit {
     }else{
       return "0";
     }
+  }
+
+  getNickname(){
+    if(sessionStorage.getItem('nickname') !=null)
+      return sessionStorage.getItem('nickname');
+    else
+      return '0';
   }
 }

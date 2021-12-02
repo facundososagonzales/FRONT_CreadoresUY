@@ -39,7 +39,8 @@
                     <div class="text-container">
                       <h3 class="creator-name">{{element['creatorName']}}</h3>
                       <p class="descripcion p-2 mt-2 bg-primary rounded text-white stats">{{element['contentDescription']}}</p>
-                      <p class="descripcion">Creando {{'categoria'}} y {{'categoria'}}</p>
+                      <p *ngIf="element['categorys'].length==1" class="descripcion">Creando {{element['categorys'][0]}} </p>
+                      <p *ngIf="element['categorys'].length>1" class="descripcion">Creando {{element['categorys'][0]}} y {{element['categorys'][1]}}</p>
                     </div>
                     <div style="text-align: center;" class="namber-cont">
                       <p class="suscriptores">Suscriptores</p> <span >{{element['cantSubscriptores']}}</span>

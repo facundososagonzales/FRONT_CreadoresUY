@@ -21,8 +21,14 @@
     background-color: #48977c;
     color: #fff;
     border-radius: 50px;
-    margin: 0 4px;
+    margin: 0 2px;
     z-index: 50;
+}
+
+.disabledButton{
+    background-color: #48977b56;
+    border: none;
+    color: #fff;
 }
 
 .card-img-top{
