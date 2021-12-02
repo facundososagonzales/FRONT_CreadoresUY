@@ -12,16 +12,15 @@
       </div>
       <div class="d-flex justify-content-center">
         <div class="cont  pt-lg-md">
-          <div class="card shadow">
-            <div class="col-12 card card-main bg-white">
-              <br><h1>Elige un plan de Suscripción:</h1>
-                <div class="card-group">
-                  <div   *ngFor="let plan of plans">
+         
+                <div class="card-deck">
+                  <div *ngFor="let plan of plans">
                     <div class="card cards" >
                       <br><div class="card-title">{{plan.namePlan}}</div>
-                        <font color="#27798f" size="6" face="Open Sans"><br><i><b>${{plan.price}}</b></i></font><font color="#27798f" size="4" face="Open Sans"> /mes</font>            
+                      <img class="card-img-top" style="float: center;margin-left: 38%;" src="{{plan.imagen}}">  
+                        <font color="#27798f" size="5" face="Open Sans"><br><i><b>${{plan.price}}</b></i></font><font color="#27798f" size="3" face="Open Sans"> /mes</font>            
                          <div class="card-body">
-                          <button type="button" class="mat-button" (click)="triggerModal(modalData)" style="background-color: #569e86;">Suscribirme</button><br><br>
+                          <button mat-stroked-button (click)="triggerModal(modalData)" style="background-color: #569e86;">Unirme</button><br><br>
                           <div class="card-text" [class.show]="plan.visible" >{{plan.descriptionPlan}}</div><br>
                           <div  class= "text" (click)="plan.visible = !plan.visible">{{ plan.visible ? 'Mostrar menos...': 'Mostrar más...' }}</div>
                          
@@ -47,7 +46,6 @@
         </div>
       </div>
     </div>
-  </div>
-</div>
+  
 </section>
 </main>

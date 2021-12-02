@@ -4,6 +4,7 @@ export class SuscriptionPlans{
             idPlan:          number,
             namePlan:        string,
             descriptionPlan: string,
+            imagen:          string,
             price:           number,
     ){}
 }

@@ -1,7 +1,6 @@
 .section-shaped .shape {
-    background: linear-gradient(45deg, #27798f 1%, #ffe3b3 90%);
+    background: linear-gradient(45deg, #659aa8 0.1%, #9dd4c1 90%);
 }
-
 .cont{
     margin-top: 30px;
     text-align: center;
@@ -21,14 +20,31 @@
 }
 
 .cards{
-    filter: drop-shadow(2px 1px 0.80rem #f1f6f7);
+    filter: drop-shadow(2px 0.5px 0.80rem #a5b8bb);
     border-radius: 10px;
+    border-color: #8c9fa3;
     max-width:290px;
-    max-height: 350px;
-    margin: 5px;
+    max-height: 400px;
+    margin: 10px;
+    justify-content: center;
   
 }
 
+.mat-stroked-button{
+    background-color: #48977c;
+    color: #fff;
+    border-radius: 50px;
+    margin: 0 4px;
+    z-index: 50;
+}
+
+.card-img-top{
+    width: 25%;
+    height: auto;
+    text-align: center !important;
+    object-fit:cover;
+   
+}
 
 
 .card-body{
@@ -39,9 +55,9 @@
 }
 
 .card-title{
-    font-size:20px;
+    font-size:15px;
     font-style: bold;
-    margin-top: 10px;
+    margin-top: 7px;
 }
 
 .card-text{
@@ -61,11 +77,8 @@
     font-size: small;
 }
 
-.card-group{
-    justify-content: center;
-    flex-direction:row;
+.card-deck{
     margin-bottom: 20px;
-    
 }
 
 .button-footer-card{
@@ -84,18 +97,10 @@
         height: auto;
     }
 
-    .card-group{
-        justify-content: center;
-        flex-direction: column;
-
-    }
-
     .cards{
-        filter: drop-shadow(2px 1px 0.80rem #f1f6f7);
-        border-radius: 10px;
-        max-width:300px;
         max-height: 500px;
         
     }
 
 }
+

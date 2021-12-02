@@ -23,19 +23,22 @@ export class SuscribeComponent implements OnInit {
       namePlan: "Gratis",
       descriptionPlan: "El suscriptor podrá acceder a tu contenido seleccionado de forma gratuita.",
       price: 0,
-      visible: false
+      visible: false,
+      imagen: './assets/img/theme/free.png'
     },
     {
       namePlan: "Normal",
       descriptionPlan: "El suscriptor podrá acceder a tu contenido seleccionado suscribiendose a una membresía mensual.",
       price: 400,
-      visible: false
+      visible: false,
+      imagen: './assets/img/theme/normal.png'
     },
     {
       namePlan: "VIP",
       descriptionPlan: "El suscriptor podrá acceder a todo su contenido + mensajería mediante una suscripción mensual.",
       price: 900,
-      visible: false
+      visible: false,
+      imagen: './assets/img/theme/vip.png'
     }
   ]
   
@@ -107,9 +110,13 @@ export class SuscribeComponent implements OnInit {
       },
       style: {
         label: "paypal",
-        layout: "vertical"
+        layout: "vertical",
+        color: 'blue'
       },
+     
+     
       onApprove: (data, actions) => {
+        alert(data.subscriptionID); // You can add optional success message for the subscriber here
         console.log(
           "onApprove - transaction was approved, but not authorized",
           data,
