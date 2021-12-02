@@ -36,7 +36,7 @@ const routes: Routes =[
     { path: 'createPost/image',          component: ImageComponent},
     { path: 'createPost/video',          component: VideoComponent},
     { path: 'createPost/link',          component: LinkComponent },
-    { path: 'suscribe',                 component: SuscribeComponent },
+    { path: 'creator-Profile/:nickname/suscribe',                 component: SuscribeComponent },
     { path: '', redirectTo: 'home', pathMatch: 'full'}
 ];
 
