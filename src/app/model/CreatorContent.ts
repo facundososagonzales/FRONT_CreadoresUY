@@ -13,7 +13,8 @@ export class CreatorContent {
         public link: string,
         public img: string,
         public type: number,
-        public plans: any[],
-        public tags: any[],
     ){}
+
+    public plans: any[];
+    public tags: any[];
 }

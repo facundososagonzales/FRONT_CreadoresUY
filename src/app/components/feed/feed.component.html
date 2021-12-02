@@ -43,7 +43,7 @@
                   <div *ngFor="let element of contentViwer; let i = index" [attr.data-index]="i">
                     <div class="card-deck shadow">
                       <div id="card-feed" class="card card-m">
-                        <img *ngIf="element['content']['img']!=''" class="card-img-top" src="{{element['content']['img']}}" alt="Card image cap">
+                        <img *ngIf="element['content']['img']!=''" class="card-img-top" src="{{element['content']['img']}}">
                         <div class="card-body">
                           <h5 class="card-title" >{{element['content']['title']}}</h5>
                           <div class="description" [ngClass]="{show: element['visible']}">
@@ -51,11 +51,18 @@
                             <p *ngIf="element['visible']" class="card-text">{{element['content']['description']}}</p>
                           </div><br>
                           <a (click)="scrollToStart($event)" class="text-muted-publicadopor more" (click)="element['visible'] = !element['visible']" style="float: right;">{{ element['visible'] ? 'Mostrar menos': 'Mostrar más' }}</a>
-                        </div>  
-                        <div class="card-footer">
+                        </div>
+                        <div *ngIf="element['content']['nickName']!=='CreadoresUy'" class="card-footer">
                           <small class="text-muted">Fecha de publicacion: {{element['content']['addedDate'] | date:'short':'UTC'}}</small>
                           <a class="text-muted-publicadopor" [routerLink]="['/creator-Profile',element['content']['nickName']]">{{element['content']['nickName']}}
                             <img src="./assets/img/theme/team-4-800x800.png" class="rounded-circle"
+                            style="width: 20px; margin-left: 5px; float: right;">
+                          </a>
+                        </div>
+                        <div *ngIf="element['content']['nickName']==='CreadoresUy'" class="card-footer">
+                          <small class="text-muted">Fecha de publicacion: {{element['content']['addedDate'] | date:'short':'UTC'}}</small>
+                          <a class="text-muted-publicadopor">{{element['content']['nickName']}}
+                            <img src="./assets/img/theme/kanna-kamui-cute.jpg" class="rounded-circle1"
                             style="width: 20px; margin-left: 5px; float: right;">
                           </a>
                         </div>

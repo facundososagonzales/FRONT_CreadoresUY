@@ -85,15 +85,15 @@ export class SignupCreadorComponent implements OnInit {
     this.textArea = '<p' + this.textArea.substring(this.textArea.indexOf('>'));
     console.log(this.textArea)
     this.http.creatorCreate(name,nickname,link,description,namePayment,account,this.selectedItem, this.toppings.value,this.base64,this.textArea).subscribe(res =>{
-      console.log(res);
       if(res['success']){
           sessionStorage.setItem('userType', "creator");
           sessionStorage.setItem('nickname', nickname);
-          sessionStorage.setItem('creatorId', "532");
+          sessionStorage.setItem('creatorId', res['obj']);
           this.router.navigate(['/creator-Profile', sessionStorage.getItem('nickname')]);
+      }else{
+        this.router.navigate(['/home']);
       }
     });
-    this.router.navigate(['/home']);
   }
 
   getCategories(){

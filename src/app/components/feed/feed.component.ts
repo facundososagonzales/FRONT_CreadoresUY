@@ -16,7 +16,8 @@ export class FeedComponent implements OnInit {
   public nPage:string = "0";
   public contentNumer:string = "6";
   public genericLoaded:boolean;
-  public genericContent = new CreatorContent("999999999","Patrones de diseño en C# Aplicados en ASP", "Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales.",9999,"",null,false,null,false,"","","./assets/img/brand/1.jpg",0,null,null);
+    public genericContent = new CreatorContent("999999999","Soy un credor nuevo en creadoresUy!", "Acabo de comenzar en creadorUy, asegurese de revisar mi perfil en la brevedad para ver nuevas actualizaciones y suscribase si es de su agrado",9999,"",
+         (new Date()),false,(new Date()),true,"","","./assets/img/brand/1.jpg",0);
   public contentViwer:ContentViwer[]=[];
   
   constructor(private router:Router,private http:userServices) {}
@@ -37,15 +38,16 @@ export class FeedComponent implements OnInit {
       this.http.userContent(sessionStorage.getItem("userId"),this.nPage,this.contentNumer).subscribe(res =>{
         if(JSON.stringify(res["obj"]) !== '[]'){
           res["obj"].forEach(element => {
-            element['img']='./assets/img/brand/1.jpg';
-            this.contentViwer.push(new ContentViwer(false,element));
+            this.contentViwer.push(new ContentViwer(false,true,element));
           });
         }
         if(res["obj"].length<this.contentNumer){
           this.stopped=true;
         }
-        if((!this.genericLoaded) && (JSON.stringify(res["obj"]) === '[]')){
-          this.contentViwer.push(new ContentViwer(false,this.genericContent));
+        console.log(this.nPage)
+        if((!this.genericLoaded) && this.nPage=='0' && (JSON.stringify(res["obj"]) === '[]')){
+          this.genericContent.nickName = 'CreadoresUy'
+          this.contentViwer.push(new ContentViwer(false,true,this.genericContent));
           this.genericLoaded=true;
         }else if(this.genericLoaded){
           this.genericLoaded=false;
@@ -53,9 +55,9 @@ export class FeedComponent implements OnInit {
             if(element.content.id==this.genericContent.id) delete this.contentViwer[index];
           });
         }
-      });
+        this.nPage = (parseInt(this.nPage)+1).toString();
+      })
     }
-    this.nPage = (parseInt(this.nPage)+1).toString();
   }
 
   async increaseShow(e:Event) {

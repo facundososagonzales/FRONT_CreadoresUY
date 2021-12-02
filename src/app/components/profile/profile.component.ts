@@ -23,7 +23,9 @@ export class ProfileComponent implements OnInit {
   coverimg:string;
 
   public stopper:boolean = false;
-  public genericContent = new CreatorContent("999999999","Patrones de diseño en C# Aplicados en ASP", "Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales. Aprende la esencia de los patrones de diseño y su utilización en proyectos reales.",9999,"",null,false,null,false,"","","./assets/img/brand/1.jpg",0,null,null);
+  public genericContent = new CreatorContent("999999999","Soy un credor nuevo en creadoresUy!", "Acabo de comenzar en creadorUy, asegurese de revisar mi perfil en la brevedad para ver nuevas actualizaciones y suscribase si es de su agrado",9999,"",
+         (new Date()),false,(new Date()),true,"","","./assets/img/brand/1.jpg",0);  
+
   public contentViwer:ContentViwer[] = [];
   public genericLoaded:boolean=false;
   public page:number = 1;
@@ -59,25 +61,28 @@ export class ProfileComponent implements OnInit {
       this.http.creatorProfileContentLoader
       (this.nickname,this.getUserId(),this.page.toString(),this.contentByPage.toString()).subscribe(res =>{
         if(res['success']){
-          if(JSON.stringify(res["obj"]["results"]) !== '[]'){
-            res["obj"]["contentsAndBool"].forEach(element => {
-              element['content']['img']="./assets/img/brand/1.jpg"; 
-              this.contentViwer.push(new ContentViwer(false,element));
-            });
-          }
+          console.log(res);
           if(res['obj']['results']!=this.contentByPage){
             this.stopper = true;
           }
-        }else if(!this.genericLoaded){
-          console.log(this.contentViwer[0]);
-          this.contentViwer[0]= new ContentViwer(false, this.genericContent);
-          this.genericLoaded=true;
-        }else if(this.genericContent){
-          this.genericLoaded=false;
-          this.contentViwer.forEach((element, index)=>{
-            if(element.content.id==this.genericContent.id)
-              delete this.contentViwer[index];
-          });
+          if(JSON.stringify(res["obj"]['contentsAndBool']) !== '[]'){
+            res["obj"]["contentsAndBool"].forEach(element => {
+              element['content']['img']="./assets/img/brand/1.jpg"; 
+              this.contentViwer.push(new ContentViwer(false,element['authorized'],element['content']));
+            });
+            console.log(this.contentViwer)
+          }else if(!this.genericLoaded){
+            this.genericContent.nickName=this.nickname;
+            this.contentViwer[0]= new ContentViwer(false,true,this.genericContent);
+            console.log(this.contentViwer[0]);
+            this.genericLoaded=true;
+          }else if(3){
+            this.genericLoaded=false;
+            this.contentViwer.forEach((element, index)=>{
+              if(element.content.id==this.genericContent.id)
+                delete this.contentViwer[index];
+            });
+          }
         }
       });
     }

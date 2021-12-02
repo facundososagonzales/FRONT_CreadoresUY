@@ -57,18 +57,28 @@
     margin-left: 10px;
 }
 
+.card-footer{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
 .text-muted-publicadopor{
-    float: right !important;
+    display: flex;
+    margin-left: auto;
+    align-items: center;
     font-style: oblique;
-    font-size: smaller;
+    font-size: normal;
 
 }
 
-.rounded-circle{ 
-    width: 100px;
+.rounded-circle1{ 
     display: block;
-    margin-left: auto; 
-    margin-right: auto;
+    width: 30px !important;
+    height: 30px !important;
+    border: solid 0.3px #aaa;
+    border-radius: 150px;
+    object-fit: cover;
     
 }
 
