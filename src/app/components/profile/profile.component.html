@@ -73,16 +73,23 @@
             <div *ngFor="let element of contentViwer; let i = index" [attr.data-index]="i">
               <div class="card-deck shadow">
                 <div class="card card-m">
-                  <img [ngClass]="{filt: !element['authorized']}" 
-                  *ngIf="element['content']['img']!=''" class="card-img-top" 
-                  src="{{element['content']['img']}}" alt="Card image cap">
+                  <a *ngIf="!element['authorized']" (click)="navToSuscribe()" style="cursor: pointer;">
+                    <img class="card-img-top test" src="./assets/img/theme/candado2.png">
+                    <p class="text-des">Exlusivo para suscriptores</p>
+                    <img [ngClass]="{filt: !element['authorized']}" 
+                    *ngIf="element['content']['img']!=''" class="card-img-top" 
+                    src="{{element['content']['img']}}">
+                  </a>
+                  <img  [ngClass]="{filt: !element['authorized']}" 
+                  *ngIf="element['authorized'] && element['content']['img']!=''" class="card-img-top" 
+                  src="{{element['content']['img']}}">
                   <div class="card-body">
                       <h2 class="card-title">{{element['content']["title"]}}</h2>
                       <div *ngIf="element['authorized']" [ngClass]="{show: element['visible']}" class="description">
                         <p *ngIf="!element['visible']" class="card-text">{{ (element['content']['description'].length>240)? (element['content']['description'] | slice:0:240)+'...':(element['content']['description'])}}</p>
                         <p *ngIf="element['visible']" class="card-text">{{element['content']['description']}}</p>
                       </div><br>
-                      <a *ngIf="element['authorized']" (click)="scrollToStart($event)" class="text-muted-publicadopor more" (click)="element['visible'] = !element['visible']" style="float: right;">{{ element['visible'] ? 'Mostrar menos': 'Mostrar más' }}</a>
+                      <a *ngIf="element['authorized'] && element['content']['description'].length>240" (click)="scrollToStart($event)" class="text-muted-publicadopor more" (click)="element['visible'] = !element['visible']" style="float: right;">{{ element['visible'] ? 'Mostrar menos': 'Mostrar más' }}</a>
                   </div>
                   <div class="card-footer">
                     <small class="text-muted">Fecha de publicacion: {{element['content']['addedDate'] | date:'short':'UTC'}}</small>

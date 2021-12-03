@@ -32,7 +32,6 @@ export class SearchComponent implements OnInit {
   getProrfile(){
     if(!this.stopped){
       this.http.getCreatorByUserSearch(this.searchString,this.pageNumber.toString(),this.pageSize.toString()).subscribe(res =>{
-        console.log(res);
         if(res['success']){
           if(JSON.stringify(res["obj"]) !== '[]'){
             res['obj'].forEach(element => {

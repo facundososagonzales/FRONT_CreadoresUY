@@ -64,8 +64,7 @@ export class ProfileComponent implements OnInit {
       (this.nickname,this.getUserId(),this.page.toString(),this.contentByPage.toString()).subscribe(res =>{
         if(res['success']){
           this.follow = res['obj']['follower'];
-          console.log(res['obj']['follower'])
-          if(res['obj']['results']!=this.contentByPage){
+          if(JSON.stringify(res["obj"]['contentsAndBool']) == '[]' || res['obj']['results']!=this.contentByPage){
             this.stopper = true;
           }
           if(JSON.stringify(res["obj"]['contentsAndBool']) !== '[]'){
@@ -73,23 +72,15 @@ export class ProfileComponent implements OnInit {
               element['content']['img']="./assets/img/brand/1.jpg"; 
               this.contentViwer.push(new ContentViwer(false,element['authorized'],element['content']));
             });
-            console.log(this.contentViwer)
-          }else if(!this.genericLoaded){
+            this.page++;
+          }else if(!this.genericLoaded && this.page==1){
             this.genericContent.nickName=this.nickname;
             this.contentViwer[0]= new ContentViwer(false,true,this.genericContent);
-            console.log(this.contentViwer[0]);
             this.genericLoaded=true;
-          }else if(3){
-            this.genericLoaded=false;
-            this.contentViwer.forEach((element, index)=>{
-              if(element.content.id==this.genericContent.id)
-                delete this.contentViwer[index];
-            });
           }
         }
       });
     }
-    this.page++;
   }
 
   scrollToStart(e) {
@@ -104,6 +95,7 @@ export class ProfileComponent implements OnInit {
     this.userServices.followCreator(parseInt(this.getUserId()),this.nickname).subscribe(res =>{
       if(res['success']){
         this.follow=true;
+        this.profileLoader();
       }
     });
   }
@@ -111,10 +103,14 @@ export class ProfileComponent implements OnInit {
   unfollowCreator(){
     this.userServices.unfollowCreator(parseInt(this.getUserId()),this.nickname).subscribe(res =>{
       if(res['success']){
-        console.log(res);
         this.follow=false;
+        this.profileLoader();
       }
     });
+  }
+
+  navToSuscribe(){
+    this.router.navigate([`/creator-Profile/${this.nickname}/suscribe`]);
   }
 
   getUserId(){

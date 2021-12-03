@@ -46,11 +46,11 @@
                         <img *ngIf="element['content']['img']!=''" class="card-img-top" src="{{element['content']['img']}}">
                         <div class="card-body">
                           <h5 class="card-title" >{{element['content']['title']}}</h5>
-                          <div class="description" [ngClass]="{show: element['visible']}">
+                          <div class="description">
                             <p *ngIf="!element['visible']" class="card-text">{{ (element['content']['description'].length>240)? (element['content']['description'] | slice:0:240)+'...':(element['content']['description'])}}</p>
                             <p *ngIf="element['visible']" class="card-text">{{element['content']['description']}}</p>
                           </div><br>
-                          <a (click)="scrollToStart($event)" class="text-muted-publicadopor more" (click)="element['visible'] = !element['visible']" style="float: right;">{{ element['visible'] ? 'Mostrar menos': 'Mostrar más' }}</a>
+                          <a *ngIf="(element['content']['description'].length>240)" (click)="scrollToStart($event)" class="text-muted-publicadopor more" (click)="element['visible'] = !element['visible']" style="float: right;">{{ element['visible'] ? 'Mostrar menos': 'Mostrar más' }}</a>
                         </div>
                         <div *ngIf="element['content']['nickName']!=='CreadoresUy'" class="card-footer">
                           <small class="text-muted">Fecha de publicacion: {{element['content']['addedDate'] | date:'short':'UTC'}}</small>
