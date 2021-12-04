@@ -6,6 +6,7 @@ import { CreateUserDto } from 'src/app/model/CreateUserDto';
 import { CreatorContent } from 'src/app/model/CreatorContent';
 import { Response } from 'src/app/model/Response';
 import { searchProfile } from 'src/app/model/SearchProfile';
+import { Subscriptions } from 'src/app/model/Subscriptions';
 import { User } from 'src/app/model/user';
 import * as dev from 'src/dev';
 
@@ -49,6 +50,11 @@ export class userServices {
 
   unfollowCreator(idUser:number, nickname:string){
     return this.http.post<Response<String>>(`${this.Url}` + "/api/User/Unfollow",{idUser,nickname},{headers: {'Authorization': ` Bearer ${sessionStorage.getItem('token')}`}})
+  }
+
+  getSubsByUser(idUser:number){
+    let url = `${this.Url}` + "/api/User/SubscribedTo?"​ + "idUser=" + idUser;
+    return this.http.get<Response<Subscriptions[]>>(url, {headers: {'Authorization': ` Bearer ${sessionStorage.getItem('token')}`}})
   }
 
 

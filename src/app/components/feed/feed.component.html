@@ -20,14 +20,17 @@
               <h5 class="card-title" style="text-align: center;">¡Hola {{getUserNickname()}}!</h5>
             </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">APOYANDO A</li>
-              <p class="card-text profile-text" style="margin-left: 10px;">Aún no apoyas a ningún creador</p>
-            
+              <li class="list-group-item" style="padding: 15px 5px;">Suscripciones</li>
+              <div id="subscriptions" *ngFor="let sub of subs">
+                <a style="padding: 0 5px;" class="text-muted-publicadopor1" mat-menu-item>
+                  <img src="{{sub.profileImage}}" class="rounded-circle2"
+                  style="margin-right: 5px; float: right;">
+                  {{sub.name}}
+                </a>
+              </div>
+              <p class="profile-text subs" style="margin-top: 10px;"><span style="margin-right: 6px;" class="material-icons md-15">add_circle_outline</span>Explorar Creadores</p>
         
             </ul>
-            <div class="card-body">
-                <button mat-button style="text-align: center;" >Buscar Creadores</button>
-            </div>
           </div>
       </div>
       <div class="search-results" infinite-scroll

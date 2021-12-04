@@ -20,6 +20,8 @@ export class SignupComponent implements OnInit {
     public validEmail:boolean=true;
     public subbmited:boolean=false
     public Success:boolean;
+    urls:string[] = ['']
+    base64:string[] = ['']
     
     userForm = new FormGroup({
         name: new FormControl('',Validators.required),
@@ -73,4 +75,21 @@ export class SignupComponent implements OnInit {
             }
         }
     }
+
+    detectFiles(event) {
+        let files = event.target.files;
+        if (files.length > 1) {
+          alert("You can select only 1 images");
+        }else{
+          let reader = new FileReader();
+          if(event.target.id == "formFileLg"){
+            reader.onload = (e: any) => {
+              this.urls[0]=(e.target.result);
+              var n = e.target.result.lastIndexOf(',');
+              this.base64[0]=(e.target.result.substring(n + 1));
+            }
+            reader.readAsDataURL(files[0]); 
+          }
+        }
+      }
 }

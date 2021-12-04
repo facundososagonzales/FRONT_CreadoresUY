@@ -26,6 +26,9 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.searchString = this.route.snapshot.paramMap.get('querry');
+    if(this.searchString==' '){
+      this.searchString = 'Creator';
+    }
     this.getProrfile();
   }
 
@@ -59,7 +62,6 @@ export class SearchComponent implements OnInit {
   }
 
   navToSearch(nickname:string){
-    console.log(`/creator-Profile/${nickname}`);
     this.router.navigate([`/creator-Profile/${nickname}`]);
   }
 

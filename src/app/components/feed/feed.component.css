@@ -53,8 +53,8 @@
 
 .profile-text{
     font-style: oblique;
-    font-size: small;
-    margin-left: 10px;
+    font-size: normal;
+    font-weight: bold;
 }
 
 .card-footer{
@@ -72,6 +72,15 @@
 
 }
 
+.text-muted-publicadopor1{
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+    font-size: normal;
+    font-weight: bold;
+
+}
+
 .rounded-circle1{ 
     display: block;
     width: 30px !important;
@@ -80,6 +89,14 @@
     border-radius: 150px;
     object-fit: cover;
     
+}
+
+.rounded-circle2{
+    display: block;
+    width: 22px !important;
+    height: 22px !important;
+    border-radius: 150px;
+    object-fit: cover;
 }
 
 .img-profile{
@@ -168,6 +185,16 @@
 .more:hover{
     color: rgb(8, 57, 204) !important;
 }
+
+.subs{
+    display: flex;
+    align-items: center;
+}
+
+.material-icons{
+    color: #333;
+}
+
 
 @media screen and (max-width: 826px){
     .todo{

@@ -63,7 +63,10 @@ export class NavbarComponent implements OnInit {
     }
 
     navToSearch(){
-        this.router.navigate([`/search/${this.searchText}`]);
+        if(this.searchText='')
+            this.router.navigate([`/search/${this.searchText}`]);
+        else
+            this.router.navigate([`/search/ `]);
     }
 
     getToken(){

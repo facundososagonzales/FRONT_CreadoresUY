@@ -209,6 +209,7 @@ blockquote {
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+    //filter: drop-shadow(0 0 3px #000) opacity(70%);
     z-index: 100;
 }
 
@@ -221,6 +222,7 @@ blockquote {
     font-weight: bold;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+    filter: drop-shadow(0 0 5px #000);
     z-index: 100;
 }
 

@@ -77,8 +77,14 @@
                     <input formControlName="password" #password id="password" class="form-control" placeholder="Password" type="password"
                      (focus)="focus2=true" (blur)="focus2=false">
                   </div>
-                  <div class="password-ad" *ngIf="noRequiredPassword" [ngClass]="{inputAlert:!MinLenght}">Largo de la contraseña minimo de 8 .</div>
                   <div class="inputAlert" *ngIf="!noRequiredPassword">La contraseña es requerida</div>
+                </div>
+                <div style="margin-bottom: 16px; background-color: #fff;" class="input-group img-input input-group-alternative">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="bi bi-image-fill"></i></span>
+                  </div>
+                  <input accept="image/png, image/jpeg" #profile class="form-control form-control-md" id="formFileLg" type="file" (change)="detectFiles($event)" style="display:none; width: 100%;" />
+                  <label for="formFileLg" style="cursor: pointer; color: #aeb6be; margin: 0; width: 80%;">Elegir Imagen de Perfil</label>
                 </div>
              
                 <div class="row my-2">
@@ -93,6 +99,9 @@
                       </label>
                     </div>
                   </div>
+                </div>
+                <div *ngIf="urls[0]!=''" class="d-flex flex-row flex-wrap justify-content-center">
+                  <img [src]="urls[0]" class="img-fluid img-profile img-thumbnail shadow">
                 </div>
                 <div *ngIf="Success && subbmited" class="alert alert-success d-flex align-items-center mb-0" role="alert">
                   <i class="bi bi-check-lg mr-2" width="24" height="24"></i>

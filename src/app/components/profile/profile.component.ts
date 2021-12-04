@@ -63,6 +63,7 @@ export class ProfileComponent implements OnInit {
       this.http.creatorProfileContentLoader
       (this.nickname,this.getUserId(),this.page.toString(),this.contentByPage.toString()).subscribe(res =>{
         if(res['success']){
+          console.log(res);
           this.follow = res['obj']['follower'];
           if(JSON.stringify(res["obj"]['contentsAndBool']) == '[]' || res['obj']['results']!=this.contentByPage){
             this.stopper = true;
