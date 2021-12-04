@@ -31,9 +31,8 @@
                         </div>
                         <input #image class="form-control form-control-md" id="formFileLg" type="file"  accept=".mp3" style="display:none;"/>
                         <label for="formFileLg" style="color: #aeb6be; margin-top: 13px;">Adjuntar MP3</label>
-                    </div><br>
-                    <br><p class="card-title">Añade una descripción:</p>
-                  <ckeditor [editor]="editor" class="editortext" ></ckeditor><br>
+                    </div><br><br>
+                  <ckeditor [editor]="editor" [config]="{placeholder: 'Añade una descripción del contenido...',toolbar: [ 'heading', '|', 'bold', 'italic','bulletedList', 'numberedList','undo', 'redo' ]}" class="editortext" ></ckeditor><br>
                  
                       
                   

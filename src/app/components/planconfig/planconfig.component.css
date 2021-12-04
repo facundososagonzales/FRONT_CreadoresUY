@@ -31,8 +31,31 @@
     max-height: 400px;
     margin: 10px;
     justify-content: center;
-  
+    /*transition: width 2s, height 2s, background-color 2s, transform 2s;*/
 }
+
+.cards:hover{
+    /*transform: rotate(180deg);*/
+}
+
+.img-imagen{
+    display: flex;
+    margin-top: 20px;
+    margin-left: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 150px;
+    border: solid 0.5px #777;
+    object-fit: cover;
+}
+
+:host ::ng-deep .multiselect-dropdown .dropdown-btn {
+    border-radius: 10px;
+    color: #adadad;
+    border: 0.2px solid rgb(240, 238, 238) !important;
+    height: 40px;
+    vertical-align: middle;
+   }
 
 .mat-stroked-button{
     color: #fff;
@@ -57,8 +80,6 @@
 .card-body{
     filter: drop-shadow(0px 0px 0.08rem #e7eff0);
     align-items: center !important;
-    align-content: center !important;  
-    
 }
 
 .title{

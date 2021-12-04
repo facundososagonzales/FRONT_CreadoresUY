@@ -20,23 +20,58 @@
                         <div class="cont  pt-lg-md">
                                 <div class="card-deck">
                                   <div *ngFor="let plan of plans">
-                                    <div class="card cards" >
+                                    <div class="card cards">
                                       <br><div class="card-title">{{plan.namePlan}}</div>
                                       <img class="card-img-top" style="float: center;margin-left: 38%;" src="{{plan.imagen}}">  
                                         <font color="#27798f" size="5" face="Open Sans"><br><i><b>${{plan.price}}</b></i></font><font color="#27798f" size="3" face="Open Sans"> /mes</font>            
                                         <div class="card-body">
-                                          <button mat-stroked-button style="background-color: #eecb8b;">Editar</button><br><br>
+                                          <button mat-stroked-button  style="background-color: #eecb8b;">Editar</button><br><br>
                                           <div class="card-text" [class.show]="plan.visible" >{{plan.descriptionPlan}}</div><br>
-                                          <div  class= "text" (click)="plan.visible = !plan.visible">{{ plan.visible ? 'Mostrar menos...': 'Mostrar más...' }}</div>
+                                          <mat-list role="list">
+                                            <mat-list-item role="listitem">-{{plan.beneficio}}</mat-list-item>
+                                          </mat-list>
+                                          <div  class= "text"  (click)="plan.visible = !plan.visible">{{ plan.visible ? 'Mostrar menos...': 'Mostrar más...' }}</div>
                                         </div>
-                              
-                                    </div> 
+                                    </div>   
                                   </div>
-                                </div>
+                                </div>      
                         </div>
                     </div>
                     <br><div class="button-new"><button mat-stroked-button style="background-color: #569e86; text-align: center;">Agregar nuevo plan</button><br><br></div>
-                    
+                    <form div="form">
+                      <form div="form" style="max-width: 100%; text-align: center; margin:auto;">
+                            <div class="input-group input-group-alternative">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="bi bi-fonts"></i></span>
+                              </div>
+                                <input #title class="form-control" placeholder="Nombre del Plan" type="text" (focus)="focus=true" (blur)="focus=false">
+                            </div><br>
+                            <div class="input-group input-group-alternative">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="bi bi-currency-dollar"></i></span>
+                              </div>
+                                <input #price class="form-control" placeholder="Precio por mes" type="text" (focus)="focus=true" (blur)="focus=false">
+                            </div><br>
+                            <div class="input-group input-group-alternative">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="bi bi-image-fill"></i></span>
+                              </div>
+                              <input #image class="form-control form-control-md" id="formFileLg" type="file" style="display:none;" (change)="detectFiles($event)" />
+                              <label for="formFileLg" style="color: #aeb6be; margin-top: 13px;">Adjuntar Imagen Plan</label>
+                            </div>
+                            <div class="d-flex justify-content-center mt-2">
+                              <img *ngFor="let url of urls" [src]="url" style="margin-left: 10px;" class="img-fluid img-imagen shadow">
+                            </div><br>
+                            <ckeditor [editor]="editor" [config]="{placeholder: 'Describe tu Plan de Suscripción...',toolbar: [ 'heading', '|', 'bold', 'italic','bulletedList', 'numberedList','undo', 'redo' ]}" class="editortext" ></ckeditor><br>
+                            <ng-multiselect-dropdown
+                                [placeholder]="'Beneficios Disponibles'"
+                                [settings]="dropdownSettings"
+                                [data]="dropdownList"
+                                (onSelect)="onItemSelect($event)"
+                                (onSelectAll)="onSelectAll($event)">
+                            </ng-multiselect-dropdown><br>
+                       </form>
+                    </form>
             </div>
           </div>
       </div>

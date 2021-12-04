@@ -25,8 +25,7 @@
                       </div>
                         <input #title class="form-control" placeholder="Titulo" type="text" (focus)="focus=true" (blur)="focus=false">
                     </div>
-                    <br><p class="card-title">Añade una descripción:</p>
-                  <ckeditor [editor]="editor" class="editortext" ></ckeditor><br>
+                    <br><ckeditor [editor]="editor" [config]="{placeholder: 'Añade una descripción del contenido...',toolbar: [ 'heading', '|', 'bold', 'italic','bulletedList', 'numberedList','undo', 'redo' ]}" class="editortext" ></ckeditor><br>
                   <div class="input-group input-group-alternative">
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="bi bi-image-fill"></i></span>
