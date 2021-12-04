@@ -1,0 +1,71 @@
+<main>
+    <section class="section section-shaped section-lg">
+      <div class="shape shape-style-1 shape-primary">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      
+      <div class="todo justify-content-center">
+        <div class= "pt-lg-md">
+          <div class="card card-publicacion card-border">
+           
+            <img class="card-img-top"  src="./assets/img/theme/audio.png"> <br>
+            <h3 class="card-title">Completa los siguientes datos:</h3>
+            <form div="form">
+              <form div="form" style="max-width: 100%; text-align: center; margin:auto;">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="bi bi-fonts"></i></span>
+                      </div>
+                        <input #title class="form-control" placeholder="Titulo" type="text" (focus)="focus=true" (blur)="focus=false">
+                    </div><br>
+                    <div class="input-group input-group-alternative">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="bi bi-image-fill"></i></span>
+                        </div>
+                        <input #image class="form-control form-control-md" id="formFileLg" type="file"  accept=".mp3" style="display:none;"/>
+                        <label for="formFileLg" style="color: #aeb6be; margin-top: 13px;">Adjuntar MP3</label>
+                    </div><br>
+                    <br><p class="card-title">Añade una descripción:</p>
+                  <ckeditor [editor]="editor" class="editortext" ></ckeditor><br>
+                 
+                      
+                  
+                  <p class="card-title">Categoria:</p><mat-checkbox class="cat" color="accent" *ngFor="let item of categorias" [value]="item">{{item}}</mat-checkbox>
+              </form>
+            </form>
+              </div>
+             
+        </div>
+          <div class="pt-lg-md">
+            <div class="row justify-content-center">
+              <div class="col-lg-12">
+                <div class="card card-border">
+                  <div class="card visualizan">
+                    <h4 class="card-title">¿Quienes verán tu publicación?</h4>
+                        <mat-radio-group class="visualizan-group" color="accent" (change)="changeComboo($event)" [(ngModel)]="tipovisAsig">
+                            <mat-radio-button class="visualizan" color="accent" *ngFor="let item of visualizan" [value]="item">{{item}} </mat-radio-button> 
+                                <div class="input-container">
+                                    <div *ngIf="tipovisAsig=='Seleccionar Suscripción'"><br>
+                                            <h4 class="card-title">Selecciona uno o más planes:</h4>
+                                                <mat-checkbox class="visualizan" color="accent" *ngFor="let item of tipoSuscripcion" [value]="item">{{item}} </mat-checkbox>
+                                         
+                                    </div>
+                                </div> 
+                        </mat-radio-group><br>
+                        <button mat-button style="text-align: center;" >Crear Publicación</button>  
+                  </div> 
+                  </div>
+                </div>
+            </div>
+        </div>
+        </div>
+      
+    </section>
+  </main>

@@ -18,7 +18,9 @@ import { TextComponent } from './components/create-post/text/text.component';
 import { ImageComponent } from './components/create-post//image/image.component';
 import { VideoComponent } from './components/create-post//video/video.component';
 import { LinkComponent } from './components/create-post//link/link.component';
+import { AudioComponent } from './components/create-post/audio/audio.component';
 import { SuscribeComponent } from './components/suscribe/suscribe.component';
+import { CreateplanComponent } from './components/planconfig/planconfig.component';
 
 const routes: Routes =[
     { path: 'home',             component: HomeComponent },
@@ -36,7 +38,9 @@ const routes: Routes =[
     { path: 'createPost/image',          component: ImageComponent},
     { path: 'createPost/video',          component: VideoComponent},
     { path: 'createPost/link',          component: LinkComponent },
-    { path: 'creator-Profile/:nickname/suscribe',                 component: SuscribeComponent },
+    { path: 'createPost/audio',          component: AudioComponent },
+    { path: 'planconfig',          component: CreateplanComponent },
+    { path: 'creator-Profile/:nickname/suscribe',          component: SuscribeComponent },
     { path: '', redirectTo: 'home', pathMatch: 'full'}
 ];
 

@@ -14,34 +14,12 @@
       <div class="row justify-content-center">
         <div class="col-lg-7">
           <div class="card bg-secondary shadow border-0">
-            <div class="card-header bg-white pb-5">
-              <div class="text-muted text-center mb-3">
-                <small>Regístrate con...</small>
-              </div>
-              <div class="text-center">
-                <a href="javascript:void(0)" class="btn btn-neutral btn-icon">
-                  <span class="btn-inner--icon">
-                    <img src="./assets/img/icons/common/twitter.png">
-                  </span>
-                  <span class="btn-inner--text">Twitter</span>
-                </a>
-                <a href="javascript:void(0)" class="btn btn-neutral btn-icon">
-                  <span class="btn-inner--icon">
-                    <img src="./assets/img/icons/common/facebook.png">
-                  </span>
-                  <span class="btn-inner--text">Facebook</span>
-                </a>
-                <a href="javascript:void(0)" class="btn btn-neutral btn-icon mt-2 mt-sm-0">
-                  <span class="btn-inner--icon">
-                    <img src="./assets/img/icons/common/google.svg">
-                  </span>
-                  <span class="btn-inner--text">Google</span>
-                </a>
-              </div>
+            <div class="card-header bg-white ">
+              <img src="./assets/img/theme/register.png" style="margin-left: 30px; width: 90%;" class="img-fluid"><br>
             </div>
             <div class="card-body px-lg-5 py-lg-4">
               <div class="text-center text-muted mb-4">
-                <small>o con Credenciales de CreadoresUY</small>
+                <small>Completa los siguientes datos:</small>
               </div>
               <form role="form" [formGroup]="userForm">
                 <div *ngIf="!Success && subbmited" class="alert alert-danger d-flex align-items-center mb-4" role="alert">

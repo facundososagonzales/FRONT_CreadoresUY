@@ -1,0 +1,118 @@
+.section-shaped .shape {
+    background: linear-gradient(45deg, #27798f 1%, #ffe3b3 90%);
+}
+
+.todo{
+    justify-content:center;
+    display: flex;
+    margin-top: 60px;
+    padding: none;
+}
+
+.cont{
+    margin-top: -30px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    height: auto;  
+}
+
+.mat-button{
+    background-color: #9fb3b8;
+    color: #ffffff;
+    text-align: right;
+
+}
+
+.cards{
+    border-radius: 10px;
+    border-color: #e9f2f3;
+    max-width:250px;
+    max-height: 400px;
+    margin: 10px;
+    justify-content: center;
+  
+}
+
+.mat-stroked-button{
+    color: #fff;
+    border-radius: 5px;
+    margin: 0 4px;
+    z-index: 50;
+}
+
+.button-new{
+    text-align: center;
+}
+
+.card-img-top{
+    width: 25%;
+    height: auto;
+    text-align: center !important;
+    object-fit:cover;
+   
+}
+
+
+.card-body{
+    filter: drop-shadow(0px 0px 0.08rem #e7eff0);
+    align-items: center !important;
+    align-content: center !important;  
+    
+}
+
+.title{
+    text-align: center;
+    font-size:x-large;
+}
+
+.card-title{
+    font-size:15px;
+    font-style: bold;
+    margin-top: 7px;
+}
+
+.card-text{
+    font-style: oblique;
+    line-height: 16px;
+    height: 50px;
+    overflow: hidden;
+}
+
+.show {
+    overflow: visible;
+    height: auto;
+  }
+
+.text{
+    cursor:pointer;
+    font-size: small;
+}
+
+.card-deck{
+    margin-bottom: 20px;
+}
+
+.button-footer-card{
+    text-align: right;
+}
+
+
+@media screen and (max-width: 580px) {
+  
+    .cont{
+        margin-top: 30px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        max-width: 90%;
+        height: auto;
+    }
+
+    .cards{
+        max-height: 500px;
+        
+    }
+
+}
+

@@ -110,6 +110,7 @@
     animation-name: profile-animation;
     animation-duration: 0.1s;
     filter: drop-shadow(0 0 5px #27798f);
+  
 }
 
 @keyframes profile-animation {
@@ -211,14 +212,14 @@ blockquote {
 
 .test{
     margin: 0;
-    width: 80px !important;
-    height: 80px;
+    width: 50px !important;
+    height: 50px;
     position: absolute;
     top: 32%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    //filter: drop-shadow(0 0 3px #000) opacity(70%);
+    filter: drop-shadow(0 0 3px rgb(153, 153, 153)) opacity(90%);
     z-index: 100;
 }
 
