@@ -93,9 +93,11 @@
                   </div>
                   <div class="card-footer">
                     <small class="text-muted">Fecha de publicacion: {{element['content']['addedDate'] | date:'short':'UTC'}}</small>
-                    <a class="text-muted-publicadopor">{{element['content']['nickName']}}
-                      <img src="./assets/img/theme/team-4-800x800.png" class="rounded-circle"
-                      style="width: 20px; height: 20px; margin-left: 5px; float: right;">
+                    <a class="text-muted-publicadopor"><span>{{element['content']['nickName']}}</span>
+                      <img *ngIf="img==''" src="./assets/img/theme/team-4-800x800.png" class="rounded-circle1"
+                      style="margin-left: 5px; float: right;">
+                      <img *ngIf="img!=''" src="{{img}}" class="rounded-circle1"
+                      style="margin-left: 5px; float: right;">
                     </a>
                   </div>
                 </div>

@@ -15,7 +15,7 @@
         <div class="row justify-content-center">
           <div class="col-lg-8">
             <div class="card bg-secondary shadow border-0">
-              <div class="card-header bg-white pb-5">
+              <div class="card-header bg-white pb-4">
                   <mat-horizontal-stepper linear [labelPosition]= "'buttom'">
                       <mat-step label= "Datos del Creador" [editable]= "true" [completed]="true" style="background-color: #569e86;">
                         <div><br>
@@ -143,6 +143,7 @@
                     </mat-horizontal-stepper>
               </div>
             </div>
+            <mat-progress-bar *ngIf="showBar"  mode="indeterminate"></mat-progress-bar>
           </div>
         </div>
       </div>

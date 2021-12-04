@@ -231,6 +231,18 @@ ul {
     max-height: 150px;
 }
 
+::ng-deep .mat-progress-bar-fill::after {
+  background-color: #27798f;
+}
+
+::ng-deep .mat-progress-bar-buffer {
+  background: #E4E8EB;
+}
+
+::ng-deep .mat-progress-bar {
+  border-radius: 8px;
+}
+
   @media screen and (max-width: 430px) {
     .cards-ps{
         padding: 0px;

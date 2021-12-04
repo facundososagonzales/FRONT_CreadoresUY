@@ -20,6 +20,7 @@ export class SignupComponent implements OnInit {
     public validEmail:boolean=true;
     public subbmited:boolean=false
     public Success:boolean;
+    public showBar:boolean=false;
     urls:string[] = ['']
     base64:string[] = ['']
     
@@ -41,6 +42,7 @@ export class SignupComponent implements OnInit {
     }
 
     crearUsuario(name:string, email:string, password:string){
+        this.showBar=true;
         this.noRequiredName=true;
         this.noRequiredEmail=true;
         this.noRequiredPassword=true;
@@ -58,20 +60,26 @@ export class SignupComponent implements OnInit {
                     this.Success=false;
                 }
                 this.subbmited=true;
+                this.showBar=false;
             });
         }else{
             if(this.userForm.get('name').errors!=null){
                 this.noRequiredName=false;
+                this.showBar=false
             }
             if(this.userForm.get('email').errors!=null && this.userForm.get('email').errors.email){
                 this.validEmail=false;
+                this.showBar=false
             }else if(this.userForm.get('email').errors!=null && this.userForm.get('email').errors.required){
                 this.noRequiredEmail=false;
+                this.showBar=false
             }
             if(this.userForm.get('password').errors!=null && this.userForm.get('password').errors.required){
                 this.noRequiredPassword=false;
+                this.showBar=false
             }else if(password.length<8){
                 this.MinLenght=false;
+                this.showBar=false
             }
         }
     }

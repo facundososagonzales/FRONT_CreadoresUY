@@ -14,6 +14,7 @@
     color: #dd2a0e;
     margin-left: 2px;
     margin-top:2px;
+    margin-bottom: -6px;
 }
 
 .inputError{
@@ -23,4 +24,16 @@
 
 .alert{
     height: 34px !important;
+}
+
+::ng-deep .mat-progress-bar-fill::after {
+    background-color: #27798f;
+}
+
+::ng-deep .mat-progress-bar-buffer {
+    background: #E4E8EB;
+}
+
+::ng-deep .mat-progress-bar {
+    border-radius: 5px;
 }

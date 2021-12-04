@@ -182,10 +182,19 @@ blockquote {
     height: 27px;
 }
 
+.card-footer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 .text-muted-publicadopor{
-    float: right !important;
+    margin-left: auto;
     font-style: oblique;
     font-size: smaller;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 
 }
 
@@ -224,6 +233,16 @@ blockquote {
     transform: translate(-50%, -50%);
     filter: drop-shadow(0 0 5px #000);
     z-index: 100;
+}
+
+.rounded-circle1{ 
+    display: block;
+    width: 30px !important;
+    height: 30px !important;
+    border: solid 0.3px #aaa;
+    border-radius: 150px;
+    object-fit: cover;
+    
 }
 
 @media screen and (max-width: 568px) {

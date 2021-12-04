@@ -85,10 +85,11 @@
                   </div>
                 </div>
                 <div class="text-center">
-                  <button type="button" class="btn btn-primary my-4" (click)="Login(email.value,password.value)" style= "background-color: #27798f;">Iniciar Sesión</button>
+                  <button type="button" class="btn btn-primary mt-4 mb-2" (click)="Login(email.value,password.value)" style= "background-color: #27798f;">Iniciar Sesión</button>
                 </div>
               </form>
             </div>
+            <mat-progress-bar *ngIf="showBar"  mode="indeterminate"></mat-progress-bar>
           </div>
           <div class="d-flex flex-row pl-4 pt-2">
             <span>¿No tiene cuenta aún?

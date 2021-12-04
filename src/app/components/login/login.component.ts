@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   public noRequiredPassword:boolean = true;
   public noRequiredEmail:boolean=true;
   public validEmail:boolean=true;
+  public showBar:boolean=false;
 
   constructor(private http:userServices, private router:Router) {}
 
@@ -34,6 +35,7 @@ export class LoginComponent implements OnInit {
   }
 
   Login(email:string,password:string){
+    this.showBar=true;
     this.subbmited=false;
     this.noRequiredPassword = true;
     this.noRequiredEmail=true;
@@ -43,7 +45,6 @@ export class LoginComponent implements OnInit {
     user.password = password;
     if(this.loginForm.valid){
       this.http.UserLogin(user).subscribe(res =>{
-        console.log(res);
         if(res["success"]){
           this.Success=true;
           const token = res["obj"]["token"];
@@ -69,17 +70,21 @@ export class LoginComponent implements OnInit {
           }
         }else{
           this.Success=false;
+          this.showBar=false;
         }
         this.subbmited=true;
       });
     }else{
       if(this.loginForm.get('password').errors!=null){
         this.noRequiredPassword=false;
+        this.showBar=false;
       }
       if(this.loginForm.get('email').errors!=null && this.loginForm.get('email').errors.email){
         this.validEmail=false;
+        this.showBar=false;
       }else if(this.loginForm.get('email').errors!=null && this.loginForm.get('email').errors.required){
         this.noRequiredEmail=false;
+        this.showBar=false;
       }
     }
   }

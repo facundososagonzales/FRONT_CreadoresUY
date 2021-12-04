@@ -18,6 +18,7 @@ export class SignupCreadorComponent implements OnInit {
   textArea:string = '';
   selectedItem:string = ''
   selected:boolean=true;
+  showBar:boolean=false;
   
   
   urls:string[] = ['','']
@@ -82,6 +83,7 @@ export class SignupCreadorComponent implements OnInit {
   }
 
   creatorMaker(name:string,nickname:string,link:string, description:string,namePayment:string, account:string){
+    this.showBar=true;
     this.textArea = '<p' + this.textArea.substring(this.textArea.indexOf('>'));
     console.log(this.textArea)
     this.http.creatorCreate(name,nickname,link,description,namePayment,account,this.selectedItem, this.toppings.value,this.base64,this.textArea).subscribe(res =>{
