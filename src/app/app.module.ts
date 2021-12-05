@@ -74,10 +74,12 @@ import { CreatePostComponent } from './components/create-post/create-post.compon
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { UserEditComponent } from './components/backOffice/user-edit/user-edit.component'
 import { TextComponent } from './components/create-post/text/text.component';
-import { ImageComponent } from './components/create-post//image/image.component';
-import { VideoComponent } from './components/create-post//video/video.component';
-import { LinkComponent } from './components/create-post//link/link.component';
+import { ImageComponent } from './components/create-post/image/image.component';
+import { VideoComponent } from './components/create-post/video/video.component';
+import { LinkComponent } from './components/create-post/link/link.component';
+import { AudioComponent } from './components/create-post/audio/audio.component';
 import { SuscribeComponent } from './components/suscribe/suscribe.component';
+import { CreateplanComponent } from './components/planconfig/planconfig.component';
 
 
 @NgModule({
@@ -101,6 +103,8 @@ import { SuscribeComponent } from './components/suscribe/suscribe.component';
     VideoComponent,
     LinkComponent,
     SuscribeComponent,
+    CreateplanComponent,
+    AudioComponent
   ],
   imports: [
     ReactiveFormsModule,

@@ -15,7 +15,7 @@
         <div class= "pt-lg-md">
           <div class="card card-publicacion card-border">
            
-            <img class="card-img-top"  src="./assets/img/theme/imagen.png"> <br>
+            <img class="card-img-top"  src="./assets/img/theme/audio.png"> <br>
             <h3 class="card-title">Completa los siguientes datos:</h3>
             <form div="form">
               <form div="form" style="max-width: 100%; text-align: center; margin:auto;">
@@ -24,18 +24,17 @@
                         <span class="input-group-text"><i class="bi bi-fonts"></i></span>
                       </div>
                         <input #title class="form-control" placeholder="Titulo" type="text" (focus)="focus=true" (blur)="focus=false">
-                    </div>
-                    <br><ckeditor [editor]="editor" [config]="{placeholder: 'Añade una descripción del contenido...',toolbar: [ 'heading', '|', 'bold', 'italic','bulletedList', 'numberedList','undo', 'redo' ]}" class="editortext" ></ckeditor><br>
-                  <div class="input-group input-group-alternative">
+                    </div><br>
+                    <div class="input-group input-group-alternative">
                         <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="bi bi-image-fill"></i></span>
+                            <span class="input-group-text"><i class="bi bi-image-fill"></i></span>
                         </div>
-                        <input #image class="form-control form-control-md" id="formFileLg" type="file" style="display:none;" (change)="detectFiles($event)" />
-                        <label for="formFileLg" style="color: #aeb6be; margin-top: 13px;">Adjuntar Imagen</label>
-                      </div>
-                      <div class="d-flex justify-content-center mt-2">
-                        <img *ngFor="let url of urls" [src]="url" style="margin-left: 10px;" class="img-fluid img-imagen shadow">
-                      </div><br>
+                        <input #image class="form-control form-control-md" id="formFileLg" type="file"  accept=".mp3" style="display:none;"/>
+                        <label for="formFileLg" style="color: #aeb6be; margin-top: 13px;">Adjuntar MP3</label>
+                    </div><br><br>
+                  <ckeditor [editor]="editor" [config]="{placeholder: 'Añade una descripción del contenido...',toolbar: [ 'heading', '|', 'bold', 'italic','bulletedList', 'numberedList','undo', 'redo' ]}" class="editortext" ></ckeditor><br>
+                 
+                      
                   
                   <p class="card-title">Categoria:</p><mat-checkbox class="cat" color="accent" *ngFor="let item of categorias" [value]="item">{{item}}</mat-checkbox>
               </form>
