@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd, NavigationStart, ActivatedRoute } from '@angular/router';
 import { Location, PopStateEvent } from '@angular/common';
+import { CreatorServiceService } from 'src/app/services/CreatorServices/creator-service.service';
 
 @Component({
     selector: 'app-navbar',
@@ -16,7 +17,7 @@ export class NavbarComponent implements OnInit {
     nickname:string = sessionStorage.getItem('nickname');
     searchText:string = '';
 
-    constructor(public location: Location, private router: Router) {
+    constructor(public location: Location, private router: Router, private http:CreatorServiceService) {
     }
 
     ngOnInit() {
@@ -63,11 +64,19 @@ export class NavbarComponent implements OnInit {
     }
 
     navToSearch(){
-        if(this.searchText='')
+        if(this.searchText!=''){
             this.router.navigate([`/search/${this.searchText}`]);
-        else
-            this.router.navigate([`/search/ `]);
+    }   else{
+            this.navToCat();
+        }
     }
+
+    navToCat(){
+        this.http.creatorCategoires().subscribe(res=>{
+          let category = (Math.floor(Math.random() * (res['obj'].length - 1 + 1) + 1)) - 1;
+          this.router.navigate([`/search/` + res['obj'][category]]);
+        });
+      }
 
     getToken(){
         return sessionStorage.getItem('token');

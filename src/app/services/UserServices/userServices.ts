@@ -44,18 +44,28 @@ export class userServices {
     return this.http.get<Response<searchProfile[]>>(url);
   }
 
-  followCreator(idUser:number, nickname:string){
+  getCreatorByCategorySearch(searchText:string, pageNumber:string, pageSize:string){
+    let url = `${this.Url}` + "/api/Creator/GetCreatorBySearch?"​ + "searchText=" + searchText + "&" + 
+    "pageNumber=" + pageNumber + "&" + "pageSize=" + pageSize;
+    return this.http.get<Response<searchProfile[]>>(url);
+  }
+
+  followCreator(idUser:string, nickname:string){
     return this.http.post<Response<String>>(`${this.Url}` + "/api/User/Follow",{idUser,nickname},{headers: {'Authorization': ` Bearer ${sessionStorage.getItem('token')}`}})
   }
 
-  unfollowCreator(idUser:number, nickname:string){
+  unfollowCreator(idUser:string, nickname:string){
     return this.http.post<Response<String>>(`${this.Url}` + "/api/User/Unfollow",{idUser,nickname},{headers: {'Authorization': ` Bearer ${sessionStorage.getItem('token')}`}})
   }
 
-  getSubsByUser(idUser:number){
+  getSubsByUser(idUser:string){
     let url = `${this.Url}` + "/api/User/SubscribedTo?"​ + "idUser=" + idUser;
     return this.http.get<Response<Subscriptions[]>>(url, {headers: {'Authorization': ` Bearer ${sessionStorage.getItem('token')}`}})
   }
 
-
+  getContentByCreator(idUser:string, idCreador:string, pageNumber:string, pageSize:string){
+    let url = `${this.Url}` + "/api/Content/FeedById?"​ + "idUser=" + idUser + "&" + "IdCreator=" + idCreador + "&" +
+    "Page=" + pageNumber + "&" + "ContentPerPage=" + pageSize;
+    return this.http.get<Response<CreatorContent[]>>(url);
+  }
 }

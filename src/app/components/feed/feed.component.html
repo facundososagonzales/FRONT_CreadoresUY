@@ -22,14 +22,13 @@
             <ul class="list-group list-group-flush">
               <li class="list-group-item" style="padding: 15px 5px;">Suscripciones</li>
               <div id="subscriptions" *ngFor="let sub of subs">
-                <a style="padding: 0 5px;" class="text-muted-publicadopor1" mat-menu-item>
+                <a (click)="creatorFilter(sub['id'])" style="padding: 0 5px;" class="text-muted-publicadopor1" mat-menu-item>
                   <img src="{{sub.profileImage}}" class="rounded-circle2"
                   style="margin-right: 5px; float: right;">
                   {{sub.name}}
                 </a>
               </div>
-              <p class="profile-text subs" style="margin-top: 10px;"><span style="margin-right: 6px;" class="material-icons md-15">add_circle_outline</span>Explorar Creadores</p>
-        
+              <a mat-menu-item (click)="navToCat()" class="profile-text subs" style="padding: 0; cursor: pointer;"><span style="margin-right: 6px;" class="material-icons md-15">add_circle_outline</span>Explorar Creadores</a>
             </ul>
           </div>
       </div>
@@ -46,7 +45,7 @@
                   <div *ngFor="let element of contentViwer; let i = index" [attr.data-index]="i">
                     <div class="card-deck shadow">
                       <div id="card-feed" class="card card-m">
-                        <img *ngIf="element['content']['img']!=''" class="card-img-top" src="{{element['content']['img']}}">
+                        <!--<img *ngIf="element['content']['img']!=''" class="card-img-top" src="{{element['content']['img']}}">-->
                         <div class="card-body">
                           <h5 class="card-title" >{{element['content']['title']}}</h5>
                           <div class="description">
@@ -58,7 +57,7 @@
                         <div *ngIf="element['content']['nickName']!=='CreadoresUy'" class="card-footer">
                           <small class="text-muted">Fecha de publicacion: {{element['content']['addedDate'] | date:'short':'UTC'}}</small>
                           <a class="text-muted-publicadopor" [routerLink]="['/creator-Profile',element['content']['nickName']]">{{element['content']['nickName']}}
-                            <img src="./assets/img/theme/team-4-800x800.png" class="rounded-circle"
+                            <img src="./assets/img/theme/team-4-800x800.png" class="rounded-circle1"
                             style="width: 20px; margin-left: 5px; float: right;">
                           </a>
                         </div>

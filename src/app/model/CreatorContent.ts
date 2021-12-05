@@ -17,4 +17,5 @@ export class CreatorContent {
 
     public plans: any[];
     public tags: any[];
+    public dato:string;
 }

@@ -93,7 +93,7 @@ export class ProfileComponent implements OnInit {
   }
 
   followCreator(){
-    this.userServices.followCreator(parseInt(this.getUserId()),this.nickname).subscribe(res =>{
+    this.userServices.followCreator((this.getUserId()),this.nickname).subscribe(res =>{
       if(res['success']){
         this.follow=true;
         this.profileLoader();
@@ -102,7 +102,7 @@ export class ProfileComponent implements OnInit {
   }
 
   unfollowCreator(){
-    this.userServices.unfollowCreator(parseInt(this.getUserId()),this.nickname).subscribe(res =>{
+    this.userServices.unfollowCreator(this.getUserId(),this.nickname).subscribe(res =>{
       if(res['success']){
         this.follow=false;
         this.profileLoader();

@@ -34,7 +34,7 @@ export class CreatorServiceService {
   }
 
   creatorCategoires(){
-    return this.http.get<Response<String>>(`${this.Url}` + "/api/Creator/GetCategoryes", {headers: {'Authorization': ` Bearer ${sessionStorage.getItem('token')}`}})
+    return this.http.get<Response<String[]>>(`${this.Url}` + "/api/Creator/GetCategoryes", {headers: {'Authorization': ` Bearer ${sessionStorage.getItem('token')}`}})
   }
 
   creatorProfileLoader(nickname:string){
