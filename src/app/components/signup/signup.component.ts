@@ -50,7 +50,7 @@ export class SignupComponent implements OnInit {
         this.validEmail=true;
         this.subbmited=false;
         if(this.isChecked && this.userForm.valid){
-            var user = new CreateUserDto(); user.name=name; user.email=email; user.password=password;
+            var user = new CreateUserDto(); user.name=name; user.email=email; user.password=password; user.imgProfile=this.base64[0];
             this.signupService.UserCreate(user).subscribe(data =>{
                 console.log(data);
                 if(data["success"]){

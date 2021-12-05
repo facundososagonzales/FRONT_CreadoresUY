@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { Router } from '@angular/router';
 import { CreatorServiceService } from 'src/app/services/CreatorServices/creator-service.service';
@@ -73,8 +73,17 @@ export class SignupCreadorComponent implements OnInit {
     this.selectedItems = this.toppings.value;
   }
 
+  @ViewChild('textarea') myEditor: any;
   gettext(event:Event){
-    this.textArea = ((<HTMLInputElement>event.target).innerHTML);
+    this.textArea = this.getArticleContent();
+    console.log(this.textArea);
+  }
+
+  private getArticleContent() {
+    if (this.myEditor && this.myEditor.editorInstance) {
+      return this.myEditor.editorInstance.getData();
+    }
+    return '';
   }
 
   selectOption(e:Event){

@@ -45,7 +45,7 @@ export class userServices {
   }
 
   getCreatorByCategorySearch(searchText:string, pageNumber:string, pageSize:string){
-    let url = `${this.Url}` + "/api/Creator/GetCreatorBySearch?"​ + "searchText=" + searchText + "&" + 
+    let url = `${this.Url}` + "/api/Creator/GetCreatorsByCategory?"​ + "category=" + searchText + "&" + 
     "pageNumber=" + pageNumber + "&" + "pageSize=" + pageSize;
     return this.http.get<Response<searchProfile[]>>(url);
   }

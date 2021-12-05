@@ -2,10 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { userServices } from 'src/app/services/UserServices/userServices';
 import { searchProfile } from 'src/app/model/SearchProfile';
-import { Response } from 'src/app/model/Response';
 import { CreatorServiceService } from 'src/app/services/CreatorServices/creator-service.service';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-search',
@@ -40,7 +37,6 @@ export class SearchComponent implements OnInit {
         this.getProrfile();
       }else{
         this.getProfilesByCategory();
-        console.log("buscado");
       }
     })
   }
