@@ -33,7 +33,7 @@
                       <input accept=".mp3" #profile class="form-control form-control-md" id="formFileLg" type="file"  style="display:none; width: 100%;" />
                       <label for="formFileLg" style="cursor: pointer; color: #aeb6be; margin: 0; width: 80%; text-align: left;">Adjuntar MP3</label>
                     </div>
-                    <ckeditor #textarea [config]="{placeholder: 'Cuéntanos un poco más sobre tí...',toolbar: [ 'heading', '|', 'bold', 'italic','bulletedList', 'numberedList','undo', 'redo' ]}" [editor]="editor" class="editortext" (blur)="gettext($event)" ></ckeditor>
+                    <ckeditor #textarea [config]="{placeholder: 'Añade una descripción...',toolbar: [ 'heading', '|', 'bold', 'italic','bulletedList', 'numberedList','undo', 'redo' ]}" [editor]="editor" class="editortext" (blur)="gettext($event)" ></ckeditor>
                     <p class="card-title">Categoria:</p><mat-checkbox class="cat" color="accent" *ngFor="let item of categorias" [value]="item">{{item}}</mat-checkbox>
               </form>
             </form>

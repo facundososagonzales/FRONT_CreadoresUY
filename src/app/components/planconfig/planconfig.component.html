@@ -68,7 +68,7 @@
                     <div class="d-flex justify-content-center mt-2">
                       <img *ngFor="let url1 of urls1" [src]="url1" style="margin-left: 10px;" class="img-fluid img-imagen shadow">
                     </div><br>
-                    <ckeditor #textarea [config]="{placeholder: 'Cuéntanos un poco más sobre tí...',toolbar: [ 'heading', '|', 'bold', 'italic','bulletedList', 'numberedList','undo', 'redo' ]}" [editor]="editor" class="editortext" (blur)="gettext($event)"></ckeditor><br>
+                    <ckeditor #textarea [config]="{placeholder: 'Añade una descripción...',toolbar: [ 'heading', '|', 'bold', 'italic','bulletedList', 'numberedList','undo', 'redo' ]}" [editor]="editor" class="editortext" (blur)="gettext($event)"></ckeditor><br>
                     <ng-multiselect-dropdown
                         [placeholder]="'Beneficios Disponibles'"
                         [settings]="dropdownSettings"
@@ -116,7 +116,7 @@
                     <div class="d-flex justify-content-center mt-2">
                       <img *ngFor="let url of urls" [src]="url" style="margin-left: 10px;" class="img-fluid img-imagen shadow">
                     </div><br>
-                    <ckeditor #textarea [config]="{placeholder: 'Cuéntanos un poco más sobre tí...',toolbar: [ 'heading', '|', 'bold', 'italic','bulletedList', 'numberedList','undo', 'redo' ]}" [editor]="editor" class="editortext" (blur)="gettext($event)"></ckeditor><br>
+                    <ckeditor #textarea [config]="{placeholder: 'Añade una descripción...',toolbar: [ 'heading', '|', 'bold', 'italic','bulletedList', 'numberedList','undo', 'redo' ]}" [editor]="editor" class="editortext" (blur)="gettext($event)"></ckeditor><br>
                     <ng-multiselect-dropdown
                         [placeholder]="'Beneficios Disponibles'"
                         [settings]="dropdownSettings"
