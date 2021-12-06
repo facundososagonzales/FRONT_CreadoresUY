@@ -5,10 +5,12 @@
 .img-imagen{
     display: flex;
     margin-top: 20px;
-    margin-left: 20px;
-    border-radius: 10px;
     width: 100%;
-    max-width: 150px;
+    height: 100%;
+    min-width: 300px;
+    max-width: 300px;
+    min-height: 300px;
+    max-height: 300px;
     border: solid 0.5px #777;
     object-fit: cover;
 }
@@ -114,6 +116,11 @@ background-color:#27798f!important;   /*inner circle color change*/
 border-color:#ffe3b3!important; /*outer ring color change*/
 }
 
+:host ::ng-deep .ck-editor__editable_inline {
+    min-height: 150px;
+    max-height: 150px;
+}
+
 .card-img-top{
     width: 30%;
     height: auto;
@@ -202,6 +209,7 @@ label {
     align-items: center;
     margin-top: 10px;
 }  
+
 
 @media screen and (max-width: 826px){
     .todo{

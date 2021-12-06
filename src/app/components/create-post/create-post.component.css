@@ -6,7 +6,7 @@
 .cont{
   display: flex;
   text-align: center;
-  margin-top: 20px;
+  margin-top: 50px;
   justify-content: center;
 }
 
@@ -29,6 +29,11 @@
   animation-duration: 0.1s;
   filter: drop-shadow(0 0 5px #27798f);
   cursor: pointer;
+}
+
+:host ::ng-deep .ck-editor__editable_inline {
+  min-height: 150px;
+  max-height: 150px;
 }
 
 @media screen and (max-width: 570px){

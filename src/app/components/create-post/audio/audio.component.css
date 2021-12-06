@@ -196,6 +196,11 @@ label {
     background-color: #27798f !important;
 }
 
+:host ::ng-deep .ck-editor__editable_inline {
+    min-height: 150px;
+    max-height: 150px;
+}
+
 .form{
     display: flex !important;
     flex-direction:column; 

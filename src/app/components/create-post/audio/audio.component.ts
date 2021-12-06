@@ -18,8 +18,7 @@ export class AudioComponent implements OnInit {
   tipoSusAsig: string;
   selected=-1;
   public editor= ClassicEditor;
-  @ViewChild(CKEditorComponent) ckEditor: CKEditorComponent;
-
+ 
 
   constructor() { }
 
@@ -28,5 +27,11 @@ export class AudioComponent implements OnInit {
   
   changeComboo(event) {
     console.log('chnaged', event && event.value);
+  }
+
+  @ViewChild('textarea') myEditor: any;
+  textArea:string = '';
+  gettext(event:Event){
+    console.log(this.textArea);
   }
 }

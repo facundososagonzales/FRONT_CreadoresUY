@@ -31,6 +31,12 @@
     background-color: #27798f !important;
 }
 
+:host ::ng-deep .ck-editor__editable_inline {
+    min-height: 150px;
+    max-height: 150px;
+}
+
+
 .card-publicacion{
     margin: 0 5px !important;
     margin-top: 10px !important;

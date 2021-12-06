@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { CKEditorComponent } from '@ckeditor/ckeditor5-angular';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-planconfig',
@@ -10,13 +11,13 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
 })
 export class CreateplanComponent implements OnInit {
 public editor= ClassicEditor;
-@ViewChild(CKEditorComponent) ckEditor: CKEditorComponent;
 focus; focus1;
+closeModal: string;
 
 plans = [
   {
     namePlan: "Gratis",
-    descriptionPlan: "El suscriptor podrá acceder a tu contenido seleccionado de forma gratuita.",
+    descriptionPlan: "El suscriptor podrá acceder a tu contenido seleccionado de forma gratuita.El suscriptor podrá acceder a tu contenido seleccionado de forma gratuita.El suscriptor podrá acceder a tu contenido seleccionado de forma gratuita.El suscriptor podrá acceder a tu contenido seleccionado de forma gratuita.",
     price: 0,
     visible: false,
     imagen: './assets/img/theme/free.png',
@@ -43,7 +44,44 @@ plans = [
   }
 ]
 
-  constructor() { }
+
+constructor(private modalService: NgbModal) {}
+    
+editplan(content) {
+  this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((res) => {
+    this.closeModal = `Closed with: ${res}`;
+  }, (res) => {
+    this.closeModal = `Dismissed ${this.getDismissReasonEdit(res)}`;
+  });
+}
+
+newplan(content) {
+  this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((res) => {
+    this.closeModal = `Closed with: ${res}`;
+  }, (res) => {
+    this.closeModal = `Dismissed ${this.getDismissReasonNew(res)}`;
+  });
+}
+
+private getDismissReasonEdit(reason: any): string {
+  if (reason === ModalDismissReasons.ESC) {
+    return 'by pressing ESC';
+  } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+    return 'by clicking on a backdrop';
+  } else {
+    return  `with: ${reason}`;
+  }
+}
+
+private getDismissReasonNew(reason: any): string {
+  if (reason === ModalDismissReasons.ESC) {
+    return 'by pressing ESC';
+  } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+    return 'by clicking on a backdrop';
+  } else {
+    return  `with: ${reason}`;
+  }
+}
 
   dropdownList = [];
   selectedItems = [];
@@ -77,7 +115,7 @@ plans = [
 
   urls = new Array<string>();
 
-  detectFiles(event) {
+  detectFilesNew(event) {
     let files = event.target.files;
     if (files.length > 1) {
       alert("You can select only 1 images");
@@ -98,4 +136,31 @@ plans = [
     }
   }
 
+  urls1 = new Array<string>();
+  detectFilesEdit(event) {
+    let files = event.target.files;
+    if (files.length > 1) {
+      alert("You can select only 1 images");
+    }else{
+      let reader = new FileReader();
+      if(event.target.id == "formFileLg"){
+        reader.onload = (e: any) => {
+          console.log(reader.result);
+          this.urls1[0]=(e.target.result);
+        }
+        reader.readAsDataURL(files[0]);
+      }else{
+        reader.onload = (e: any) => {
+          this.urls1[1]=(e.target.result);
+        } 
+        reader.readAsDataURL(files[0]);
+      }
+    }
+  }
+
+  @ViewChild('textarea') myEditor: any;
+  textArea:string = '';
+  gettext(event:Event){
+    console.log(this.textArea);
+  }
 }

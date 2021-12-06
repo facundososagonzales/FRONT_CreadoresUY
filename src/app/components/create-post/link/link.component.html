@@ -30,7 +30,7 @@
                       </div>
                         <input #title class="form-control" placeholder="Inserte su link aquí" type="text" (focus)="focus=true" (blur)="focus=false">
                     </div>
-                    <br><ckeditor [editor]="editor" [config]="{placeholder: 'Añade una descripción del contenido...',toolbar: [ 'heading', '|', 'bold', 'italic','bulletedList', 'numberedList','undo', 'redo' ]}" class="editortext" ></ckeditor><br>
+                    <br><ckeditor #textarea [config]="{placeholder: 'Cuéntanos un poco más sobre tí...',toolbar: [ 'heading', '|', 'bold', 'italic','bulletedList', 'numberedList','undo', 'redo' ]}" [editor]="editor" class="editortext" (blur)="gettext($event)" ></ckeditor><br>
                   <p class="card-title">Categorias:</p><mat-checkbox class="cat" color="accent" *ngFor="let item of categorias" [value]="item">{{item}}</mat-checkbox>
                </form>
             </form>

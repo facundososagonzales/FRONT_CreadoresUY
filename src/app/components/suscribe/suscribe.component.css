@@ -24,7 +24,7 @@
     border-radius: 10px;
     border-color: #8c9fa3;
     max-width:290px;
-    max-height: 400px;
+    max-height: auto;
     margin: 10px;
     justify-content: center;
   
@@ -79,6 +79,8 @@
 
 .card-deck{
     margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 .button-footer-card{
@@ -86,7 +88,7 @@
 }
 
 
-@media screen and (max-width: 580px) {
+@media screen and (max-width: 800px) {
   
     .cont{
         margin-top: 30px;
@@ -96,10 +98,10 @@
         max-width: 90%;
         height: auto;
     }
-
-    .cards{
-        max-height: 500px;
-        
+    .card-deck{
+        margin-bottom: 50px;
+        display: grid;
+        grid-template-columns: 1fr;
     }
 
 }
