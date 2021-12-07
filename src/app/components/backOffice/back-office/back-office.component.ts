@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserComplet } from 'src/app/model/UserComplete';
-import { BackOfficeService } from '../service/back-office.service';
+
 
 @Component({
   selector: 'app-back-office',
@@ -12,20 +11,19 @@ export class BackOfficeComponent implements OnInit {
 
   listusers: any;
   public page: number;
-  filterpost= '';
-  users:any[] = [];
+  filterpost = '';
+  users: any[] = [];
 
-  constructor(private router:Router , private http:BackOfficeService) {}
+  constructor(private router: Router) { }
 
   ngOnInit() {
     const token = sessionStorage.getItem('token');
     const userType = sessionStorage.getItem('userType');
-    if(token==null || userType!=="admin"){
+    if (token == null || userType !== "admin") {
       this.router.navigate(['/home']);
     }
-    this.http.getUser().subscribe(res=>{
-      this.users=res['obj'];
-    });
+
   }
+
 
 }

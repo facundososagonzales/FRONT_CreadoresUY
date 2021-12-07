@@ -68,11 +68,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { LogoutComponent } from './components/logout/logout.component';
 import { FeedComponent } from './components/feed/feed.component';
 import { FilterPipe } from './components/pipes/filter.pipe';
-import { BackOfficeComponent } from './components/backOffice/back-office/back-office.component';
 import { SearchComponent } from './components/search/search.component';
 import { CreatePostComponent } from './components/create-post/create-post.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { UserEditComponent } from './components/backOffice/user-edit/user-edit.component'
 import { TextComponent } from './components/create-post/text/text.component';
 import { ImageComponent } from './components/create-post/image/image.component';
 import { VideoComponent } from './components/create-post/video/video.component';
@@ -81,6 +79,27 @@ import { AudioComponent } from './components/create-post/audio/audio.component';
 import { SuscribeComponent } from './components/suscribe/suscribe.component';
 import { CreateplanComponent } from './components/planconfig/planconfig.component';
 import { DatePipe } from '@angular/common';
+
+import { BackOfficeComponent } from './components/backOffice/back-office/back-office.component';
+import { UserComponent } from './components/backOffice/user/list/user.component';
+import { UserAddComponent } from './components/backOffice/user/add/user-add.component'
+import { UserEditComponent } from './components/backOffice/user/edit/user-edit.component'
+import { AdminComponent } from './components/backOffice/admin/list/admin.component';
+import { AdminEditComponent } from './components/backOffice/admin/edit/admin-edit.component';
+import { AdminAddComponent } from './components/backOffice/admin/add/admin-add.component';
+import { CategoryComponent } from './components/backOffice/category/list/category.component';
+import { CategoryEditComponent } from './components/backOffice/category/edit/category-edit.component';
+import { CategoryAddComponent } from './components/backOffice/category/add/category-add.component';
+import { CreatorComponent } from './components/backOffice/creator/list/creator.component';
+import { CreatorAddComponent } from './components/backOffice/creator/add/creator-add.component';
+import { CreatorEditComponent } from './components/backOffice/creator/edit/creator-edit.component';
+import { PlanComponent } from './components/backOffice/plan/list/plan.component';
+import { PlanAddComponent } from './components/backOffice/plan/add/plan-add.component';
+import { PlanEditComponent } from './components/backOffice/plan/edit/plan-edit.component';
+import { BenefitEditComponent } from './components/backOffice/benefit/edit/benefit-edit.component';
+import { BenefitComponent } from './components/backOffice/benefit/list/benefit.component';
+import { BenefitAddComponent } from './components/backOffice/benefit/add/benefit-add.component';
+import { StatisticsComponent } from './components/backOffice/statistics/statistics.component';
 
 
 @NgModule({
@@ -95,17 +114,35 @@ import { DatePipe } from '@angular/common';
     LogoutComponent,
     FeedComponent,
     FilterPipe,
-    BackOfficeComponent,
     SearchComponent,
     CreatePostComponent,
-    UserEditComponent,
     TextComponent,
     ImageComponent,
     VideoComponent,
     LinkComponent,
     SuscribeComponent,
     CreateplanComponent,
-    AudioComponent
+    AudioComponent,
+    AdminEditComponent,
+    CreatorComponent,
+    CreatorEditComponent,
+    CategoryAddComponent,
+    AdminAddComponent,
+    CategoryEditComponent,
+    UserAddComponent,
+    PlanComponent,
+    PlanAddComponent,
+    PlanEditComponent,
+    BenefitEditComponent,
+    BenefitAddComponent,
+    BenefitComponent,
+    StatisticsComponent,
+    BackOfficeComponent,
+    UserComponent,
+    UserEditComponent,
+    AdminComponent,
+    CategoryComponent,
+    CreatorAddComponent
   ],
   imports: [
     ReactiveFormsModule,
