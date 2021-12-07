@@ -4,6 +4,8 @@ import { ContentViwer } from 'src/app/model/ContentViwer';
 import { CreatorContent } from 'src/app/model/CreatorContent';
 import { CreatorServiceService } from 'src/app/services/CreatorServices/creator-service.service';
 import { userServices } from 'src/app/services/UserServices/userServices';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+
 
 @Component({
     selector: 'app-profile',
@@ -23,6 +25,9 @@ export class ProfileComponent implements OnInit {
   img:string;
   coverimg:string;
   follow:boolean=false;
+  public videosrc: any;
+  public rawvideolink: string;
+  
 
   public stopper:boolean = false;
   public genericContent = new CreatorContent("999999999","Soy un credor nuevo en creadoresUy!", "Acabo de comenzar en creadorUy, asegurese de revisar mi perfil en la brevedad para ver nuevas actualizaciones y suscribase si es de su agrado",9999,"",
@@ -33,7 +38,7 @@ export class ProfileComponent implements OnInit {
   public page:number = 1;
   public contentByPage:number=8;
   
-  constructor(private router:Router, private route:ActivatedRoute, private http:CreatorServiceService, private userServices:userServices) {}
+  constructor(private router:Router, private route:ActivatedRoute, private http:CreatorServiceService, private userServices:userServices,private _sanitizer: DomSanitizer) {}
 
   async ngOnInit(){
     this.nickname = this.route.snapshot.paramMap.get('nickname'); 
@@ -46,6 +51,7 @@ export class ProfileComponent implements OnInit {
       if(res['success']){
         this.creatorName=res['obj']['creatorName'];
         this.video=res['obj']['youtubeLink'];
+        this.getVideoIframe(this.video);
         this.biografia=res['obj']['biography'];
         this.descripcion=res['obj']['contentDescription'];
         this.cantSubs=res['obj']['cantSubscriptores'];
@@ -84,12 +90,37 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+  
+
   scrollToStart(e) {
     (e.target as Element).parentElement.parentElement.scrollIntoView({block: "start"});
   }
 
   increaseShow(){
     this.onScroll();
+  }
+
+  getId(url: string) {
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+
+    return (match && match[2].length === 11)
+      ? match[2]
+      : null;
+  }
+
+  getVideoIframe(url: string) {
+    console.log(url);
+    var video, results;
+
+    if (url === null) {
+      return '';
+    }
+    results = url.match('[\\?&]v=([^&#]*)');
+    video = (results === null) ? url : results[1];
+
+    this.rawvideolink = "www.youtube.com/embed/" + this.getId(url);
+    this.videosrc = this._sanitizer.bypassSecurityTrustResourceUrl("//www.youtube.com/embed/" + this.getId(url));
   }
 
   followCreator(){
