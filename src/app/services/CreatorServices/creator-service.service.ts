@@ -7,6 +7,7 @@ import { Response } from 'src/app/model/Response';
 import { infoPago } from 'src/app/model/infoPago';
 
 import * as dev from 'src/dev';
+import { PlanBasic } from 'src/app/model/PlanBasic';
 
 @Injectable({
   providedIn: 'root'
@@ -46,5 +47,10 @@ export class CreatorServiceService {
     let url = `${this.Url}` + "/api/Creator/GetContentByUser?"​ + "nickname=" + nickname + "&idUser=" + idUser
     + "&pageNumber=" + pageNumer + "&pageSize=" + pageSize;
     return this.http.get<Response<CreatorContentProfile>>(url, {headers: {'Authorization': ` Bearer ${sessionStorage.getItem('token')}`}});
+  }
+
+  getPlanBasic(nickname:string){
+    let url = `${this.Url}` + "/api/Creator/GetCreatorPlansBasic?"​ + "nickname=" + nickname;
+    return this.http.get<Response<PlanBasic>>(url, {headers: {'Authorization': ` Bearer ${sessionStorage.getItem('token')}`}});
   }
 }

@@ -80,6 +80,7 @@ import { LinkComponent } from './components/create-post/link/link.component';
 import { AudioComponent } from './components/create-post/audio/audio.component';
 import { SuscribeComponent } from './components/suscribe/suscribe.component';
 import { CreateplanComponent } from './components/planconfig/planconfig.component';
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -170,7 +171,7 @@ import { CreateplanComponent } from './components/planconfig/planconfig.componen
     
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

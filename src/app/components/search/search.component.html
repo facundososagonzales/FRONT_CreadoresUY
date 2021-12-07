@@ -16,7 +16,7 @@
           <div class="col-12 card card-main bg-white">
             <form class="search-container w-100">
               <div class="input-group">
-                <button type="submit" (click)="getProrfileSearch()" class="button-search">
+                <button type="submit" (click)="getProrfileBySearch()" class="button-search">
                   <div class="input-group-prepend">
                     <span class="input-group-text">
                       <mat-icon aria-hidden="false" aria-label="Example home icon">search</mat-icon>
@@ -25,7 +25,7 @@
                 </button>
                 <input (input)="inputText($event)" value="{{searchString}}" class="form-control" placeholder="Buscar..." type="search" (focus)="focus=true" (blur)="focus=false">
               </div>
-              <button type="button" (click)="getProrfileSearch()" style="font-size: large;" mat-raised-button>Buscar</button> 
+              <button type="button" (click)="getProrfileBySearch()" style="font-size: large;" mat-raised-button>Buscar</button> 
             </form>
             <div class="search-results" infinite-scroll
             [infiniteScrollDistance]="2"

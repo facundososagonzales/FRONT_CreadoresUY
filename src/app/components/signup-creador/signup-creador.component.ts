@@ -74,9 +74,8 @@ export class SignupCreadorComponent implements OnInit {
   }
 
   @ViewChild('textarea') myEditor: any;
-  gettext(event:Event){
+  gettext(){
     this.textArea = this.getArticleContent();
-    console.log(this.textArea);
   }
 
   private getArticleContent() {
