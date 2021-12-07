@@ -19,6 +19,7 @@ export class SearchComponent implements OnInit {
   pageSize:number = 10;
   pageNumber:number = 0;
   stopped:boolean = false;
+  categories:string[] = [];
 
 
   constructor(private http:userServices, private creatorServices:CreatorServiceService, private router:Router, private route:ActivatedRoute) { 
@@ -29,6 +30,7 @@ export class SearchComponent implements OnInit {
     this.creatorServices.creatorCategoires().subscribe(res =>{
       this.searchString = this.route.snapshot.paramMap.get('querry');
       res['obj'].forEach(element => {
+        this.categories.push(element);
         if(this.searchString == element){
           this.categorySearch = false;
         }
@@ -82,6 +84,17 @@ export class SearchComponent implements OnInit {
     this.pageNumber=0;
     this.stopped=false;
     if(this.categorySearch){
+      this.getProrfile();
+    }else{
+      this.getProfilesByCategory();
+    }
+  }
+
+  getProrfileBySearch(){
+    this.searchProfile=[];
+    this.pageNumber=0;
+    this.stopped=false;
+    if(!this.categories.includes(this.searchString)){
       this.getProrfile();
     }else{
       this.getProfilesByCategory();

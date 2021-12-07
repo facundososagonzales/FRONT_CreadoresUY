@@ -1,6 +1,13 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { CKEditorComponent } from '@ckeditor/ckeditor5-angular';
+import { Router } from '@angular/router';
+import { CreatorServiceService } from 'src/app/services/CreatorServices/creator-service.service';
+import { PlanBasic } from 'src/app/model/PlanBasic';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {FormControl} from '@angular/forms';
+import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
+import {MatChipInputEvent} from '@angular/material/chips';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-image',
@@ -10,21 +17,36 @@ import { CKEditorComponent } from '@ckeditor/ckeditor5-angular';
 export class ImageComponent implements OnInit {
 
   visualizan: string[] = ['Público', 'Sólo suscriptores','Seleccionar Suscripción'];
-  tipoSuscripcion: string[] = ['Plan 1', 'Plan 2','VIP'];
-  categorias: string[] = ['Arte', 'Trading','Música','Comida'];
+  tipoSuscripcion: PlanBasic[] = [];
   contSelec: string;
   focus; focus1;
   tipovisAsig: string;
   tipoSusAsig: string;
-  selected=-1;
+  dateAlert:boolean=false;
+
+  labelPosition: 'Si' | 'No' = 'No';
+  today:Date = new Date();
+
+  urls:string[] = ['']
+  base64:string[] = ['']
+
+  removable = true;
+  separatorKeysCodes: number[] = [ENTER, COMMA];
+  tagControl = new FormControl();
+  tags: string[] = ['Comida'];
+  @ViewChild('tagInput') tagInput: ElementRef<HTMLInputElement>;
+
   public editor= ClassicEditor;
+  public textArea:string = '';
 
-
-  constructor() { }
+  constructor(private router:Router, private http:CreatorServiceService, public datepipe: DatePipe) { }
 
   ngOnInit(): void {
+    if(!(sessionStorage.getItem('token')!=null && (sessionStorage.getItem('userType')=='creator' || sessionStorage.getItem('userType')=='admin'))){
+      this.router.navigate(['/home']);
+    }
+    this.getPlanBasic();
   }
-  urls = new Array<string>();
 
   detectFiles(event) {
     let files = event.target.files;
@@ -34,15 +56,11 @@ export class ImageComponent implements OnInit {
       let reader = new FileReader();
       if(event.target.id == "formFileLg"){
         reader.onload = (e: any) => {
-          console.log(reader.result);
           this.urls[0]=(e.target.result);
+          var n = e.target.result.lastIndexOf(',');
+          this.base64[0]=(e.target.result.substring(n + 1));
         }
-        reader.readAsDataURL(files[0]);
-      }else{
-        reader.onload = (e: any) => {
-          this.urls[1]=(e.target.result);
-        } 
-        reader.readAsDataURL(files[0]);
+        reader.readAsDataURL(files[0]); 
       }
     }
   }
@@ -50,9 +68,64 @@ export class ImageComponent implements OnInit {
   changeComboo(event) {
     console.log('chnaged', event && event.value);
   }
+
   @ViewChild('textarea') myEditor: any;
-  textArea:string = '';
-  gettext(event:Event){
-    console.log(this.textArea);
+  gettext(){
+    this.textArea = this.getArticleContent();
+  }
+
+  getArticleContent() {
+    if (this.myEditor && this.myEditor.editorInstance) {
+      return this.myEditor.editorInstance.getData();
+    }
+    return '';
+  }
+
+  getPlanBasic(){
+    this.http.getPlanBasic(sessionStorage.getItem('nickname')).subscribe(res=>{
+      if(res['success']){
+        res['obj'].forEach(element => {
+          this.tipoSuscripcion.push(element);
+        });
+      }
+    });
+  }
+
+  checkDate(date:string){
+    console.log(date);
+    let curretDate = new Date();
+    if(date<=this.datepipe.transform(curretDate, 'yyyy-MM-dd')){
+      this.dateAlert = true;
+    }else{
+      this.dateAlert=false;
+    }
+  }
+
+  checkTime(time:string){
+    console.log(time)
+  }
+
+  add(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+    if (value) {
+      this.tags.push(value);
+    }
+    event.value!='';
+
+    this.tagControl.setValue(null);
+  }
+
+  remove(tag: string): void {
+    const index = this.tags.indexOf(tag);
+
+    if (index >= 0) {
+      this.tags.splice(index, 1);
+    }
+  }
+
+  selected(event: MatAutocompleteSelectedEvent): void {
+    this.tags.push(event.option.viewValue);
+    this.tagInput.nativeElement.value = '';
+    this.tagControl.setValue(null);
   }
 }

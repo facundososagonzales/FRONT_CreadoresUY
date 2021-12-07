@@ -19,7 +19,7 @@ export class LogoutComponent implements OnInit {
       sessionStorage.removeItem('email');
       sessionStorage.removeItem('imgProfile');
 
-      if(sessionStorage.getItem('userType') === "creador"){
+      if(sessionStorage.getItem('userType') === "creator"){
         sessionStorage.removeItem('userType');
         sessionStorage.removeItem('creatorId');
         sessionStorage.removeItem('nickname');

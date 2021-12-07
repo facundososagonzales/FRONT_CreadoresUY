@@ -21,7 +21,7 @@ export class FeedComponent implements OnInit {
   public nPage:string = "0";
   public contentNumer:string = "6";
   public genericLoaded:boolean = false;
-  public genericContent = new CreatorContent("999999999","Bienvenido a creadoresUy" + this.getUserNickname(), "Le recomendamos que revise algunos perfiles de creadores que le puedan interesar através de la busqueda por categorias en el buscador!",9999,"",
+  public genericContent = new CreatorContent("999999999","Bienvenido a creadoresUy " + this.getUserNickname(), "Le recomendamos que revise algunos perfiles de creadores que le puedan interesar através de la busqueda por categorias en el buscador!",9999,"",
         (new Date()),false,(new Date()),true,"","","./assets/img/brand/1.jpg",0);
   public genericContent1 = new CreatorContent("999999999","Este creador no tiene contenido aún!", "El creador seleccionado no tiene contenido para tu plan de suscripción todavía",9999,"",
         (new Date()),false,(new Date()),true,"","","./assets/img/brand/1.jpg",0);

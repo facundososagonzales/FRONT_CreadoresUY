@@ -78,7 +78,7 @@
                                                   <div *ngIf="urls[1]!=''" class="d-flex flex-row flex-wrap justify-content-center">
                                                     <img [src]="urls[1]" class="img-fluid img-board">
                                                   </div><br>
-                                                  <ckeditor #textarea [config]="{placeholder: 'Cuéntanos un poco más sobre tí...',toolbar: [ 'heading', '|', 'bold', 'italic','bulletedList', 'numberedList','undo', 'redo' ]}" [editor]="editor" class="editortext" (blur)="gettext($event)" ></ckeditor>
+                                                  <ckeditor #textarea [config]="{placeholder: 'Cuéntanos un poco más sobre tí...',toolbar: [ 'heading', '|', 'bold', 'italic','bulletedList', 'numberedList','undo', 'redo' ]}" [editor]="editor" class="editortext" (blur)="gettext()" ></ckeditor>
                                                 </div>
                                         </form>
                                     </div>
