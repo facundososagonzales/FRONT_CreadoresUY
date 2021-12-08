@@ -107,11 +107,13 @@
     margin-left: 2px;
     margin-top:2px;
     margin-bottom: -6px;
+   
 }
 
 .inputError{
     filter: drop-shadow(0px 0px 0.08rem #ff2b0e);
     box-shadow: none !important;
+    
 }
 
 
@@ -161,9 +163,7 @@ border-color:#ffe3b3!important; /*outer ring color change*/
     margin: auto;
 }
 
-.form-control{
-    filter: drop-shadow(0px 0px 0.08rem #ffffff);
-}
+
 
 .mat-button{
     background-color: #27798f;
@@ -236,7 +236,6 @@ label {
     display: flex !important;
     flex-direction:column; 
     align-items: center;
-    margin-top: 10px;
 }  
 
 
@@ -277,14 +276,5 @@ label {
         margin-top: 0;
     }
 
-    .input-group input{
-        max-height: 30px !important;
-        width: 350px;
-        border-radius: 0px 50px 50px 0px !important;
-        margin-left: 1px;
-        display: flex;
-        flex-direction: column;
-        overflow: auto;
-        margin: auto;
-    }
+   
 }
