@@ -256,14 +256,7 @@ label {
 
   
 
-    .input-group input{
-        max-height: 30px !important;
-        max-width: 350px;
-        border-radius: 0px 50px 50px 0px !important;
-        margin-left: 1px;
-        display: flex;
-        flex-direction: column;
-    }
+  
     
 }
 
