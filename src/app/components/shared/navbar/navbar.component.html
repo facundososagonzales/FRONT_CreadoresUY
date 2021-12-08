@@ -31,7 +31,13 @@
             <span class="nav-link-inner--text">Funcionalidades</span>
           </a>
           <div class="dropdown-menu">
-            <a [routerLink]="['/backOffice']" class="dropdown-item">Back Office</a>
+            <a [routerLink]="['/backOffice/usuario']" class="dropdown-item">Usuarios</a>
+            <a [routerLink]="['/backOffice/admin']" class="dropdown-item">Administradores</a>
+            <a [routerLink]="['/backOffice/creador']" class="dropdown-item">Creadores</a>
+            <a [routerLink]="['/backOffice/categoria']" class="dropdown-item">Categorias</a>
+            <a [routerLink]="['/backOffice/plan']" class="dropdown-item">Planes por defecto</a>
+            <a [routerLink]="['/backOffice/beneficio']" class="dropdown-item">Beneficios por defecto</a>
+            <a [routerLink]="['/backOffice/estadisticas']" class="dropdown-item">Estadisticas</a>
           </div>
         </li>
       </ul>
