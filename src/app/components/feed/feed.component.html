@@ -13,7 +13,7 @@
     
     <div class="todo justify-content-center">
       <div class= "pt-lg-md">
-        <div class="card card-profile card-border">
+        <div class="card card-profile card-border" style="min-width: 320px;">
             <img *ngIf="getUserImage()==''" class="img-fluid img-circle img-profile shadow" style="text-align:center; margin-top: 10px;" src="./assets/img/theme/default-avatar.png">
             <img *ngIf="getUserImage()!=''"class="img-fluid img-circle img-profile shadow" style="text-align:center; margin-top: 10px;" src="{{getUserImage()}}">
             <div class="card-body px-lg-5 py-lg-4">
@@ -22,7 +22,7 @@
             <ul class="list-group list-group-flush">
               <li class="list-group-item" style="padding: 15px 5px;">Suscripciones</li>
               <div id="subscriptions" *ngFor="let sub of subs">
-                <a (click)="creatorFilter(sub['id'])" style="padding: 0 5px;" class="text-muted-publicadopor1" mat-menu-item>
+                <a (click)="creatorFilter(sub['id'])" style="padding: 0 8px;" class="text-muted-publicadopor1" mat-menu-item>
                   <img src="{{sub.profileImage}}" class="rounded-circle2"
                   style="margin-right: 5px; float: right;">
                   {{sub.name}}
@@ -32,7 +32,7 @@
             </ul>
           </div>
       </div>
-      <div class="search-results" infinite-scroll
+      <div class="search-results" style="min-width: 800px;" infinite-scroll
       [infiniteScrollDistance]="2"
       [infiniteScrollThrottle]="50"
       (scrolled)="onScroll()"
@@ -43,14 +43,14 @@
               <div class="card card-border">
                 <div class="card">
                   <div *ngFor="let element of contentViwer; let i = index" [attr.data-index]="i">
-                    <div class="card-deck shadow">
+                    <div class="card-deck shadow " style="min-width: 100%;">
                       <div id="card-feed" class="card card-m">
                         <!--<img *ngIf="element['content']['img']!=''" class="card-img-top" src="{{element['content']['img']}}">-->
                         <div class="card-body">
                           <h5 class="card-title" >{{element['content']['title']}}</h5>
                           <div class="description">
-                            <p *ngIf="!element['visible']" class="card-text">{{ (element['content']['description'].length>240)? (element['content']['description'] | slice:0:240)+'...':(element['content']['description'])}}</p>
-                            <p *ngIf="element['visible']" class="card-text">{{element['content']['description']}}</p>
+                            <p *ngIf="!element['visible']" class="card-text" [innerHTML]="(element['content']['description'].length>240)? (element['content']['description'] | slice:0:240)+'...':(element['content']['description'])"></p>
+                            <p *ngIf="element['visible']" class="card-text" [innerHTML]="element['content']['description']"></p>
                           </div><br>
                           <a *ngIf="(element['content']['description'].length>240)" (click)="scrollToStart($event)" class="text-muted-publicadopor more" (click)="element['visible'] = !element['visible']" style="float: right;">{{ element['visible'] ? 'Mostrar menos': 'Mostrar más' }}</a>
                         </div>

@@ -23,42 +23,43 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="bi bi-fonts"></i></span>
                     </div>
-                      <input #title class="form-control" placeholder="  Titulo" type="text" (focus)="focus=true" (blur)="focus=false">
+                      <input #titleInput [(ngModel)]="title" name="title" class="form-control" placeholder="  Titulo" type="text" (blur)="updateTitle()">
                   </div><br>
                   <div *ngIf="labelPosition=='Si'" class="input-group input-group-alternative" [ngClass]="{inputError: dateAlert}">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="bi bi-calendar-plus"></i></span>
                     </div>
-                      <input #date class="form-control" [value]="today | date:'yyyy-MM-dd'" placeholder="Fecha" type="date" (blur)="checkDate(date.value)">
+                      <input required #date class="form-control" [value]="inputDate | date:'yyyy-MM-dd'" placeholder="Fecha" type="date" (blur)="checkDate(date.value)">
                     </div>
-                    <div class="inputAlert" style="text-align: start;" *ngIf="dateAlert">Fecha incorrecta</div>
+                    <div class="inputAlert" style="text-align: start;" *ngIf="dateAlert && labelPosition=='Si'">Fecha incorrecta</div>
                     <br *ngIf="labelPosition=='Si'">
-                  <div *ngIf="labelPosition=='Si'" class="input-group input-group-alternative">
+                  <div *ngIf="labelPosition=='Si'" class="input-group input-group-alternative" [ngClass]="{inputError: !timeAlert}">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="bi bi-alarm"></i></span>
                     </div>
-                      <input #time class="form-control" value="00:00" placeholder="Fecha" type="time" (blur)="checkTime(time.value)">
-                  </div><br *ngIf="labelPosition=='Si'">
+                      <input required #time class="form-control" [value]="inputTime" placeholder="Fecha" type="time" (blur)="checkTime(time.value)">
+                  </div><br *ngIf="labelPosition=='Si' && timeAlert">
+                  <div class="inputAlert" style="margin-bottom:14px; text-align: start;" *ngIf="!timeAlert && labelPosition=='Si'">Hora Incorrecta</div>
                   <div style="margin-bottom: 16px; background-color: #fff" class="input-group img-input input-group-alternative">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="bi bi-image-fill"></i></span>
-                    </div>
+                    </div> 
                     <input accept="image/png, image/jpeg" #profile class="form-control form-control-md" id="formFileLg" type="file" (change)="detectFiles($event)" style="display:none; width: 100%;" />
                     <label for="formFileLg" style="cursor: pointer; color: #aeb6be; margin: 0; width: 80%; text-align: left;">Subir Imagen</label>
                   </div>
                   <div *ngIf="urls[0]!=''" style="margin-bottom: 12px;" class="d-flex flex-row flex-wrap justify-content-center">
                     <img [src]="urls[0]" class="img-fluid img-imagen shadow">
                   </div>
-                  <ckeditor #textarea [config]="{placeholder: 'Añade una descripción...',toolbar: [ 'heading', '|', 'bold', 'italic','bulletedList', 'numberedList','undo', 'redo' ]}" [editor]="editor" class="editortext" (blur)="gettext()" ></ckeditor><br>
-                  <mat-form-field class="tags-list" appearance="fill">
-                    <mat-label>Tags de contenido</mat-label>
-                    <mat-chip-list #chipList>
+                  <ckeditor #textarea [config]="{placeholder: 'Añade una descripción...',toolbar: [ 'heading', '|', 'bold', 'italic','bulletedList', 'numberedList','undo', 'redo' ]}" [editor]="editor" class="editortext" (blur)="updateDescription()" ></ckeditor><br>
+                  <mat-form-field class="tags-list" appearance="standard ">
+                    <mat-label style="color:#444;">Tags de contenido</mat-label>
+                    <mat-chip-list #chipList aria-label="Tags selection">
                       <mat-chip
                         *ngFor="let tag of tags"
                         [removable]="removable"
                         (removed)="remove(tag)">
                         {{tag}}
-                        <button matChipRemove *ngIf="removable">
+                        <button style="border: none; box-shadow: none; background-color:transparent;" matChipRemove *ngIf="removable">
                           <mat-icon>cancel</mat-icon>
                         </button>
                       </mat-chip>
@@ -71,10 +72,9 @@
                         (matChipInputTokenEnd)="add($event)">
                     </mat-chip-list>
                   </mat-form-field>
-                  
             </form>
           </form>
-            </div>
+        </div>
             
       </div>
         <div class="pt-lg-md">
@@ -83,7 +83,7 @@
               <div class="card card-border">
                 <div class="card visualizan">
                   <h4 class="card-title">¿Quiere programar la publicación del contenido?</h4>
-                  <mat-radio-group class="visualizan-group d-flex flex-row justify-content-around mb-2" color="accent" [(ngModel)]="labelPosition">
+                  <mat-radio-group class="visualizan-group d-flex flex-row justify-content-around mb-2" color="accent" (change)="resetDate($event)" [(ngModel)]="labelPosition">
                     <mat-radio-button color="accent" class="wrap-mat-radio-label" value='Si'>Si</mat-radio-button>
                     <mat-radio-button color="accent" class="wrap-mat-radio-label" value='No'>No</mat-radio-button>
                   </mat-radio-group>
@@ -93,11 +93,11 @@
                     <div class="input-container">
                         <div *ngIf="tipovisAsig=='Seleccionar Suscripción'"><br>
                           <h4 style="margin-bottom: 10px;" class="card-title">Selecciona uno o más planes:</h4>
-                          <mat-checkbox class="visualizan" color="accent" style="margin-left: 10px;" *ngFor="let item of tipoSuscripcion" [value]="item"><span class="wrap-mat-radio-label">{{item['name']}}</span></mat-checkbox>
+                          <mat-checkbox class="visualizan" color="accent" style="margin-left: 10px;" *ngFor="let item of tipoSuscripcion" (change)="changePlan(item)" [value]="item"><span class="wrap-mat-radio-label">{{item['name']}}</span></mat-checkbox>
                         </div>
                     </div> 
                   </mat-radio-group><br>
-                  <button mat-button style="text-align: center;" >Crear Publicación</button>  
+                  <button mat-button style="text-align: center;" (click)="contentUpdate()">Crear Publicación</button>  
                 </div> 
               </div>
             </div>

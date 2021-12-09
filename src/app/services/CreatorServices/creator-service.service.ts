@@ -8,6 +8,9 @@ import { infoPago } from 'src/app/model/infoPago';
 
 import * as dev from 'src/dev';
 import { PlanBasic } from 'src/app/model/PlanBasic';
+import { CreatorContent } from 'src/app/model/CreatorContent';
+import { CreatorContentString } from 'src/app/model/CreatorContentString';
+import { DatePipe } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +19,7 @@ export class CreatorServiceService {
 
   Url=`${dev.apiurl}`;
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, public datepipe: DatePipe) { }
 
   creatorCreate(name:string,nickname:string,link:string,description:string,namePayment:string,account:string,selectedItem:string,toppings:string[],base64:string[],textArea:string){
     var creatorDto = new CreatorDto();
@@ -52,5 +55,45 @@ export class CreatorServiceService {
   getPlanBasic(nickname:string){
     let url = `${this.Url}` + "/api/Creator/GetCreatorPlansBasic?"​ + "nickname=" + nickname;
     return this.http.get<Response<PlanBasic>>(url, {headers: {'Authorization': ` Bearer ${sessionStorage.getItem('token')}`}});
+  }
+
+  getNewDraft(content:CreatorContent){
+    return this.http.post<Response<CreatorContent>>(`${this.Url}` + '/api/Content/CreateNewDraftContent',{content},{headers: {'Authorization': ` Bearer ${sessionStorage.getItem('token')}`}});
+  }
+
+  updateDraft(c:CreatorContent){
+    var fecha = (this.datepipe.transform(c.publishDate, 'MM-dd-yyyy, HH:mm a'));
+    var date = fecha.split(',',1,);
+    var n = fecha.indexOf(',');
+    var time = (fecha.substring(n+2)).split(':',2);
+    console.log(fecha)
+    var datePart = date[0].split('-',3);
+    if (time[1].includes('AM')){
+      let index = time[1].indexOf('AM');
+      var contentDate = time[1].substring(0,index-1);
+    }else if(time[1].includes('PM')){
+      let index = time[1].indexOf('PM');
+      var contentDate = time[1].substring(0,index-1);
+    }
+    var year = '';
+    var day = '';
+    if(datePart[0] === '01'){
+      year = '12';
+    }else{
+      year = (parseInt(datePart[0]) - 1).toString();
+      if(parseInt(year)<10){
+        year = '0' + year;
+      }
+    }
+    console.log(year)
+    var contentNewDate = datePart[2] + '-' + datePart[0] + '-' + datePart[1] + 'T' + time[0] + ':' + contentDate + ':00.375Z';
+    var content = new CreatorContentString(c.id,c.title,c.description,c.idCreator,c.nickName,c.addedDate,c.draft,contentNewDate,c['isPublic'],c.type);
+    content.plans = c.plans; content.tags = c.tags; content.dato = c.dato; content.Ispublic = c.Public; content.creatorImage='';
+    return this.http.put<Response<CreatorContentString>>(`${this.Url}` + '/api/Content/UpdateContent',{content},{headers: {'Authorization': ` Bearer ${sessionStorage.getItem('token')}`}})
+  }
+
+  getDraft(nickname:string){
+    let url = `${this.Url}` + "/api/Content/GetContentDraft?"​ + "nickname=" + nickname;
+    return this.http.get<Response<CreatorContent>>(url,{headers: {'Authorization': ` Bearer ${sessionStorage.getItem('token')}`}})
   }
 }

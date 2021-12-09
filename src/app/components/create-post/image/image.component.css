@@ -114,15 +114,9 @@
     box-shadow: none !important;
 }
 
-
 .tags-list {
     width: 100%;
 }
-
-.mat-form-field{
-    background-color: #fff;
-}
-  
 
 .editortext{
     display: block;
@@ -170,7 +164,6 @@ border-color:#ffe3b3!important; /*outer ring color change*/
     color: #ffffff;
     text-align: center !important;
     width: 100%;
-
 }
 
 

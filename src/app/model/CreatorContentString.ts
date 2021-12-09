@@ -1,6 +1,6 @@
 import { name } from "./name";
 
-export class CreatorContent {
+export class CreatorContentString {
     constructor(
         public id: string,
         public title: string,
@@ -9,15 +9,13 @@ export class CreatorContent {
         public nickName: string,
         public addedDate: Date,
         public draft: boolean,
-        public publishDate: Date,
-        public Public: boolean,
-        public compositor: string,
-        public link: string,
-        public img: string,
+        public publishDate: string,
+        public Ispublic: boolean,
         public type: number,
     ){}
 
     public plans: number[];
     public tags: name[];
     public dato:string;
+    public creatorImage:string;
 }
