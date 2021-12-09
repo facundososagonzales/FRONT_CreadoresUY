@@ -39,33 +39,36 @@
 }
 
 .card-img-top{
-    width: 25%;
-    height: auto;
-    text-align: center !important;
-    object-fit:cover;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    min-width: 70px;
+    max-width: 70px;
+    min-height: 70px;
+    max-height: 70px;
+    object-fit: cover;
    
 }
+
 
 
 .card-body{
     filter: drop-shadow(0px 0px 0.08rem #e7eff0);
     align-items: center !important;
     align-content: center !important;  
-    
+    line-height: 16px;
+    height: 140px;
+    overflow: hidden;
+    font-family: 'Open Sans';
 }
 
 .card-title{
     font-size:15px;
     font-style: bold;
-    margin-top: 7px;
+    margin-top: 10px;
 }
 
-.card-text{
-    font-style: oblique;
-    line-height: 16px;
-    height: 50px;
-    overflow: hidden;
-}
+
 
 .show {
     overflow: visible;
@@ -75,6 +78,9 @@
 .text{
     cursor:pointer;
     font-size: small;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-family: 'Open Sans';
 }
 
 .card-deck{

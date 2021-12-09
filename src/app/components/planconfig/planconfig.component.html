@@ -18,14 +18,15 @@
                     <br><div class="card-title">{{plan.namePlan}}</div>
                     <img class="card-img-top" style="float: center;margin-left: 38%;" src="{{plan.imagen}}">  
                       <font color="#27798f" size="5" face="Open Sans"><br><i><b>${{plan.price}}</b></i></font><font color="#27798f" size="3" face="Open Sans"> /mes</font>            
-                      <div class="card-body">
+                      <div class="card-body" [class.show]="plan.visible">
                         <button mat-stroked-button (click)="editplan(modalDataEdit)" style="background-color: #eecb8b;">Editar</button><br><br>
-                        <div class="card-text" [class.show]="plan.visible" >{{plan.descriptionPlan}}</div><br>
-                        <mat-list role="list">
-                          <mat-list-item role="listitem">-{{plan.beneficio}}</mat-list-item>
+                        <div class="card-text">{{plan.descriptionPlan}}</div><br>
+                        <font color="#27798f" size="3" face="Open Sans"><br><i><b>Beneficios:</b></i></font>
+                        <mat-list role="list" class= "beneficios">
+                          <mat-list-item style="font-family: Open Sans; font-size: small;color: #2c4e57;"role="listitem">-{{plan.beneficio}}</mat-list-item>
                         </mat-list>
-                        <div  class= "text"  (click)="plan.visible = !plan.visible">{{ plan.visible ? 'Mostrar menos...': 'Mostrar más...' }}</div>
                       </div>
+                      <div class= "text"  (click)="plan.visible = !plan.visible">{{ plan.visible ? 'Mostrar menos...': 'Mostrar más...' }}</div>
                   </div>   
                 </div>
               </div>      

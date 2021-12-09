@@ -2,14 +2,52 @@
     background: linear-gradient(45deg, #27798f 1%, #ffe3b3 90%);
 }
 
+.img-imagen{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 300px;
+    max-height: 300px;
+    border: solid 0.1px #bbb;
+    object-fit: cover;
+}
+
+
+.card-img-top{
+    width: 25%;
+    height: auto;
+    display: flex !important;
+    align-items: center !important;
+    align-content: center !important;
+    object-fit: cover;
+    filter: drop-shadow(0px 0px 0.08rem #d1dbdc);
+    margin-top: 10px;
+}
+.cards-ps{
+    filter: drop-shadow(2px 1px 0.80rem #f1f6f7);
+    border-radius: 10px
+}
+.card-body{
+    filter: drop-shadow(0px 0px 0.08rem #e7eff0);
+    align-items: center !important;
+    align-content: center !important;
+}
+
+
 .card{
     margin: 10px 10px;
     border: none;
-    display: block;
 }
 
 .cat{
     margin: 10px;
+}
+
+.file{
+    border-color: #738b92;
+    width: 100%;
 }
 
 .card-body{
@@ -18,29 +56,11 @@
     align-content: center !important;
 }
 
-
-::ng-deep .mat-checkbox .mat-checkbox-frame {
-    border-radius:50px;
-}
-  
-::ng-deep .mat-checkbox-checked .mat-checkbox-background {
-    background-color: #27798f !important;
-}
-
-::ng-deep .mat-checkbox-ripple .mat-ripple-element {
-    background-color: #27798f !important;
-}
-
-:host ::ng-deep .ck-editor__editable_inline {
-    min-height: 150px;
-    max-height: 150px;
-}
-
-
 .card-publicacion{
     margin: 0 5px !important;
     margin-top: 10px !important;
     text-align: center;
+
   
 }
 
@@ -65,13 +85,42 @@
 .example-radio-button {
     margin: 10px;
 }
-  
-  
+
+.visualizan-group{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+   
 .visualizan{
     display: block;
+    max-width: 450px;
     padding-left: 0px;
-    text-indent: 0px;
+}
 
+.wrap-mat-radio-label {
+    white-space: normal;
+}
+
+.inputAlert{
+    color: #dd2a0e;
+    margin-left: 2px;
+    margin-top:2px;
+    margin-bottom: -6px;
+}
+
+.inputError{
+    filter: drop-shadow(0px 0px 0.08rem #ff2b0e);
+    box-shadow: none !important;
+}
+
+
+.tags-list {
+    width: 100%;
+}
+
+.mat-form-field{
+    background-color: #fff;
 }
   
 
@@ -95,6 +144,11 @@ background-color:#27798f!important;   /*inner circle color change*/
 border-color:#ffe3b3!important; /*outer ring color change*/
 }
 
+:host ::ng-deep .ck-editor__editable_inline {
+    min-height: 150px;
+    max-height: 150px;
+}
+
 .card-img-top{
     width: 30%;
     height: auto;
@@ -103,12 +157,12 @@ border-color:#ffe3b3!important; /*outer ring color change*/
     align-content: center !important;
     object-fit: cover;
     filter: drop-shadow(0px 0px 0.08rem #d1dbdc);
-    margin-top: 10px;
+    margin-top: 20px;
     margin: auto;
 }
 
 .form-control{
-    filter: drop-shadow(0px 0px 0.08rem #e7eff0);
+    filter: drop-shadow(0px 0px 0.08rem #ffffff);
 }
 
 .mat-button{
@@ -120,12 +174,71 @@ border-color:#ffe3b3!important; /*outer ring color change*/
 }
 
 
+.img-fluid {
+    width: 30%;
+    height: auto;
+    align-items:center;
+    display: flexbox;
+}
+
+
+
+label {
+    border: 1px solid #fff;
+    padding: 10px;
+    display: block;
+    position: relative;
+    margin: 6px;
+    cursor: pointer;
+    
+  }
+  
+  label:before {
+    background-color: white;
+    color: white;
+    content: " ";
+    display: block;
+    border-radius: 50%;
+    border: 1px solid grey;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: 28px;
+    transition-duration: 0.4s;
+    transform: scale(0);
+  }
+  
+  label img {
+    height: 100px;
+    width: 100px;
+    transition-duration: 0.2s;
+    transform-origin: 50% 50%;
+   
+  }
+
+
+::ng-deep .mat-checkbox .mat-checkbox-frame {
+    border-radius:50px;
+}
+
+::ng-deep .mat-checkbox-checked .mat-checkbox-background {
+    background-color: #27798f !important;
+}
+::ng-deep .mat-checkbox-ripple .mat-ripple-element {
+    background-color: #27798f !important;
+}
+
+
 .form{
     display: flex !important;
     flex-direction:column; 
     align-items: center;
     margin-top: 10px;
 }  
+
 
 @media screen and (max-width: 826px){
     .todo{
@@ -144,14 +257,6 @@ border-color:#ffe3b3!important; /*outer ring color change*/
 
   
 
-    .input-group input{
-        max-height: 30px !important;
-        max-width: 350px;
-        border-radius: 0px 50px 50px 0px !important;
-        margin-left: 1px;
-        display: flex;
-        flex-direction: column;
-    }
     
 }
 
@@ -160,19 +265,9 @@ border-color:#ffe3b3!important; /*outer ring color change*/
     .card-publicacion{
         justify-content:start;
         width: 500px;
-        max-height: 700px;
-        margin-top: 0;
         padding: 40px;
+        margin-top: 0;
     }
 
-    .input-group input{
-        max-height: 30px !important;
-        width: 350px;
-        border-radius: 0px 50px 50px 0px !important;
-        margin-left: 1px;
-        display: flex;
-        flex-direction: column;
-        overflow: auto;
-    margin: auto;
-    }
+  
 }
