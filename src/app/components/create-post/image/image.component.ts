@@ -100,6 +100,8 @@ export class ImageComponent implements OnInit {
         }
         console.log(this.draft); 
         console.log(1);
+        this.draft.type = 2;
+        this.http.updateDraft(this.draft).subscribe();
       }else{
         this.draft = res['obj']; this.draft.nickName=sessionStorage.getItem('nickname'); this.draft.idCreator = parseInt(sessionStorage.getItem('creatorId'));
         this.draft.type = 2; this.draft.plans.push(0); this.draft.draft = true; this.draft.Public =false; this.draft.publishDate = this.today;
