@@ -40,6 +40,7 @@ import { BenefitEditComponent } from './components/backOffice/benefit/edit/benef
 import { BenefitComponent } from './components/backOffice/benefit/list/benefit.component';
 import { BenefitAddComponent } from './components/backOffice/benefit/add/benefit-add.component';
 import { StatisticsComponent } from './components/backOffice/statistics/statistics.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 const routes: Routes =[
     { path: 'home',             component: HomeComponent },
@@ -57,6 +58,7 @@ const routes: Routes =[
     { path: 'createPost/link',          component: LinkComponent },
     { path: 'createPost/audio',          component: AudioComponent },
     { path: 'planconfig',          component: CreateplanComponent },
+    { path: 'chat',          component: ChatComponent},
     { path: 'creator-Profile/:nickname/suscribe',          component: SuscribeComponent },
 
     { path: 'backOffice', component: BackOfficeComponent },

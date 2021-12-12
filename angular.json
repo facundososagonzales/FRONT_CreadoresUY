@@ -31,7 +31,9 @@
               "src/styles.css",
               "src/assets/scss/argon.scss"
             ],
-            "scripts": ["src/assets/js/v0.js"]
+            "scripts": [
+              "src/assets/js/v0.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -99,6 +101,10 @@
               "**/node_modules/**"
             ]
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
     },

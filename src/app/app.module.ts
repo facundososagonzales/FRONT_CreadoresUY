@@ -101,6 +101,20 @@ import { BenefitComponent } from './components/backOffice/benefit/list/benefit.c
 import { BenefitAddComponent } from './components/backOffice/benefit/add/benefit-add.component';
 import { StatisticsComponent } from './components/backOffice/statistics/statistics.component';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBSR8jmmqA4CvbFS73P8pC0o2fjTa0163s",
+  authDomain: "creadoresuy-674c1.firebaseapp.com",
+  databaseURL: "https://creadoresuy-674c1-default-rtdb.firebaseio.com/",
+  projectId: "creadoresuy-674c1",
+  storageBucket: "creadoresuy-674c1.appspot.com",
+  messagingSenderId: "445712772306",
+  appId: "1:445712772306:web:324d704980a346dabc110b"
+};
 
 @NgModule({
   declarations: [
@@ -148,6 +162,10 @@ import { StatisticsComponent } from './components/backOffice/statistics/statisti
     ReactiveFormsModule,
     BrowserModule,
     NgbModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    AngularFireStorageModule,
     FormsModule,
     RouterModule,
     AppRoutingModule,
