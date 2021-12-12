@@ -67,7 +67,6 @@ import { SignupCreadorComponent } from './components/signup-creador/signup-cread
 import { HttpClientModule } from '@angular/common/http';
 import { LogoutComponent } from './components/logout/logout.component';
 import { FeedComponent } from './components/feed/feed.component';
-import { FilterPipe } from './components/pipes/filter.pipe';
 import { SearchComponent } from './components/search/search.component';
 import { CreatePostComponent } from './components/create-post/create-post.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
@@ -79,6 +78,7 @@ import { AudioComponent } from './components/create-post/audio/audio.component';
 import { SuscribeComponent } from './components/suscribe/suscribe.component';
 import { CreateplanComponent } from './components/planconfig/planconfig.component';
 import { DatePipe } from '@angular/common';
+import { SafePipe } from './components/pipes/SafePipe';
 
 import { BackOfficeComponent } from './components/backOffice/back-office/back-office.component';
 import { UserComponent } from './components/backOffice/user/list/user.component';
@@ -113,7 +113,6 @@ import { StatisticsComponent } from './components/backOffice/statistics/statisti
     SignupCreadorComponent,
     LogoutComponent,
     FeedComponent,
-    FilterPipe,
     SearchComponent,
     CreatePostComponent,
     TextComponent,
@@ -142,7 +141,8 @@ import { StatisticsComponent } from './components/backOffice/statistics/statisti
     UserEditComponent,
     AdminComponent,
     CategoryComponent,
-    CreatorAddComponent
+    CreatorAddComponent,
+    SafePipe
   ],
   imports: [
     ReactiveFormsModule,

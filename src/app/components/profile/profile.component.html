@@ -54,7 +54,7 @@
             <hr>
             <div class="card-deck shadow px-lg-2 py-lg-2 px-0 py-0">
               <div class="card biography">
-                <iframe class="youtube-iframe" width="100%" height="315" [src]="videosrc"
+                <iframe class="youtube-iframe" width="100%" height="315" [src]="videosrc | safe"
                 frameborder="0" allowfullscreen  title="YouTube video player"></iframe><br>
                 <div class="card-text card-text-style" [innerHTML]='biografia'></div>
               </div>
@@ -84,12 +84,12 @@
                   <div class="card-body">
                       <h2 class="card-title">{{element['content']["title"]}}</h2>
                       <div *ngIf="element['authorized']" [ngClass]="{show: element['visible']}" class="description">
-                        <p *ngIf="!element['visible']" class="card-text">{{ (element['content']['description'].length>240)? (element['content']['description'] | slice:0:240)+'...':(element['content']['description'])}}</p>
-                        <p *ngIf="element['visible']" class="card-text">{{element['content']['description']}}</p>
+                        <p *ngIf="!element['visible']" class="card-text" [innerHTML]="(element['content']['description'].length>180)? (element['content']['description'] | slice:0:180)+'...':(element['content']['description'])">}</p>
+                        <p *ngIf="element['visible']" class="card-text" [innerHTML]="element['content']['description']"></p>
                       </div><br>
                       <a *ngIf="element['authorized'] && element['content']['description'].length>240" (click)="scrollToStart($event)" class="text-muted-publicadopor more" (click)="element['visible'] = !element['visible']" style="float: right;">{{ element['visible'] ? 'Mostrar menos': 'Mostrar más' }}</a>
                   </div>
-                  <div class="card-footer">
+                  <div class="card-footer" style="padding: 10px;">
                     <small class="text-muted">Fecha de publicacion: {{element['content']['addedDate'] | date:'short':'UTC'}}</small>
                     <a class="text-muted-publicadopor"><span>{{element['content']['nickName']}}</span>
                       <img *ngIf="img==''" src="./assets/img/theme/team-4-800x800.png" class="rounded-circle1"

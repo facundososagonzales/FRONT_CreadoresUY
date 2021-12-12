@@ -120,7 +120,7 @@ export class ProfileComponent implements OnInit {
     video = (results === null) ? url : results[1];
 
     this.rawvideolink = "www.youtube.com/embed/" + this.getId(url);
-    this.videosrc = this._sanitizer.bypassSecurityTrustResourceUrl("//www.youtube.com/embed/" + this.getId(url));
+    this.videosrc = ("//www.youtube.com/embed/" + this.getId(url));
   }
 
   followCreator(){
