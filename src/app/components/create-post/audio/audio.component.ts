@@ -147,20 +147,16 @@ export class AudioComponent implements OnInit {
       let reader = new FileReader();
       if(event.target.id == "formFileLg"){
         reader.onload = (e: any) => {
-          this.urls[0]=(e.target.result);
           var n = e.target.result.lastIndexOf(',');
           this.base64[0]=(e.target.result.substring(n + 1));
           this.draft.dato = this.base64[0];
-          this.http.updateDraft(this.draft).subscribe(res1  =>  {this.http.getDraft(sessionStorage.getItem('nickname')).subscribe(res => {
-            this.urls[0]=res['obj']['data'];
-            console.log(this.urls[0]);
-            console.log(this.base64[0]);
-          });});
-         
-          
+          this.http.updateDraft(this.draft).subscribe(res1=>{
+            this.http.getDraft(sessionStorage.getItem('nickname')).subscribe(res => {
+              this.urls[0]=res['obj']['dato'];
+            });
+          });
         }
         reader.readAsDataURL(files[0]);
-        
       }
     }
   }
