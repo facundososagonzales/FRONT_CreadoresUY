@@ -1,18 +1,18 @@
-main{
+main {
     background-color: #eee;
 }
 
-.cont{
-    display:flex;
+.cont {
+    display: flex;
     width: 65%;
     height: auto;
     margin-top: 200px;
-    margin-left:auto;
+    margin-left: auto;
     margin-right: auto;
     margin-bottom: 200px;
 }
 
-.card{
+.card {
     margin: 0 5px;
     margin-bottom: 35px;
     display: grid;
@@ -22,7 +22,7 @@ main{
     border: none;
 }
 
-.image-box{
+.image-box {
     display: flex;
     margin-left: auto;
     margin-right: auto;
@@ -31,4 +31,13 @@ main{
     height: 150px;
     border-radius: 150px;
     object-fit: cover;
+}
+
+
+.graph_size {
+    width: 100%;
+}
+
+.content_position {
+    display: contents;
 }

@@ -79,7 +79,8 @@ const routes: Routes =[
     { path: 'backOffice/beneficio/crear', component: BenefitAddComponent },
     { path: 'backOffice/beneficio/editar/:idBenefit', component: BenefitEditComponent },
     { path: 'backOffice/estadisticas', component: StatisticsComponent },
-
+    { path: 'backOffice/estadisticas', component: StatisticsComponent },
+  
     { path: '', redirectTo: 'home', pathMatch: 'full'}
 ];
 

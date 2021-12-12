@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { AuthenticateResponseClass } from 'src/app/model/AuthenticateResponse';
 import { CreateUserDto } from 'src/app/model/CreateUserDto';
 import { CreatorContent } from 'src/app/model/CreatorContent';
+import { dto } from 'src/app/model/dto';
 import { Response } from 'src/app/model/Response';
 import { searchProfile } from 'src/app/model/SearchProfile';
 import { Subscriptions } from 'src/app/model/Subscriptions';
@@ -68,4 +69,13 @@ export class userServices {
     "Page=" + pageNumber + "&" + "ContentPerPage=" + pageSize;
     return this.http.get<Response<CreatorContent[]>>(url);
   }
+
+  /*suscriber(data:dto){//cambiar el tipo de la respuesta
+    return this.http.post<Response<dto>>(`${this.Url}` + "/api/User/SubscribeTo",{data},{headers: {'Authorization': ` Bearer ${sessionStorage.getItem('token')}`}});
+  }
+
+  unSuscriber(idUser:string, idPlan:number){
+    let url = `${this.Url}` + "/api/User/Unsubscribed" + idUser + "&" + "idPlan=" + idPlan;
+  }*/
+
 }
