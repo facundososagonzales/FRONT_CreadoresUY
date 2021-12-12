@@ -106,7 +106,7 @@ export class AudioComponent implements OnInit {
         }
         console.log(this.draft); 
         console.log(1);
-        this.draft.type = 4;/*esto acá*/
+        this.draft.type = 4;
       }else{
         this.draft = res['obj']; this.draft.nickName=sessionStorage.getItem('nickname'); this.draft.idCreator = parseInt(sessionStorage.getItem('creatorId'));
         this.draft.type = 4; this.draft.plans.push(0); this.draft.draft = true; this.draft.Public =false; this.draft.publishDate = this.today;

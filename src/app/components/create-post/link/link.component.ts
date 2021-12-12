@@ -67,8 +67,15 @@ export class LinkComponent implements OnInit {
         this.draft = res['obj'];
         this.title = this.draft.title;
         this.setArticleContent(this.draft.description);
-        this.textArea = this.draft.description;
-        this.link= this.draft.dato;
+       
+        if(res['obj']['dato']!='' && res['obj']['type']==5){
+          this.textArea = this.draft.description;
+          this.link= this.draft.dato;
+
+        }else{
+          this.draft.dato= '';
+          this.link= '';
+        }
         if(JSON.stringify(res['obj']['tags'])!=='[]'){
           this.draft.tags.forEach(element => {
             this.tags.push(element.name);
@@ -98,6 +105,7 @@ export class LinkComponent implements OnInit {
         }
         console.log(this.draft); 
         console.log(1);
+        this.draft.type = 5;
       }else{
         this.draft = res['obj']; this.draft.nickName=sessionStorage.getItem('nickname'); this.draft.idCreator = parseInt(sessionStorage.getItem('creatorId'));
         this.draft.type = 5; this.draft.plans.push(0); this.draft.draft = true; this.draft.Public =false; this.draft.publishDate = this.today;
