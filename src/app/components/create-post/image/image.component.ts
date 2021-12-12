@@ -67,9 +67,14 @@ export class ImageComponent implements OnInit {
         this.title = this.draft.title;
         this.setArticleContent(this.draft.description);
         this.textArea = this.draft.description;
-        if(this.draft.dato!=''){
+        if(res['obj']['dato']!='' && res['obj']['type']==2){
           this.urls[0] = this.draft.dato;
           this.base64[0] = this.draft.dato;
+          console.log(this.urls[0]);
+        }else{
+          this.draft.dato= '';
+          this.urls[0] =  '';
+          this.base64[0] =  '';
         }
         if(JSON.stringify(res['obj']['tags'])!=='[]'){
           this.draft.tags.forEach(element => {
@@ -100,8 +105,8 @@ export class ImageComponent implements OnInit {
         }
         console.log(this.draft); 
         console.log(1);
-        this.draft.type = 2;
-        this.http.updateDraft(this.draft).subscribe();
+        this.draft.type = 2;/*esto acá*/
+        this.http.updateDraft(this.draft).subscribe(); /*esto acá*/
       }else{
         this.draft = res['obj']; this.draft.nickName=sessionStorage.getItem('nickname'); this.draft.idCreator = parseInt(sessionStorage.getItem('creatorId'));
         this.draft.type = 2; this.draft.plans.push(0); this.draft.draft = true; this.draft.Public =false; this.draft.publishDate = this.today;

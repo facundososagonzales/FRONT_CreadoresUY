@@ -31,7 +31,7 @@ export class ProfileComponent implements OnInit {
 
   public stopper:boolean = false;
   public genericContent = new CreatorContent("999999999","Soy un credor nuevo en creadoresUy!", "Acabo de comenzar en creadorUy, asegurese de revisar mi perfil en la brevedad para ver nuevas actualizaciones y suscribase si es de su agrado",9999,"",
-         (new Date()),false,(new Date()),true,"","","./assets/img/brand/1.jpg",0);  
+         (new Date()),false,(new Date()),true,"","","./assets/img/brand/1.png",0);  
 
   public contentViwer:ContentViwer[] = [];
   public genericLoaded:boolean=false;

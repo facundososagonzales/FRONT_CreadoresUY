@@ -9,6 +9,8 @@ import {MatChipInputEvent} from '@angular/material/chips';
 import { DatePipe } from '@angular/common';
 import { CreatorContent } from 'src/app/model/CreatorContent';
 import { name } from 'src/app/model/name';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-video',
@@ -49,13 +51,16 @@ export class VideoComponent implements OnInit {
   titleValidator:boolean=true;
   timeAlert:boolean=true;
   dateAlert:boolean=false;
+  public videosrc: any;
+  public inputVideo: any;
+  public rawvideolink: string;
 
   removable = true;
   separatorKeysCodes: number[] = [ENTER, COMMA];
   tagControl = new FormControl();
   @ViewChild('tagInput') tagInput: ElementRef<HTMLInputElement>;
 
-  constructor(private router:Router, private http:CreatorServiceService, public datepipe: DatePipe) { }
+  constructor(private router:Router, private http:CreatorServiceService, public datepipe: DatePipe, private _sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     if(!(sessionStorage.getItem('token')!=null && (sessionStorage.getItem('userType')=='creator' || sessionStorage.getItem('userType')=='admin'))){
@@ -68,7 +73,15 @@ export class VideoComponent implements OnInit {
         this.title = this.draft.title;
         this.setArticleContent(this.draft.description);
         this.textArea = this.draft.description;
-        this.link= this.draft.dato;
+        
+        if(res['obj']['dato']!='' && res['obj']['type']==3){
+          this.inputVideo = this.draft.dato;
+          this.videosrc= this.draft.dato;
+
+        }else{
+          this.draft.dato= '';
+          this.link= '';
+        }
         if(JSON.stringify(res['obj']['tags'])!=='[]'){
           this.draft.tags.forEach(element => {
             this.tags.push(element.name);
@@ -98,9 +111,11 @@ export class VideoComponent implements OnInit {
         }
         console.log(this.draft); 
         console.log(1);
+        this.draft.type = 3;
+        this.http.updateDraft(this.draft).subscribe();
       }else{
         this.draft = res['obj']; this.draft.nickName=sessionStorage.getItem('nickname'); this.draft.idCreator = parseInt(sessionStorage.getItem('creatorId'));
-        this.draft.type = 5; this.draft.plans.push(0); this.draft.draft = true; this.draft.Public =false; this.draft.publishDate = this.today;
+        this.draft.type = 3; this.draft.plans.push(0); this.draft.draft = true; this.draft.Public =false; this.draft.publishDate = this.today;
         this.http.getNewDraft(this.draft).subscribe(res1 =>{
           if(res1['success']){
             this.draft = res1['obj'];
@@ -156,6 +171,29 @@ export class VideoComponent implements OnInit {
     this.title = title;
   }
 
+  getVideoIframe(url: string) {
+    console.log(url);
+    var video, results;
+
+    if (url === null) {
+      return '';
+    }
+    results = url.match('[\\?&]v=([^&#]*)');
+    video = (results === null) ? url : results[1];
+
+    this.rawvideolink = "www.youtube.com/embed/" + this.getId(url);
+    this.videosrc = ("//www.youtube.com/embed/" + this.getId(url));
+  }
+
+  getId(url) {
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+
+    return (match && match[2].length === 11)
+      ? match[2]
+      : null;
+  }
+
  
 
   add(event: MatChipInputEvent): void {
@@ -202,11 +240,17 @@ export class VideoComponent implements OnInit {
   }
 
   updateLink(){
-    if(this.link != ''){
-      this.draft.dato = this.link;
-      this.http.updateDraft(this.draft).subscribe();
+    if(this.inputVideo != ''){
+      this.draft.dato= this.inputVideo;
+      this.http.updateDraft(this.draft).subscribe(res1=>{
+        this.http.getDraft(sessionStorage.getItem('nickname')).subscribe(res => {
+          this.videosrc=res['obj']['dato'];
+        });
+      });
+      
+      this.draft.dato= this.videosrc;
     }else{
-      this.link = this.draft.dato;
+      this.inputVideo = this.draft.dato;
     }
   }
 
