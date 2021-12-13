@@ -99,7 +99,8 @@ export class CreatorServiceService {
   }
 
   getPlanToUser(idUser:string,nickname:string){
-    let url = `${this.Url}` + "/api/Creator/GetCreatorPlansSubsc?"​ + "idUser=" + idUser + '&nickname' + nickname;
+    console.log(idUser)
+    let url = `${this.Url}` + "/api/Creator/GetCreatorPlansSubsc?"​ + "idUser=" + idUser + '&nickname=' + nickname;
     return this.http.get<Response<CreatorPlansToUser>>(url, {headers: {'Authorization': ` Bearer ${sessionStorage.getItem('token')}`}});
   }
 }

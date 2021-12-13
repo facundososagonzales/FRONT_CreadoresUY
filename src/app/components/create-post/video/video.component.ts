@@ -312,7 +312,7 @@ export class VideoComponent implements OnInit {
     this.draft.plans = [];
     this.draft.plans.push(0);
     if(event.value === 'Público'){
-      this.draft.Public=true;
+      this.draft['isPublic']=true;
     }else if(event.value == 'Sólo suscriptores'){
       this.draft.plans = [];
       this.tipoSuscripcion.forEach(element => {

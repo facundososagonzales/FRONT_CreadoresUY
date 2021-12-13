@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ICreateOrderRequest } from "ngx-paypal";
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { HttpHeaders } from '@angular/common/http';
+import { ICreateOrderRequest, IPayPalConfig } from "ngx-paypal";
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import { SuscriptionPlans } from 'src/app/model/SuscriptionPlans';
+import { CreatorServiceService } from 'src/app/services/CreatorServices/creator-service.service';
+import { Plan } from 'src/app/model/Plan';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-suscribe',
@@ -12,130 +12,96 @@ import { SuscriptionPlans } from 'src/app/model/SuscriptionPlans';
 })
 
 export class SuscribeComponent implements OnInit {
-  public payPalConfig: any;
   closeModal: string;
   show = false;
-
-
-
-  plans = [
-    {
-      namePlan: "Gratis",
-      descriptionPlan: "El suscriptor podrá acceder a tu contenido seleccionado dEl suscriptor podrá acceder a tu contenido seleccionadoEl suscriptor podrá acceder a tu contenido seleccionadoEl suscriptor podrá acceder a tu contenido seleccionadoEl suscriptor podrá acceder a tu contenido seleccionadoEl suscriptor podrá acceder a tu contenido seleccionadoEl suscriptor podrá acceder a tu contenido seleccionadoe forma gratuita.",
-      price: 0,
-      visible: false,
-      imagen: './assets/img/theme/free.png'
-    },
-    {
-      namePlan: "Normal",
-      descriptionPlan: "El suscriptor podrá acceder a tu contenido seleccionado suscribiendose a una membresía mensual.",
-      price: 400,
-      visible: false,
-      imagen: './assets/img/theme/normal.png'
-    },
-    {
-      namePlan: "VIP",
-      descriptionPlan: "El suscriptor podrá acceder a todo su contenido + mensajería mediante una suscripción mensual.",
-      price: 900,
-      visible: false,
-      imagen: './assets/img/theme/vip.png'
-    },
-    {
-      namePlan: "VIP",
-      descriptionPlan: "El suscriptor podrá acceder a todo su contenido + mensajería mediante una suscripción mensual.",
-      price: 900,
-      visible: false,
-      imagen: './assets/img/theme/vip.png'
-    },
-    {
-      namePlan: "VIP",
-      descriptionPlan: "El suscriptor podrá acceder a todo su contenido + mensajería mediante una suscripción mensual.",
-      price: 900,
-      visible: false,
-      imagen: './assets/img/theme/vip.png'
-    }
-  ]
+  nickname:string = '';
+  plans:Plan[] = [];
+  public payPalConfig?: IPayPalConfig;
+  showSuccess:boolean =false;
   
 
-  constructor(private modalService: NgbModal) {}
+  constructor(private router:Router, private route:ActivatedRoute, private modalService: NgbModal, private creatorServices:CreatorServiceService) {}
 
   ngOnInit(): void {
+
+    this.nickname = this.route.snapshot.paramMap.get('nickname');
+    console.log(this.nickname);
+    this.creatorServices.getPlanToUser(sessionStorage.getItem('userId'),this.nickname).subscribe(res =>{
+      console.log(res)
+      res['obj']['plans'].forEach(element => {
+        this.plans.push(element);
+      });
+      console.log(this.plans);
+    });
     
     const headers = {
       'Accept': 'plain/text',
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT',
       'Access-Control-Allow-Headers': 'Authorization, Origin, Content-Type, X-CSRF-Token'
-   };
-   console.log(headers);
-   this.payPalConfig = {
-      currency: "EUR",
-      clientId: "AR6r31Q1-UBExv3N0jKTOAJBVR0s7lFj9peXOxgf_1opCSdk9On_TtR2VVDdukqlOeSb2DYjYxyRWALR",
-      createOrder: data =>
-        <ICreateOrderRequest>{
-          intent: "CAPTURE",
-          purchase_units: [
-            {
-              amount: {
-                currency_code: "EUR",
-                value: "9.99",
-                breakdown: {
-                  item_total: {
-                    currency_code: "EUR",
-                    value: "9.99"
-                  }
+    };
+    console.log(headers);
+    this.initConfig();
+  }
+
+  private initConfig(): void {
+    this.payPalConfig = {
+      currency: 'USD',
+      clientId: 'AR6r31Q1-UBExv3N0jKTOAJBVR0s7lFj9peXOxgf_1opCSdk9On_TtR2VVDdukqlOeSb2DYjYxyRWALR',
+      createOrderOnClient: (data) => <ICreateOrderRequest>{
+        intent: 'CAPTURE',
+        purchase_units: [
+          {
+            amount: {
+              currency_code: 'USD',
+              value: '20',
+              breakdown: {
+                item_total: {
+                  currency_code: 'USD',
+                  value: '20'
                 }
-              },
-              items: [
-                {
-                  name: "Enterprise Subscription",
-                  quantity: "1",
-                  category: "DIGITAL_GOODS",
-                  unit_amount: {
-                    currency_code: "EUR",
-                    value: "9.99"
-                  }
-                }
-              ]
-            }
-          ]
-        },
+              }
+            },
+            items: [
+              {
+                name: 'Enterprise Subscription',
+                quantity: '1',
+                category: 'DIGITAL_GOODS',
+                unit_amount: {
+                  currency_code: 'USD',
+                  value: '20',
+                },
+              }
+            ]
+          }
+        ]
+      },
       advanced: {
-        commit: "true"
+        commit: 'true'
       },
       style: {
-        label: "paypal",
-        layout: "vertical",
-        color: "blue"
+        label: 'paypal',
+        layout: 'vertical'
       },
       onApprove: (data, actions) => {
-        console.log(
-          "onApprove - transaction was approved, but not authorized",
-          data,
-          actions
-        );
+        console.log('onApprove - transaction was approved, but not authorized', data, actions);
         actions.order.get().then(details => {
-          console.log(
-            "onApprove - you can get full order details inside onApprove: ",
-            details
-          );
+          console.log('onApprove - you can get full order details inside onApprove: ', details);
         });
       },
-      onClientAuthorization: data => {
-        console.log(
-          "onClientAuthorization - you should probably inform your server about completed transaction at this point",
-          data
-        );
+      onClientAuthorization: (data) => {
+        console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
+        this.showSuccess = true;
       },
       onCancel: (data, actions) => {
-        console.log("OnCancel", data, actions);
+        console.log('OnCancel', data, actions);
       },
       onError: err => {
-        console.log("OnError", err);
+        console.log('OnError', err);
       },
       onClick: (data, actions) => {
-        console.log("onClick", data, actions);
-      }
+        console.log('onClick', data, actions);
+      },
     };
   }
     
@@ -156,5 +122,4 @@ export class SuscribeComponent implements OnInit {
       return  `with: ${reason}`;
     }
   }
-
 }

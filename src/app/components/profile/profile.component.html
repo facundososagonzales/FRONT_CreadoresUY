@@ -71,7 +71,7 @@
             <div *ngFor="let element of contentViwer; let i = index" [attr.data-index]="i">
               <div class="card-deck shadow">
                 <div class="card card-m">
-                  <a class="padlock" *ngIf="!element['authorized']" routerLink="/creator-Profile/${this.nickname}/suscribe" style="cursor: pointer;">
+                  <a class="padlock" *ngIf="!element['authorized']" (click)="navToSuscribe()" style="cursor: pointer;">
                     <img class="card-img-top test" style="width: 39%;" src="./assets/img/theme/candado.png">
                     <p class="text-des">Exlusivo para suscriptores</p>
                     <img [ngClass]="{filt: !element['authorized']}" 
