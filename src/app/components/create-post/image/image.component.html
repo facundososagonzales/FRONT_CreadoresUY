@@ -29,9 +29,9 @@
                       <span class="input-group-text"><i class="bi bi-calendar-plus"></i></span>
                     </div>
                       <input required #date class="form-control" [value]="inputDate | date:'yyyy-MM-dd'" placeholder="Fecha" type="date" (blur)="checkDate(date.value)">
-                    </div>
-                    <div class="inputAlert" style="text-align: start;" *ngIf="dateAlert && labelPosition=='Si'">Fecha incorrecta</div>
-                    <br *ngIf="labelPosition=='Si'">
+                  </div>
+                  <div class="inputAlert" style="text-align: start;" *ngIf="dateAlert && labelPosition=='Si'">Fecha incorrecta</div>
+                  <br *ngIf="labelPosition=='Si'">
                   <div *ngIf="labelPosition=='Si'" class="input-group input-group-alternative" [ngClass]="{inputError: !timeAlert}">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="bi bi-alarm"></i></span>

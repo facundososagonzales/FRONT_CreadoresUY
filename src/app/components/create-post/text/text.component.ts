@@ -274,7 +274,7 @@ export class TextComponent implements OnInit {
     this.draft.plans = [];
     this.draft.plans.push(0);
     if(event.value === 'Público'){
-      this.draft.Public=true;
+      this.draft['isPublic']=true;
     }else if(event.value == 'Sólo suscriptores'){
       this.draft.plans = [];
       this.tipoSuscripcion.forEach(element => {
@@ -322,10 +322,12 @@ export class TextComponent implements OnInit {
   }
 
   contentUpdate(){
-    if(this.draft.plans[0] !=0 || this.draft['isPublic']){
-        this.draft.draft=false;
-        this.http.updateDraft(this.draft).subscribe();
-        this.router.navigate(['/creator-Profile', sessionStorage.getItem('nickname')]);
+    if((this.labelPosition == 'Si' && this.draft.publishDate>this.today) || this.labelPosition=='No'){
+      if(this.draft.plans[0] !=0 || this.draft['isPublic']){
+          this.draft.draft=false;
+          this.http.updateDraft(this.draft).subscribe();
+          this.router.navigate(['/creator-Profile', sessionStorage.getItem('nickname')]);
+      }
     }
   }
 }

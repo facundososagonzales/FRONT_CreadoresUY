@@ -32,13 +32,13 @@ export class VideoComponent implements OnInit {
 
   @ViewChild('date') myDate: ElementRef<HTMLInputElement>;
   @ViewChild('time') myTime: ElementRef<HTMLInputElement>;
+  @ViewChild('Video') myVideo: ElementRef<HTMLInputElement>;
   editor= ClassicEditor;
   draft:CreatorContent;
   textArea:string = '';
   urls:string[] = [''];
   base64:string[] = [''];
   title:string = '';
-  link:string = '';
   tags: string[] = [];
   draftDate:Date;
   publishDate:string = this.datepipe.transform(this.today, 'yyyy-MM-dd');
@@ -52,7 +52,6 @@ export class VideoComponent implements OnInit {
   timeAlert:boolean=true;
   dateAlert:boolean=false;
   public videosrc: any;
-  public inputVideo: any;
   public rawvideolink: string;
 
   removable = true;
@@ -75,12 +74,13 @@ export class VideoComponent implements OnInit {
         this.textArea = this.draft.description;
         
         if(res['obj']['dato']!='' && res['obj']['type']==3){
-          this.inputVideo = this.draft.dato;
-          this.videosrc= this.draft.dato;
+          this.myVideo.nativeElement.value = this.draft.dato;
+          this.getVideoIframe(this.draft.dato);
 
         }else{
           this.draft.dato= '';
-          this.link= '';
+          this.myVideo.nativeElement.value = '';
+          this.videosrc= '';
         }
         if(JSON.stringify(res['obj']['tags'])!=='[]'){
           this.draft.tags.forEach(element => {
@@ -124,7 +124,6 @@ export class VideoComponent implements OnInit {
             this.title = this.draft.title;
             this.setArticleContent(this.draft.description);
             this.textArea = this.draft.description;
-            this.link= this.draft.dato;
             if(JSON.stringify(res1["obj"]['tags'])!=='[]'){
               this.draft.tags.forEach(element => {
                 this.tags.push(element.name);
@@ -240,17 +239,10 @@ export class VideoComponent implements OnInit {
   }
 
   updateLink(){
-    if(this.inputVideo != ''){
-      this.draft.dato= this.inputVideo;
-      this.http.updateDraft(this.draft).subscribe(res1=>{
-        this.http.getDraft(sessionStorage.getItem('nickname')).subscribe(res => {
-          this.videosrc=res['obj']['dato'];
-        });
-      });
-      
-      this.draft.dato= this.videosrc;
-    }else{
-      this.inputVideo = this.draft.dato;
+    if(this.myVideo.nativeElement.value != ''){
+      this.draft.dato= this.myVideo.nativeElement.value;
+      console.log(this.draft.dato)
+      this.http.updateDraft(this.draft).subscribe(res1=>{this.getVideoIframe(this.draft.dato)});
     }
   }
 
@@ -368,10 +360,14 @@ export class VideoComponent implements OnInit {
   }
 
   contentUpdate(){
-    if(this.draft.plans[0] !=0 || this.draft['isPublic']){
-        this.draft.draft=false;
-        this.http.updateDraft(this.draft).subscribe();
-        this.router.navigate(['/creator-Profile', sessionStorage.getItem('nickname')]);
+    console.log(this.draft);
+    if((this.labelPosition == 'Si' && this.draft.publishDate>this.today) || this.labelPosition=='No'){
+      if(this.draft.plans[0] !=0 || this.draft['isPublic']){
+          this.draft.draft=false;
+          this.http.updateDraft(this.draft).subscribe(res=>{this.router.navigate(['/creator-Profile', sessionStorage.getItem('nickname')]);});
+      }
+    }else{
+      alert('fecha incorrecta')
     }
   }
 }

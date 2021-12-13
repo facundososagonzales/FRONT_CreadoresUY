@@ -21,7 +21,7 @@ export class SuscribeComponent implements OnInit {
   plans = [
     {
       namePlan: "Gratis",
-      descriptionPlan: "El suscriptor podrá acceder a tu contenido seleccionado de forma gratuita.",
+      descriptionPlan: "El suscriptor podrá acceder a tu contenido seleccionado dEl suscriptor podrá acceder a tu contenido seleccionadoEl suscriptor podrá acceder a tu contenido seleccionadoEl suscriptor podrá acceder a tu contenido seleccionadoEl suscriptor podrá acceder a tu contenido seleccionadoEl suscriptor podrá acceder a tu contenido seleccionadoEl suscriptor podrá acceder a tu contenido seleccionadoe forma gratuita.",
       price: 0,
       visible: false,
       imagen: './assets/img/theme/free.png'
@@ -39,30 +39,26 @@ export class SuscribeComponent implements OnInit {
       price: 900,
       visible: false,
       imagen: './assets/img/theme/vip.png'
+    },
+    {
+      namePlan: "VIP",
+      descriptionPlan: "El suscriptor podrá acceder a todo su contenido + mensajería mediante una suscripción mensual.",
+      price: 900,
+      visible: false,
+      imagen: './assets/img/theme/vip.png'
+    },
+    {
+      namePlan: "VIP",
+      descriptionPlan: "El suscriptor podrá acceder a todo su contenido + mensajería mediante una suscripción mensual.",
+      price: 900,
+      visible: false,
+      imagen: './assets/img/theme/vip.png'
     }
   ]
   
 
   constructor(private modalService: NgbModal) {}
-    
-  triggerModal(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((res) => {
-      this.closeModal = `Closed with: ${res}`;
-    }, (res) => {
-      this.closeModal = `Dismissed ${this.getDismissReason(res)}`;
-    });
-  }
 
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return  `with: ${reason}`;
-    }
-  }
-  
   ngOnInit(): void {
     
     const headers = {
@@ -104,19 +100,15 @@ export class SuscribeComponent implements OnInit {
             }
           ]
         },
-
       advanced: {
         commit: "true"
       },
       style: {
         label: "paypal",
         layout: "vertical",
-        color: 'blue'
+        color: "blue"
       },
-     
-     
       onApprove: (data, actions) => {
-        alert(data.subscriptionID); // You can add optional success message for the subscriber here
         console.log(
           "onApprove - transaction was approved, but not authorized",
           data,
@@ -145,9 +137,24 @@ export class SuscribeComponent implements OnInit {
         console.log("onClick", data, actions);
       }
     };
+  }
     
+  triggerModal(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((res) => {
+      this.closeModal = `Closed with: ${res}`;
+    }, (res) => {
+      this.closeModal = `Dismissed ${this.getDismissReason(res)}`;
+    });
   }
 
-
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
 
 }

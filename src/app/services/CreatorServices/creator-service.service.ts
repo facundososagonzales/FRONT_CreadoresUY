@@ -11,6 +11,7 @@ import { PlanBasic } from 'src/app/model/PlanBasic';
 import { CreatorContent } from 'src/app/model/CreatorContent';
 import { CreatorContentString } from 'src/app/model/CreatorContentString';
 import { DatePipe } from '@angular/common';
+import { CreatorPlansToUser } from 'src/app/model/CreatorPlansToUser';
 
 @Injectable({
   providedIn: 'root'
@@ -88,12 +89,17 @@ export class CreatorServiceService {
     console.log(year)
     var contentNewDate = datePart[2] + '-' + datePart[0] + '-' + datePart[1] + 'T' + time[0] + ':' + contentDate + ':00.375Z';
     var content = new CreatorContentString(c.id,c.title,c.description,c.idCreator,c.nickName,c.addedDate,c.draft,contentNewDate,c['isPublic'],c.type);
-    content.plans = c.plans; content.tags = c.tags; content.dato = c.dato; content.Ispublic = c.Public; content.creatorImage='';
+    content.plans = c.plans; content.tags = c.tags; content.dato = c.dato; content.creatorImage='';
     return this.http.put<Response<CreatorContentString>>(`${this.Url}` + '/api/Content/UpdateContent',{content},{headers: {'Authorization': ` Bearer ${sessionStorage.getItem('token')}`}})
   }
 
   getDraft(nickname:string){
     let url = `${this.Url}` + "/api/Content/GetContentDraft?"​ + "nickname=" + nickname;
     return this.http.get<Response<CreatorContent>>(url,{headers: {'Authorization': ` Bearer ${sessionStorage.getItem('token')}`}})
+  }
+
+  getPlanToUser(idUser:string,nickname:string){
+    let url = `${this.Url}` + "/api/Creator/GetCreatorPlansSubsc?"​ + "idUser=" + idUser + '&nickname' + nickname;
+    return this.http.get<Response<CreatorPlansToUser>>(url, {headers: {'Authorization': ` Bearer ${sessionStorage.getItem('token')}`}});
   }
 }

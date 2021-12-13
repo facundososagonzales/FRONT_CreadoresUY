@@ -107,14 +107,15 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBSR8jmmqA4CvbFS73P8pC0o2fjTa0163s",
-  authDomain: "creadoresuy-674c1.firebaseapp.com",
-  databaseURL: "https://creadoresuy-674c1-default-rtdb.firebaseio.com/",
-  projectId: "creadoresuy-674c1",
-  storageBucket: "creadoresuy-674c1.appspot.com",
-  messagingSenderId: "445712772306",
-  appId: "1:445712772306:web:324d704980a346dabc110b"
+  apiKey: "AIzaSyCHjB9pc987jPv8miGwVP3ugbuN5SDiQnw",
+  authDomain: "creadoresuychat.firebaseapp.com",
+  projectId: "creadoresuychat",
+  storageBucket: "creadoresuychat.appspot.com",
+  messagingSenderId: "581272277376",
+  appId: "1:581272277376:web:c61a5ec2827848d6ccb165",
+  measurementId: "G-93B04QG055"
 };
+
 
 @NgModule({
   declarations: [

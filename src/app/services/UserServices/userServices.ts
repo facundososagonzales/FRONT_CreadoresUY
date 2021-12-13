@@ -70,12 +70,11 @@ export class userServices {
     return this.http.get<Response<CreatorContent[]>>(url);
   }
 
-  /*suscriber(data:dto){//cambiar el tipo de la respuesta
-    return this.http.post<Response<dto>>(`${this.Url}` + "/api/User/SubscribeTo",{data},{headers: {'Authorization': ` Bearer ${sessionStorage.getItem('token')}`}});
+  suscriber(data:dto){
+    return this.http.post<Response<string>>(`${this.Url}` + "/api/User/SubscribeTo",{data},{headers: {'Authorization': ` Bearer ${sessionStorage.getItem('token')}`}});
   }
 
   unSuscriber(idUser:string, idPlan:number){
-    let url = `${this.Url}` + "/api/User/Unsubscribed" + idUser + "&" + "idPlan=" + idPlan;
-  }*/
-
+    return this.http.post<Response<string>>(`${this.Url}` + "/api/User/Unsubscribed",{idUser,idPlan}, {headers: {'Authorization': ` Bearer ${sessionStorage.getItem('token')}`}})
+  }
 }

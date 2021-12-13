@@ -2,14 +2,12 @@
     background: linear-gradient(45deg, #659aa8 0.1%, #9dd4c1 90%);
 }
 .cont{
-    margin-top: 30px;
+    margin-top: 130px;
     text-align: center;
     display: flex;
     justify-content: center;
-    max-width: 70%;
+    max-width: 100%;
     height: auto;
-
-  
 }
 
 .mat-button{
@@ -23,11 +21,10 @@
     filter: drop-shadow(2px 0.5px 0.80rem #a5b8bb);
     border-radius: 10px;
     border-color: #8c9fa3;
-    max-width:290px;
+    max-width:350px;
+    min-width: 250px;
     max-height: auto;
     margin: 10px;
-    justify-content: center;
-  
 }
 
 .mat-stroked-button{
@@ -47,7 +44,6 @@
     min-height: 70px;
     max-height: 70px;
     object-fit: cover;
-   
 }
 
 
@@ -57,8 +53,6 @@
     align-items: center !important;
     align-content: center !important;  
     line-height: 16px;
-    height: 140px;
-    overflow: hidden;
     font-family: 'Open Sans';
 }
 
@@ -67,13 +61,6 @@
     font-style: bold;
     margin-top: 10px;
 }
-
-
-
-.show {
-    overflow: visible;
-    height: auto;
-  }
 
 .text{
     cursor:pointer;
@@ -85,30 +72,28 @@
 
 .card-deck{
     margin-bottom: 20px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    justify-content: center ;
 }
 
 .button-footer-card{
     text-align: right;
 }
 
-
-@media screen and (max-width: 800px) {
-  
+@media screen and (max-width: 950px) {
     .cont{
-        margin-top: 30px;
-        text-align: center;
-        display: flex;
         justify-content: center;
-        max-width: 90%;
+        max-width: 100%;
         height: auto;
     }
     .card-deck{
+        width: 100%;
         margin-bottom: 50px;
-        display: grid;
-        grid-template-columns: 1fr;
+        flex-grow: 1;
     }
-
 }
 

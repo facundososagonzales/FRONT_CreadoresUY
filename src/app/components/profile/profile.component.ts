@@ -36,7 +36,7 @@ export class ProfileComponent implements OnInit {
   public contentViwer:ContentViwer[] = [];
   public genericLoaded:boolean=false;
   public page:number = 1;
-  public contentByPage:number=8;
+  public contentByPage:number=20;
   
   constructor(private router:Router, private route:ActivatedRoute, private http:CreatorServiceService, private userServices:userServices,private _sanitizer: DomSanitizer) {}
 
@@ -65,32 +65,33 @@ export class ProfileComponent implements OnInit {
   }
 
   onScroll(){
-    if(!this.stopper){
-      this.http.creatorProfileContentLoader
-      (this.nickname,this.getUserId(),this.page.toString(),this.contentByPage.toString()).subscribe(res =>{
-        if(res['success']){
-          console.log(res);
-          this.follow = res['obj']['follower'];
-          if(JSON.stringify(res["obj"]['contentsAndBool']) == '[]' || res['obj']['results']!=this.contentByPage){
-            this.stopper = true;
+    setTimeout(() => {
+      if(!this.stopper){
+        this.http.creatorProfileContentLoader
+        (this.nickname,this.getUserId(),this.page.toString(),this.contentByPage.toString()).subscribe(res =>{
+          if(res['success']){
+            console.log(res);
+            this.follow = res['obj']['follower'];
+            if(JSON.stringify(res["obj"]['contentsAndBool']) === '[]' || res['obj']['results']!=this.contentByPage){
+              this.stopper = true;
+            }
+            if(JSON.stringify(res["obj"]['contentsAndBool']) !== '[]'){ 
+              this.page++;
+              res["obj"]["contentsAndBool"].forEach(element => {
+                if(element['content']['dato']=='')
+                  element['content']['dato']="./assets/img/brand/1.jpg"; 
+                this.contentViwer.push(new ContentViwer(false,element['authorized'],element['content']));
+              });
+            }else if(!this.genericLoaded && this.page==1){
+              this.genericContent.nickName=this.nickname;
+              this.contentViwer[0]= new ContentViwer(false,true,this.genericContent);
+              this.genericLoaded=true;
+            }
           }
-          if(JSON.stringify(res["obj"]['contentsAndBool']) !== '[]'){
-            res["obj"]["contentsAndBool"].forEach(element => {
-              element['content']['img']="./assets/img/brand/1.jpg"; 
-              this.contentViwer.push(new ContentViwer(false,element['authorized'],element['content']));
-            });
-            this.page++;
-          }else if(!this.genericLoaded && this.page==1){
-            this.genericContent.nickName=this.nickname;
-            this.contentViwer[0]= new ContentViwer(false,true,this.genericContent);
-            this.genericLoaded=true;
-          }
-        }
-      });
-    }
+        });
+      }
+    }, 1500);
   }
-
-  
 
   scrollToStart(e) {
     (e.target as Element).parentElement.parentElement.scrollIntoView({block: "start"});
