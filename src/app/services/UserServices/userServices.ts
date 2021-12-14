@@ -70,8 +70,8 @@ export class userServices {
     return this.http.get<Response<CreatorContent[]>>(url);
   }
 
-  suscriber(data:dto){
-    return this.http.post<Response<string>>(`${this.Url}` + "/api/User/SubscribeTo",{data},{headers: {'Authorization': ` Bearer ${sessionStorage.getItem('token')}`}});
+  suscriber(dto:dto){
+    return this.http.post<Response<string>>(`${this.Url}` + "/api/User/SubscribeTo",{dto},{headers: {'Authorization': ` Bearer ${sessionStorage.getItem('token')}`}});
   }
 
   unSuscriber(idUser:string, idPlan:number){

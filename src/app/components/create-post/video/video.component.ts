@@ -119,6 +119,9 @@ export class VideoComponent implements OnInit {
         this.http.getNewDraft(this.draft).subscribe(res1 =>{
           if(res1['success']){
             this.draft = res1['obj'];
+            this.draft.dato= '';
+            this.myVideo.nativeElement.value = '';
+            this.videosrc= '';
             console.log(res1);
             console.log(this.draft);
             this.title = this.draft.title;

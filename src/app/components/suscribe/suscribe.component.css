@@ -21,8 +21,8 @@
     filter: drop-shadow(2px 0.5px 0.80rem #a5b8bb);
     border-radius: 10px;
     border-color: #8c9fa3;
-    max-width:350px;
-    min-width: 250px;
+    max-width:330px;
+    min-width: 330px;
     max-height: auto;
     margin: 10px;
 }

@@ -4,6 +4,8 @@ import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { CreatorServiceService } from 'src/app/services/CreatorServices/creator-service.service';
 import { Plan } from 'src/app/model/Plan';
 import { ActivatedRoute, Router } from '@angular/router';
+import { userServices } from 'src/app/services/UserServices/userServices';
+import { dto } from 'src/app/model/dto';
 
 @Component({
   selector: 'app-suscribe',
@@ -17,13 +19,13 @@ export class SuscribeComponent implements OnInit {
   nickname:string = '';
   plans:Plan[] = [];
   public payPalConfig?: IPayPalConfig;
-  showSuccess:boolean =false;
+  planActual:number = 0;
   
 
-  constructor(private router:Router, private route:ActivatedRoute, private modalService: NgbModal, private creatorServices:CreatorServiceService) {}
+  constructor(private router:Router, private route:ActivatedRoute, private modalService: NgbModal, private creatorServices:CreatorServiceService, private userServices:userServices) {}
 
   ngOnInit(): void {
-
+    this.plans = [];
     this.nickname = this.route.snapshot.paramMap.get('nickname');
     console.log(this.nickname);
     this.creatorServices.getPlanToUser(sessionStorage.getItem('userId'),this.nickname).subscribe(res =>{
@@ -31,20 +33,22 @@ export class SuscribeComponent implements OnInit {
       res['obj']['plans'].forEach(element => {
         this.plans.push(element);
       });
+      this.planActual = res['obj']['subscribedTo'];
+      this.plans.sort((a,b) => (a.price > b.price) ? 1 : ((b.price > a.price) ? -1 : 0));
       console.log(this.plans);
+      console.log(this.planActual);
     });
-    
+  }
+
+  private initConfig(price:number, planId:number): void {
     const headers = {
       'Accept': 'plain/text',
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT',
       'Access-Control-Allow-Headers': 'Authorization, Origin, Content-Type, X-CSRF-Token'
     };
-    console.log(headers);
-    this.initConfig();
-  }
-
-  private initConfig(): void {
+    var precio = (Math.round(price * 100)/100).toString();
+    console.log(precio);
     this.payPalConfig = {
       currency: 'USD',
       clientId: 'AR6r31Q1-UBExv3N0jKTOAJBVR0s7lFj9peXOxgf_1opCSdk9On_TtR2VVDdukqlOeSb2DYjYxyRWALR',
@@ -54,11 +58,11 @@ export class SuscribeComponent implements OnInit {
           {
             amount: {
               currency_code: 'USD',
-              value: '20',
+              value: precio,
               breakdown: {
                 item_total: {
                   currency_code: 'USD',
-                  value: '20'
+                  value: precio
                 }
               }
             },
@@ -69,7 +73,7 @@ export class SuscribeComponent implements OnInit {
                 category: 'DIGITAL_GOODS',
                 unit_amount: {
                   currency_code: 'USD',
-                  value: '20',
+                  value: precio,
                 },
               }
             ]
@@ -91,7 +95,32 @@ export class SuscribeComponent implements OnInit {
       },
       onClientAuthorization: (data) => {
         console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
-        this.showSuccess = true;
+        if(this.planActual!=0){
+          this.userServices.unSuscriber(sessionStorage.getItem('userId'),this.planActual).subscribe(res=>{
+            console.log(res)
+            var payment = parseFloat(data.purchase_units[0].amount.value)
+            var dato = new dto();
+            dato.idUser = parseInt(sessionStorage.getItem('userId'));
+            dato.idPlan=planId; dato.nickName=this.nickname; dato.paymentAmount=payment; dato.externalPaymentId=data.id;
+            console.log(dato);
+            this.userServices.suscriber(dato).subscribe(res1=>{
+              console.log(res1);
+              alert('El pago se realizó con exito!');
+              this.ngOnInit();
+            });
+          });
+        }else{
+          var payment = parseFloat(data.purchase_units[0].amount.value)
+          var dato = new dto();
+          dato.idUser = parseInt(sessionStorage.getItem('userId'));
+          dato.idPlan=planId; dato.nickName=this.nickname; dato.paymentAmount=payment; dato.externalPaymentId=data.id;
+          console.log(dato);
+          this.userServices.suscriber(dato).subscribe(res=>{
+            console.log(res);
+            alert('El pago se realizó con exito!');
+            this.ngOnInit();
+          });
+        }
       },
       onCancel: (data, actions) => {
         console.log('OnCancel', data, actions);
