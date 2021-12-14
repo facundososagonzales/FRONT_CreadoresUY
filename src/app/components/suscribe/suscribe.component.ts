@@ -6,6 +6,7 @@ import { Plan } from 'src/app/model/Plan';
 import { ActivatedRoute, Router } from '@angular/router';
 import { userServices } from 'src/app/services/UserServices/userServices';
 import { dto } from 'src/app/model/dto';
+import { SharedService } from 'src/app/services/SharedServices/shared.service';
 
 @Component({
   selector: 'app-suscribe',
@@ -14,12 +15,15 @@ import { dto } from 'src/app/model/dto';
 })
 
 export class SuscribeComponent implements OnInit {
-  closeModal: string;
+  @ViewChild('closeButton') closebutton;
+  closeResult: string;
+  modalReference:any;
   show = false;
   nickname:string = '';
   plans:Plan[] = [];
   public payPalConfig?: IPayPalConfig;
   planActual:number = 0;
+  success:boolean=false;
   
 
   constructor(private router:Router, private route:ActivatedRoute, private modalService: NgbModal, private creatorServices:CreatorServiceService, private userServices:userServices) {}
@@ -105,8 +109,9 @@ export class SuscribeComponent implements OnInit {
             console.log(dato);
             this.userServices.suscriber(dato).subscribe(res1=>{
               console.log(res1);
-              alert('El pago se realizó con exito!');
-              this.ngOnInit();
+              this.onSave();
+              this.success=true;
+              this.router.navigate(['/creator-Profile', this.nickname]);
             });
           });
         }else{
@@ -117,28 +122,26 @@ export class SuscribeComponent implements OnInit {
           console.log(dato);
           this.userServices.suscriber(dato).subscribe(res=>{
             console.log(res);
-            alert('El pago se realizó con exito!');
-            this.ngOnInit();
+            this.onSave();
+            this.router.navigate(['/creator-Profile', this.nickname]);
           });
         }
       },
       onCancel: (data, actions) => {
-        console.log('OnCancel', data, actions);
       },
       onError: err => {
-        console.log('OnError', err);
       },
       onClick: (data, actions) => {
-        console.log('onClick', data, actions);
       },
     };
   }
     
   triggerModal(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((res) => {
-      this.closeModal = `Closed with: ${res}`;
-    }, (res) => {
-      this.closeModal = `Dismissed ${this.getDismissReason(res)}`;
+    this.modalReference = this.modalService.open(content);
+    this.modalReference.result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
 
@@ -150,5 +153,9 @@ export class SuscribeComponent implements OnInit {
     } else {
       return  `with: ${reason}`;
     }
+  }
+
+  public onSave() {
+    this.modalReference.close();
   }
 }
