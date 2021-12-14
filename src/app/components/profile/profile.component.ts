@@ -85,6 +85,7 @@ export class ProfileComponent implements OnInit {
             }else if(!this.genericLoaded && this.page==1){
               this.genericContent.nickName=this.nickname;
               this.contentViwer[0]= new ContentViwer(false,true,this.genericContent);
+              this.contentViwer[0]['content']['dato']='./assets/img/brand/1.png'
               this.genericLoaded=true;
             }
           }
