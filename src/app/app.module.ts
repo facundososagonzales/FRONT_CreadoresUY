@@ -100,6 +100,7 @@ import { BenefitEditComponent } from './components/backOffice/benefit/edit/benef
 import { BenefitComponent } from './components/backOffice/benefit/list/benefit.component';
 import { BenefitAddComponent } from './components/backOffice/benefit/add/benefit-add.component';
 import { StatisticsComponent } from './components/backOffice/statistics/statistics.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -157,6 +158,7 @@ const firebaseConfig = {
     AdminComponent,
     CategoryComponent,
     CreatorAddComponent,
+    ChatComponent,
     SafePipe
   ],
   imports: [

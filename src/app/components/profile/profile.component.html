@@ -38,7 +38,7 @@
                   <button *ngIf="getUserId()=='0'" routerLink="/login" mat-stroked-button>Seguir</button>
                   <button *ngIf="getUserId()!='0' && !follow && getNickname()!=nickname" (click)='followCreator()' mat-stroked-button style='padding:0 24px'>Seguir</button>
                   <button *ngIf="getUserId()!='0' &&  follow && getNickname()!=nickname" (click)='unfollowCreator()' mat-stroked-button>UnFollow</button>
-                  <button mat-stroked-button>Enviar Mensaje</button>
+                  <button mat-stroked-button [routerLink]="['/chat',nickname]" >Enviar Mensaje</button>
                 </div>
               </div>
             </div>

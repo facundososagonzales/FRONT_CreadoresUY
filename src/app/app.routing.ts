@@ -59,6 +59,7 @@ const routes: Routes =[
     { path: 'createPost/audio',          component: AudioComponent },
     { path: 'planconfig',          component: CreateplanComponent },
     { path: 'chat',          component: ChatComponent},
+    { path: 'chat/:nickname', component: ChatComponent },
     { path: 'creator-Profile/:nickname/suscribe',          component: SuscribeComponent },
 
     { path: 'backOffice', component: BackOfficeComponent },

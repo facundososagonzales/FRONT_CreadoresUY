@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { ChatComponent } from './chat.component';
 
