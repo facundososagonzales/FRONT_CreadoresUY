@@ -19,7 +19,7 @@ export class FeedComponent implements OnInit {
   public stopped:boolean = true;
   public filterByCreator:boolean = false;
   public nPage:string = "0";
-  public contentNumer:string = "6";
+  public contentNumer:string = "15";
   public genericLoaded:boolean = false;
   public genericContent = new CreatorContent("999999999","Bienvenido a creadoresUy " + this.getUserNickname(), "Le recomendamos que revise algunos perfiles de creadores que le puedan interesar através de la busqueda por categorias en el buscador!",9999,"",
         (new Date()),false,(new Date()),true,"","","./assets/img/brand/1.jpg",0);
@@ -42,27 +42,29 @@ export class FeedComponent implements OnInit {
   }
 
   onScroll(){
-    if(!this.stopped){
-      if(!this.filterByCreator){
-        this.http.userContent(sessionStorage.getItem("userId"),this.nPage,this.contentNumer).subscribe(res =>{
-          if(JSON.stringify(res["obj"]) === '[]' || res["obj"].length<this.contentNumer){
-            this.stopped=true;
-          }
-          if((!this.genericLoaded) && this.nPage=='0' && (JSON.stringify(res["obj"]) === '[]')){
-            this.genericContent.nickName = 'CreadoresUy'
-            this.contentViwer.push(new ContentViwer(false,true,this.genericContent));
-            this.genericLoaded=true;
-          }else if(JSON.stringify(res["obj"]) !== '[]'){
-            res["obj"].forEach(element => {
-              this.contentViwer.push(new ContentViwer(false,true,element));
-            });
-            this.nPage = (parseInt(this.nPage)+1).toString();
-          }
-        })
-      }else{
-        this.getFeedByCreator();
+    setTimeout(() => {
+      if(!this.stopped){
+        if(!this.filterByCreator){
+          this.http.userContent(sessionStorage.getItem("userId"),this.nPage,this.contentNumer).subscribe(res =>{
+            if(JSON.stringify(res["obj"]) === '[]' || res["obj"].length<this.contentNumer){
+              this.stopped=true;
+            }
+            if((!this.genericLoaded) && this.nPage=='0' && (JSON.stringify(res["obj"]) === '[]')){
+              this.genericContent.nickName = 'CreadoresUy'
+              this.contentViwer.push(new ContentViwer(false,true,this.genericContent));
+              this.genericLoaded=true;
+            }else if(JSON.stringify(res["obj"]) !== '[]'){
+              res["obj"].forEach(element => {
+                this.contentViwer.push(new ContentViwer(false,true,element));
+              });
+              this.nPage = (parseInt(this.nPage)+1).toString();
+            }
+          })
+        }else{
+          this.getFeedByCreator();
+        }
       }
-    }
+    }, 1000);
   }
 
   increaseShow(e:Event) {
