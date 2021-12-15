@@ -12,6 +12,8 @@ import { CreatorContent } from 'src/app/model/CreatorContent';
 import { CreatorContentString } from 'src/app/model/CreatorContentString';
 import { DatePipe } from '@angular/common';
 import { CreatorPlansToUser } from 'src/app/model/CreatorPlansToUser';
+import { Plan } from 'src/app/model/Plan';
+import { PlanAndNickname } from 'src/app/model/PlanAndNickname';
 
 @Injectable({
   providedIn: 'root'
@@ -102,5 +104,21 @@ export class CreatorServiceService {
     console.log(idUser)
     let url = `${this.Url}` + "/api/Creator/GetCreatorPlansSubsc?"​ + "idUser=" + idUser + '&nickname=' + nickname;
     return this.http.get<Response<CreatorPlansToUser>>(url, {headers: {'Authorization': ` Bearer ${sessionStorage.getItem('token')}`}});
+  }
+
+  getPlanByCreator(idCreator:string){
+    let url = `${this.Url}` + "/api/Creator/GetCreatorPlansById?"​ + "id=" + idCreator;
+    return this.http.get<Response<Plan[]>>(url, {headers: {'Authorization': ` Bearer ${sessionStorage.getItem('token')}`}});
+  }
+
+  getDefaultBenefits(){
+    let url = `${this.Url}` + "/api/Creator/GetDefaultBenefits"
+    return this.http.get<Response<string[]>>(url, {headers: {'Authorization': ` Bearer ${sessionStorage.getItem('token')}`}});
+  }
+
+  postPlan(newPlan:PlanAndNickname){
+    var nickname = newPlan.nickname;
+    var pandB = newPlan.pandB;
+    return this.http.post<Response<string>>(`${this.Url}` + '/api/Creator/CreatePlanAndBenefits',{nickname,pandB},{headers: {'Authorization': ` Bearer ${sessionStorage.getItem('token')}`}});
   }
 }

@@ -60,8 +60,6 @@
     margin: 0 5px !important;
     margin-top: 10px !important;
     text-align: center;
-
-  
 }
 
 
@@ -125,7 +123,6 @@
     text-align: center;
     align-items: center;
     max-width: 100%;
-  
 }
 
 ::ng-deep .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {

@@ -140,8 +140,7 @@ ul {
     display: flex;
     overflow: auto;
     margin: auto;
-    
-}
+  }
 
 .content-select{
 	max-width: 100%;

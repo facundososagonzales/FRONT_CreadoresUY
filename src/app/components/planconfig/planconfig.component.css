@@ -1,15 +1,56 @@
-.section-shaped .shape {
-    background: linear-gradient(45deg, #27798f 1%, #ffe3b3 90%);
+.text-crearplan{
+    color: rgb(248, 248, 248);
+    text-align: center;
+    font-size: medium;
+    font-style: oblique;
+    font-family: 'Open Sans';
+    filter: drop-shadow(2px 0.5px 0.80rem #889496);
+    margin-bottom: 100px;
 }
 
-
-
+.text-crearplan:hover{
+    cursor: pointer;
+    animation-duration: 0.4s;
+    filter: drop-shadow(0 0 5px #27798f);
+}
+.section-shaped .shape {
+    background: linear-gradient(45deg, #659aa8 0.1%, #9dd4c1 90%);
+}
 .cont{
-    margin-top: 40px;
+    margin-top: 130px;
     text-align: center;
     display: flex;
     justify-content: center;
-    height: auto;  
+    width: 100%;
+    height: auto;
+}
+
+.contForm{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 200px;
+    padding: 50px 30px;
+    min-width: 800px;
+    max-width: 800px;
+    filter: drop-shadow(2px 0.5px 0.80rem #a5b8bb);
+    border-radius: 10px;
+    border-color: #8c9fa3;
+    background-color: #fff;
+}
+
+::ng-deep .mat-label{
+    filter: drop-shadow(2px 0.5px 0.80rem #a5b8bb);
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+::ng-deep .mat-label:hover{
+    filter: drop-shadow(2px 0.5px 0.80rem #a5b8bb) !important;
+    border: none !important;
+    background-color: #fff;
+    border-radius: 5px;
 }
 
 .mat-button{
@@ -19,62 +60,27 @@
 
 }
 
+.input-group-alternative{
+    margin-bottom: 24px;
+}
+
+.img-input{
+    display: flex;
+    align-items: center;
+}
+
+.formHeader{
+    margin-bottom: 24px;
+}
+
 .cards{
+    filter: drop-shadow(2px 0.5px 0.80rem #a5b8bb);
     border-radius: 10px;
-    padding: 5px;
     border-color: #8c9fa3;
-    max-width:290px;
+    max-width:330px;
+    min-width: 330px;
     max-height: auto;
     margin: 10px;
-    justify-content: center;
-    filter: drop-shadow(2px 0.5px 0.80rem #a3afb1);
-    
-}
-
-
-.img-imagen{
-    display: flex;
-    margin: 16px 0;
-    width: 100%;
-    height: 100%;
-    min-width: 250px;
-    max-width: 250px;
-    min-height: 250px;
-    max-height: 250px;
-    border: solid 0.5px #777;
-    object-fit: cover;
-}
-
-.text-crearplan{
-    color: rgb(248, 248, 248);
-    text-align: center;
-    font-size: medium;
-    font-style: oblique;
-    font-family: 'Open Sans';
-    filter: drop-shadow(2px 0.5px 0.80rem #889496);
-}
-
-.text-crearplan:hover{
-    cursor: pointer;
-    animation-duration: 0.4s;
-    filter: drop-shadow(0 0 5px #27798f);
-}
-
-
-:host ::ng-deep .multiselect-dropdown .dropdown-btn {
-    border-radius: 10px;
-    color: #adadad;
-    border: 0.2px solid rgb(240, 238, 238) !important;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 1px;
-    height: 48px;
-    display: flex;
-    align-items: center !important;
-    padding-top: 12px !important;
-}
-
-:host ::ng-deep .ck-editor__editable_inline {
-    min-height: 150px;
-    max-height: 150px;
 }
 
 .mat-stroked-button{
@@ -84,11 +90,23 @@
     z-index: 50;
 }
 
-.button-new{
-    text-align: center;
+.finishButton{
+    font-size: 20px !important;
 }
 
-
+.img-imagen{
+    display: flex;
+    margin-top: 20px;
+    width: 100%;
+    height: 100%;
+    min-width: 300px;
+    max-width: 300px;
+    min-height: 300px;
+    max-height: 300px;
+    border: solid 0.5px #777;
+    object-fit: cover;
+  }
+  
 
 .card-img-top{
     display: flex;
@@ -99,32 +117,21 @@
     min-height: 70px;
     max-height: 70px;
     object-fit: cover;
-   
 }
+
+
 
 .card-body{
     filter: drop-shadow(0px 0px 0.08rem #e7eff0);
     align-items: center !important;
-    line-height: 16px;
-    height: 140px;
-    overflow: hidden;
+    align-content: center !important;  
     font-family: 'Open Sans';
-}
-
-.title{
-    text-align: center;
-    font-size:x-large;
 }
 
 .card-title{
     font-size:15px;
     font-style: bold;
     margin-top: 10px;
-}
-
-.show {
-    overflow: visible;
-    height: auto;
 }
 
 .text{
@@ -136,34 +143,47 @@
 }
 
 .card-deck{
-    margin-bottom: 50px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    margin-bottom: 20px;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    margin-bottom: 35px;
 }
 
 .button-footer-card{
     text-align: right;
 }
 
-
-@media screen and (max-width: 750px) {
-  
-    .cont{
-        margin-top: 30px;
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        max-width: 90%;
-        height: auto;
-    }
-
-
-
-    .card-deck{
-        margin-bottom: 50px;
-        display: grid;
-        grid-template-columns: 1fr;
-    }
-
+:host ::ng-deep .ck-editor__editable_inline {
+    min-height: 150px;
+    max-height: 150px;
+    margin-bottom: 24px;
+    border-radius: 15px;
 }
 
+::ng-deep .mat-progress-bar-fill::after {
+    background-color: #27798f;
+  }
+  
+::ng-deep .mat-progress-bar-buffer {
+    background: #E4E8EB;
+}
+
+::ng-deep .mat-progress-bar {
+    border-radius: 8px;
+}
+
+@media screen and (max-width: 950px) {
+    .cont{
+        justify-content: center;
+        max-width: 100%;
+        height: auto;
+    }
+    .card-deck{
+        width: 100%;
+        margin-bottom: 50px;
+        flex-grow: 1;
+    }
+}
