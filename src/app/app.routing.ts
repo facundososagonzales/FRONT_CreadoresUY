@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule, } from '@angular/common';
-import { BrowserModule  } from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './components/home/home.component';
@@ -40,51 +40,52 @@ import { BenefitEditComponent } from './components/backOffice/benefit/edit/benef
 import { BenefitComponent } from './components/backOffice/benefit/list/benefit.component';
 import { BenefitAddComponent } from './components/backOffice/benefit/add/benefit-add.component';
 import { StatisticsComponent } from './components/backOffice/statistics/statistics.component';
+import { PaymentComponent } from './components/backOffice/payment/payment.component';
 import { ChatComponent } from './components/chat/chat.component';
 
-const routes: Routes =[
-    { path: 'home',             component: HomeComponent },
-    { path: 'creator-Profile/:nickname',     component: ProfileComponent },
-    { path: 'register',           component: SignupComponent },
-    { path: 'login',          component: LoginComponent },
-    { path: 'creador-Register',          component: SignupCreadorComponent },
-    { path: 'logout',          component: LogoutComponent },
-    { path: 'feed',          component: FeedComponent },
-    { path: 'search/:querry',          component: SearchComponent},
-    { path: 'createPost',          component: CreatePostComponent},
-    { path: 'createPost/text',          component: TextComponent},
-    { path: 'createPost/image',          component: ImageComponent},
-    { path: 'createPost/video',          component: VideoComponent},
-    { path: 'createPost/link',          component: LinkComponent },
-    { path: 'createPost/audio',          component: AudioComponent },
-    { path: 'planconfig',          component: CreateplanComponent },
-    { path: 'chat',          component: ChatComponent},
-    { path: 'chat/:nickname', component: ChatComponent },
-    { path: 'creator-Profile/:nickname/suscribe',          component: SuscribeComponent },
+const routes: Routes = [
+  { path: 'home', component: HomeComponent },
+  { path: 'creator-Profile/:nickname', component: ProfileComponent },
+  { path: 'register', component: SignupComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'creador-Register', component: SignupCreadorComponent },
+  { path: 'logout', component: LogoutComponent },
+  { path: 'feed', component: FeedComponent },
+  { path: 'search/:querry', component: SearchComponent },
+  { path: 'createPost', component: CreatePostComponent },
+  { path: 'createPost/text', component: TextComponent },
+  { path: 'createPost/image', component: ImageComponent },
+  { path: 'createPost/video', component: VideoComponent },
+  { path: 'createPost/link', component: LinkComponent },
+  { path: 'createPost/audio', component: AudioComponent },
+  { path: 'planconfig', component: CreateplanComponent },
+  { path: 'chat', component: ChatComponent },
+  { path: 'chat/:nickname', component: ChatComponent },
+  { path: 'creator-Profile/:nickname/suscribe', component: SuscribeComponent },
 
-    { path: 'backOffice', component: BackOfficeComponent },
-    { path: 'backOffice/usuario', component: UserComponent },
-    { path: 'backOffice/usuario/crear', component: UserAddComponent },
-    { path: 'backOffice/usuario/editar/:idUser', component: UserEditComponent },
-    { path: 'backOffice/admin', component: AdminComponent },
-    { path: 'backOffice/admin/crear', component: AdminAddComponent },
-    { path: 'backOffice/admin/editar/:idUser', component: AdminEditComponent },
-    { path: 'backOffice/creador', component: CreatorComponent },
-    { path: 'backOffice/creador/crear', component: CreatorAddComponent },
-    { path: 'backOffice/creador/editar/:idCreator', component: CreatorEditComponent },
-    { path: 'backOffice/categoria', component: CategoryComponent },
-    { path: 'backOffice/categoria/crear', component: CategoryAddComponent },
-    { path: 'backOffice/categoria/editar/:idCategoria', component: CategoryEditComponent },
-    { path: 'backOffice/plan', component: PlanComponent },
-    { path: 'backOffice/plan/crear', component: PlanAddComponent },
-    { path: 'backOffice/plan/editar/:idPlan', component: PlanEditComponent },
-    { path: 'backOffice/beneficio', component: BenefitComponent },
-    { path: 'backOffice/beneficio/crear', component: BenefitAddComponent },
-    { path: 'backOffice/beneficio/editar/:idBenefit', component: BenefitEditComponent },
-    { path: 'backOffice/estadisticas', component: StatisticsComponent },
-    { path: 'backOffice/estadisticas', component: StatisticsComponent },
-  
-    { path: '', redirectTo: 'home', pathMatch: 'full'}
+  { path: 'backOffice', component: BackOfficeComponent },
+  { path: 'backOffice/usuario', component: UserComponent },
+  { path: 'backOffice/usuario/crear', component: UserAddComponent },
+  { path: 'backOffice/usuario/editar/:idUser', component: UserEditComponent },
+  { path: 'backOffice/admin', component: AdminComponent },
+  { path: 'backOffice/admin/crear', component: AdminAddComponent },
+  { path: 'backOffice/admin/editar/:idUser', component: AdminEditComponent },
+  { path: 'backOffice/creador', component: CreatorComponent },
+  { path: 'backOffice/creador/crear', component: CreatorAddComponent },
+  { path: 'backOffice/creador/editar/:idCreator', component: CreatorEditComponent },
+  { path: 'backOffice/categoria', component: CategoryComponent },
+  { path: 'backOffice/categoria/crear', component: CategoryAddComponent },
+  { path: 'backOffice/categoria/editar/:idCategoria', component: CategoryEditComponent },
+  { path: 'backOffice/plan', component: PlanComponent },
+  { path: 'backOffice/plan/crear', component: PlanAddComponent },
+  { path: 'backOffice/plan/editar/:idPlan', component: PlanEditComponent },
+  { path: 'backOffice/beneficio', component: BenefitComponent },
+  { path: 'backOffice/beneficio/crear', component: BenefitAddComponent },
+  { path: 'backOffice/beneficio/editar/:idBenefit', component: BenefitEditComponent },
+  { path: 'backOffice/estadisticas', component: StatisticsComponent },
+  { path: 'backOffice/pagos', component: PaymentComponent },
+
+  { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 
 @NgModule({

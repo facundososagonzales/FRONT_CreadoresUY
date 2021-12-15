@@ -1,10 +1,11 @@
-<nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom headroom--top headroom--pinned">
+<nav id="navbar-main"
+  class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom headroom--top headroom--pinned">
   <div class="container">
     <a class="navbar-brand mr-3" [routerLink]="['/home']">
       <img src="./assets/img/brand/argon-white.png">
     </a>
     <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed"
-          [attr.aria-expanded]="!isCollapsed" aria-controls="navbar_global">
+      [attr.aria-expanded]="!isCollapsed" aria-controls="navbar_global">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="navbar-collapse collapse" id="navbar_global" [ngbCollapse]="isCollapsed">
@@ -17,7 +18,7 @@
           </div>
           <div class="col-6 collapse-close">
             <button type="button" class="navbar-toggler" (click)="isCollapsed = !isCollapsed"
-                  [attr.aria-expanded]="!isCollapsed" aria-controls="navbar_global">
+              [attr.aria-expanded]="!isCollapsed" aria-controls="navbar_global">
               <span></span>
               <span></span>
             </button>
@@ -36,6 +37,7 @@
             <a [routerLink]="['/backOffice/creador']" class="dropdown-item">Creadores</a>
             <a [routerLink]="['/backOffice/categoria']" class="dropdown-item">Categorias</a>
             <a [routerLink]="['/backOffice/plan']" class="dropdown-item">Planes por defecto</a>
+            <a [routerLink]="['/backOffice/pagos']" class="dropdown-item">Pagos</a>
             <a [routerLink]="['/backOffice/beneficio']" class="dropdown-item">Beneficios por defecto</a>
             <a [routerLink]="['/backOffice/estadisticas']" class="dropdown-item">Estadisticas</a>
           </div>
@@ -49,11 +51,12 @@
                 <button (click)="navToSearch()" class="search-link">
                   <div class="input-group-prepend">
                     <span class="input-group-text">
-                        <mat-icon aria-hidden="false" aria-label="Example home icon">search</mat-icon>
+                      <mat-icon aria-hidden="false" aria-label="Example home icon">search</mat-icon>
                     </span>
                   </div>
                 </button>
-                <input #search (input)="setValue($event)" class="form-control" placeholder="Buscar..." type="search" (focus)="focus=true" (blur)="focus=false">
+                <input #search (input)="setValue($event)" class="form-control" placeholder="Buscar..." type="search"
+                  (focus)="focus=true" (blur)="focus=false">
               </div>
             </form>
           </div>
@@ -63,22 +66,23 @@
             <button mat-raised-button>
               <i class="bi bi-person-circle align-middle"></i>
               <span class="nav-link-inner--text align-middle"> Iniciar Sesión</span>
-            </button> 
+            </button>
           </a>
         </li>
         <li *ngIf="getToken()!=null && getUserType()==='admin'" class="nav-item d-none d-lg-block ml-lg-1 profile-nav">
           <div class="profile-header-container">
             <div [matMenuTriggerFor]="beforeMenu">
               <div class="profile-header-img">
-                <img *ngIf="getimgProfile()===''" class="img-fluid img-circle img-profile" src="./assets/img/theme/team-4-800x800.png"/>
-                <img *ngIf="getimgProfile()!==''" class="img-fluid img-circle img-profile" src="{{getimgProfile()}}"/>
+                <img *ngIf="getimgProfile()===''" class="img-fluid img-circle img-profile"
+                  src="./assets/img/theme/team-4-800x800.png" />
+                <img *ngIf="getimgProfile()!==''" class="img-fluid img-circle img-profile" src="{{getimgProfile()}}" />
                 <small style="margin-left: 12px;">{{getName()}}</small>
               </div>
             </div>
             <mat-menu #beforeMenu="matMenu" xPosition="before">
               <a mat-menu-item [routerLink]="['/creador-Register']">Alta Creador</a>
               <a mat-menu-item [routerLink]="['/feed']">Publicaciones</a>
-              <a mat-menu-item [routerLink]="['/home']">Inicio</a>              
+              <a mat-menu-item [routerLink]="['/home']">Inicio</a>
               <a mat-menu-item [routerLink]="['/logout']">Cerrar sesión</a>
             </mat-menu>
           </div>
@@ -87,8 +91,9 @@
           <div class="profile-header-container">
             <div [matMenuTriggerFor]="beforeMenu">
               <div class="profile-header-img">
-                <img *ngIf="getimgProfile()===''" class="img-fluid img-circle img-profile" src="./assets/img/theme/team-4-800x800.png"/>
-                <img *ngIf="getimgProfile()!==''" class="img-fluid img-circle img-profile" src="{{getimgProfile()}}"/>
+                <img *ngIf="getimgProfile()===''" class="img-fluid img-circle img-profile"
+                  src="./assets/img/theme/team-4-800x800.png" />
+                <img *ngIf="getimgProfile()!==''" class="img-fluid img-circle img-profile" src="{{getimgProfile()}}" />
                 <small style="margin-left: 12px;">{{getName()}}</small>
               </div>
             </div>
@@ -106,8 +111,9 @@
           <div class="profile-header-container">
             <div [matMenuTriggerFor]="beforeMenu">
               <div class="profile-header-img">
-                <img *ngIf="getimgProfile()===''" class="img-fluid img-circle img-profile" src="./assets/img/theme/team-4-800x800.png"/>
-                <img *ngIf="getimgProfile()!==''" class="img-fluid img-circle img-profile" src="{{getimgProfile()}}"/>
+                <img *ngIf="getimgProfile()===''" class="img-fluid img-circle img-profile"
+                  src="./assets/img/theme/team-4-800x800.png" />
+                <img *ngIf="getimgProfile()!==''" class="img-fluid img-circle img-profile" src="{{getimgProfile()}}" />
                 <small style="margin-left: 12px;">{{getName()}}</small>
               </div>
             </div>
