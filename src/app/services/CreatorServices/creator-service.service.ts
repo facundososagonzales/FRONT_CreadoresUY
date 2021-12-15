@@ -121,4 +121,8 @@ export class CreatorServiceService {
     var pandB = newPlan.pandB;
     return this.http.post<Response<string>>(`${this.Url}` + '/api/Creator/CreatePlanAndBenefits',{nickname,pandB},{headers: {'Authorization': ` Bearer ${sessionStorage.getItem('token')}`}});
   }
+
+  updatePlan(nickname:string, pandB:Plan){
+    return this.http.put<Response<string>>(`${this.Url}` + '/api/Creator/UpdatePlansAndBenefits',{nickname,pandB},{headers: {'Authorization': ` Bearer ${sessionStorage.getItem('token')}`}});
+  }
 }
