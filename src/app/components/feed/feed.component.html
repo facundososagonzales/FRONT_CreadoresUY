@@ -58,10 +58,18 @@
                         <div class="card-body">
                           <h5 class="card-title" >{{element['content']['title']}}</h5>
                           <div class="description">
-                            <p *ngIf="!element['visible']" class="card-text" [innerHTML]="(element['content']['description'].length>240)? (element['content']['description'] | slice:0:240)+'...':(element['content']['description'])"></p>
+                            <p *ngIf="!element['visible']" class="card-text" [innerHTML]="(element['content']['description'].length>340)? (element['content']['description'] | slice:0:340)+'...':(element['content']['description'])"></p>
                             <p *ngIf="element['visible']" class="card-text" [innerHTML]="element['content']['description']"></p>
-                          </div><br>
-                          <a *ngIf="(element['content']['description'].length>240)" (click)="scrollToStart($event)" class="text-muted-publicadopor more" (click)="element['visible'] = !element['visible']" style="float: right;">{{ element['visible'] ? 'Mostrar menos': 'Mostrar más' }}</a>
+                          </div>
+                          <a *ngIf="(element['content']['description'].length>340)" (click)="scrollToStart($event)" class="text-muted-publicadopor more" (click)="element['visible'] = !element['visible']" style="float: right;">{{ element['visible'] ? 'Mostrar menos': 'Mostrar más' }}</a>
+                          <mat-form-field [style.width.%]="100" class="tags-list" appearance="standard ">
+                            <mat-chip-list #chipList aria-label="Tags selection">
+                              <mat-chip
+                                *ngFor="let tag of element['content']['tags']">
+                                {{tag['name']}}
+                              </mat-chip>
+                            </mat-chip-list>
+                          </mat-form-field>
                         </div>
                         <div *ngIf="element['content']['nickName']!=='CreadoresUy' && creatorImage==''" class="card-footer">
                           <small class="text-muted">Fecha de publicacion: {{element['content']['publishDate'] | date:'short':'UTC'}}</small>

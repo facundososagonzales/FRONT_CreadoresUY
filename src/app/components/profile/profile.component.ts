@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ContentViwer } from 'src/app/model/ContentViwer';
 import { CreatorContent } from 'src/app/model/CreatorContent';
 import { CreatorServiceService } from 'src/app/services/CreatorServices/creator-service.service';
 import { userServices } from 'src/app/services/UserServices/userServices';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { FormControl } from '@angular/forms';
 
 
 @Component({
@@ -30,6 +31,9 @@ export class ProfileComponent implements OnInit {
   public flags = true;
   public welcomeVideo:string='';
   public welcomeMensaje:string='';
+  tags: string[] = [];
+  tagControl = new FormControl();
+  @ViewChild('tagInput') tagInput: ElementRef<HTMLInputElement>;
   
 
   public stopper:boolean = false;
@@ -89,6 +93,7 @@ export class ProfileComponent implements OnInit {
                 if(element['content']['dato']=='' || !element['authorized'])
                   element['content']['dato']="./assets/img/brand/1.jpg"; 
                 this.contentViwer.push(new ContentViwer(false,element['authorized'],element['content']));
+                console.log(element['content'])
               });
             }else if(!this.genericLoaded && this.page==1){
               this.genericContent.nickName=this.nickname;

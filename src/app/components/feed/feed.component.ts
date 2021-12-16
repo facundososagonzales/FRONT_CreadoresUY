@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { userServices } from 'src/app/services/UserServices/userServices';
 import { CreatorContent } from 'src/app/model/CreatorContent';
 import { ContentViwer } from 'src/app/model/ContentViwer';
 import { Subscriptions } from 'src/app/model/Subscriptions';
 import { CreatorServiceService } from 'src/app/services/CreatorServices/creator-service.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-feed',
@@ -28,6 +29,9 @@ export class FeedComponent implements OnInit {
   public contentViwer:ContentViwer[]=[];
   public flag=true;
   public creatorImage:string='';
+  tags: string[] = [];
+  tagControl = new FormControl();
+  @ViewChild('tagInput') tagInput: ElementRef<HTMLInputElement>;
   
   constructor(private router:Router,private http:userServices,private creatorService:CreatorServiceService) {}
 
@@ -55,6 +59,7 @@ export class FeedComponent implements OnInit {
             if((!this.genericLoaded) && this.nPage=='0' && (JSON.stringify(res["obj"]) === '[]')){
               this.genericContent.nickName = 'CreadoresUy'
               this.contentViwer.push(new ContentViwer(false,true,this.genericContent));
+              console.log(this.contentViwer);
               this.genericLoaded=true;
             }else if(JSON.stringify(res["obj"]) !== '[]'){
               res["obj"].forEach(element => {
