@@ -128,6 +128,19 @@ export class ProfileComponent implements OnInit {
     this.videosrc = ("//www.youtube.com/embed/" + this.getId(url));
   }
 
+  getVideoIframeView(url: string) {
+    console.log(url);
+    var video, results;
+
+    if (url === null) {
+      return '';
+    }
+    results = url.match('[\\?&]v=([^&#]*)');
+    video = (results === null) ? url : results[1];
+
+    return ("//www.youtube.com/embed/" + this.getId(url));
+  }
+
   followCreator(){
     this.userServices.followCreator((this.getUserId()),this.nickname).subscribe(res =>{
       if(res['success']){
