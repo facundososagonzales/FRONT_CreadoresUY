@@ -33,7 +33,7 @@
                 </div>
               </div>
               <div class="text-lg-right align-self-lg-center">
-                <div class="card-profile-actions py-4 mt-lg-0 mt-5">
+                <div class="card-profile-actions ml-3 py-4 mt-lg-0 mt-5">
                   <button *ngIf="getNickname()==nickname" [ngClass]="{disabledButton: getNickname()==nickname}" disabled='true' mat-stroked-button>Seguir</button>
                   <button *ngIf="getUserId()=='0'" routerLink="/login" mat-stroked-button>Seguir</button>
                   <button *ngIf="getUserId()!='0' && !follow && getNickname()!=nickname" (click)='followCreator()' mat-stroked-button style='padding:0 24px'>Seguir</button>

@@ -1,4 +1,4 @@
 module.exports = {
-    apiurl  : "https://localhost:44332"
+    apiurl  : "https://creadoresuyapiback.web.elasticloud.uy"
   }
   
