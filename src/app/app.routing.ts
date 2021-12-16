@@ -19,7 +19,7 @@ import { LinkComponent } from './components/create-post//link/link.component';
 import { AudioComponent } from './components/create-post/audio/audio.component';
 import { SuscribeComponent } from './components/suscribe/suscribe.component';
 import { CreateplanComponent } from './components/planconfig/planconfig.component';
-
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { BackOfficeComponent } from './components/backOffice/back-office/back-office.component';
 import { UserComponent } from './components/backOffice/user/list/user.component';
 import { UserAddComponent } from './components/backOffice/user/add/user-add.component'
@@ -62,6 +62,7 @@ const routes: Routes = [
   { path: 'chat', component: ChatComponent },
   { path: 'chat/:nickname', component: ChatComponent },
   { path: 'creator-Profile/:nickname/suscribe', component: SuscribeComponent },
+  { path: 'user-Profile/:nickname',          component: UserProfileComponent },
 
   { path: 'backOffice', component: BackOfficeComponent },
   { path: 'backOffice/usuario', component: UserComponent },

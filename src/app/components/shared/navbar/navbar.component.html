@@ -118,6 +118,7 @@
               </div>
             </div>
             <mat-menu #beforeMenu="matMenu" xPosition="before">
+              <a mat-menu-item [routerLink]="['/user-Profile/', getName()]">Mi Perfil</a>
               <a mat-menu-item [routerLink]="['/creador-Register']">Alta Creador</a>
               <a mat-menu-item [routerLink]="['/feed']">Publicaciones</a>
               <a mat-menu-item [routerLink]="['/chat']">Chats</a>
