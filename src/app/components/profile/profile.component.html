@@ -84,7 +84,11 @@
                   src="{{element['content']['dato']}}">
                   <iframe class="youtube-iframe" *ngIf="element['content']['type']==3 && element['authorized'] && element['content']['dato']!=''" width="100%" height="315" [src]="getVideoIframeView(element['content']['dato']) | safe"
                   frameborder="0" allowfullscreen  title="YouTube video player"></iframe>
-                  <a ></a>
+                  <a *ngIf="element['content']['type']==5 && element['authorized'] && element['content']['dato']!=''" href="{{element['content']['dato']}}"
+                  style="display: flex; flex-direction: row; align-items: center; margin: auto; margin-top: 12px; font-size: 24px;">{{element['content']['dato']}}</a>
+                  <hr style="margin: 0; margin-top: 16px;" *ngIf="element['content']['type']==5 && element['authorized'] && element['content']['dato']!=''">
+                  <audio controls style="margin: 10px 10px;" *ngIf="element['content']['type']==4 && element['authorized'] && element['content']['dato']!=''"><source src="{{element['content']['dato']}}" type="audio/ogg"></audio>
+                  <hr style="margin: 0; margin-top: 16px;" *ngIf="element['content']['type']==4 && element['authorized'] && element['content']['dato']!=''">
                   <div class="card-body">
                       <h2 class="card-title">{{element['content']["title"]}}</h2>
                       <div *ngIf="element['authorized']" [ngClass]="{show: element['visible']}" class="description">

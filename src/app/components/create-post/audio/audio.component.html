@@ -45,10 +45,10 @@
                     </div> 
                     <input accept=".mp3" #profile class="form-control form-control-md" id="formFileLg" type="file" (change)="detectFiles($event)" style="display:none; width: 100%;" />
                     <label for="formFileLg" style="cursor: pointer; color: #aeb6be; margin: 0; width: 80%; text-align: left;">Adjuntar Archivo MP3</label>
-                  </div><br>
+                  </div>
                   <div *ngIf="urls[0]!=''" style="margin-bottom: 12px;" class="d-flex flex-row flex-wrap justify-content-center">
                     <audio controls><source [src]="urls[0]" type='audio/ogg; codecs=vorbis'></audio>
-                  </div><br>
+                  </div>
                   <ckeditor #textarea [config]="{placeholder: 'Añade una descripción...',toolbar: [ 'heading', '|', 'bold', 'italic','bulletedList', 'numberedList','undo', 'redo' ]}" [editor]="editor" class="editortext" (blur)="updateDescription()" ></ckeditor><br>
                   <mat-form-field class="tags-list" appearance="standard ">
                     <mat-label style="color:#444;">Tags de contenido</mat-label>
