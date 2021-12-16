@@ -125,4 +125,10 @@ export class CreatorServiceService {
   updatePlan(nickname:string, pandB:Plan){
     return this.http.put<Response<string>>(`${this.Url}` + '/api/Creator/UpdatePlansAndBenefits',{nickname,pandB},{headers: {'Authorization': ` Bearer ${sessionStorage.getItem('token')}`}});
   }
+
+  getChatBool(id:string, nickname:string){
+    let url = `${this.Url}` + "/api/Creator/GetBoolSubsc?"​ + "id=" + id + '&nickname=' + nickname;
+    return this.http.get<boolean>(url);
+  }
+
 }

@@ -37,12 +37,14 @@ export class ProfileComponent implements OnInit {
   public genericLoaded:boolean=false;
   public page:number = 1;
   public contentByPage:number=20;
+  public chatbolean:boolean = false;
   
   constructor(private router:Router, private route:ActivatedRoute, private http:CreatorServiceService, private userServices:userServices,private _sanitizer: DomSanitizer) {}
 
   async ngOnInit(){
     this.nickname = this.route.snapshot.paramMap.get('nickname'); 
     this.profileLoader();
+    this.chatBool();
     this.onScroll();   
   }
 
@@ -52,6 +54,7 @@ export class ProfileComponent implements OnInit {
         this.creatorName=res['obj']['creatorName'];
         this.video=res['obj']['youtubeLink'];
         this.getVideoIframe(this.video);
+        this.video=this.videosrc
         this.biografia=res['obj']['biography'];
         this.descripcion=res['obj']['contentDescription'];
         this.cantSubs=res['obj']['cantSubscriptores'];
@@ -78,7 +81,7 @@ export class ProfileComponent implements OnInit {
             if(JSON.stringify(res["obj"]['contentsAndBool']) !== '[]'){ 
               this.page++;
               res["obj"]["contentsAndBool"].forEach(element => {
-                if(element['content']['dato']=='')
+                if(element['content']['dato']=='' || !element['authorized'])
                   element['content']['dato']="./assets/img/brand/1.jpg"; 
                 this.contentViwer.push(new ContentViwer(false,element['authorized'],element['content']));
               });
@@ -140,6 +143,12 @@ export class ProfileComponent implements OnInit {
         this.follow=false;
         this.profileLoader();
       }
+    });
+  }
+
+  chatBool(){
+    this.http.getChatBool(sessionStorage.getItem('userId'),this.nickname).subscribe(res=>{
+      this.chatbolean = res;
     });
   }
 

@@ -59,12 +59,13 @@ export class FeedComponent implements OnInit {
               });
               this.nPage = (parseInt(this.nPage)+1).toString();
             }
+            console.log(this.contentViwer);
           })
         }else{
           this.getFeedByCreator();
         }
       }
-    }, 1000);
+    }, 1500);
   }
 
   increaseShow(e:Event) {

@@ -38,7 +38,8 @@
                   <button *ngIf="getUserId()=='0'" routerLink="/login" mat-stroked-button>Seguir</button>
                   <button *ngIf="getUserId()!='0' && !follow && getNickname()!=nickname" (click)='followCreator()' mat-stroked-button style='padding:0 24px'>Seguir</button>
                   <button *ngIf="getUserId()!='0' &&  follow && getNickname()!=nickname" (click)='unfollowCreator()' mat-stroked-button>UnFollow</button>
-                  <button mat-stroked-button [routerLink]="['/chat',nickname]" >Enviar Mensaje</button>
+                  <button *ngIf="chatbolean" mat-stroked-button [routerLink]="['/chat',nickname]">Enviar Mensaje</button>
+                  <button *ngIf="!chatbolean" mat-stroked-button disabled="true" [ngClass]="{disabledButton: !chatbolean}" >Enviar Mensaje</button>
                 </div>
               </div>
             </div>
@@ -54,7 +55,7 @@
             <hr>
             <div class="card-deck shadow px-lg-2 py-lg-2 px-0 py-0">
               <div class="card biography">
-                <iframe class="youtube-iframe" width="100%" height="315" [src]="videosrc | safe"
+                <iframe class="youtube-iframe" width="100%" height="315" [src]="video | safe"
                 frameborder="0" allowfullscreen  title="YouTube video player"></iframe><br>
                 <div class="card-text card-text-style" [innerHTML]='biografia'></div>
               </div>
@@ -79,7 +80,7 @@
                     src="{{element['content']['dato']}}">
                   </a>
                   <img  [ngClass]="{filt: !element['authorized']}" 
-                  *ngIf="element['authorized'] && element['content']['dato']!=''" class="card-img-top" 
+                  *ngIf="element['authorized'] && element['content']['dato']!='' && element['content']['type']==2" class="card-img-top" 
                   src="{{element['content']['dato']}}">
                   <div class="card-body">
                       <h2 class="card-title">{{element['content']["title"]}}</h2>
