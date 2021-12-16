@@ -74,6 +74,7 @@ import { ImageComponent } from './components/create-post/image/image.component';
 import { VideoComponent } from './components/create-post/video/video.component';
 import { LinkComponent } from './components/create-post/link/link.component';
 import { AudioComponent } from './components/create-post/audio/audio.component';
+import { EstadisticaComponent } from './components/estadistica/estadistica.component';
 import { SuscribeComponent } from './components/suscribe/suscribe.component';
 import { CreateplanComponent } from './components/planconfig/planconfig.component';
 import { DatePipe } from '@angular/common';
@@ -107,6 +108,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
+
 const firebaseConfig = {
   apiKey: "AIzaSyCHjB9pc987jPv8miGwVP3ugbuN5SDiQnw",
   authDomain: "creadoresuychat.firebaseapp.com",
@@ -132,6 +134,7 @@ const firebaseConfig = {
     SearchComponent,
     CreatePostComponent,
     TextComponent,
+    EstadisticaComponent,
     ImageComponent,
     VideoComponent,
     PaymentComponent,

@@ -25,6 +25,7 @@ import { UserComponent } from './components/backOffice/user/list/user.component'
 import { UserAddComponent } from './components/backOffice/user/add/user-add.component'
 import { UserEditComponent } from './components/backOffice/user/edit/user-edit.component'
 import { AdminComponent } from './components/backOffice/admin/list/admin.component';
+import { EstadisticaComponent } from './components/estadistica/estadistica.component';
 import { AdminEditComponent } from './components/backOffice/admin/edit/admin-edit.component';
 import { AdminAddComponent } from './components/backOffice/admin/add/admin-add.component';
 import { CategoryComponent } from './components/backOffice/category/list/category.component';
@@ -62,7 +63,9 @@ const routes: Routes = [
   { path: 'chat', component: ChatComponent },
   { path: 'chat/:nickname', component: ChatComponent },
   { path: 'creator-Profile/:nickname/suscribe', component: SuscribeComponent },
-  { path: 'user-Profile/:nickname',          component: UserProfileComponent },
+  { path: 'user-Profile/:nickname', component: UserProfileComponent },
+  { path: 'estadistica', component: EstadisticaComponent },
+
 
   { path: 'backOffice', component: BackOfficeComponent },
   { path: 'backOffice/usuario', component: UserComponent },
