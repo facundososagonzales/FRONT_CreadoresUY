@@ -26,6 +26,7 @@ export class FeedComponent implements OnInit {
   public genericContent1 = new CreatorContent("999999999","Este creador no tiene contenido aún!", "El creador seleccionado no tiene contenido para tu plan de suscripción todavía",9999,"",
         (new Date()),false,(new Date()),true,"","","./assets/img/brand/1.jpg",0);
   public contentViwer:ContentViwer[]=[];
+  public flag=true;
   
   constructor(private router:Router,private http:userServices,private creatorService:CreatorServiceService) {}
 
@@ -43,8 +44,9 @@ export class FeedComponent implements OnInit {
 
   onScroll(){
     setTimeout(() => {
-      if(!this.stopped){
+      if(!this.stopped && this.flag){
         if(!this.filterByCreator){
+          this.flag=false;
           this.http.userContent(sessionStorage.getItem("userId"),this.nPage,this.contentNumer).subscribe(res =>{
             if(JSON.stringify(res["obj"]) === '[]' || res["obj"].length<this.contentNumer){
               this.stopped=true;
@@ -60,12 +62,13 @@ export class FeedComponent implements OnInit {
               this.nPage = (parseInt(this.nPage)+1).toString();
             }
             console.log(this.contentViwer);
-          })
+            this.flag=true;
+          });
         }else{
           this.getFeedByCreator();
         }
       }
-    }, 1500);
+    }, 250);
   }
 
   increaseShow(e:Event) {
@@ -99,6 +102,7 @@ export class FeedComponent implements OnInit {
             this.contentViwer.push(new ContentViwer(false,true,element));
           });
           this.nPage = (parseInt(this.nPage)+1).toString();
+          console.log(res);
         }
       }
     });
@@ -112,6 +116,28 @@ export class FeedComponent implements OnInit {
     this.genericLoaded = false;
     this.contentViwer=[];
     this.getFeedByCreator()
+  }
+
+  getVideoIframeView(url: string) {
+    console.log(url);
+    var video, results;
+
+    if (url === null) {
+      return '';
+    }
+    results = url.match('[\\?&]v=([^&#]*)');
+    video = (results === null) ? url : results[1];
+
+    return ("//www.youtube.com/embed/" + this.getId(url));
+  }
+
+  getId(url: string) {
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+
+    return (match && match[2].length === 11)
+      ? match[2]
+      : null;
   }
 
   navToCat(){

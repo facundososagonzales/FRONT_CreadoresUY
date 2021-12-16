@@ -27,6 +27,7 @@ export class ProfileComponent implements OnInit {
   follow:boolean=false;
   public videosrc: any;
   public rawvideolink: string;
+  public flags = true;
   
 
   public stopper:boolean = false;
@@ -69,7 +70,8 @@ export class ProfileComponent implements OnInit {
 
   onScroll(){
     setTimeout(() => {
-      if(!this.stopper){
+      if(!this.stopper && this.flags){
+        this.flags=false;
         this.http.creatorProfileContentLoader
         (this.nickname,this.getUserId(),this.page.toString(),this.contentByPage.toString()).subscribe(res =>{
           if(res['success']){
@@ -92,9 +94,10 @@ export class ProfileComponent implements OnInit {
               this.genericLoaded=true;
             }
           }
+          this.flags=true;
         });
       }
-    }, 1500);
+    }, 250);
   }
 
   scrollToStart(e) {
