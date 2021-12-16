@@ -64,6 +64,11 @@ export class userServices {
     return this.http.get<Response<Subscriptions[]>>(url, {headers: {'Authorization': ` Bearer ${sessionStorage.getItem('token')}`}})
   }
 
+  getFollsByUser(idUser:string){
+    let url = `${this.Url}` + "/api/User/FollowingTo?"​ + "idUser=" + idUser;
+    return this.http.get<Response<string>>(url, {headers: {'Authorization': ` Bearer ${sessionStorage.getItem('token')}`}})
+  }
+  
   getContentByCreator(idUser:string, idCreador:string, pageNumber:string, pageSize:string){
     let url = `${this.Url}` + "/api/Content/FeedById?"​ + "idUser=" + idUser + "&" + "IdCreator=" + idCreador + "&" +
     "Page=" + pageNumber + "&" + "ContentPerPage=" + pageSize;

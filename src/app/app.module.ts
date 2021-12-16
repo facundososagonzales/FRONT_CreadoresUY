@@ -56,7 +56,6 @@ import { ChartsModule } from 'ng2-charts';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
-
 import { HomeModule } from './components/home/home.module';
 import { LoginComponent } from './components/login/login.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
@@ -102,7 +101,7 @@ import { BenefitAddComponent } from './components/backOffice/benefit/add/benefit
 import { StatisticsComponent } from './components/backOffice/statistics/statistics.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { PaymentComponent } from './components/backOffice/payment/payment.component';
-
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
@@ -161,7 +160,8 @@ const firebaseConfig = {
     CategoryComponent,
     CreatorAddComponent,
     ChatComponent,
-    SafePipe
+    SafePipe,
+    UserProfileComponent
   ],
   imports: [
     ReactiveFormsModule,
