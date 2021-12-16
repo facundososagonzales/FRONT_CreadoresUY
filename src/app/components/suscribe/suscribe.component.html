@@ -21,7 +21,7 @@
                         <font color="#27798f" size="5" face="Open Sans"><br *ngIf="plan.image!=''"><i><b>${{plan.price | number: '1.0-2'}}</b></i></font><font color="#27798f" size="3" face="Open Sans"> /mes</font>            
                          <div class="card-body">
                               <button mat-stroked-button disabled="{{plan.idPlan==planActual}}" (click)="initConfig(plan.price, plan.idPlan);" (click)="triggerModal(modalData)" style="background-color: #569e86;">Unirme</button><br><br>
-                              <div class="card-text"  >{{plan.description}}</div><br>
+                              <div class="card-text" [innerHTML]='plan.description'></div><br>
                               <font color="#27798f" size="3" face="Open Sans"><br><i><b>Beneficios:</b></i></font>
                             <ul style="padding: 0;" class="ml-4 mt-2">
                               <li *ngFor="let element of plan.benefits" style="font-family: Open Sans; font-size: small;color: #2c4e57; text-align: start;" role="listitem">{{element}}</li>
