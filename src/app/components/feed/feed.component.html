@@ -22,7 +22,7 @@
             <ul class="list-group list-group-flush">
               <li class="list-group-item" style="padding: 15px 5px;">Suscripciones</li>
               <div id="subscriptions" *ngFor="let sub of subs">
-                <a (click)="creatorFilter(sub['id'])" style="padding: 0 8px;" class="text-muted-publicadopor1" mat-menu-item>
+                <a (click)="creatorFilter(sub['id'],sub['profileImage'])" style="padding: 0 8px;" class="text-muted-publicadopor1" mat-menu-item>
                   <img src="{{sub.profileImage}}" class="rounded-circle2"
                   style="margin-right: 5px; float: right;">
                   {{sub.name}}
@@ -63,14 +63,21 @@
                           </div><br>
                           <a *ngIf="(element['content']['description'].length>240)" (click)="scrollToStart($event)" class="text-muted-publicadopor more" (click)="element['visible'] = !element['visible']" style="float: right;">{{ element['visible'] ? 'Mostrar menos': 'Mostrar más' }}</a>
                         </div>
-                        <div *ngIf="element['content']['nickName']!=='CreadoresUy'" class="card-footer">
+                        <div *ngIf="element['content']['nickName']!=='CreadoresUy' && creatorImage==''" class="card-footer">
                           <small class="text-muted">Fecha de publicacion: {{element['content']['publishDate'] | date:'short':'UTC'}}</small>
                           <a class="text-muted-publicadopor" [routerLink]="['/creator-Profile',element['content']['nickName']]">{{element['content']['nickName']}}
                             <img src="{{element['content']['creatorImage']}}" class="rounded-circle1"
                             style="width: 20px; margin-left: 5px; float: right;">
                           </a>
                         </div>
-                        <div *ngIf="element['content']['nickName']==='CreadoresUy'" class="card-footer">
+                        <div *ngIf="element['content']['nickName']!=='CreadoresUy' && creatorImage!=''" class="card-footer">
+                          <small class="text-muted">Fecha de publicacion: {{element['content']['publishDate'] | date:'short':'UTC'}}</small>
+                          <a class="text-muted-publicadopor" [routerLink]="['/creator-Profile',element['content']['nickName']]">{{element['content']['nickName']}}
+                            <img src="{{creatorImage}}" class="rounded-circle1"
+                            style="width: 20px; margin-left: 5px; float: right;">
+                          </a>
+                        </div>
+                        <div *ngIf="element['content']['nickName']==='CreadoresUy' && creatorImage==''" class="card-footer">
                           <small class="text-muted">Fecha de publicacion: {{element['content']['publishDate'] | date:'short':'UTC'}}</small>
                           <a class="text-muted-publicadopor">{{element['content']['nickName']}}
                             <img src="./assets/img/theme/1.png" class="rounded-circle1"

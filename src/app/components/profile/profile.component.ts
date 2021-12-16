@@ -28,6 +28,8 @@ export class ProfileComponent implements OnInit {
   public videosrc: any;
   public rawvideolink: string;
   public flags = true;
+  public welcomeVideo:string='';
+  public welcomeMensaje:string='';
   
 
   public stopper:boolean = false;
@@ -46,6 +48,7 @@ export class ProfileComponent implements OnInit {
     this.nickname = this.route.snapshot.paramMap.get('nickname'); 
     this.profileLoader();
     this.chatBool();
+    this.getWelcome();
     this.onScroll();   
   }
 
@@ -118,7 +121,6 @@ export class ProfileComponent implements OnInit {
   }
 
   getVideoIframe(url: string) {
-    console.log(url);
     var video, results;
 
     if (url === null) {
@@ -132,7 +134,6 @@ export class ProfileComponent implements OnInit {
   }
 
   getVideoIframeView(url: string) {
-    console.log(url);
     var video, results;
 
     if (url === null) {
@@ -166,6 +167,17 @@ export class ProfileComponent implements OnInit {
     this.http.getChatBool(sessionStorage.getItem('userId'),this.nickname).subscribe(res=>{
       this.chatbolean = res;
     });
+  }
+
+  getWelcome(){
+    if(sessionStorage.getItem('idPlan')!=null){
+      this.http.getWecolmeInfo(sessionStorage.getItem('idPlan')).subscribe(res=>{
+        console.log(res)
+        this.welcomeMensaje=res['obj']['subscriptionMsg'];
+        this.welcomeVideo=res['obj']['welcomeVideoLink'];
+        sessionStorage.removeItem('idPlan')
+      });
+    }
   }
 
   navToSuscribe(){

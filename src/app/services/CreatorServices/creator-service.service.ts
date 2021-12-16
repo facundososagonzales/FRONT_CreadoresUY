@@ -14,6 +14,7 @@ import { DatePipe } from '@angular/common';
 import { CreatorPlansToUser } from 'src/app/model/CreatorPlansToUser';
 import { Plan } from 'src/app/model/Plan';
 import { PlanAndNickname } from 'src/app/model/PlanAndNickname';
+import { WelcomePlan } from 'src/app/model/WelcomePlan';
 
 @Injectable({
   providedIn: 'root'
@@ -129,6 +130,11 @@ export class CreatorServiceService {
   getChatBool(id:string, nickname:string){
     let url = `${this.Url}` + "/api/Creator/GetBoolSubsc?"​ + "id=" + id + '&nickname=' + nickname;
     return this.http.get<boolean>(url);
+  }
+
+  getWecolmeInfo(idPlan:string){
+    let url = `${this.Url}` + "/api/Creator/GetInfoPlan?"​ + "idPlan=" + idPlan;
+    return this.http.get<Response<WelcomePlan>>(url);
   }
 
 }

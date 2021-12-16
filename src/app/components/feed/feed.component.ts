@@ -27,6 +27,7 @@ export class FeedComponent implements OnInit {
         (new Date()),false,(new Date()),true,"","","./assets/img/brand/1.jpg",0);
   public contentViwer:ContentViwer[]=[];
   public flag=true;
+  public creatorImage:string='';
   
   constructor(private router:Router,private http:userServices,private creatorService:CreatorServiceService) {}
 
@@ -108,7 +109,8 @@ export class FeedComponent implements OnInit {
     });
   }
 
-  creatorFilter(idCreator:string){
+  creatorFilter(idCreator:string,creatorImage:string){
+    this.creatorImage=creatorImage;
     this.stopped = false;
     this.filterByCreator = true;
     this.nPage = '0';

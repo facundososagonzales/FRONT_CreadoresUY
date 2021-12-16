@@ -52,7 +52,7 @@ export class SuscribeComponent implements OnInit {
       'Access-Control-Allow-Headers': 'Authorization, Origin, Content-Type, X-CSRF-Token'
     };
     var precio = (Math.round(price * 100)/100).toString();
-    console.log(precio);
+    console.log(planId);
     this.payPalConfig = {
       currency: 'USD',
       clientId: 'AR6r31Q1-UBExv3N0jKTOAJBVR0s7lFj9peXOxgf_1opCSdk9On_TtR2VVDdukqlOeSb2DYjYxyRWALR',
@@ -111,6 +111,7 @@ export class SuscribeComponent implements OnInit {
               console.log(res1);
               this.onSave();
               this.success=true;
+              sessionStorage.setItem('idPlan', dato.idPlan.toString());
               this.router.navigate(['/creator-Profile', this.nickname]);
             });
           });
@@ -123,6 +124,7 @@ export class SuscribeComponent implements OnInit {
           this.userServices.suscriber(dato).subscribe(res=>{
             console.log(res);
             this.onSave();
+            sessionStorage.setItem('idPlan', dato.idPlan.toString());
             this.router.navigate(['/creator-Profile', this.nickname]);
           });
         }
