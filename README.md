@@ -19,26 +19,26 @@ Para actualizar la base de datos con las migraciones realizadas:
 ## Visualización de alguanas funcionalidades
 
 ### Home
-![Home](/FRONT_CreadoresUY/src/assets/img/theme/s1.png)
+![Home](https://i.ibb.co/PCh7Rvp/s1.png)
 
 ### Log in
-![Log in](/FRONT_CreadoresUY/src/assets/img/theme/s2.png)
+![Log in](/https://i.ibb.co/jyf7tdh/s2.png)
 
 ### Home
-![Searcher](/FRONT_CreadoresUY/src/assets/img/theme/s3.png)
+![Searcher](https://i.ibb.co/Dp0QpDM/s3.png)
 
 ### Creator profile
-![Creator profile](/FRONT_CreadoresUY/src/assets/img/theme/s4.png)
-![Creator profile](/FRONT_CreadoresUY/src/assets/img/theme/s5.png)
+![Creator profile](https://i.ibb.co/9n3C4Xp/s4.png)
+![Creator profile](https://i.ibb.co/3rwQYvd/s5.png)
 
 ### Feed
-![Feed](/FRONT_CreadoresUY/src/assets/img/theme/s6.png)
+![Feed](https://i.ibb.co/51pyW5h/s6.png)
 
 ### Creator new post
-![Creator new post](/FRONT_CreadoresUY/src/assets/img/theme/s7.png)
+![Creator new post](https://i.ibb.co/QYLt7Cb/s7.png)
 
 ### Creator plans config
-![Creator plans config](/FRONT_CreadoresUY/src/assets/img/theme/s8.png)
+![Creator plans config](https://i.ibb.co/51pyW5h/s6.png)
 
 ## Modulos de la aplicación
 
