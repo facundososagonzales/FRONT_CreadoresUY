@@ -1,27 +1,93 @@
-# MyApp
+# CreadoresUy - taller de aplicaciones .net
 
-This project was generated with [Angular CLI](https://github.com/c4mic/FRONT_CreadoresUY) version 11.0.5.
+Aplicación Front end para el proyecto `CreadoresUy` del taller desarrollo de aplicaciones .net.
+>este proyecto requiere de su correspondiente [API REST](https://github.com/EdwinpistonC/-CreadoresUY-Grupo3-2021) para funcionar.
 
-## Development server
+## Ejecutar proyecto
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Ejecutar comando `ng serve`. Para acceder a la aplicacion ingresar a `http://localhost:4200/` (version localhost, version aws no disponible).
 
-## Code scaffolding
+**Es necesario clonar el proyecto [-CreadoresUY-Grupo3-2021](https://github.com/EdwinpistonC/-CreadoresUY-Grupo3-2021) para el correcto funcionamiento de la aplicación angular.**
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+Ejecutar migraciones de la api rest (versión localhost): 
+- dotnet ef --startup-project Api/Api.csproj migrations add prueba1 -p Persistence/Persistence.csproj
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Para actualizar la base de datos con las migraciones realizadas:
+- dotnet ef --startup-project Api/Api.csproj database update
 
-## Running unit tests
+## Visualización de alguanas funcionalidades
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Home
+    ![](/src/assets/img/theme/1.png)
 
-## Running end-to-end tests
+## Modulos de la aplicación
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### **Front offices**
 
-## Further help
+- Módulo de autenticación, Registro, Social Login y olvido de contraseña.
+        
+- Módulo de Home y feed
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://github.com/c4mic/FRONT_CreadoresUY) page.
+- Módulo de búsqueda y categorías
+
+- Módulo de suscripciones
+
+- Módulo de reporte de usuarios y contenido
+
+- Módulo de seguimiento de creadores
+
+- Módulo de perfil de usuario
+
+- Módulo de conversión a creador
+
+- Módulo de Dashboard de creador:
+
+- Submódulo de posts
+
+- Submódulo de configuración
+
+- Submódulo de estadísticas
+
+- Submódulo de mensajería:
+
+    - Configuracion de pagina del creador
+
+    - Configuración de suscripciones
+
+    - Configuración de mensajes de bienvenida
+
+### **Back offices**
+
+- Módulo de configuraciones:
+
+    - Configuración de beneficios genéricos
+
+    - Configuración de suscripciones base
+
+    - Configuración de categorías
+
+- Módulo de Administración:
+
+  - Usuarios
+
+  - Creadores
+
+  - Contenido
+
+  - Administradores
+
+- Módulo de estadísticas
+
+  - Estadísticas de uso
+    
+  - Estadísticas de financieras
+
+### **Opcionales implementados**
+
+- Conexión con sistemas de pago internacionales no tarjeta para pago y cobro de
+suscripciones, como PayPal 
+
+- Utilización de base de datos no relacional (MongoDB)
+
+- Desarrollo de la aplicación móvil en Xamarin
