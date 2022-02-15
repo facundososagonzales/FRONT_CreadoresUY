@@ -19,7 +19,26 @@ Para actualizar la base de datos con las migraciones realizadas:
 ## Visualización de alguanas funcionalidades
 
 ### Home
-    ![Home](/FRONT_CreadoresUY/blob/main/src/assets/img/theme/s1.png)
+    ![Home](/FRONT_CreadoresUY/src/assets/img/theme/s1.png)
+
+### Log in
+    ![Log in](/FRONT_CreadoresUY/src/assets/img/theme/s2.png)
+
+### Home
+    ![Searcher](/FRONT_CreadoresUY/src/assets/img/theme/s3.png)
+
+### Creator profile
+    ![Creator profile](/FRONT_CreadoresUY/src/assets/img/theme/s4.png)
+    ![Creator profile](/FRONT_CreadoresUY/src/assets/img/theme/s5.png)
+
+### Feed
+    ![Feed](/FRONT_CreadoresUY/src/assets/img/theme/s6.png)
+
+### Creator new post
+    ![Creator new post](/FRONT_CreadoresUY/src/assets/img/theme/s7.png)
+
+### Creator plans config
+    ![Creator plans config](/FRONT_CreadoresUY/src/assets/img/theme/s8.png)
 
 ## Modulos de la aplicación
 
