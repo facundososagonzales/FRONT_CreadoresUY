@@ -19,7 +19,7 @@ Para actualizar la base de datos con las migraciones realizadas:
 ## Visualización de alguanas funcionalidades
 
 ### Home
-    ![](/src/assets/img/theme/1.png)
+    ![Home](/FRONT_CreadoresUY/blob/main/src/assets/img/theme/s1.png)
 
 ## Modulos de la aplicación
 
