@@ -22,7 +22,7 @@ Para actualizar la base de datos con las migraciones realizadas:
 ![Home](https://i.ibb.co/PCh7Rvp/s1.png)
 
 ### Log in
-![Log in](/https://i.ibb.co/jyf7tdh/s2.png)
+![Log in](https://i.ibb.co/jyf7tdh/s2.png)
 
 ### Home
 ![Searcher](https://i.ibb.co/Dp0QpDM/s3.png)
