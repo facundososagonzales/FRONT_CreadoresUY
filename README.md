@@ -21,24 +21,24 @@ Para actualizar la base de datos con las migraciones realizadas:
 ### Home
 ![Home](https://i.ibb.co/PCh7Rvp/s1.png)
 
-### Log in
+### Iniciar sesión
 ![Log in](https://i.ibb.co/jyf7tdh/s2.png)
 
-### Home
+### Buscador por nombre, descripcion o categoria
 ![Searcher](https://i.ibb.co/Dp0QpDM/s3.png)
 
-### Creator profile
+### Perfil público del creador
 ![Creator profile](https://i.ibb.co/9n3C4Xp/s4.png)
 ![Creator profile](https://i.ibb.co/3rwQYvd/s5.png)
 
 ### Feed
 ![Feed](https://i.ibb.co/51pyW5h/s6.png)
 
-### Creator new post
+### Crear nuevo contenido
 ![Creator new post](https://i.ibb.co/QYLt7Cb/s7.png)
 
-### Creator plans config
-![Creator plans config](https://i.ibb.co/51pyW5h/s8.png)
+### Configuracion de planes de creador
+![Creator plans config](https://i.ibb.co/w0jSW6R/s8.png)
 
 ## Modulos de la aplicación
 
