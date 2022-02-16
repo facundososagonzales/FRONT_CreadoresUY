@@ -38,7 +38,7 @@ Para actualizar la base de datos con las migraciones realizadas:
 ![Creator new post](https://i.ibb.co/QYLt7Cb/s7.png)
 
 ### Creator plans config
-![Creator plans config](https://i.ibb.co/51pyW5h/s6.png)
+![Creator plans config](https://i.ibb.co/51pyW5h/s8.png)
 
 ## Modulos de la aplicación
 
